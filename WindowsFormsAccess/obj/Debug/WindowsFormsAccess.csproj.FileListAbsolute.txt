@@ -1,0 +1,30 @@
+\\isilonpri.fiberhome.com\fiberhomePuser\cytao\Documents\Visual Studio 2008\Projects\WindowsFormsAccess\WindowsFormsAccess\obj\Debug\ResolveAssemblyReference.cache
+\\isilonpri.fiberhome.com\fiberhomePuser\cytao\Documents\Visual Studio 2008\Projects\WindowsFormsAccess\WindowsFormsAccess\obj\Debug\WindowsFormsAccess.Form1.resources
+\\isilonpri.fiberhome.com\fiberhomePuser\cytao\Documents\Visual Studio 2008\Projects\WindowsFormsAccess\WindowsFormsAccess\obj\Debug\WindowsFormsAccess.Properties.Resources.resources
+\\isilonpri.fiberhome.com\fiberhomePuser\cytao\Documents\Visual Studio 2008\Projects\WindowsFormsAccess\WindowsFormsAccess\obj\Debug\WindowsFormsAccess.csproj.GenerateResource.Cache
+\\isilonpri.fiberhome.com\fiberhomePuser\cytao\Documents\Visual Studio 2008\Projects\WindowsFormsAccess\WindowsFormsAccess\bin\Debug\WindowsFormsAccess.exe
+\\isilonpri.fiberhome.com\fiberhomePuser\cytao\Documents\Visual Studio 2008\Projects\WindowsFormsAccess\WindowsFormsAccess\bin\Debug\WindowsFormsAccess.pdb
+\\isilonpri.fiberhome.com\fiberhomePuser\cytao\Documents\Visual Studio 2008\Projects\WindowsFormsAccess\WindowsFormsAccess\obj\Debug\WindowsFormsAccess.exe
+\\isilonpri.fiberhome.com\fiberhomePuser\cytao\Documents\Visual Studio 2008\Projects\WindowsFormsAccess\WindowsFormsAccess\obj\Debug\WindowsFormsAccess.pdb
+\\isilonpri.fiberhome.com\fiberhomePuser\cytao\Documents\Visual Studio 2008\Projects\WindowsFormsAccess\WindowsFormsAccess\obj\Debug\WindowsFormsAccess.csproj.ResolveComReference.cache
+\\isilonpri.fiberhome.com\fiberhomePuser\cytao\Documents\Visual Studio 2008\Projects\WindowsFormsAccess\WindowsFormsAccess\obj\Debug\WindowsFormsAccess.Form3.resources
+D:\code_ipran\WindowsFormsAccess\WindowsFormsAccess\obj\Debug\WindowsFormsAccess.csproj.ResolveComReference.cache
+D:\code_ipran\WindowsFormsAccess\WindowsFormsAccess\obj\Debug\WindowsFormsAccess.exe
+D:\code_ipran\WindowsFormsAccess\WindowsFormsAccess\obj\Debug\WindowsFormsAccess.pdb
+D:\code_ipran\WindowsFormsAccess\WindowsFormsAccess\obj\Debug\ResolveAssemblyReference.cache
+D:\code_ipran\WindowsFormsAccess\WindowsFormsAccess\obj\Debug\WindowsFormsAccess.Form1.resources
+D:\code_ipran\WindowsFormsAccess\WindowsFormsAccess\obj\Debug\WindowsFormsAccess.Form3.resources
+D:\code_ipran\WindowsFormsAccess\WindowsFormsAccess\obj\Debug\WindowsFormsAccess.Properties.Resources.resources
+D:\code_ipran\WindowsFormsAccess\WindowsFormsAccess\obj\Debug\WindowsFormsAccess.csproj.GenerateResource.Cache
+D:\code_ipran\WindowsFormsAccess\WindowsFormsAccess\bin\Debug\WindowsFormsAccess.exe
+D:\code_ipran\WindowsFormsAccess\WindowsFormsAccess\bin\Debug\WindowsFormsAccess.pdb
+Y:\project\20180508-access\WindowsFormsAccess\WindowsFormsAccess\obj\Debug\WindowsFormsAccess.csproj.ResolveComReference.cache
+Y:\project\20180508-access\WindowsFormsAccess\WindowsFormsAccess\obj\Debug\WindowsFormsAccess.exe
+Y:\project\20180508-access\WindowsFormsAccess\WindowsFormsAccess\obj\Debug\ResolveAssemblyReference.cache
+Y:\project\20180508-access\WindowsFormsAccess\WindowsFormsAccess\obj\Debug\WindowsFormsAccess.Form1.resources
+Y:\project\20180508-access\WindowsFormsAccess\WindowsFormsAccess\obj\Debug\WindowsFormsAccess.Form3.resources
+Y:\project\20180508-access\WindowsFormsAccess\WindowsFormsAccess\obj\Debug\WindowsFormsAccess.Properties.Resources.resources
+Y:\project\20180508-access\WindowsFormsAccess\WindowsFormsAccess\obj\Debug\WindowsFormsAccess.csproj.GenerateResource.Cache
+Y:\project\20180508-access\WindowsFormsAccess\WindowsFormsAccess\bin\Debug\WindowsFormsAccess.exe
+Y:\project\20180508-access\WindowsFormsAccess\WindowsFormsAccess\bin\Debug\WindowsFormsAccess.pdb
+Y:\project\20180508-access\WindowsFormsAccess\WindowsFormsAccess\obj\Debug\WindowsFormsAccess.pdb
