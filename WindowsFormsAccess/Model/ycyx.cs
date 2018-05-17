@@ -27,12 +27,12 @@ namespace Maticsoft.Model
 		{}
 		#region Model
 		private int _id;
-		private int? _fwhm;
-		private int? _khmc;
-		private int? _gsdq;
+		private int _fwhm;
+		private int _khmc;
+		private int _gsdq;
 		private string _dqpp;
-		private int? _dqtc;
-		private int? _dqzt;
+		private int _dqtc;
+		private int _dqzt;
 		/// <summary>
 		/// 
 		/// </summary>
@@ -44,7 +44,7 @@ namespace Maticsoft.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public int? fwhm
+		public int fwhm
 		{
 			set{ _fwhm=value;}
 			get{return _fwhm;}
@@ -52,7 +52,7 @@ namespace Maticsoft.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public int? khmc
+		public int khmc
 		{
 			set{ _khmc=value;}
 			get{return _khmc;}
@@ -60,7 +60,7 @@ namespace Maticsoft.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public int? gsdq
+		public int gsdq
 		{
 			set{ _gsdq=value;}
 			get{return _gsdq;}
@@ -76,7 +76,7 @@ namespace Maticsoft.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public int? dqtc
+		public int dqtc
 		{
 			set{ _dqtc=value;}
 			get{return _dqtc;}
@@ -84,7 +84,7 @@ namespace Maticsoft.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public int? dqzt
+		public int dqzt
 		{
 			set{ _dqzt=value;}
 			get{return _dqzt;}

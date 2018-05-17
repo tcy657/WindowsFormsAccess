@@ -26,8 +26,8 @@ namespace WindowsFormsAccess
         private void Form1_Load(object sender, EventArgs e)
         {
             achelp = new AccessHelper();        //定义变量，设置列标题；
-            //string sql1 = "select * from ycyx";
-            string sql1 = "select * from Users"; //重新刷新
+            string sql1 = "select * from ycyx";
+            //string sql1 = "select * from Users"; //重新刷新
             databind1(sql1);
 
             dataGridView1.Columns[0].Visible = false;
@@ -50,19 +50,22 @@ namespace WindowsFormsAccess
        // 读取要更新记录到更新窗体控件；
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
-            updateSheet1();
+            //updateSheet1();
+            readSheetX();  //读取内容到页面
         }
 
         //添加记录；
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            addSheet1();
+            //addSheet1();
+            addSheetX();
         }
 
         // 删除记录
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            deleteSheet1();
+            //deleteSheet1();
+            deleteSheetX();
         }
 
         //查询
@@ -204,7 +207,19 @@ namespace WindowsFormsAccess
             fs.Write(File, 0, File.Length);
             fs.Close();  
 
-        }           
+        }
+
+        //更新test页面
+        private void buttonTestOK_Click(object sender, EventArgs e)
+        {
+            updateSheetX(); //更新数据库
+        }
+
+        //取消更新test页面，清空
+        private void buttonTestCancel_Click(object sender, EventArgs e)
+        {
+
+        }
 
     }
 }
