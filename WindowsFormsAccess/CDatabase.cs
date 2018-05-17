@@ -10,8 +10,32 @@ namespace WindowsFormsAccess
 {
     public partial class Form1 : Form
     {
-       
-#region sheet1
+        #region 公用方法
+            //日志输出函数
+            private void output(string log)
+            {
+                try
+                {
+                    //如果日志超过100行，则自动清空；                
+                    if (txtLog.GetLineFromCharIndex(txtLog.Text.Length) > 100)
+                    {
+                        //清空显示框
+                        txtLog.Text = "";
+                    } //if 日志超过100行
+
+                    //添加日志
+                    txtLog.AppendText(DateTime.Now.ToString("yyyy-MM-dd, HH:mm:ss ") + log + "\r\n");
+                    //save2FileTime(autoBackupLogPath, log);  //日志记录到文件
+                }//try
+                catch
+                {
+                    //output("日志输出时发生意外：" + objException.Message);
+                    ; //不处理。因为处理可能会导致死循环。若save2FileTime()出错，则save2FileTime()->output()->save2FileTime()
+                }
+            }
+        #endregion 公用方法
+
+        #region sheet1
         private Maticsoft.Model.Users model = new Maticsoft.Model.Users();
         private string sqlString = ""; //保存sql语句 
 
@@ -331,6 +355,54 @@ namespace WindowsFormsAccess
 
         }
 
+        //基本信息-最大ID；
+        private int getMaxIDFromSheetX()
+        {
+            //查找
+            try
+            {
+                return ycyxDo.GetMaxId();
+            }
+            catch (Exception ex)
+            {
+                output(ex.Message);
+                return 0;
+            }
+
+        }
+
+        //基本信息-ID是否存在；
+        private bool checkIDFromSheetX(int ID)
+        {
+            //查找
+            try
+            {
+                return ycyxDo.Exists(ID);
+            }
+            catch (Exception ex)
+            {
+                output(ex.Message);
+                return false;
+            }
+
+        }
+
+        //基本信息-获取记录总数；
+        private int getCountFromSheetX(string stringBin)
+        {
+            //查找
+            try
+            {
+                return ycyxDo.GetRecordCount(stringBin); //"khmc = '2'"
+            }
+            catch (Exception ex)
+            {
+                output(ex.Message);
+                return 0;
+            }
+
+        }
+  
     #endregion test
     } //class
 } //nameSpace

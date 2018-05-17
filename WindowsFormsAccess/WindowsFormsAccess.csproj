@@ -53,8 +53,11 @@
     <Compile Include="CDatabase.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="cOthers.cs">
-      <SubType>Form</SubType>
+    <Compile Include="DAL\file.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DAL\Users.cs">
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="DAL\ycyx.cs" />
     <Compile Include="fileLoadUpDown.cs" />

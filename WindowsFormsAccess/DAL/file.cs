@@ -18,7 +18,7 @@ using System;
 using System.Data;
 using System.Text;
 using System.Data.OleDb;
-
+using Maticsoft.DBUtility; //引入命名空间
 //using Maticsoft.DBUtility;//Please add references
 namespace Maticsoft.DAL
 {
@@ -27,7 +27,8 @@ namespace Maticsoft.DAL
 	/// </summary>
 	public partial class file
 	{
-		public file()
+        AccessHelper DbHelperOleDb = new AccessHelper();
+        public file()
 		{}
 		#region  BasicMethod
 
@@ -250,7 +251,7 @@ namespace Maticsoft.DAL
 			{
 				strSql.Append(" where "+strWhere);
 			}
-			object obj = DbHelperSQL.GetSingle(strSql.ToString());
+            object obj = DbHelperOleDb.GetSingle(strSql.ToString());
 			if (obj == null)
 			{
 				return 0;

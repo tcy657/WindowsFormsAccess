@@ -7,7 +7,7 @@ using System.Data.OleDb;
 using System.Data;
 using System.Windows.Forms;
 
-namespace WindowsFormsAccess
+namespace Maticsoft.DBUtility
 {
     public class AccessHelper
     {
@@ -287,7 +287,7 @@ namespace WindowsFormsAccess
             }
         }
 
-        public static int GetMaxID(string FieldName, string TableName)
+        public  int GetMaxID(string FieldName, string TableName)
         {
             string strsql = "select max(" + FieldName + ")+1 from " + TableName;
             object obj = GetSingle(strsql);
@@ -300,7 +300,7 @@ namespace WindowsFormsAccess
                 return int.Parse(obj.ToString());
             }
         }
-        public static bool Exists(string strSql)
+        public  bool Exists(string strSql)
         {
             object obj = GetSingle(strSql);
             int cmdresult;
@@ -321,7 +321,7 @@ namespace WindowsFormsAccess
                 return true;
             }
         }
-        public static bool Exists(string strSql, params OleDbParameter[] cmdParms)
+        public  bool Exists(string strSql, params OleDbParameter[] cmdParms)
         {
             object obj = GetSingle(strSql, cmdParms);
             int cmdresult;
@@ -348,16 +348,17 @@ namespace WindowsFormsAccess
         /// </summary>
         /// <param name="SQLString">计算查询结果语句</param>
         /// <returns>查询结果（object）</returns>
-        public static object GetSingle(string SQLString)
+        public  object GetSingle(string SQLString)
         {
-            using (OleDbConnection connection = new OleDbConnection(connectionString))
-            {
-                using (OleDbCommand cmd = new OleDbCommand(SQLString, connection))
-                {
+            ole_command.Connection = ole_connection;
+            ole_command.CommandText = SQLString;       
                     try
                     {
-                        connection.Open();
-                        object obj = cmd.ExecuteScalar();
+                        if (ole_connection.State != ConnectionState.Open)
+                        {
+                            ole_connection.Open();
+                        }
+                        object obj = ole_command.ExecuteScalar();
                         if ((Object.Equals(obj, null)) || (Object.Equals(obj, System.DBNull.Value)))
                         {
                             return null;
@@ -369,11 +370,10 @@ namespace WindowsFormsAccess
                     }
                     catch (System.Data.OleDb.OleDbException e)
                     {
-                        connection.Close();
+                        ole_connection.Close();
                         throw new Exception(e.Message);
                     }
-                }
-            }
+            
         }
 
         /// <summary>
@@ -381,32 +381,29 @@ namespace WindowsFormsAccess
         /// </summary>
         /// <param name="SQLString">计算查询结果语句</param>
         /// <returns>查询结果（object）</returns>
-        public static object GetSingle(string SQLString, params OleDbParameter[] cmdParms)
+        public  object GetSingle(string SQLString, params OleDbParameter[] cmdParms)
         {
-            using (OleDbConnection connection = new OleDbConnection(connectionString))
+            ole_command.Connection = ole_connection;
+            ole_command.CommandText = SQLString;
+            try
             {
-                using (OleDbCommand cmd = new OleDbCommand())
+                PrepareCommand(ole_command, ole_command.Connection, null, SQLString, cmdParms);
+                object obj = ole_command.ExecuteScalar();
+                ole_command.Parameters.Clear();
+                if ((Object.Equals(obj, null)) || (Object.Equals(obj, System.DBNull.Value)))
                 {
-                    try
-                    {
-                        PrepareCommand(cmd, connection, null, SQLString, cmdParms);
-                        object obj = cmd.ExecuteScalar();
-                        cmd.Parameters.Clear();
-                        if ((Object.Equals(obj, null)) || (Object.Equals(obj, System.DBNull.Value)))
-                        {
-                            return null;
-                        }
-                        else
-                        {
-                            return obj;
-                        }
-                    }
-                    catch (System.Data.OleDb.OleDbException e)
-                    {
-                        throw new Exception(e.Message);
-                    }
+                    return null;
+                }
+                else
+                {
+                    return obj;
                 }
             }
+            catch (System.Data.OleDb.OleDbException e)
+            {
+                throw new Exception(e.Message);
+            }
+
         }
 
 

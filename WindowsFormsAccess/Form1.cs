@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Data.SqlClient;
 using System.Data.OleDb;
+using Maticsoft.DBUtility; //引入命名空间
 
 namespace WindowsFormsAccess
 {
@@ -219,6 +220,21 @@ namespace WindowsFormsAccess
         private void buttonTestCancel_Click(object sender, EventArgs e)
         {
 
+        }
+
+        //test page 测试
+        private void buttonTest_Click(object sender, EventArgs e)
+        {
+            output("max ID: " + getMaxIDFromSheetX().ToString());
+            if ( "" != textBox10.Text)
+            {
+            int id = int.Parse(textBox10.Text);
+            bool ret = checkIDFromSheetX(id);
+            output("ID Exist: " + textBox10.Text + "," + ret.ToString());
+            }
+
+            int ret1 = getCountFromSheetX("khmc = " + int.Parse(textBox10.Text));
+            output("Count Exist: " +  ret1.ToString());
         }
 
     }

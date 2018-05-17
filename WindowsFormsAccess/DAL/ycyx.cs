@@ -18,7 +18,7 @@ using System;
 using System.Data;
 using System.Text;
 using System.Data.OleDb;
-
+using Maticsoft.DBUtility; //引入命名空间
 //using Maticsoft.DBUtility;//Please add references
 namespace Maticsoft.DAL
 {
@@ -27,7 +27,8 @@ namespace Maticsoft.DAL
 	/// </summary>
 	public partial class ycyx
 	{
-        WindowsFormsAccess.AccessHelper DbHelperOleDb = new WindowsFormsAccess.AccessHelper();
+        //WindowsFormsAccess.AccessHelper DbHelperOleDb = new WindowsFormsAccess.AccessHelper();
+        AccessHelper DbHelperOleDb = new AccessHelper();
         public ycyx()
 		{}
 		#region  BasicMethod
@@ -35,10 +36,10 @@ namespace Maticsoft.DAL
 		/// <summary>
 		/// 得到最大ID
 		/// </summary>
-        //public int GetMaxId()
-        //{
-        //return DbHelperOleDb.GetMaxID("ID", "ycyx"); 
-        //}
+        public int GetMaxId()
+        {
+            return DbHelperOleDb.GetMaxID("ID", "ycyx");
+        }
 
 		/// <summary>
 		/// 是否存在该记录
@@ -258,28 +259,29 @@ namespace Maticsoft.DAL
            }
            return DbHelperOleDb.Query(strSql.ToString());
        }
-        /*
-      /// <summary>
-      /// 获取记录总数
-      /// </summary>
-      public int GetRecordCount(string strWhere)
-      {
-          StringBuilder strSql=new StringBuilder();
-          strSql.Append("select count(1) FROM ycyx ");
-          if(strWhere.Trim()!="")
-          {
-              strSql.Append(" where "+strWhere);
-          }
-          object obj = DbHelperSQL.GetSingle(strSql.ToString());
-          if (obj == null)
-          {
-              return 0;
-          }
-          else
-          {
-              return Convert.ToInt32(obj);
-          }
-      }
+       
+       /// <summary>
+       /// 获取记录总数
+       /// </summary>
+       public int GetRecordCount(string strWhere)
+       {
+           StringBuilder strSql=new StringBuilder();
+           strSql.Append("select count(1) FROM ycyx ");
+           if(strWhere.Trim()!="")
+           {
+               strSql.Append(" where "+strWhere);
+           }
+           object obj = DbHelperOleDb.GetSingle(strSql.ToString());
+           if (obj == null)
+           {
+               return 0;
+           }
+           else
+           {
+               return Convert.ToInt32(obj);
+           }
+       }
+        /* 
       /// <summary>
       /// 分页获取数据列表
       /// </summary>
