@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.labelCheck = new System.Windows.Forms.Label();
@@ -38,6 +40,8 @@
             this.textBox23 = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.buttonTestCancel = new System.Windows.Forms.Button();
+            this.buttonTestOK = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -57,6 +61,7 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.buttonTest = new System.Windows.Forms.Button();
             this.textBox10 = new System.Windows.Forms.TextBox();
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.buttonDownLoad = new System.Windows.Forms.Button();
@@ -85,6 +90,16 @@
             this.textBox5Sheet1 = new System.Windows.Forms.TextBox();
             this.textBox4Sheet1 = new System.Windows.Forms.TextBox();
             this.textBox1Sheet1 = new System.Windows.Forms.TextBox();
+            this.tabPageS5File = new System.Windows.Forms.TabPage();
+            this.buttonS5Open = new System.Windows.Forms.Button();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.textBox1S5Name = new System.Windows.Forms.TextBox();
+            this.buttonS5DelFolder = new System.Windows.Forms.Button();
+            this.buttonS5DownFile = new System.Windows.Forms.Button();
+            this.buttonS5Delete = new System.Windows.Forms.Button();
+            this.buttonS5AddFolder = new System.Windows.Forms.Button();
+            this.treeViewS5 = new System.Windows.Forms.TreeView();
             this.buttonCheck = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
@@ -92,15 +107,16 @@
             this.buttonShow = new System.Windows.Forms.Button();
             this.lblLog = new System.Windows.Forms.Label();
             this.txtLog = new System.Windows.Forms.TextBox();
-            this.buttonTestOK = new System.Windows.Forms.Button();
-            this.buttonTestCancel = new System.Windows.Forms.Button();
-            this.buttonTest = new System.Windows.Forms.Button();
+            this.label20 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPageSheet1.SuspendLayout();
+            this.tabPageS5File.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -109,6 +125,7 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPageSheet1);
+            this.tabControl1.Controls.Add(this.tabPageS5File);
             this.tabControl1.Location = new System.Drawing.Point(42, 27);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -155,33 +172,33 @@
             // 
             // dataGridView1
             // 
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Location = new System.Drawing.Point(24, 84);
             this.dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(838, 257);
             this.dataGridView1.TabIndex = 0;
@@ -215,6 +232,26 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // buttonTestCancel
+            // 
+            this.buttonTestCancel.Location = new System.Drawing.Point(543, 119);
+            this.buttonTestCancel.Name = "buttonTestCancel";
+            this.buttonTestCancel.Size = new System.Drawing.Size(75, 23);
+            this.buttonTestCancel.TabIndex = 19;
+            this.buttonTestCancel.Text = "Cancel";
+            this.buttonTestCancel.UseVisualStyleBackColor = true;
+            this.buttonTestCancel.Click += new System.EventHandler(this.buttonTestCancel_Click);
+            // 
+            // buttonTestOK
+            // 
+            this.buttonTestOK.Location = new System.Drawing.Point(543, 51);
+            this.buttonTestOK.Name = "buttonTestOK";
+            this.buttonTestOK.Size = new System.Drawing.Size(75, 23);
+            this.buttonTestOK.TabIndex = 18;
+            this.buttonTestOK.Text = "OK";
+            this.buttonTestOK.UseVisualStyleBackColor = true;
+            this.buttonTestOK.Click += new System.EventHandler(this.buttonTestOK_Click);
             // 
             // label5
             // 
@@ -404,6 +441,16 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "test";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // buttonTest
+            // 
+            this.buttonTest.Location = new System.Drawing.Point(458, 264);
+            this.buttonTest.Name = "buttonTest";
+            this.buttonTest.Size = new System.Drawing.Size(75, 23);
+            this.buttonTest.TabIndex = 24;
+            this.buttonTest.Text = "test";
+            this.buttonTest.UseVisualStyleBackColor = true;
+            this.buttonTest.Click += new System.EventHandler(this.buttonTest_Click);
             // 
             // textBox10
             // 
@@ -662,6 +709,105 @@
             this.textBox1Sheet1.TabIndex = 18;
             this.textBox1Sheet1.Text = "test.accdb";
             // 
+            // tabPageS5File
+            // 
+            this.tabPageS5File.Controls.Add(this.button2);
+            this.tabPageS5File.Controls.Add(this.buttonS5Open);
+            this.tabPageS5File.Controls.Add(this.label21);
+            this.tabPageS5File.Controls.Add(this.label19);
+            this.tabPageS5File.Controls.Add(this.textBox1S5Name);
+            this.tabPageS5File.Controls.Add(this.buttonS5DelFolder);
+            this.tabPageS5File.Controls.Add(this.buttonS5DownFile);
+            this.tabPageS5File.Controls.Add(this.buttonS5Delete);
+            this.tabPageS5File.Controls.Add(this.buttonS5AddFolder);
+            this.tabPageS5File.Controls.Add(this.treeViewS5);
+            this.tabPageS5File.Location = new System.Drawing.Point(4, 22);
+            this.tabPageS5File.Name = "tabPageS5File";
+            this.tabPageS5File.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageS5File.Size = new System.Drawing.Size(946, 452);
+            this.tabPageS5File.TabIndex = 4;
+            this.tabPageS5File.Text = "File";
+            this.tabPageS5File.UseVisualStyleBackColor = true;
+            // 
+            // buttonS5Open
+            // 
+            this.buttonS5Open.Location = new System.Drawing.Point(740, 65);
+            this.buttonS5Open.Name = "buttonS5Open";
+            this.buttonS5Open.Size = new System.Drawing.Size(75, 23);
+            this.buttonS5Open.TabIndex = 37;
+            this.buttonS5Open.Text = "打开文件夹";
+            this.buttonS5Open.UseVisualStyleBackColor = true;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(480, 70);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(65, 12);
+            this.label21.TabIndex = 36;
+            this.label21.Text = "文件位置: ";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(23, 39);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(65, 12);
+            this.label19.TabIndex = 35;
+            this.label19.Text = "文件夹结构";
+            // 
+            // textBox1S5Name
+            // 
+            this.textBox1S5Name.Location = new System.Drawing.Point(482, 111);
+            this.textBox1S5Name.Name = "textBox1S5Name";
+            this.textBox1S5Name.Size = new System.Drawing.Size(333, 21);
+            this.textBox1S5Name.TabIndex = 34;
+            // 
+            // buttonS5DelFolder
+            // 
+            this.buttonS5DelFolder.Location = new System.Drawing.Point(610, 148);
+            this.buttonS5DelFolder.Name = "buttonS5DelFolder";
+            this.buttonS5DelFolder.Size = new System.Drawing.Size(75, 23);
+            this.buttonS5DelFolder.TabIndex = 33;
+            this.buttonS5DelFolder.Text = "删除文件夹";
+            this.buttonS5DelFolder.UseVisualStyleBackColor = true;
+            // 
+            // buttonS5DownFile
+            // 
+            this.buttonS5DownFile.Location = new System.Drawing.Point(610, 212);
+            this.buttonS5DownFile.Name = "buttonS5DownFile";
+            this.buttonS5DownFile.Size = new System.Drawing.Size(75, 23);
+            this.buttonS5DownFile.TabIndex = 32;
+            this.buttonS5DownFile.Text = "下载文件";
+            this.buttonS5DownFile.UseVisualStyleBackColor = true;
+            // 
+            // buttonS5Delete
+            // 
+            this.buttonS5Delete.Location = new System.Drawing.Point(482, 212);
+            this.buttonS5Delete.Name = "buttonS5Delete";
+            this.buttonS5Delete.Size = new System.Drawing.Size(75, 23);
+            this.buttonS5Delete.TabIndex = 31;
+            this.buttonS5Delete.Text = "删除文件";
+            this.buttonS5Delete.UseVisualStyleBackColor = true;
+            // 
+            // buttonS5AddFolder
+            // 
+            this.buttonS5AddFolder.Location = new System.Drawing.Point(482, 148);
+            this.buttonS5AddFolder.Name = "buttonS5AddFolder";
+            this.buttonS5AddFolder.Size = new System.Drawing.Size(75, 23);
+            this.buttonS5AddFolder.TabIndex = 30;
+            this.buttonS5AddFolder.Text = "添加文件夹";
+            this.buttonS5AddFolder.UseVisualStyleBackColor = true;
+            // 
+            // treeViewS5
+            // 
+            this.treeViewS5.Location = new System.Drawing.Point(16, 70);
+            this.treeViewS5.Name = "treeViewS5";
+            this.treeViewS5.Size = new System.Drawing.Size(422, 359);
+            this.treeViewS5.TabIndex = 0;
+            this.treeViewS5.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeViewS5_BeforeExpand);
+            this.treeViewS5.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewS5_AfterSelect);
+            // 
             // buttonCheck
             // 
             this.buttonCheck.Location = new System.Drawing.Point(1023, 49);
@@ -733,41 +879,37 @@
             this.txtLog.Size = new System.Drawing.Size(954, 69);
             this.txtLog.TabIndex = 29;
             // 
-            // buttonTestOK
+            // label20
             // 
-            this.buttonTestOK.Location = new System.Drawing.Point(543, 51);
-            this.buttonTestOK.Name = "buttonTestOK";
-            this.buttonTestOK.Size = new System.Drawing.Size(75, 23);
-            this.buttonTestOK.TabIndex = 18;
-            this.buttonTestOK.Text = "OK";
-            this.buttonTestOK.UseVisualStyleBackColor = true;
-            this.buttonTestOK.Click += new System.EventHandler(this.buttonTestOK_Click);
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(40, 10);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(59, 12);
+            this.label20.TabIndex = 36;
+            this.label20.Text = "姓名-状态";
             // 
-            // buttonTestCancel
+            // button2
             // 
-            this.buttonTestCancel.Location = new System.Drawing.Point(543, 119);
-            this.buttonTestCancel.Name = "buttonTestCancel";
-            this.buttonTestCancel.Size = new System.Drawing.Size(75, 23);
-            this.buttonTestCancel.TabIndex = 19;
-            this.buttonTestCancel.Text = "Cancel";
-            this.buttonTestCancel.UseVisualStyleBackColor = true;
-            this.buttonTestCancel.Click += new System.EventHandler(this.buttonTestCancel_Click);
+            this.button2.Location = new System.Drawing.Point(740, 275);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 38;
+            this.button2.Text = "显示";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // buttonTest
+            // imageList1
             // 
-            this.buttonTest.Location = new System.Drawing.Point(458, 264);
-            this.buttonTest.Name = "buttonTest";
-            this.buttonTest.Size = new System.Drawing.Size(75, 23);
-            this.buttonTest.TabIndex = 24;
-            this.buttonTest.Text = "test";
-            this.buttonTest.UseVisualStyleBackColor = true;
-            this.buttonTest.Click += new System.EventHandler(this.buttonTest_Click);
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "Penguins.jpg");
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1131, 642);
+            this.Controls.Add(this.label20);
             this.Controls.Add(this.txtLog);
             this.Controls.Add(this.lblLog);
             this.Controls.Add(this.buttonShow);
@@ -789,6 +931,8 @@
             this.tabPage3.PerformLayout();
             this.tabPageSheet1.ResumeLayout(false);
             this.tabPageSheet1.PerformLayout();
+            this.tabPageS5File.ResumeLayout(false);
+            this.tabPageS5File.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -860,6 +1004,19 @@
         private System.Windows.Forms.Button buttonTestOK;
         private System.Windows.Forms.Button buttonTestCancel;
         private System.Windows.Forms.Button buttonTest;
+        private System.Windows.Forms.TabPage tabPageS5File;
+        private System.Windows.Forms.Button buttonS5DownFile;
+        private System.Windows.Forms.Button buttonS5Delete;
+        private System.Windows.Forms.Button buttonS5AddFolder;
+        private System.Windows.Forms.TreeView treeViewS5;
+        private System.Windows.Forms.Button buttonS5DelFolder;
+        private System.Windows.Forms.TextBox textBox1S5Name;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Button buttonS5Open;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ImageList imageList1;
     }
 }
 

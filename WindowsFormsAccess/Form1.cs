@@ -237,5 +237,42 @@ namespace WindowsFormsAccess
             output("Count Exist: " +  ret1.ToString());
         }
 
+        //显示文件夹存储位置
+        /// 加载逻辑磁盘文件  
+        private void button2_Click(object sender, EventArgs e)
+        {
+             DriveInfo[] myDrivers = DriveInfo.GetDrives();  
+            foreach (DriveInfo di in myDrivers)  
+            {  
+                if (di.IsReady)  
+                {  
+                    TreeNode tNode = new TreeNode(di.Name.Split(':')[0]);  
+                    tNode.Name = di.Name;  
+                    tNode.Tag = tNode.Name;
+                    tNode.ImageIndex = 3;         //获取结点显示图片  ,IconIndexes.FixedDrive
+                    tNode.SelectedImageIndex = 3; //选择显示图片, IconIndexes.FixedDrive  
+                    tNode.Nodes.Add("DUMMY");
+                    treeViewS5.Nodes.Add(tNode); //加载驱动节点
+                    
+                }  
+            } 
+
+            //添加鼠标右键的事件  
+            //this.treeViewS5.ContextMenuStrip = new TreeViewContextMenu().Load();  
+        }
+
+        /// TreeView必须处理的两个事件之一  
+        private void treeViewS5_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            e.Node.Expand();  
+        }
+
+        /// TreeView必须处理的两个事件之一  
+        private void treeViewS5_BeforeExpand(object sender, TreeViewCancelEventArgs e)
+        {
+            TreeViewItems.Add(sender, e);            
+        }
+
+
     }
 }

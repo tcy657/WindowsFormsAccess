@@ -5,6 +5,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Data.OleDb;
 using System.Data;
+using System.IO;
 
 namespace WindowsFormsAccess
 {
@@ -404,5 +405,36 @@ namespace WindowsFormsAccess
         }
   
     #endregion test
+
+        #region others
+        public static class TreeViewItems
+        {
+            public static void Add(object sender, TreeViewCancelEventArgs e)  
+       {  
+           e.Node.Nodes.Clear();  
+           TreeNode tNode = e.Node;  
+           //MessageBox.Show(tNode.Name);  
+           string path = tNode.Name;  
+           string[] dics = Directory.GetDirectories(path);  
+           foreach (string dic in dics)  
+           {  
+               TreeNode subNode = new TreeNode(new DirectoryInfo(dic).Name);  
+               subNode.Name = new DirectoryInfo(dic).FullName;  
+               subNode.Tag = subNode.Name;
+               subNode.Nodes.Add("");  
+               tNode.Nodes.Add(subNode);  
+  
+           }  
+           string[] files = Directory.GetFiles(path);  
+           foreach (string aFile in files)  
+           {  
+               TreeNode subNode = new TreeNode(new FileInfo(aFile).Name);  
+               subNode.Tag = aFile;  
+               subNode.Name = subNode.Text;  
+               tNode.Nodes.Add(subNode);  
+           }  
+       }
+        }
+        #endregion others
     } //class
 } //nameSpace
