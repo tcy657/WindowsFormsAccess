@@ -1,5 +1,10 @@
 # WindowsFormsAccess
 WindowsFormsAccess
+
+git常用命令
+推送远程仓库 git push origin master
+
+
 1 增加类定义代替数据库公共操作dll引用
 2 替换一个sql变量
 3 增加一个GetModelByUserID()的方法

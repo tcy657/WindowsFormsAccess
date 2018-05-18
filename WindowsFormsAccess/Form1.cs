@@ -68,8 +68,8 @@ namespace WindowsFormsAccess
         //添加记录；
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            //addSheet1();
-            addSheetX();
+            addSheet1();
+            addSheetX(gOid);
         }
 
         // 删除记录

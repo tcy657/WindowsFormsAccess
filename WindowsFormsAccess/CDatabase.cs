@@ -60,7 +60,7 @@ namespace WindowsFormsAccess
                 model.dRuYuanShiJian = dtp1time9Sheet1.Value;
                 model.sPhone = textBox6Sheet1.Text;
 
-                bool ret = ycyxDo.Add(modelYcyx);
+                bool ret = UsersDo.Add(model);
 
                 string sql1 = "select * from Users";
                 databind1(sql1);
@@ -207,7 +207,7 @@ namespace WindowsFormsAccess
 
 
         //添加记录1-基本信息；用于测试
-        private void addSheetX()
+        private void addSheetX(int oidUsersID)
         {
             if (textBox1Sheet1.Text == "") //姓名不能为空
             {
@@ -222,6 +222,7 @@ namespace WindowsFormsAccess
                 modelYcyx.dqpp = textBox4.Text;
                 modelYcyx.dqtc = int.Parse(textBox5.Text);
                 modelYcyx.dqzt = int.Parse(textBox6.Text);
+                modelYcyx.iUserID = oidUsersID; //关联两表
                 
                 bool ret =  ycyxDo.Add(modelYcyx);
  
