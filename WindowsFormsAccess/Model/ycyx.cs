@@ -6,7 +6,7 @@
 *
 * Ver    变更日期             负责人  变更内容
 * ───────────────────────────────────
-* V0.01  2018-5-11 21:45:36   N/A    初版
+* V0.01  2018-5-18 21:12:50   N/A    初版
 *
 * Copyright (c) 2012 Maticsoft Corporation. All rights reserved.
 *┌──────────────────────────────────┐
@@ -27,12 +27,13 @@ namespace Maticsoft.Model
 		{}
 		#region Model
 		private int _id;
-		private int _fwhm;
-		private int _khmc;
-		private int _gsdq;
+		private int? _fwhm;
+		private int? _khmc;
+		private int? _gsdq;
 		private string _dqpp;
-		private int _dqtc;
-		private int _dqzt;
+		private int? _dqtc;
+		private int? _dqzt;
+		private int? _iuserid;
 		/// <summary>
 		/// 
 		/// </summary>
@@ -44,7 +45,7 @@ namespace Maticsoft.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public int fwhm
+		public int? fwhm
 		{
 			set{ _fwhm=value;}
 			get{return _fwhm;}
@@ -52,7 +53,7 @@ namespace Maticsoft.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public int khmc
+		public int? khmc
 		{
 			set{ _khmc=value;}
 			get{return _khmc;}
@@ -60,7 +61,7 @@ namespace Maticsoft.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public int gsdq
+		public int? gsdq
 		{
 			set{ _gsdq=value;}
 			get{return _gsdq;}
@@ -76,7 +77,7 @@ namespace Maticsoft.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public int dqtc
+		public int? dqtc
 		{
 			set{ _dqtc=value;}
 			get{return _dqtc;}
@@ -84,10 +85,18 @@ namespace Maticsoft.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public int dqzt
+		public int? dqzt
 		{
 			set{ _dqzt=value;}
 			get{return _dqzt;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public int? iUserID
+		{
+			set{ _iuserid=value;}
+			get{return _iuserid;}
 		}
 		#endregion Model
 

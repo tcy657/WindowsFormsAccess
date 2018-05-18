@@ -40,7 +40,7 @@
             this.textBox23 = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.buttonTestCancel = new System.Windows.Forms.Button();
+            this.buttonTestFlash = new System.Windows.Forms.Button();
             this.buttonTestOK = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -91,6 +91,7 @@
             this.textBox4Sheet1 = new System.Windows.Forms.TextBox();
             this.textBox1Sheet1 = new System.Windows.Forms.TextBox();
             this.tabPageS5File = new System.Windows.Forms.TabPage();
+            this.button2 = new System.Windows.Forms.Button();
             this.buttonS5Open = new System.Windows.Forms.Button();
             this.label21 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
@@ -108,8 +109,11 @@
             this.lblLog = new System.Windows.Forms.Label();
             this.txtLog = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.labelS120 = new System.Windows.Forms.Label();
+            this.textBox1S1BianHao = new System.Windows.Forms.TextBox();
+            this.buttonS1Save = new System.Windows.Forms.Button();
+            this.buttonS1Flash = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -205,7 +209,7 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.buttonTestCancel);
+            this.tabPage2.Controls.Add(this.buttonTestFlash);
             this.tabPage2.Controls.Add(this.buttonTestOK);
             this.tabPage2.Controls.Add(this.label5);
             this.tabPage2.Controls.Add(this.label6);
@@ -233,23 +237,23 @@
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // buttonTestCancel
+            // buttonTestFlash
             // 
-            this.buttonTestCancel.Location = new System.Drawing.Point(543, 119);
-            this.buttonTestCancel.Name = "buttonTestCancel";
-            this.buttonTestCancel.Size = new System.Drawing.Size(75, 23);
-            this.buttonTestCancel.TabIndex = 19;
-            this.buttonTestCancel.Text = "Cancel";
-            this.buttonTestCancel.UseVisualStyleBackColor = true;
-            this.buttonTestCancel.Click += new System.EventHandler(this.buttonTestCancel_Click);
+            this.buttonTestFlash.Location = new System.Drawing.Point(856, 16);
+            this.buttonTestFlash.Name = "buttonTestFlash";
+            this.buttonTestFlash.Size = new System.Drawing.Size(75, 23);
+            this.buttonTestFlash.TabIndex = 19;
+            this.buttonTestFlash.Text = "刷新";
+            this.buttonTestFlash.UseVisualStyleBackColor = true;
+            this.buttonTestFlash.Click += new System.EventHandler(this.buttonTestCancel_Click);
             // 
             // buttonTestOK
             // 
-            this.buttonTestOK.Location = new System.Drawing.Point(543, 51);
+            this.buttonTestOK.Location = new System.Drawing.Point(763, 16);
             this.buttonTestOK.Name = "buttonTestOK";
             this.buttonTestOK.Size = new System.Drawing.Size(75, 23);
             this.buttonTestOK.TabIndex = 18;
-            this.buttonTestOK.Text = "OK";
+            this.buttonTestOK.Text = "保存";
             this.buttonTestOK.UseVisualStyleBackColor = true;
             this.buttonTestOK.Click += new System.EventHandler(this.buttonTestOK_Click);
             // 
@@ -530,6 +534,10 @@
             // 
             // tabPageSheet1
             // 
+            this.tabPageSheet1.Controls.Add(this.buttonS1Flash);
+            this.tabPageSheet1.Controls.Add(this.buttonS1Save);
+            this.tabPageSheet1.Controls.Add(this.labelS120);
+            this.tabPageSheet1.Controls.Add(this.textBox1S1BianHao);
             this.tabPageSheet1.Controls.Add(this.dtp1time9Sheet1);
             this.tabPageSheet1.Controls.Add(this.comboBox7Sheet1);
             this.tabPageSheet1.Controls.Add(this.comboBox2Sheet1);
@@ -707,7 +715,7 @@
             this.textBox1Sheet1.Name = "textBox1Sheet1";
             this.textBox1Sheet1.Size = new System.Drawing.Size(100, 21);
             this.textBox1Sheet1.TabIndex = 18;
-            this.textBox1Sheet1.Text = "test.accdb";
+            this.textBox1Sheet1.Text = "guo";
             // 
             // tabPageS5File
             // 
@@ -728,6 +736,16 @@
             this.tabPageS5File.TabIndex = 4;
             this.tabPageS5File.Text = "File";
             this.tabPageS5File.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(740, 275);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 38;
+            this.button2.Text = "显示";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // buttonS5Open
             // 
@@ -760,7 +778,7 @@
             // 
             this.textBox1S5Name.Location = new System.Drawing.Point(482, 111);
             this.textBox1S5Name.Name = "textBox1S5Name";
-            this.textBox1S5Name.Size = new System.Drawing.Size(333, 21);
+            this.textBox1S5Name.Size = new System.Drawing.Size(253, 21);
             this.textBox1S5Name.TabIndex = 34;
             // 
             // buttonS5DelFolder
@@ -888,21 +906,48 @@
             this.label20.TabIndex = 36;
             this.label20.Text = "姓名-状态";
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(740, 275);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 38;
-            this.button2.Text = "显示";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // imageList1
             // 
             this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList1.Images.SetKeyName(0, "Penguins.jpg");
+            // 
+            // labelS120
+            // 
+            this.labelS120.AutoSize = true;
+            this.labelS120.Location = new System.Drawing.Point(717, 168);
+            this.labelS120.Name = "labelS120";
+            this.labelS120.Size = new System.Drawing.Size(29, 12);
+            this.labelS120.TabIndex = 40;
+            this.labelS120.Text = "编号";
+            // 
+            // textBox1S1BianHao
+            // 
+            this.textBox1S1BianHao.Location = new System.Drawing.Point(761, 165);
+            this.textBox1S1BianHao.Name = "textBox1S1BianHao";
+            this.textBox1S1BianHao.Size = new System.Drawing.Size(100, 21);
+            this.textBox1S1BianHao.TabIndex = 39;
+            this.textBox1S1BianHao.Text = "1";
+            // 
+            // buttonS1Save
+            // 
+            this.buttonS1Save.Location = new System.Drawing.Point(761, 6);
+            this.buttonS1Save.Name = "buttonS1Save";
+            this.buttonS1Save.Size = new System.Drawing.Size(75, 23);
+            this.buttonS1Save.TabIndex = 41;
+            this.buttonS1Save.Text = "保存";
+            this.buttonS1Save.UseVisualStyleBackColor = true;
+            this.buttonS1Save.Click += new System.EventHandler(this.buttonS1Save_Click);
+            // 
+            // buttonS1Flash
+            // 
+            this.buttonS1Flash.Location = new System.Drawing.Point(856, 6);
+            this.buttonS1Flash.Name = "buttonS1Flash";
+            this.buttonS1Flash.Size = new System.Drawing.Size(75, 23);
+            this.buttonS1Flash.TabIndex = 42;
+            this.buttonS1Flash.Text = "刷新";
+            this.buttonS1Flash.UseVisualStyleBackColor = true;
+            this.buttonS1Flash.Click += new System.EventHandler(this.buttonS1Flash_Click);
             // 
             // Form1
             // 
@@ -1002,7 +1047,7 @@
         private System.Windows.Forms.DateTimePicker dtp1time9Sheet1;
         private System.Windows.Forms.TextBox txtLog;
         private System.Windows.Forms.Button buttonTestOK;
-        private System.Windows.Forms.Button buttonTestCancel;
+        private System.Windows.Forms.Button buttonTestFlash;
         private System.Windows.Forms.Button buttonTest;
         private System.Windows.Forms.TabPage tabPageS5File;
         private System.Windows.Forms.Button buttonS5DownFile;
@@ -1017,6 +1062,10 @@
         private System.Windows.Forms.Button buttonS5Open;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.Label labelS120;
+        private System.Windows.Forms.TextBox textBox1S1BianHao;
+        private System.Windows.Forms.Button buttonS1Flash;
+        private System.Windows.Forms.Button buttonS1Save;
     }
 }
 

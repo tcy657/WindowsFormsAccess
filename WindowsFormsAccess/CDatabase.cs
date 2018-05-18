@@ -38,7 +38,7 @@ namespace WindowsFormsAccess
 
         #region sheet1
         private Maticsoft.Model.Users model = new Maticsoft.Model.Users();
-        private string sqlString = ""; //保存sql语句 
+        Maticsoft.DAL.Users UsersDo = new Maticsoft.DAL.Users();
 
         //添加记录1-基本信息；
         private void addSheet1()
@@ -49,8 +49,8 @@ namespace WindowsFormsAccess
                 return;
             }
             else
-            {                
-                model.sBianHao = "None";
+            {
+                model.sBianHao = textBox1S1BianHao.Text;
                 model.sBianMa = comboBox7Sheet1.Text;
                 model.sZhuYuanHao = textBox8Sheet1.Text;
                 model.sName = textBox1Sheet1.Text;
@@ -59,21 +59,9 @@ namespace WindowsFormsAccess
                 model.sZhiYe = textBox3Sheet1.Text;
                 model.dRuYuanShiJian = dtp1time9Sheet1.Value;
                 model.sPhone = textBox6Sheet1.Text;
-                
-                //string sql = "insert into Users (sBianHao,sBianMa,sZhuYuanHao,sName,sSex,iAge,sZhiYe,dRuYuanShiJian,sPhone) values ('None', '" +comboBox7Sheet1.Text + "','" +textBox8Sheet1.Text + "','" +textBox1Sheet1.Text + "','"
-                //           + comboBox2Sheet1.Text + "','" + textBox4Sheet1.Text + "','" + textBox3Sheet1.Text + "','" + dtp1time9Sheet1.Value + "','" + textBox6Sheet1.Text + "')";
 
-                string sql = "insert into Users (sBianHao,sBianMa,sZhuYuanHao,sName,sSex,iAge,sZhiYe,dRuYuanShiJian,sPhone) values ('" + model.sBianHao +"', '"
-                                                                                                                                       + model.sBianMa + "','"
-                                                                                                                                       + model.sZhuYuanHao + "','"
-                                                                                                                                       + model.sName + "','"
-                                                                                                                                       + model.sSex + "','"
-                                                                                                                                       + model.iAge + "','"
-                                                                                                                                       + model.sZhiYe + "','"
-                                                                                                                                       + model.dRuYuanShiJian + "','"
-                                                                                                                                       + model.sPhone + "')";
+                bool ret = ycyxDo.Add(modelYcyx);
 
-                int ret = achelp.ExcuteSql(sql);
                 string sql1 = "select * from Users";
                 databind1(sql1);
 
@@ -114,49 +102,32 @@ namespace WindowsFormsAccess
 
 
         //基本信息-更新；
-        private void updateSheet1()
-        {
-            if (dataGridView1.SelectedRows.Count < 1 || dataGridView1.SelectedRows[0].Cells[1].Value == null)  
-            {  
-                MessageBox.Show("没有选中行。", "M员工");  
-                return;  
-            }  
+        private void readSheet1(int oid)
+        {                                 
+            model = UsersDo.GetModel(Convert.ToInt32(oid)); //读取数据库数据到model，中转
 
-            DataTable dt = new DataTable();  
-            object oid = dataGridView1.SelectedRows[0].Cells[0].Value;  
-            string sql = "select * from Users where ID=" + oid;  
-            dt = achelp.GetDataTableFromDB(sql);
-            
-            //读取数据库数据到model，中转
-            model.sBianHao            =dt.Rows[0][1].ToString();
-            model.sBianMa             =dt.Rows[0][2].ToString();
-            model.sZhuYuanHao         =dt.Rows[0][3].ToString();
-            model.sName               =dt.Rows[0][4].ToString();
-            model.sSex                =dt.Rows[0][5].ToString();
-            model.iAge                =dt.Rows[0][6].ToString();
-            model.sZhiYe              =dt.Rows[0][7].ToString();
-            model.dRuYuanShiJian      = Convert.ToDateTime(dt.Rows[0][8].ToString());
-            model.sPhone              =dt.Rows[0][9].ToString();
-                       //model.sBianHao
             //model赋值给窗体
-            comboBox7Sheet1.Text    =  model.sBianMa;
-            textBox8Sheet1.Text     =  model.sZhuYuanHao;
-            textBox1Sheet1.Text     =  model.sName;
-            comboBox2Sheet1.Text    =  model.sSex;
-            textBox4Sheet1.Text     =  model.iAge;
-            textBox3Sheet1.Text     =  model.sZhiYe;
-            dtp1time9Sheet1.Value =    Convert.ToDateTime(model.dRuYuanShiJian);
-            textBox6Sheet1.Text     =  model.sPhone;
+            textBox1S1BianHao.Text = model.sBianHao;
+            comboBox7Sheet1.Text = model.sBianMa;
+            textBox8Sheet1.Text = model.sZhuYuanHao;
+            textBox1Sheet1.Text = model.sName;
+            comboBox2Sheet1.Text = model.sSex;
+            textBox4Sheet1.Text = model.iAge;
+            textBox3Sheet1.Text = model.sZhiYe;
+            dtp1time9Sheet1.Value = Convert.ToDateTime(model.dRuYuanShiJian);
+            textBox6Sheet1.Text = model.sPhone;
 
-            
-            //更新
+
+            //显示
+            output("sheet1加载成功!");
+        }
+
+        //基本信息-更新；
+        private bool updateSheet1()
+        {
+            bool result = false; //返回值
             try
-            {
-                //UPDATE Person SET Address = 'Zhongshan 23', City = 'Nanjing'WHERE LastName = 'Wilson'  
-                //string sql = "update ycyx set fwhm='" + textBox1.Text + "',khmc='" + textBox2.Text + "',gsdq='" + textBox3.Text + "',dqpp='" + textBox4.Text +
-                //    "',dqtc='" + textBox5.Text + "',dqzt='" + textBox6.Text + "' where ID=" + iid;
-
-
+            {               
                 model.sBianHao = "None1";
                 model.sBianMa = comboBox7Sheet1.Text;
                 model.sZhuYuanHao = textBox8Sheet1.Text;
@@ -166,38 +137,37 @@ namespace WindowsFormsAccess
                 model.sZhiYe = textBox3Sheet1.Text;
                 model.dRuYuanShiJian = dtp1time9Sheet1.Value;
                 model.sPhone = textBox6Sheet1.Text;
+                model.ID = gOid;
 
-                int iid = int.Parse(oid.ToString());
-                sqlString = "update Users set sBianHao ='" + model.sBianHao 
-                                         + "',sBianMa ='" + model.sBianMa 
-                                         + "',sZhuYuanHao ='" + model.sZhuYuanHao
-                                         + "',sName ='" + model.sName
-                                         + "',sSex ='" + model.sSex 
-                                         + "',iAge ='" + model.iAge
-                                         + "',sZhiYe ='" + model.sZhiYe 
-                                         + "',dRuYuanShiJian ='" + model.dRuYuanShiJian
-                                         + "',sPhone ='" + model.sPhone 
-                                         + "' where ID=" +iid;                     
+                bool ret = UsersDo.Update(model); 
 
-                int ret = achelp.ExcuteSql(sql);
-                if (ret > -1)
+                if (true == ret) //显示
                 {
-                  output("更新成功");
+                    output("sheet1更新成功");
+                    result = true;
                 }
+                else
+                {
+                    output("sheet1更新失败");
+                    result = false;
+                }
+
+               
             }
             catch (Exception ex)
             {
                 output(ex.Message);
-            }  
-            
-            
-            
-            string sql1 = "select * from Users"; //重新刷新
-            databind1(sql1);  
+                return false;
+            }
 
-                //显示
-                output("sheet1更新成功!");
+            string sql1 = "select * from Users"; //重新刷新
+            databind1(sql1);
+
+            return result;
         }
+
+
+
 #endregion sheet1
 
        #region test
@@ -255,8 +225,8 @@ namespace WindowsFormsAccess
                 
                 bool ret =  ycyxDo.Add(modelYcyx);
  
-                string sql1 = "select * from ycyx";
-                databind1(sql1);
+                //string sql1 = "select * from ycyx";
+                //databind1(sql1);
 
                 //清空
                 //显示
@@ -292,22 +262,15 @@ namespace WindowsFormsAccess
 
         int gOid = 0; //全局oid
         //基本信息-更新；
-        private void readSheetX()
+        private void readSheetX(int oid)
         {
-            if (dataGridView1.SelectedRows.Count < 1 || dataGridView1.SelectedRows[0].Cells[1].Value == null)
-            {
-                MessageBox.Show("没有选中行。", "M员工");
-                return;
-            }
-
-            DataTable dt = new DataTable();
-            object oid = dataGridView1.SelectedRows[0].Cells[0].Value;
-            gOid = Convert.ToInt32(oid);  //更新全局oid
+            
             //string sql = "select * from ycyx where ID=" + oid;
             //dt = achelp.GetDataTableFromDB(sql);
 
-            //读取数据库数据到model，中转            
-            modelYcyx = ycyxDo.GetModel(Convert.ToInt32(oid));
+            //读取数据库数据到model，中转        
+            Maticsoft.Model.Users modelUsersBin = UsersDo.GetModel(oid); //获取Userswyth
+            modelYcyx = ycyxDo.GetModelByUserID(modelUsersBin.ID);
 
             //model赋值给窗体
             textBox1.Text = modelYcyx.fwhm.ToString();
@@ -406,7 +369,7 @@ namespace WindowsFormsAccess
   
     #endregion test
 
-        #region others
+        #region "others "
         public static class TreeViewItems
         {
             public static void Add(object sender, TreeViewCancelEventArgs e)  
@@ -435,6 +398,6 @@ namespace WindowsFormsAccess
            }  
        }
         }
-        #endregion others
+        #endregion
     } //class
 } //nameSpace

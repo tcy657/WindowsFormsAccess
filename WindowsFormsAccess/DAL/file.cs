@@ -6,7 +6,7 @@
 *
 * Ver    变更日期             负责人  变更内容
 * ───────────────────────────────────
-* V0.01  2018-5-11 21:45:36   N/A    初版
+* V0.01  2018-5-18 21:12:50   N/A    初版
 *
 * Copyright (c) 2012 Maticsoft Corporation. All rights reserved.
 *┌──────────────────────────────────┐
@@ -18,8 +18,7 @@ using System;
 using System.Data;
 using System.Text;
 using System.Data.OleDb;
-using Maticsoft.DBUtility; //引入命名空间
-//using Maticsoft.DBUtility;//Please add references
+using Maticsoft.DBUtility;//Please add references
 namespace Maticsoft.DAL
 {
 	/// <summary>
@@ -192,6 +191,32 @@ namespace Maticsoft.DAL
 			}
 		}
 
+        /// <summary>
+        /// 得到一个对象实体
+        /// </summary>
+        public Maticsoft.Model.file GetModelByUserID(int ID)
+        {
+
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("select ID,sFileName,iUserID,sType,sFileStream from file ");
+            strSql.Append(" where iUserID=@ID");
+            OleDbParameter[] parameters = {
+					new OleDbParameter("@ID", OleDbType.Integer,4)
+			};
+            parameters[0].Value = ID;
+
+            Maticsoft.Model.file model = new Maticsoft.Model.file();
+            DataSet ds = DbHelperOleDb.Query(strSql.ToString(), parameters);
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                return DataRowToModel(ds.Tables[0].Rows[0]);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
 
 		/// <summary>
 		/// 得到一个对象实体
@@ -251,7 +276,7 @@ namespace Maticsoft.DAL
 			{
 				strSql.Append(" where "+strWhere);
 			}
-            object obj = DbHelperOleDb.GetSingle(strSql.ToString());
+			object obj = DbHelperOleDb.GetSingle(strSql.ToString());
 			if (obj == null)
 			{
 				return 0;

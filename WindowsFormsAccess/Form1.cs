@@ -27,8 +27,8 @@ namespace WindowsFormsAccess
         private void Form1_Load(object sender, EventArgs e)
         {
             achelp = new AccessHelper();        //定义变量，设置列标题；
-            string sql1 = "select * from ycyx";
-            //string sql1 = "select * from Users"; //重新刷新
+            //string sql1 = "select * from ycyx";
+            string sql1 = "select * from Users"; //重新刷新
             databind1(sql1);
 
             dataGridView1.Columns[0].Visible = false;
@@ -51,8 +51,18 @@ namespace WindowsFormsAccess
        // 读取要更新记录到更新窗体控件；
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
-            //updateSheet1();
-            readSheetX();  //读取内容到页面
+            if (dataGridView1.SelectedRows.Count < 1 || dataGridView1.SelectedRows[0].Cells[1].Value == null)
+            {
+                MessageBox.Show("没有选中行。", "M员工");
+                return;
+            }
+
+            DataTable dt = new DataTable();
+            object oid = dataGridView1.SelectedRows[0].Cells[0].Value;
+            gOid = Convert.ToInt32(oid);  //更新全局oid
+
+            readSheet1(gOid);   //读取sheet1内容到页面1
+            readSheetX(gOid);   //读取内容到页面
         }
 
         //添加记录；
@@ -258,7 +268,7 @@ namespace WindowsFormsAccess
             } 
 
             //添加鼠标右键的事件  
-            //this.treeViewS5.ContextMenuStrip = new TreeViewContextMenu().Load();  
+            //this.treeViewS5.ContextMenuStrip = new TreeViewContextMenu().Load();
         }
 
         /// TreeView必须处理的两个事件之一  
@@ -271,6 +281,18 @@ namespace WindowsFormsAccess
         private void treeViewS5_BeforeExpand(object sender, TreeViewCancelEventArgs e)
         {
             TreeViewItems.Add(sender, e);            
+        }
+
+        //保存sheet1-基本信息
+        private void buttonS1Save_Click(object sender, EventArgs e)
+        {
+            updateSheet1();
+        }
+
+        //刷新sheet1-基本信息
+        private void buttonS1Flash_Click(object sender, EventArgs e)
+        {
+
         }
 
 

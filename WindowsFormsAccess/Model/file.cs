@@ -6,7 +6,7 @@
 *
 * Ver    变更日期             负责人  变更内容
 * ───────────────────────────────────
-* V0.01  2018-5-11 21:45:36   N/A    初版
+* V0.01  2018-5-18 21:12:50   N/A    初版
 *
 * Copyright (c) 2012 Maticsoft Corporation. All rights reserved.
 *┌──────────────────────────────────┐
@@ -28,7 +28,7 @@ namespace Maticsoft.Model
 		#region Model
 		private int _id;
 		private string _sfilename;
-		private int _iuserid;
+		private int? _iuserid;
 		private string _stype;
 		private byte[] _sfilestream;
 		/// <summary>
@@ -50,7 +50,7 @@ namespace Maticsoft.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public int iUserID
+		public int? iUserID
 		{
 			set{ _iuserid=value;}
 			get{return _iuserid;}
