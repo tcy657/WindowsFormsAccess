@@ -37,7 +37,13 @@ namespace WindowsFormsAccess
             dataGridView1.Columns[3].HeaderCell.Value = "归属地区";
             dataGridView1.Columns[4].HeaderCell.Value = "当前部门";
             dataGridView1.Columns[5].HeaderCell.Value = "当前专项";
-            dataGridView1.Columns[6].HeaderCell.Value = "当前状态";  
+            dataGridView1.Columns[6].HeaderCell.Value = "当前状态";
+
+            tabControl1.TabPages.Remove(this.tabPage2);
+            tabControl1.TabPages.Remove(this.tabPage3);
+            tabControl1.TabPages.Remove(this.tabPageS5File);
+            tabControl1.TabPages.Remove(this.tabPageS3);
+
         }
 
         //显示数据表全部内容；
@@ -294,7 +300,6 @@ namespace WindowsFormsAccess
         {
             readSheet1(gOid);
         }
-
 
     }
 }

@@ -10,8 +10,11 @@ using System.IO;
 namespace WindowsFormsAccess
 {
     public partial class Form1 : Form
-    {
-        #region 公用方法
+    {        
+        
+        #region 公用方法/变量
+        int gOid = 0; //全局oid，记录Users的ID号
+
             //日志输出函数
             private void output(string log)
             {
@@ -76,32 +79,30 @@ namespace WindowsFormsAccess
         //删除记录1-基本信息；
         private void deleteSheet1()
         {
-            if (dataGridView1.SelectedRows.Count < 1 || dataGridView1.SelectedRows[0].Cells[1].Value == null)  
-            {  
-                MessageBox.Show("没有选中行。", "M员工");  
-            }  
-            else  
-            {  
-                object oid = dataGridView1.SelectedRows[0].Cells[0].Value;  
-                if (DialogResult.No == MessageBox.Show("将删除第 " + (dataGridView1.CurrentCell.RowIndex + 1).ToString() + " 行，确定？", "M员工", MessageBoxButtons.YesNo))  
-                {  
-                    return;  
-                }  
-                else  
-                {  
-                    string sql = "delete from Users where ID=" + oid;  
-                    int ret = achelp.ExcuteSql(sql);  
-                }  
-                string sql1 = "select * from Users";  
-                databind1(sql1);  
+            if (dataGridView1.SelectedRows.Count < 1 || dataGridView1.SelectedRows[0].Cells[1].Value == null)
+            {
+                MessageBox.Show("没有选中行。", "M员工");
+            }
+            else
+            {
+                object oid = dataGridView1.SelectedRows[0].Cells[0].Value;
+                if (DialogResult.No == MessageBox.Show("将删除第 " + (dataGridView1.CurrentCell.RowIndex + 1).ToString() + " 行，确定？", "M员工", MessageBoxButtons.YesNo))
+                {
+                    return;
+                }
+                else
+                {
+                    bool ret = UsersDo.Delete(Convert.ToInt32(oid));
+                }
+                string sql1 = "select * from Users";
+                databind1(sql1);
 
                 //显示
                 output("sheet1删除成功!");
             }
-        }
+        }       
 
-
-        //基本信息-更新；
+        //基本信息-加载；
         private void readSheet1(int oid)
         {                                 
             model = UsersDo.GetModel(Convert.ToInt32(oid)); //读取数据库数据到model，中转
@@ -117,6 +118,8 @@ namespace WindowsFormsAccess
             dtp1time9Sheet1.Value = Convert.ToDateTime(model.dRuYuanShiJian);
             textBox6Sheet1.Text = model.sPhone;
 
+            string sql1 = "select * from Users"; //刷新主页面，防止后台改了access数据库后，基本信息页面刷新了，主页面不刷新。
+            databind1(sql1);  
 
             //显示
             output("sheet1加载成功!");
@@ -127,8 +130,8 @@ namespace WindowsFormsAccess
         {
             bool result = false; //返回值
             try
-            {               
-                model.sBianHao = "None1";
+            {
+                model.sBianHao = textBox1S1BianHao.Text;
                 model.sBianMa = comboBox7Sheet1.Text;
                 model.sZhuYuanHao = textBox8Sheet1.Text;
                 model.sName = textBox1Sheet1.Text;
@@ -166,9 +169,7 @@ namespace WindowsFormsAccess
             return result;
         }
 
-
-
-#endregion sheet1
+    #endregion sheet1
 
        #region test
         private Maticsoft.Model.ycyx modelYcyx = new Maticsoft.Model.ycyx();
@@ -261,7 +262,7 @@ namespace WindowsFormsAccess
             }
         }
 
-        int gOid = 0; //全局oid
+        
         //基本信息-更新；
         private void readSheetX(int oid)
         {
