@@ -292,7 +292,7 @@ namespace WindowsFormsAccess
         //刷新sheet1-基本信息
         private void buttonS1Flash_Click(object sender, EventArgs e)
         {
-
+            readSheet1(gOid);
         }
 
 
