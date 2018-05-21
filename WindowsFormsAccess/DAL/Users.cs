@@ -6,7 +6,7 @@
 *
 * Ver    变更日期             负责人  变更内容
 * ───────────────────────────────────
-* V0.01  2018/5/19 11:54:23   N/A    初版
+* V0.01  2018/5/19 12:22:54   N/A    初版
 *
 * Copyright (c) 2012 Maticsoft Corporation. All rights reserved.
 *┌──────────────────────────────────┐
@@ -26,9 +26,15 @@ namespace Maticsoft.DAL
 	/// </summary>
 	public partial class Users
 	{
-		AccessHelper DbHelperOleDb = new AccessHelper();
-        public Users()
-		{}
+       private AccessHelper DbHelperOleDb;
+       public Users(string dbPath)
+       {
+            DbHelperOleDb = new AccessHelper(dbPath);
+       }
+		public Users()
+       {
+            DbHelperOleDb = new AccessHelper();
+       }
 		#region  BasicMethod
 
 		/// <summary>

@@ -6,7 +6,7 @@
 *
 * Ver    变更日期             负责人  变更内容
 * ───────────────────────────────────
-* V0.01  2018/5/19 12:22:52   N/A    初版
+* V0.01  2018/5/19 13:33:14   N/A    初版
 *
 * Copyright (c) 2012 Maticsoft Corporation. All rights reserved.
 *┌──────────────────────────────────┐
@@ -26,15 +26,9 @@ namespace Maticsoft.DAL
 	/// </summary>
 	public partial class s7ShuQianPingGu
 	{
-       private AccessHelper DbHelperOleDb;
-       public s7ShuQianPingGu(string dbPath)
-       {
-            DbHelperOleDb = new AccessHelper(dbPath);
-       }
-		public s7ShuQianPingGu()
-       {
-            DbHelperOleDb = new AccessHelper();
-       }
+		AccessHelper DbHelperOleDb = new AccessHelper();
+        public s7ShuQianPingGu()
+		{}
 		#region  BasicMethod
 
 		/// <summary>
@@ -60,9 +54,9 @@ namespace Maticsoft.DAL
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into s7ShuQianPingGu(");
-			strSql.Append("sBianHao,bWoYuanBingJian,sResult,sBingLiHao,bWoYuanCT,sZhongLiuDaXiao,sJuBuQinFang,sLinBaJieZhuanYi,bZhuanYi,sBuWei,bWoYuanMRI,bPET,sDaiXieQiangDu,sLinBaZhuanYi,sZhuanYiBuWeiDaiXieQD,sCT,sCN,sCM,sWBC,sHb,sALB,sCEA,sCA125,sCA199,sCA724,sAFP,bGengZhu,bChuXie,bChuanKong,sBMI,sNRS2002,sTengTongPingFen,sECOG,sXinGongNeng,sFeiGongNeng,sShenGongNeng,sGanGongNeng,sNingXieGongneng,bJiZhenShouShu,dShouShuRiqi,sQiangjingKaiFu,sShuShi,sShouShuTime,dKaiFuWenHeTime,sZhongLiuJuTiWeiZhi,bLianHeQiZhuangQieChu,sChuXieLiang,sFuQiangWuRuan,sFuShenShang,bYingYangGuan,bZaoLou,bShuZhongBingLi,sResult2,sQieChuQingkong,sLinBaJieQingShao,sTeShuShuoMing,bERAS,bICUJianHu,sJianHuTime,dJinShuShiJian,dTongQiTime,dPaiBianTime,dFuTongHuanJieTime,dNiaoGuanBaChuTime,dYinLiuGuanBaChuTime,dXiaChuangTime,dJinShi,dChangNeiYingYang,dChangNeiYingYangZhiChiTime,dTPNtime,sShuHouChuXue,sFuQiangGanRuan,sQieKouGanRuan,sWenHeKouLou,sChangGenZhu,sWeiTan,sFeiBuFanRuan,sDiDanBaiXueZheng,sWEiGuanTuoChu,sYingYangGuanTuoChu,sZaoKouBingFaZheng,s2thShouShu,dShouShuTime,sShouShuFangShi,sJieJueWenTi,sShuHouBingLiZhengDuan,sFenHuaChengDu,sJinRunShenDu,sMaiGuanAiShuan,sShenJingQinFang,sAiJieJie,sZongLinBaJieShu,sZhuanyiLinBaJieShu,sMSI,sHER-2,sP53,sK-RAS,sShouHouBingLiFenQi,sMSIQueZheng,sJiYinJianCe,dChuYuanTime,sChuYuanQingKong,sYiLiaoFeiYong)");
+			strSql.Append("sBianHao,bWoYuanBingJian,sResult,sBingLiHao,bWoYuanCT,sZhongLiuDaXiao,sJuBuQinFang,sLinBaJieZhuanYi,bZhuanYi,sBuWei,bWoYuanMRI,bPET,sDaiXieQiangDu,sLinBaZhuanYi,sZhuanYiBuWeiDaiXieQD,sCT,sCN,sCM,sWBC,sHb,sALB,sCEA,sCA125,sCA199,sCA724,sAFP,bGengZhu,bChuXie,bChuanKong,sBMI,sNRS2002,sTengTongPingFen,sECOG,sXinGongNeng,sFeiGongNeng,sShenGongNeng,sGanGongNeng,sNingXieGongneng,bJiZhenShouShu,dShouShuRiqi,sQiangjingKaiFu,sShuShi,sShouShuTime,dKaiFuWenHeTime,sZhongLiuJuTiWeiZhi,bLianHeQiZhuangQieChu,sChuXieLiang,sFuQiangWuRuan,sFuShenShang,bYingYangGuan,bZaoLou,bShuZhongBingLi,sResult2,sQieChuQingkong,sLinBaJieQingShao,sTeShuShuoMing,bERAS,bICUJianHu,sJianHuTime,dJinShuShiJian,dTongQiTime,dPaiBianTime,dFuTongHuanJieTime,dNiaoGuanBaChuTime,dYinLiuGuanBaChuTime,dXiaChuangTime,dJinShi,dChangNeiYingYang,dChangNeiYingYangZhiChiTime,dTPNtime,sShuHouChuXue,sFuQiangGanRuan,sQieKouGanRuan,sWenHeKouLou,sChangGenZhu,sWeiTan,sFeiBuFanRuan,sDiDanBaiXueZheng,sWEiGuanTuoChu,sYingYangGuanTuoChu,sZaoKouBingFaZheng,s2thShouShu,dShouShuTime,sShouShuFangShi,sJieJueWenTi,sShuHouBingLiZhengDuan,sFenHuaChengDu,sJinRunShenDu,sMaiGuanAiShuan,sShenJingQinFang,sAiJieJie,sZongLinBaJieShu,sZhuanyiLinBaJieShu,sMSI,sHER_2,sP53,sK_RAS,sShouHouBingLiFenQi,sMSIQueZheng,sJiYinJianCe,dChuYuanTime,sChuYuanQingKong,sYiLiaoFeiYong)");
 			strSql.Append(" values (");
-			strSql.Append("@sBianHao,@bWoYuanBingJian,@sResult,@sBingLiHao,@bWoYuanCT,@sZhongLiuDaXiao,@sJuBuQinFang,@sLinBaJieZhuanYi,@bZhuanYi,@sBuWei,@bWoYuanMRI,@bPET,@sDaiXieQiangDu,@sLinBaZhuanYi,@sZhuanYiBuWeiDaiXieQD,@sCT,@sCN,@sCM,@sWBC,@sHb,@sALB,@sCEA,@sCA125,@sCA199,@sCA724,@sAFP,@bGengZhu,@bChuXie,@bChuanKong,@sBMI,@sNRS2002,@sTengTongPingFen,@sECOG,@sXinGongNeng,@sFeiGongNeng,@sShenGongNeng,@sGanGongNeng,@sNingXieGongneng,@bJiZhenShouShu,@dShouShuRiqi,@sQiangjingKaiFu,@sShuShi,@sShouShuTime,@dKaiFuWenHeTime,@sZhongLiuJuTiWeiZhi,@bLianHeQiZhuangQieChu,@sChuXieLiang,@sFuQiangWuRuan,@sFuShenShang,@bYingYangGuan,@bZaoLou,@bShuZhongBingLi,@sResult2,@sQieChuQingkong,@sLinBaJieQingShao,@sTeShuShuoMing,@bERAS,@bICUJianHu,@sJianHuTime,@dJinShuShiJian,@dTongQiTime,@dPaiBianTime,@dFuTongHuanJieTime,@dNiaoGuanBaChuTime,@dYinLiuGuanBaChuTime,@dXiaChuangTime,@dJinShi,@dChangNeiYingYang,@dChangNeiYingYangZhiChiTime,@dTPNtime,@sShuHouChuXue,@sFuQiangGanRuan,@sQieKouGanRuan,@sWenHeKouLou,@sChangGenZhu,@sWeiTan,@sFeiBuFanRuan,@sDiDanBaiXueZheng,@sWEiGuanTuoChu,@sYingYangGuanTuoChu,@sZaoKouBingFaZheng,@s2thShouShu,@dShouShuTime,@sShouShuFangShi,@sJieJueWenTi,@sShuHouBingLiZhengDuan,@sFenHuaChengDu,@sJinRunShenDu,@sMaiGuanAiShuan,@sShenJingQinFang,@sAiJieJie,@sZongLinBaJieShu,@sZhuanyiLinBaJieShu,@sMSI,@sHER-2,@sP53,@sK-RAS,@sShouHouBingLiFenQi,@sMSIQueZheng,@sJiYinJianCe,@dChuYuanTime,@sChuYuanQingKong,@sYiLiaoFeiYong)");
+			strSql.Append("@sBianHao,@bWoYuanBingJian,@sResult,@sBingLiHao,@bWoYuanCT,@sZhongLiuDaXiao,@sJuBuQinFang,@sLinBaJieZhuanYi,@bZhuanYi,@sBuWei,@bWoYuanMRI,@bPET,@sDaiXieQiangDu,@sLinBaZhuanYi,@sZhuanYiBuWeiDaiXieQD,@sCT,@sCN,@sCM,@sWBC,@sHb,@sALB,@sCEA,@sCA125,@sCA199,@sCA724,@sAFP,@bGengZhu,@bChuXie,@bChuanKong,@sBMI,@sNRS2002,@sTengTongPingFen,@sECOG,@sXinGongNeng,@sFeiGongNeng,@sShenGongNeng,@sGanGongNeng,@sNingXieGongneng,@bJiZhenShouShu,@dShouShuRiqi,@sQiangjingKaiFu,@sShuShi,@sShouShuTime,@dKaiFuWenHeTime,@sZhongLiuJuTiWeiZhi,@bLianHeQiZhuangQieChu,@sChuXieLiang,@sFuQiangWuRuan,@sFuShenShang,@bYingYangGuan,@bZaoLou,@bShuZhongBingLi,@sResult2,@sQieChuQingkong,@sLinBaJieQingShao,@sTeShuShuoMing,@bERAS,@bICUJianHu,@sJianHuTime,@dJinShuShiJian,@dTongQiTime,@dPaiBianTime,@dFuTongHuanJieTime,@dNiaoGuanBaChuTime,@dYinLiuGuanBaChuTime,@dXiaChuangTime,@dJinShi,@dChangNeiYingYang,@dChangNeiYingYangZhiChiTime,@dTPNtime,@sShuHouChuXue,@sFuQiangGanRuan,@sQieKouGanRuan,@sWenHeKouLou,@sChangGenZhu,@sWeiTan,@sFeiBuFanRuan,@sDiDanBaiXueZheng,@sWEiGuanTuoChu,@sYingYangGuanTuoChu,@sZaoKouBingFaZheng,@s2thShouShu,@dShouShuTime,@sShouShuFangShi,@sJieJueWenTi,@sShuHouBingLiZhengDuan,@sFenHuaChengDu,@sJinRunShenDu,@sMaiGuanAiShuan,@sShenJingQinFang,@sAiJieJie,@sZongLinBaJieShu,@sZhuanyiLinBaJieShu,@sMSI,@sHER_2,@sP53,@sK_RAS,@sShouHouBingLiFenQi,@sMSIQueZheng,@sJiYinJianCe,@dChuYuanTime,@sChuYuanQingKong,@sYiLiaoFeiYong)");
 			OleDbParameter[] parameters = {
 					new OleDbParameter("@sBianHao", OleDbType.VarChar,255),
 					new OleDbParameter("@bWoYuanBingJian", OleDbType.Boolean,1),
@@ -158,9 +152,9 @@ namespace Maticsoft.DAL
 					new OleDbParameter("@sZongLinBaJieShu", OleDbType.VarChar,255),
 					new OleDbParameter("@sZhuanyiLinBaJieShu", OleDbType.VarChar,255),
 					new OleDbParameter("@sMSI", OleDbType.VarChar,255),
-					new OleDbParameter("@sHER-2", OleDbType.VarChar,255),
+					new OleDbParameter("@sHER_2", OleDbType.VarChar,255),
 					new OleDbParameter("@sP53", OleDbType.VarChar,255),
-					new OleDbParameter("@sK-RAS", OleDbType.VarChar,255),
+					new OleDbParameter("@sK_RAS", OleDbType.VarChar,255),
 					new OleDbParameter("@sShouHouBingLiFenQi", OleDbType.VarChar,255),
 					new OleDbParameter("@sMSIQueZheng", OleDbType.VarChar,255),
 					new OleDbParameter("@sJiYinJianCe", OleDbType.VarChar,255),
@@ -261,9 +255,9 @@ namespace Maticsoft.DAL
 			parameters[91].Value = model.sZongLinBaJieShu;
 			parameters[92].Value = model.sZhuanyiLinBaJieShu;
 			parameters[93].Value = model.sMSI;
-			parameters[94].Value = model.sHER-2;
+			parameters[94].Value = model.sHER_2;
 			parameters[95].Value = model.sP53;
-			parameters[96].Value = model.sK-RAS;
+			parameters[96].Value = model.sK_RAS;
 			parameters[97].Value = model.sShouHouBingLiFenQi;
 			parameters[98].Value = model.sMSIQueZheng;
 			parameters[99].Value = model.sJiYinJianCe;
@@ -381,9 +375,9 @@ namespace Maticsoft.DAL
 			strSql.Append("sZongLinBaJieShu=@sZongLinBaJieShu,");
 			strSql.Append("sZhuanyiLinBaJieShu=@sZhuanyiLinBaJieShu,");
 			strSql.Append("sMSI=@sMSI,");
-			strSql.Append("sHER-2=@sHER-2,");
+			strSql.Append("sHER_2=@sHER_2,");
 			strSql.Append("sP53=@sP53,");
-			strSql.Append("sK-RAS=@sK-RAS,");
+			strSql.Append("sK_RAS=@sK_RAS,");
 			strSql.Append("sShouHouBingLiFenQi=@sShouHouBingLiFenQi,");
 			strSql.Append("sMSIQueZheng=@sMSIQueZheng,");
 			strSql.Append("sJiYinJianCe=@sJiYinJianCe,");
@@ -485,9 +479,9 @@ namespace Maticsoft.DAL
 					new OleDbParameter("@sZongLinBaJieShu", OleDbType.VarChar,255),
 					new OleDbParameter("@sZhuanyiLinBaJieShu", OleDbType.VarChar,255),
 					new OleDbParameter("@sMSI", OleDbType.VarChar,255),
-					new OleDbParameter("@sHER-2", OleDbType.VarChar,255),
+					new OleDbParameter("@sHER_2", OleDbType.VarChar,255),
 					new OleDbParameter("@sP53", OleDbType.VarChar,255),
-					new OleDbParameter("@sK-RAS", OleDbType.VarChar,255),
+					new OleDbParameter("@sK_RAS", OleDbType.VarChar,255),
 					new OleDbParameter("@sShouHouBingLiFenQi", OleDbType.VarChar,255),
 					new OleDbParameter("@sMSIQueZheng", OleDbType.VarChar,255),
 					new OleDbParameter("@sJiYinJianCe", OleDbType.VarChar,255),
@@ -589,9 +583,9 @@ namespace Maticsoft.DAL
 			parameters[90].Value = model.sZongLinBaJieShu;
 			parameters[91].Value = model.sZhuanyiLinBaJieShu;
 			parameters[92].Value = model.sMSI;
-			parameters[93].Value = model.sHER-2;
+			parameters[93].Value = model.sHER_2;
 			parameters[94].Value = model.sP53;
-			parameters[95].Value = model.sK-RAS;
+			parameters[95].Value = model.sK_RAS;
 			parameters[96].Value = model.sShouHouBingLiFenQi;
 			parameters[97].Value = model.sMSIQueZheng;
 			parameters[98].Value = model.sJiYinJianCe;
@@ -662,7 +656,7 @@ namespace Maticsoft.DAL
 		{
 			
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select ID,sBianHao,bWoYuanBingJian,sResult,sBingLiHao,bWoYuanCT,sZhongLiuDaXiao,sJuBuQinFang,sLinBaJieZhuanYi,bZhuanYi,sBuWei,bWoYuanMRI,bPET,sDaiXieQiangDu,sLinBaZhuanYi,sZhuanYiBuWeiDaiXieQD,sCT,sCN,sCM,sWBC,sHb,sALB,sCEA,sCA125,sCA199,sCA724,sAFP,bGengZhu,bChuXie,bChuanKong,sBMI,sNRS2002,sTengTongPingFen,sECOG,sXinGongNeng,sFeiGongNeng,sShenGongNeng,sGanGongNeng,sNingXieGongneng,bJiZhenShouShu,dShouShuRiqi,sQiangjingKaiFu,sShuShi,sShouShuTime,dKaiFuWenHeTime,sZhongLiuJuTiWeiZhi,bLianHeQiZhuangQieChu,sChuXieLiang,sFuQiangWuRuan,sFuShenShang,bYingYangGuan,bZaoLou,bShuZhongBingLi,sResult2,sQieChuQingkong,sLinBaJieQingShao,sTeShuShuoMing,bERAS,bICUJianHu,sJianHuTime,dJinShuShiJian,dTongQiTime,dPaiBianTime,dFuTongHuanJieTime,dNiaoGuanBaChuTime,dYinLiuGuanBaChuTime,dXiaChuangTime,dJinShi,dChangNeiYingYang,dChangNeiYingYangZhiChiTime,dTPNtime,sShuHouChuXue,sFuQiangGanRuan,sQieKouGanRuan,sWenHeKouLou,sChangGenZhu,sWeiTan,sFeiBuFanRuan,sDiDanBaiXueZheng,sWEiGuanTuoChu,sYingYangGuanTuoChu,sZaoKouBingFaZheng,s2thShouShu,dShouShuTime,sShouShuFangShi,sJieJueWenTi,sShuHouBingLiZhengDuan,sFenHuaChengDu,sJinRunShenDu,sMaiGuanAiShuan,sShenJingQinFang,sAiJieJie,sZongLinBaJieShu,sZhuanyiLinBaJieShu,sMSI,sHER-2,sP53,sK-RAS,sShouHouBingLiFenQi,sMSIQueZheng,sJiYinJianCe,dChuYuanTime,sChuYuanQingKong,sYiLiaoFeiYong from s7ShuQianPingGu ");
+			strSql.Append("select ID,sBianHao,bWoYuanBingJian,sResult,sBingLiHao,bWoYuanCT,sZhongLiuDaXiao,sJuBuQinFang,sLinBaJieZhuanYi,bZhuanYi,sBuWei,bWoYuanMRI,bPET,sDaiXieQiangDu,sLinBaZhuanYi,sZhuanYiBuWeiDaiXieQD,sCT,sCN,sCM,sWBC,sHb,sALB,sCEA,sCA125,sCA199,sCA724,sAFP,bGengZhu,bChuXie,bChuanKong,sBMI,sNRS2002,sTengTongPingFen,sECOG,sXinGongNeng,sFeiGongNeng,sShenGongNeng,sGanGongNeng,sNingXieGongneng,bJiZhenShouShu,dShouShuRiqi,sQiangjingKaiFu,sShuShi,sShouShuTime,dKaiFuWenHeTime,sZhongLiuJuTiWeiZhi,bLianHeQiZhuangQieChu,sChuXieLiang,sFuQiangWuRuan,sFuShenShang,bYingYangGuan,bZaoLou,bShuZhongBingLi,sResult2,sQieChuQingkong,sLinBaJieQingShao,sTeShuShuoMing,bERAS,bICUJianHu,sJianHuTime,dJinShuShiJian,dTongQiTime,dPaiBianTime,dFuTongHuanJieTime,dNiaoGuanBaChuTime,dYinLiuGuanBaChuTime,dXiaChuangTime,dJinShi,dChangNeiYingYang,dChangNeiYingYangZhiChiTime,dTPNtime,sShuHouChuXue,sFuQiangGanRuan,sQieKouGanRuan,sWenHeKouLou,sChangGenZhu,sWeiTan,sFeiBuFanRuan,sDiDanBaiXueZheng,sWEiGuanTuoChu,sYingYangGuanTuoChu,sZaoKouBingFaZheng,s2thShouShu,dShouShuTime,sShouShuFangShi,sJieJueWenTi,sShuHouBingLiZhengDuan,sFenHuaChengDu,sJinRunShenDu,sMaiGuanAiShuan,sShenJingQinFang,sAiJieJie,sZongLinBaJieShu,sZhuanyiLinBaJieShu,sMSI,sHER_2,sP53,sK_RAS,sShouHouBingLiFenQi,sMSIQueZheng,sJiYinJianCe,dChuYuanTime,sChuYuanQingKong,sYiLiaoFeiYong from s7ShuQianPingGu ");
 			strSql.Append(" where sBianHao=@sBianHao ");
 			OleDbParameter[] parameters = {
 					new OleDbParameter("@sBianHao", OleDbType.VarChar,255)			};
@@ -1181,17 +1175,17 @@ namespace Maticsoft.DAL
 				{
 					model.sMSI=row["sMSI"].ToString();
 				}
-				if(row["sHER-2"]!=null)
+				if(row["sHER_2"]!=null)
 				{
-					model.sHER-2=row["sHER-2"].ToString();
+					model.sHER_2=row["sHER_2"].ToString();
 				}
 				if(row["sP53"]!=null)
 				{
 					model.sP53=row["sP53"].ToString();
 				}
-				if(row["sK-RAS"]!=null)
+				if(row["sK_RAS"]!=null)
 				{
-					model.sK-RAS=row["sK-RAS"].ToString();
+					model.sK_RAS=row["sK_RAS"].ToString();
 				}
 				if(row["sShouHouBingLiFenQi"]!=null)
 				{
@@ -1227,7 +1221,7 @@ namespace Maticsoft.DAL
 		public DataSet GetList(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select ID,sBianHao,bWoYuanBingJian,sResult,sBingLiHao,bWoYuanCT,sZhongLiuDaXiao,sJuBuQinFang,sLinBaJieZhuanYi,bZhuanYi,sBuWei,bWoYuanMRI,bPET,sDaiXieQiangDu,sLinBaZhuanYi,sZhuanYiBuWeiDaiXieQD,sCT,sCN,sCM,sWBC,sHb,sALB,sCEA,sCA125,sCA199,sCA724,sAFP,bGengZhu,bChuXie,bChuanKong,sBMI,sNRS2002,sTengTongPingFen,sECOG,sXinGongNeng,sFeiGongNeng,sShenGongNeng,sGanGongNeng,sNingXieGongneng,bJiZhenShouShu,dShouShuRiqi,sQiangjingKaiFu,sShuShi,sShouShuTime,dKaiFuWenHeTime,sZhongLiuJuTiWeiZhi,bLianHeQiZhuangQieChu,sChuXieLiang,sFuQiangWuRuan,sFuShenShang,bYingYangGuan,bZaoLou,bShuZhongBingLi,sResult2,sQieChuQingkong,sLinBaJieQingShao,sTeShuShuoMing,bERAS,bICUJianHu,sJianHuTime,dJinShuShiJian,dTongQiTime,dPaiBianTime,dFuTongHuanJieTime,dNiaoGuanBaChuTime,dYinLiuGuanBaChuTime,dXiaChuangTime,dJinShi,dChangNeiYingYang,dChangNeiYingYangZhiChiTime,dTPNtime,sShuHouChuXue,sFuQiangGanRuan,sQieKouGanRuan,sWenHeKouLou,sChangGenZhu,sWeiTan,sFeiBuFanRuan,sDiDanBaiXueZheng,sWEiGuanTuoChu,sYingYangGuanTuoChu,sZaoKouBingFaZheng,s2thShouShu,dShouShuTime,sShouShuFangShi,sJieJueWenTi,sShuHouBingLiZhengDuan,sFenHuaChengDu,sJinRunShenDu,sMaiGuanAiShuan,sShenJingQinFang,sAiJieJie,sZongLinBaJieShu,sZhuanyiLinBaJieShu,sMSI,sHER-2,sP53,sK-RAS,sShouHouBingLiFenQi,sMSIQueZheng,sJiYinJianCe,dChuYuanTime,sChuYuanQingKong,sYiLiaoFeiYong ");
+			strSql.Append("select ID,sBianHao,bWoYuanBingJian,sResult,sBingLiHao,bWoYuanCT,sZhongLiuDaXiao,sJuBuQinFang,sLinBaJieZhuanYi,bZhuanYi,sBuWei,bWoYuanMRI,bPET,sDaiXieQiangDu,sLinBaZhuanYi,sZhuanYiBuWeiDaiXieQD,sCT,sCN,sCM,sWBC,sHb,sALB,sCEA,sCA125,sCA199,sCA724,sAFP,bGengZhu,bChuXie,bChuanKong,sBMI,sNRS2002,sTengTongPingFen,sECOG,sXinGongNeng,sFeiGongNeng,sShenGongNeng,sGanGongNeng,sNingXieGongneng,bJiZhenShouShu,dShouShuRiqi,sQiangjingKaiFu,sShuShi,sShouShuTime,dKaiFuWenHeTime,sZhongLiuJuTiWeiZhi,bLianHeQiZhuangQieChu,sChuXieLiang,sFuQiangWuRuan,sFuShenShang,bYingYangGuan,bZaoLou,bShuZhongBingLi,sResult2,sQieChuQingkong,sLinBaJieQingShao,sTeShuShuoMing,bERAS,bICUJianHu,sJianHuTime,dJinShuShiJian,dTongQiTime,dPaiBianTime,dFuTongHuanJieTime,dNiaoGuanBaChuTime,dYinLiuGuanBaChuTime,dXiaChuangTime,dJinShi,dChangNeiYingYang,dChangNeiYingYangZhiChiTime,dTPNtime,sShuHouChuXue,sFuQiangGanRuan,sQieKouGanRuan,sWenHeKouLou,sChangGenZhu,sWeiTan,sFeiBuFanRuan,sDiDanBaiXueZheng,sWEiGuanTuoChu,sYingYangGuanTuoChu,sZaoKouBingFaZheng,s2thShouShu,dShouShuTime,sShouShuFangShi,sJieJueWenTi,sShuHouBingLiZhengDuan,sFenHuaChengDu,sJinRunShenDu,sMaiGuanAiShuan,sShenJingQinFang,sAiJieJie,sZongLinBaJieShu,sZhuanyiLinBaJieShu,sMSI,sHER_2,sP53,sK_RAS,sShouHouBingLiFenQi,sMSIQueZheng,sJiYinJianCe,dChuYuanTime,sChuYuanQingKong,sYiLiaoFeiYong ");
 			strSql.Append(" FROM s7ShuQianPingGu ");
 			if(strWhere.Trim()!="")
 			{

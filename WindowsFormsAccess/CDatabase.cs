@@ -53,7 +53,7 @@ namespace WindowsFormsAccess
             }
             else
             {
-                model.sBianHao = textBox1S1BianHao.Text;
+                model.sBianHao = label83.Text;
                 model.sBianMa = comboBox7Sheet1.Text;
                 model.sZhuYuanHao = textBox8Sheet1.Text;
                 model.sName = textBox1Sheet1.Text;
@@ -108,7 +108,7 @@ namespace WindowsFormsAccess
             model = UsersDo.GetModel(Convert.ToInt32(oid)); //读取数据库数据到model，中转
 
             //model赋值给窗体
-            textBox1S1BianHao.Text = model.sBianHao;
+            label83.Text = model.sBianHao;
             comboBox7Sheet1.Text = model.sBianMa;
             textBox8Sheet1.Text = model.sZhuYuanHao;
             textBox1Sheet1.Text = model.sName;
@@ -131,7 +131,7 @@ namespace WindowsFormsAccess
             bool result = false; //返回值
             try
             {
-                model.sBianHao = textBox1S1BianHao.Text;
+                model.sBianHao = label83.Text;
                 model.sBianMa = comboBox7Sheet1.Text;
                 model.sZhuYuanHao = textBox8Sheet1.Text;
                 model.sName = textBox1Sheet1.Text;

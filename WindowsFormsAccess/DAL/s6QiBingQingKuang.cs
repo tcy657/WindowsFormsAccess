@@ -26,10 +26,15 @@ namespace Maticsoft.DAL
 	/// </summary>
 	public partial class s6QiBingQingKuang
 	{
-		AccessHelper DbHelperOleDb = new AccessHelper();
-		
+       private AccessHelper DbHelperOleDb;
+       public s6QiBingQingKuang(string dbPath)
+       {
+            DbHelperOleDb = new AccessHelper(dbPath);
+       }
 		public s6QiBingQingKuang()
-		{}
+       {
+            DbHelperOleDb = new AccessHelper();
+       }
 		#region  BasicMethod
 
 		/// <summary>

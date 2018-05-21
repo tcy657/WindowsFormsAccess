@@ -26,15 +26,10 @@ namespace Maticsoft.DAL
 	/// </summary>
 	public partial class s3ShuHouFuZhu
 	{
-       private AccessHelper DbHelperOleDb;
-       public s3ShuHouFuZhu(string dbPath)
-       {
-            DbHelperOleDb = new AccessHelper(dbPath);
-       }
+		AccessHelper DbHelperOleDb = new AccessHelper();
+
 		public s3ShuHouFuZhu()
-       {
-            DbHelperOleDb = new AccessHelper();
-       }
+		{}
 		#region  BasicMethod
 
 		/// <summary>

@@ -1,12 +1,12 @@
 ﻿/**  版本信息模板在安装目录下，可自行修改。
-* s5ShuJuCunZhu.cs
+* ycyx.cs
 *
 * 功 能： N/A
-* 类 名： s5ShuJuCunZhu
+* 类 名： ycyx
 *
 * Ver    变更日期             负责人  变更内容
 * ───────────────────────────────────
-* V0.01  2018/5/19 12:22:50   N/A    初版
+* V0.01  2018-5-18 21:12:50   N/A    初版
 *
 * Copyright (c) 2012 Maticsoft Corporation. All rights reserved.
 *┌──────────────────────────────────┐
@@ -22,32 +22,35 @@ using Maticsoft.DBUtility;//Please add references
 namespace Maticsoft.DAL
 {
 	/// <summary>
-	/// 数据访问类:s5ShuJuCunZhu
+	/// 数据访问类:ycyx
 	/// </summary>
-	public partial class s5ShuJuCunZhu
+	public partial class ycyx
 	{
-       private AccessHelper DbHelperOleDb;
-       public s5ShuJuCunZhu(string dbPath)
-       {
-            DbHelperOleDb = new AccessHelper(dbPath);
-       }
-		public s5ShuJuCunZhu()
-       {
-            DbHelperOleDb = new AccessHelper();
-       }
+        AccessHelper DbHelperOleDb = new AccessHelper();
+        public ycyx()
+		{}
 		#region  BasicMethod
+
+		/// <summary>
+		/// 得到最大ID
+		/// </summary>
+		public int GetMaxId()
+		{
+		return DbHelperOleDb.GetMaxID("ID", "ycyx"); 
+		}
 
 		/// <summary>
 		/// 是否存在该记录
 		/// </summary>
-		public bool Exists(string sBianHao)
+		public bool Exists(int ID)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select count(1) from s5ShuJuCunZhu");
-			strSql.Append(" where sBianHao=@sBianHao ");
+			strSql.Append("select count(1) from ycyx");
+			strSql.Append(" where ID=@ID");
 			OleDbParameter[] parameters = {
-					new OleDbParameter("@sBianHao", OleDbType.VarChar,255)			};
-			parameters[0].Value = sBianHao;
+					new OleDbParameter("@ID", OleDbType.Integer,4)
+			};
+			parameters[0].Value = ID;
 
 			return DbHelperOleDb.Exists(strSql.ToString(),parameters);
 		}
@@ -56,22 +59,28 @@ namespace Maticsoft.DAL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(Maticsoft.Model.s5ShuJuCunZhu model)
+		public bool Add(Maticsoft.Model.ycyx model)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("insert into s5ShuJuCunZhu(");
-			strSql.Append("sBianHao,sCT,sCiGongZheng,sBingLi)");
+			strSql.Append("insert into ycyx(");
+			strSql.Append("fwhm,khmc,gsdq,dqpp,dqtc,dqzt,iUserID)");
 			strSql.Append(" values (");
-			strSql.Append("@sBianHao,@sCT,@sCiGongZheng,@sBingLi)");
+			strSql.Append("@fwhm,@khmc,@gsdq,@dqpp,@dqtc,@dqzt,@iUserID)");
 			OleDbParameter[] parameters = {
-					new OleDbParameter("@sBianHao", OleDbType.VarChar,255),
-					new OleDbParameter("@sCT", OleDbType.VarChar,255),
-					new OleDbParameter("@sCiGongZheng", OleDbType.VarChar,255),
-					new OleDbParameter("@sBingLi", OleDbType.VarChar,255)};
-			parameters[0].Value = model.sBianHao;
-			parameters[1].Value = model.sCT;
-			parameters[2].Value = model.sCiGongZheng;
-			parameters[3].Value = model.sBingLi;
+					new OleDbParameter("@fwhm", OleDbType.Integer,4),
+					new OleDbParameter("@khmc", OleDbType.Integer,4),
+					new OleDbParameter("@gsdq", OleDbType.Integer,4),
+					new OleDbParameter("@dqpp", OleDbType.VarChar,200),
+					new OleDbParameter("@dqtc", OleDbType.Integer,4),
+					new OleDbParameter("@dqzt", OleDbType.Integer,4),
+					new OleDbParameter("@iUserID", OleDbType.Integer,4)};
+			parameters[0].Value = model.fwhm;
+			parameters[1].Value = model.khmc;
+			parameters[2].Value = model.gsdq;
+			parameters[3].Value = model.dqpp;
+			parameters[4].Value = model.dqtc;
+			parameters[5].Value = model.dqzt;
+			parameters[6].Value = model.iUserID;
 
 			int rows=DbHelperOleDb.ExecuteSql(strSql.ToString(),parameters);
 			if (rows > 0)
@@ -86,25 +95,35 @@ namespace Maticsoft.DAL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(Maticsoft.Model.s5ShuJuCunZhu model)
+		public bool Update(Maticsoft.Model.ycyx model)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("update s5ShuJuCunZhu set ");
-			strSql.Append("sCT=@sCT,");
-			strSql.Append("sCiGongZheng=@sCiGongZheng,");
-			strSql.Append("sBingLi=@sBingLi");
-			strSql.Append(" where sBianHao=@sBianHao ");
+			strSql.Append("update ycyx set ");
+			strSql.Append("fwhm=@fwhm,");
+			strSql.Append("khmc=@khmc,");
+			strSql.Append("gsdq=@gsdq,");
+			strSql.Append("dqpp=@dqpp,");
+			strSql.Append("dqtc=@dqtc,");
+			strSql.Append("dqzt=@dqzt,");
+			strSql.Append("iUserID=@iUserID");
+			strSql.Append(" where ID=@ID");
 			OleDbParameter[] parameters = {
-					new OleDbParameter("@sCT", OleDbType.VarChar,255),
-					new OleDbParameter("@sCiGongZheng", OleDbType.VarChar,255),
-					new OleDbParameter("@sBingLi", OleDbType.VarChar,255),
-					new OleDbParameter("@ID", OleDbType.Integer,4),
-					new OleDbParameter("@sBianHao", OleDbType.VarChar,255)};
-			parameters[0].Value = model.sCT;
-			parameters[1].Value = model.sCiGongZheng;
-			parameters[2].Value = model.sBingLi;
-			parameters[3].Value = model.ID;
-			parameters[4].Value = model.sBianHao;
+					new OleDbParameter("@fwhm", OleDbType.Integer,4),
+					new OleDbParameter("@khmc", OleDbType.Integer,4),
+					new OleDbParameter("@gsdq", OleDbType.Integer,4),
+					new OleDbParameter("@dqpp", OleDbType.VarChar,200),
+					new OleDbParameter("@dqtc", OleDbType.Integer,4),
+					new OleDbParameter("@dqzt", OleDbType.Integer,4),
+					new OleDbParameter("@iUserID", OleDbType.Integer,4),
+					new OleDbParameter("@ID", OleDbType.Integer,4)};
+			parameters[0].Value = model.fwhm;
+			parameters[1].Value = model.khmc;
+			parameters[2].Value = model.gsdq;
+			parameters[3].Value = model.dqpp;
+			parameters[4].Value = model.dqtc;
+			parameters[5].Value = model.dqzt;
+			parameters[6].Value = model.iUserID;
+			parameters[7].Value = model.ID;
 
 			int rows=DbHelperOleDb.ExecuteSql(strSql.ToString(),parameters);
 			if (rows > 0)
@@ -120,15 +139,16 @@ namespace Maticsoft.DAL
 		/// <summary>
 		/// 删除一条数据
 		/// </summary>
-		public bool Delete(string sBianHao)
+		public bool Delete(int ID)
 		{
 			
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("delete from s5ShuJuCunZhu ");
-			strSql.Append(" where sBianHao=@sBianHao ");
+			strSql.Append("delete from ycyx ");
+			strSql.Append(" where ID=@ID");
 			OleDbParameter[] parameters = {
-					new OleDbParameter("@sBianHao", OleDbType.VarChar,255)			};
-			parameters[0].Value = sBianHao;
+					new OleDbParameter("@ID", OleDbType.Integer,4)
+			};
+			parameters[0].Value = ID;
 
 			int rows=DbHelperOleDb.ExecuteSql(strSql.ToString(),parameters);
 			if (rows > 0)
@@ -143,11 +163,11 @@ namespace Maticsoft.DAL
 		/// <summary>
 		/// 批量删除数据
 		/// </summary>
-		public bool DeleteList(string sBianHaolist )
+		public bool DeleteList(string IDlist )
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("delete from s5ShuJuCunZhu ");
-			strSql.Append(" where sBianHao in ("+sBianHaolist + ")  ");
+			strSql.Append("delete from ycyx ");
+			strSql.Append(" where ID in ("+IDlist + ")  ");
 			int rows=DbHelperOleDb.ExecuteSql(strSql.ToString());
 			if (rows > 0)
 			{
@@ -163,17 +183,18 @@ namespace Maticsoft.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public Maticsoft.Model.s5ShuJuCunZhu GetModel(string sBianHao)
+		public Maticsoft.Model.ycyx GetModel(int ID)
 		{
 			
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select ID,sBianHao,sCT,sCiGongZheng,sBingLi from s5ShuJuCunZhu ");
-			strSql.Append(" where sBianHao=@sBianHao ");
+			strSql.Append("select ID,fwhm,khmc,gsdq,dqpp,dqtc,dqzt,iUserID from ycyx ");
+			strSql.Append(" where ID=@ID");
 			OleDbParameter[] parameters = {
-					new OleDbParameter("@sBianHao", OleDbType.VarChar,255)			};
-			parameters[0].Value = sBianHao;
+					new OleDbParameter("@ID", OleDbType.Integer,4)
+			};
+			parameters[0].Value = ID;
 
-			Maticsoft.Model.s5ShuJuCunZhu model=new Maticsoft.Model.s5ShuJuCunZhu();
+			Maticsoft.Model.ycyx model=new Maticsoft.Model.ycyx();
 			DataSet ds=DbHelperOleDb.Query(strSql.ToString(),parameters);
 			if(ds.Tables[0].Rows.Count>0)
 			{
@@ -185,34 +206,72 @@ namespace Maticsoft.DAL
 			}
 		}
 
+        /// <summary>
+        /// 得到一个对象实体
+        /// </summary>
+        public Maticsoft.Model.ycyx GetModelByUserID(int ID)
+        {
+
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("select ID,fwhm,khmc,gsdq,dqpp,dqtc,dqzt,iUserID from ycyx ");
+            strSql.Append(" where iUserID=@ID");
+            OleDbParameter[] parameters = {
+					new OleDbParameter("@ID", OleDbType.Integer,4)
+			};
+            parameters[0].Value = ID;
+
+            Maticsoft.Model.ycyx model = new Maticsoft.Model.ycyx();
+            DataSet ds = DbHelperOleDb.Query(strSql.ToString(), parameters);
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                return DataRowToModel(ds.Tables[0].Rows[0]);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
 
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public Maticsoft.Model.s5ShuJuCunZhu DataRowToModel(DataRow row)
+		public Maticsoft.Model.ycyx DataRowToModel(DataRow row)
 		{
-			Maticsoft.Model.s5ShuJuCunZhu model=new Maticsoft.Model.s5ShuJuCunZhu();
+			Maticsoft.Model.ycyx model=new Maticsoft.Model.ycyx();
 			if (row != null)
 			{
 				if(row["ID"]!=null && row["ID"].ToString()!="")
 				{
 					model.ID=int.Parse(row["ID"].ToString());
 				}
-				if(row["sBianHao"]!=null)
+				if(row["fwhm"]!=null && row["fwhm"].ToString()!="")
 				{
-					model.sBianHao=row["sBianHao"].ToString();
+					model.fwhm=int.Parse(row["fwhm"].ToString());
 				}
-				if(row["sCT"]!=null)
+				if(row["khmc"]!=null && row["khmc"].ToString()!="")
 				{
-					model.sCT=row["sCT"].ToString();
+					model.khmc=int.Parse(row["khmc"].ToString());
 				}
-				if(row["sCiGongZheng"]!=null)
+				if(row["gsdq"]!=null && row["gsdq"].ToString()!="")
 				{
-					model.sCiGongZheng=row["sCiGongZheng"].ToString();
+					model.gsdq=int.Parse(row["gsdq"].ToString());
 				}
-				if(row["sBingLi"]!=null)
+				if(row["dqpp"]!=null)
 				{
-					model.sBingLi=row["sBingLi"].ToString();
+					model.dqpp=row["dqpp"].ToString();
+				}
+				if(row["dqtc"]!=null && row["dqtc"].ToString()!="")
+				{
+					model.dqtc=int.Parse(row["dqtc"].ToString());
+				}
+				if(row["dqzt"]!=null && row["dqzt"].ToString()!="")
+				{
+					model.dqzt=int.Parse(row["dqzt"].ToString());
+				}
+				if(row["iUserID"]!=null && row["iUserID"].ToString()!="")
+				{
+					model.iUserID=int.Parse(row["iUserID"].ToString());
 				}
 			}
 			return model;
@@ -224,8 +283,8 @@ namespace Maticsoft.DAL
 		public DataSet GetList(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select ID,sBianHao,sCT,sCiGongZheng,sBingLi ");
-			strSql.Append(" FROM s5ShuJuCunZhu ");
+			strSql.Append("select ID,fwhm,khmc,gsdq,dqpp,dqtc,dqzt,iUserID ");
+			strSql.Append(" FROM ycyx ");
 			if(strWhere.Trim()!="")
 			{
 				strSql.Append(" where "+strWhere);
@@ -239,7 +298,7 @@ namespace Maticsoft.DAL
 		public int GetRecordCount(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select count(1) FROM s5ShuJuCunZhu ");
+			strSql.Append("select count(1) FROM ycyx ");
 			if(strWhere.Trim()!="")
 			{
 				strSql.Append(" where "+strWhere);
@@ -268,9 +327,9 @@ namespace Maticsoft.DAL
 			}
 			else
 			{
-				strSql.Append("order by T.sBianHao desc");
+				strSql.Append("order by T.ID desc");
 			}
-			strSql.Append(")AS Row, T.*  from s5ShuJuCunZhu T ");
+			strSql.Append(")AS Row, T.*  from ycyx T ");
 			if (!string.IsNullOrEmpty(strWhere.Trim()))
 			{
 				strSql.Append(" WHERE " + strWhere);
@@ -295,8 +354,8 @@ namespace Maticsoft.DAL
 					new OleDbParameter("@OrderType", OleDbType.Boolean),
 					new OleDbParameter("@strWhere", OleDbType.VarChar,1000),
 					};
-			parameters[0].Value = "s5ShuJuCunZhu";
-			parameters[1].Value = "sBianHao";
+			parameters[0].Value = "ycyx";
+			parameters[1].Value = "ID";
 			parameters[2].Value = PageSize;
 			parameters[3].Value = PageIndex;
 			parameters[4].Value = 0;

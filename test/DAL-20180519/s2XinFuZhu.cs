@@ -26,15 +26,10 @@ namespace Maticsoft.DAL
 	/// </summary>
 	public partial class s2XinFuZhu
 	{
-       private AccessHelper DbHelperOleDb;
-       public s2XinFuZhu(string dbPath)
-       {
-            DbHelperOleDb = new AccessHelper(dbPath);
-       }
+		AccessHelper DbHelperOleDb = new AccessHelper();
+
 		public s2XinFuZhu()
-       {
-            DbHelperOleDb = new AccessHelper();
-       }
+		{}
 		#region  BasicMethod
 
 		/// <summary>

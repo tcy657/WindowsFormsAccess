@@ -26,10 +26,15 @@ namespace Maticsoft.DAL
 	/// </summary>
 	public partial class s4SuiZhen
 	{
-		AccessHelper DbHelperOleDb = new AccessHelper();
-
+       private AccessHelper DbHelperOleDb;
+       public s4SuiZhen(string dbPath)
+       {
+            DbHelperOleDb = new AccessHelper(dbPath);
+       }
 		public s4SuiZhen()
-		{}
+       {
+            DbHelperOleDb = new AccessHelper();
+       }
 		#region  BasicMethod
 
 		/// <summary>
