@@ -6,12 +6,12 @@
 *
 * Ver    变更日期             负责人  变更内容
 * ───────────────────────────────────
-* V0.01  2018/5/19 12:22:54   N/A    初版
+* V0.01  2018/5/22 19:46:22   N/A    初版
 *
 * Copyright (c) 2012 Maticsoft Corporation. All rights reserved.
 *┌──────────────────────────────────┐
 *│　此技术信息为本公司机密信息，未经本公司书面同意禁止向第三方披露．　│
-*│　版权所有：动软卓越（北京）科技有限公司　　　　　　　　　　　　　　│
+*│　版权所有：湘竹科技有限公司　　　　　　　　　　　　　　│
 *└──────────────────────────────────┘
 */
 using System;
@@ -69,9 +69,9 @@ namespace Maticsoft.DAL
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into Users(");
-			strSql.Append("sBianHao,sBianMa,sZhuYuanHao,sName,sSex,iAge,sZhiYe,dRuYuanShiJian,sPhone)");
+			strSql.Append("sBianHao,sBianMa,sZhuYuanHao,sName,sSex,iAge,sZhiYe,dRuYuanShiJian,sPhone,sMinZu)");
 			strSql.Append(" values (");
-			strSql.Append("@sBianHao,@sBianMa,@sZhuYuanHao,@sName,@sSex,@iAge,@sZhiYe,@dRuYuanShiJian,@sPhone)");
+			strSql.Append("@sBianHao,@sBianMa,@sZhuYuanHao,@sName,@sSex,@iAge,@sZhiYe,@dRuYuanShiJian,@sPhone,@sMinZu)");
 			OleDbParameter[] parameters = {
 					new OleDbParameter("@sBianHao", OleDbType.VarChar,255),
 					new OleDbParameter("@sBianMa", OleDbType.VarChar,255),
@@ -81,7 +81,8 @@ namespace Maticsoft.DAL
 					new OleDbParameter("@iAge", OleDbType.VarChar,255),
 					new OleDbParameter("@sZhiYe", OleDbType.VarChar,255),
 					new OleDbParameter("@dRuYuanShiJian", OleDbType.Date),
-					new OleDbParameter("@sPhone", OleDbType.VarChar,20)};
+					new OleDbParameter("@sPhone", OleDbType.VarChar,20),
+					new OleDbParameter("@sMinZu", OleDbType.VarChar,255)};
 			parameters[0].Value = model.sBianHao;
 			parameters[1].Value = model.sBianMa;
 			parameters[2].Value = model.sZhuYuanHao;
@@ -91,6 +92,7 @@ namespace Maticsoft.DAL
 			parameters[6].Value = model.sZhiYe;
 			parameters[7].Value = model.dRuYuanShiJian;
 			parameters[8].Value = model.sPhone;
+			parameters[9].Value = model.sMinZu;
 
 			int rows=DbHelperOleDb.ExecuteSql(strSql.ToString(),parameters);
 			if (rows > 0)
@@ -117,7 +119,8 @@ namespace Maticsoft.DAL
 			strSql.Append("iAge=@iAge,");
 			strSql.Append("sZhiYe=@sZhiYe,");
 			strSql.Append("dRuYuanShiJian=@dRuYuanShiJian,");
-			strSql.Append("sPhone=@sPhone");
+			strSql.Append("sPhone=@sPhone,");
+			strSql.Append("sMinZu=@sMinZu");
 			strSql.Append(" where ID=@ID");
 			OleDbParameter[] parameters = {
 					new OleDbParameter("@sBianHao", OleDbType.VarChar,255),
@@ -129,6 +132,7 @@ namespace Maticsoft.DAL
 					new OleDbParameter("@sZhiYe", OleDbType.VarChar,255),
 					new OleDbParameter("@dRuYuanShiJian", OleDbType.Date),
 					new OleDbParameter("@sPhone", OleDbType.VarChar,20),
+					new OleDbParameter("@sMinZu", OleDbType.VarChar,255),
 					new OleDbParameter("@ID", OleDbType.Integer,4)};
 			parameters[0].Value = model.sBianHao;
 			parameters[1].Value = model.sBianMa;
@@ -139,7 +143,8 @@ namespace Maticsoft.DAL
 			parameters[6].Value = model.sZhiYe;
 			parameters[7].Value = model.dRuYuanShiJian;
 			parameters[8].Value = model.sPhone;
-			parameters[9].Value = model.ID;
+			parameters[9].Value = model.sMinZu;
+			parameters[10].Value = model.ID;
 
 			int rows=DbHelperOleDb.ExecuteSql(strSql.ToString(),parameters);
 			if (rows > 0)
@@ -203,7 +208,7 @@ namespace Maticsoft.DAL
 		{
 			
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select ID,sBianHao,sBianMa,sZhuYuanHao,sName,sSex,iAge,sZhiYe,dRuYuanShiJian,sPhone from Users ");
+			strSql.Append("select ID,sBianHao,sBianMa,sZhuYuanHao,sName,sSex,iAge,sZhiYe,dRuYuanShiJian,sPhone,sMinZu from Users ");
 			strSql.Append(" where ID=@ID");
 			OleDbParameter[] parameters = {
 					new OleDbParameter("@ID", OleDbType.Integer,4)
@@ -271,6 +276,10 @@ namespace Maticsoft.DAL
 				{
 					model.sPhone=row["sPhone"].ToString();
 				}
+				if(row["sMinZu"]!=null)
+				{
+					model.sMinZu=row["sMinZu"].ToString();
+				}
 			}
 			return model;
 		}
@@ -281,7 +290,7 @@ namespace Maticsoft.DAL
 		public DataSet GetList(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select ID,sBianHao,sBianMa,sZhuYuanHao,sName,sSex,iAge,sZhiYe,dRuYuanShiJian,sPhone ");
+			strSql.Append("select ID,sBianHao,sBianMa,sZhuYuanHao,sName,sSex,iAge,sZhiYe,dRuYuanShiJian,sPhone,sMinZu ");
 			strSql.Append(" FROM Users ");
 			if(strWhere.Trim()!="")
 			{

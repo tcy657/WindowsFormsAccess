@@ -1,6 +1,6 @@
 向远程仓库的推送流程是：
     1、在github上创建项目
-    2、使用git clone https://github.com/xxxxxxx/xxxxx.git克隆到本地
+    2、克隆到本地，使用git clone https://github.com/xxxxxxx/xxxxx.git
     3、编辑项目
     4、git add . （将改动添加到暂存区）
     5、git commit -m "提交说明"

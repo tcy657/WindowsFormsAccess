@@ -54,7 +54,7 @@ namespace WindowsFormsAccess
             dataGridView1.DataSource = dt;  
         }
 
-       // 读取要更新记录到更新窗体控件；
+       // 加载要更新记录到更新窗体控件；
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count < 1 || dataGridView1.SelectedRows[0].Cells[1].Value == null)
@@ -69,6 +69,9 @@ namespace WindowsFormsAccess
 
             readSheet1(gOid);   //读取sheet1内容到页面1
             readSheetX(gOid);   //读取内容到页面
+
+            //测试同一sheet存在多个ID和单ID
+            ycyxDo.GetListID("iUserID = 5");
         }
 
         //添加记录；

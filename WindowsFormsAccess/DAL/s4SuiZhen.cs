@@ -6,12 +6,12 @@
 *
 * Ver    变更日期             负责人  变更内容
 * ───────────────────────────────────
-* V0.01  2018/5/19 12:22:49   N/A    初版
+* V0.01  2018/5/22 19:46:16   N/A    初版
 *
 * Copyright (c) 2012 Maticsoft Corporation. All rights reserved.
 *┌──────────────────────────────────┐
 *│　此技术信息为本公司机密信息，未经本公司书面同意禁止向第三方披露．　│
-*│　版权所有：动软卓越（北京）科技有限公司　　　　　　　　　　　　　　│
+*│　版权所有：湘竹科技有限公司　　　　　　　　　　　　　　│
 *└──────────────────────────────────┘
 */
 using System;
@@ -38,16 +38,25 @@ namespace Maticsoft.DAL
 		#region  BasicMethod
 
 		/// <summary>
+		/// 得到最大ID
+		/// </summary>
+		public int GetMaxId()
+		{
+		return DbHelperOleDb.GetMaxID("ID", "s4SuiZhen"); 
+		}
+
+		/// <summary>
 		/// 是否存在该记录
 		/// </summary>
-		public bool Exists(string sBianHao)
+		public bool Exists(int ID)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("select count(1) from s4SuiZhen");
-			strSql.Append(" where sBianHao=@sBianHao ");
+			strSql.Append(" where ID=@ID");
 			OleDbParameter[] parameters = {
-					new OleDbParameter("@sBianHao", OleDbType.VarChar,255)			};
-			parameters[0].Value = sBianHao;
+					new OleDbParameter("@ID", OleDbType.Integer,4)
+			};
+			parameters[0].Value = ID;
 
 			return DbHelperOleDb.Exists(strSql.ToString(),parameters);
 		}
@@ -60,9 +69,9 @@ namespace Maticsoft.DAL
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into s4SuiZhen(");
-			strSql.Append("sBianHao,sSuiZhenCiShu,dSuiZhenTime,sZhuYuanHao,sCT,sMRI,sNeiJing,sPET,bFuFa)");
+			strSql.Append("sBianHao,sSuiZhenCiShu,dSuiZhenTime,sZhuYuanHao,sCT,sMRI,sNeiJing,sPET,bFuFa,iUserID)");
 			strSql.Append(" values (");
-			strSql.Append("@sBianHao,@sSuiZhenCiShu,@dSuiZhenTime,@sZhuYuanHao,@sCT,@sMRI,@sNeiJing,@sPET,@bFuFa)");
+			strSql.Append("@sBianHao,@sSuiZhenCiShu,@dSuiZhenTime,@sZhuYuanHao,@sCT,@sMRI,@sNeiJing,@sPET,@bFuFa,@iUserID)");
 			OleDbParameter[] parameters = {
 					new OleDbParameter("@sBianHao", OleDbType.VarChar,255),
 					new OleDbParameter("@sSuiZhenCiShu", OleDbType.VarChar,255),
@@ -72,7 +81,8 @@ namespace Maticsoft.DAL
 					new OleDbParameter("@sMRI", OleDbType.VarChar,255),
 					new OleDbParameter("@sNeiJing", OleDbType.VarChar,255),
 					new OleDbParameter("@sPET", OleDbType.VarChar,255),
-					new OleDbParameter("@bFuFa", OleDbType.Date)};
+					new OleDbParameter("@bFuFa", OleDbType.Date),
+					new OleDbParameter("@iUserID", OleDbType.VarChar,255)};
 			parameters[0].Value = model.sBianHao;
 			parameters[1].Value = model.sSuiZhenCiShu;
 			parameters[2].Value = model.dSuiZhenTime;
@@ -82,6 +92,7 @@ namespace Maticsoft.DAL
 			parameters[6].Value = model.sNeiJing;
 			parameters[7].Value = model.sPET;
 			parameters[8].Value = model.bFuFa;
+			parameters[9].Value = model.iUserID;
 
 			int rows=DbHelperOleDb.ExecuteSql(strSql.ToString(),parameters);
 			if (rows > 0)
@@ -100,6 +111,7 @@ namespace Maticsoft.DAL
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("update s4SuiZhen set ");
+			strSql.Append("sBianHao=@sBianHao,");
 			strSql.Append("sSuiZhenCiShu=@sSuiZhenCiShu,");
 			strSql.Append("dSuiZhenTime=@dSuiZhenTime,");
 			strSql.Append("sZhuYuanHao=@sZhuYuanHao,");
@@ -107,9 +119,11 @@ namespace Maticsoft.DAL
 			strSql.Append("sMRI=@sMRI,");
 			strSql.Append("sNeiJing=@sNeiJing,");
 			strSql.Append("sPET=@sPET,");
-			strSql.Append("bFuFa=@bFuFa");
-			strSql.Append(" where sBianHao=@sBianHao ");
+			strSql.Append("bFuFa=@bFuFa,");
+			strSql.Append("iUserID=@iUserID");
+			strSql.Append(" where ID=@ID");
 			OleDbParameter[] parameters = {
+					new OleDbParameter("@sBianHao", OleDbType.VarChar,255),
 					new OleDbParameter("@sSuiZhenCiShu", OleDbType.VarChar,255),
 					new OleDbParameter("@dSuiZhenTime", OleDbType.Date),
 					new OleDbParameter("@sZhuYuanHao", OleDbType.VarChar,255),
@@ -118,18 +132,19 @@ namespace Maticsoft.DAL
 					new OleDbParameter("@sNeiJing", OleDbType.VarChar,255),
 					new OleDbParameter("@sPET", OleDbType.VarChar,255),
 					new OleDbParameter("@bFuFa", OleDbType.Date),
-					new OleDbParameter("@ID", OleDbType.Integer,4),
-					new OleDbParameter("@sBianHao", OleDbType.VarChar,255)};
-			parameters[0].Value = model.sSuiZhenCiShu;
-			parameters[1].Value = model.dSuiZhenTime;
-			parameters[2].Value = model.sZhuYuanHao;
-			parameters[3].Value = model.sCT;
-			parameters[4].Value = model.sMRI;
-			parameters[5].Value = model.sNeiJing;
-			parameters[6].Value = model.sPET;
-			parameters[7].Value = model.bFuFa;
-			parameters[8].Value = model.ID;
-			parameters[9].Value = model.sBianHao;
+					new OleDbParameter("@iUserID", OleDbType.VarChar,255),
+					new OleDbParameter("@ID", OleDbType.Integer,4)};
+			parameters[0].Value = model.sBianHao;
+			parameters[1].Value = model.sSuiZhenCiShu;
+			parameters[2].Value = model.dSuiZhenTime;
+			parameters[3].Value = model.sZhuYuanHao;
+			parameters[4].Value = model.sCT;
+			parameters[5].Value = model.sMRI;
+			parameters[6].Value = model.sNeiJing;
+			parameters[7].Value = model.sPET;
+			parameters[8].Value = model.bFuFa;
+			parameters[9].Value = model.iUserID;
+			parameters[10].Value = model.ID;
 
 			int rows=DbHelperOleDb.ExecuteSql(strSql.ToString(),parameters);
 			if (rows > 0)
@@ -145,15 +160,16 @@ namespace Maticsoft.DAL
 		/// <summary>
 		/// 删除一条数据
 		/// </summary>
-		public bool Delete(string sBianHao)
+		public bool Delete(int ID)
 		{
 			
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("delete from s4SuiZhen ");
-			strSql.Append(" where sBianHao=@sBianHao ");
+			strSql.Append(" where ID=@ID");
 			OleDbParameter[] parameters = {
-					new OleDbParameter("@sBianHao", OleDbType.VarChar,255)			};
-			parameters[0].Value = sBianHao;
+					new OleDbParameter("@ID", OleDbType.Integer,4)
+			};
+			parameters[0].Value = ID;
 
 			int rows=DbHelperOleDb.ExecuteSql(strSql.ToString(),parameters);
 			if (rows > 0)
@@ -168,11 +184,11 @@ namespace Maticsoft.DAL
 		/// <summary>
 		/// 批量删除数据
 		/// </summary>
-		public bool DeleteList(string sBianHaolist )
+		public bool DeleteList(string IDlist )
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("delete from s4SuiZhen ");
-			strSql.Append(" where sBianHao in ("+sBianHaolist + ")  ");
+			strSql.Append(" where ID in ("+IDlist + ")  ");
 			int rows=DbHelperOleDb.ExecuteSql(strSql.ToString());
 			if (rows > 0)
 			{
@@ -188,15 +204,16 @@ namespace Maticsoft.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public Maticsoft.Model.s4SuiZhen GetModel(string sBianHao)
+		public Maticsoft.Model.s4SuiZhen GetModel(int ID)
 		{
 			
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select ID,sBianHao,sSuiZhenCiShu,dSuiZhenTime,sZhuYuanHao,sCT,sMRI,sNeiJing,sPET,bFuFa from s4SuiZhen ");
-			strSql.Append(" where sBianHao=@sBianHao ");
+			strSql.Append("select ID,sBianHao,sSuiZhenCiShu,dSuiZhenTime,sZhuYuanHao,sCT,sMRI,sNeiJing,sPET,bFuFa,iUserID from s4SuiZhen ");
+			strSql.Append(" where ID=@ID");
 			OleDbParameter[] parameters = {
-					new OleDbParameter("@sBianHao", OleDbType.VarChar,255)			};
-			parameters[0].Value = sBianHao;
+					new OleDbParameter("@ID", OleDbType.Integer,4)
+			};
+			parameters[0].Value = ID;
 
 			Maticsoft.Model.s4SuiZhen model=new Maticsoft.Model.s4SuiZhen();
 			DataSet ds=DbHelperOleDb.Query(strSql.ToString(),parameters);
@@ -259,6 +276,10 @@ namespace Maticsoft.DAL
 				{
 					model.bFuFa=DateTime.Parse(row["bFuFa"].ToString());
 				}
+				if(row["iUserID"]!=null)
+				{
+					model.iUserID=row["iUserID"].ToString();
+				}
 			}
 			return model;
 		}
@@ -269,7 +290,7 @@ namespace Maticsoft.DAL
 		public DataSet GetList(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select ID,sBianHao,sSuiZhenCiShu,dSuiZhenTime,sZhuYuanHao,sCT,sMRI,sNeiJing,sPET,bFuFa ");
+			strSql.Append("select ID,sBianHao,sSuiZhenCiShu,dSuiZhenTime,sZhuYuanHao,sCT,sMRI,sNeiJing,sPET,bFuFa,iUserID ");
 			strSql.Append(" FROM s4SuiZhen ");
 			if(strWhere.Trim()!="")
 			{
@@ -313,7 +334,7 @@ namespace Maticsoft.DAL
 			}
 			else
 			{
-				strSql.Append("order by T.sBianHao desc");
+				strSql.Append("order by T.ID desc");
 			}
 			strSql.Append(")AS Row, T.*  from s4SuiZhen T ");
 			if (!string.IsNullOrEmpty(strWhere.Trim()))
@@ -341,7 +362,7 @@ namespace Maticsoft.DAL
 					new OleDbParameter("@strWhere", OleDbType.VarChar,1000),
 					};
 			parameters[0].Value = "s4SuiZhen";
-			parameters[1].Value = "sBianHao";
+			parameters[1].Value = "ID";
 			parameters[2].Value = PageSize;
 			parameters[3].Value = PageIndex;
 			parameters[4].Value = 0;

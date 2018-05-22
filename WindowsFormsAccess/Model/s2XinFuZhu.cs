@@ -6,12 +6,12 @@
 *
 * Ver    变更日期             负责人  变更内容
 * ───────────────────────────────────
-* V0.01  2018/5/19 12:22:47   N/A    初版
+* V0.01  2018/5/22 19:46:12   N/A    初版
 *
 * Copyright (c) 2012 Maticsoft Corporation. All rights reserved.
 *┌──────────────────────────────────┐
 *│　此技术信息为本公司机密信息，未经本公司书面同意禁止向第三方披露．　│
-*│　版权所有：动软卓越（北京）科技有限公司　　　　　　　　　　　　　　│
+*│　版权所有：湘竹科技有限公司　　　　　　　　　　　　　　│
 *└──────────────────────────────────┘
 */
 using System;
@@ -33,9 +33,13 @@ namespace Maticsoft.Model
 		private string _sfangan;
 		private string _sjiliang;
 		private string _sliaocheng;
-		private string _spingjia;
-		private bool _b2thbingjian= false;
+		private string _sliaoxiaopingjia;
+		private string _sfangliaofangan;
+		private string _sfangliaoliaocheng;
+		private bool _bshuqian2thbingjian= false;
 		private string _sresult;
+		private bool _bxinfuzhufangliao= false;
+		private string _iuserid;
 		/// <summary>
 		/// 
 		/// </summary>
@@ -95,18 +99,34 @@ namespace Maticsoft.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public string sPingJia
+		public string sLiaoXiaoPingJia
 		{
-			set{ _spingjia=value;}
-			get{return _spingjia;}
+			set{ _sliaoxiaopingjia=value;}
+			get{return _sliaoxiaopingjia;}
 		}
 		/// <summary>
 		/// 
 		/// </summary>
-		public bool b2thBingJian
+		public string sFangLiaoFangAn
 		{
-			set{ _b2thbingjian=value;}
-			get{return _b2thbingjian;}
+			set{ _sfangliaofangan=value;}
+			get{return _sfangliaofangan;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public string sFangLiaoLiaoCheng
+		{
+			set{ _sfangliaoliaocheng=value;}
+			get{return _sfangliaoliaocheng;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public bool bShuQian2thBingJian
+		{
+			set{ _bshuqian2thbingjian=value;}
+			get{return _bshuqian2thbingjian;}
 		}
 		/// <summary>
 		/// 
@@ -115,6 +135,22 @@ namespace Maticsoft.Model
 		{
 			set{ _sresult=value;}
 			get{return _sresult;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public bool bXinFuZhuFangLiao
+		{
+			set{ _bxinfuzhufangliao=value;}
+			get{return _bxinfuzhufangliao;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public string iUserID
+		{
+			set{ _iuserid=value;}
+			get{return _iuserid;}
 		}
 		#endregion Model
 

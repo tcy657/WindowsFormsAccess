@@ -6,12 +6,12 @@
 *
 * Ver    变更日期             负责人  变更内容
 * ───────────────────────────────────
-* V0.01  2018/5/19 12:22:48   N/A    初版
+* V0.01  2018/5/22 19:46:14   N/A    初版
 *
 * Copyright (c) 2012 Maticsoft Corporation. All rights reserved.
 *┌──────────────────────────────────┐
 *│　此技术信息为本公司机密信息，未经本公司书面同意禁止向第三方披露．　│
-*│　版权所有：动软卓越（北京）科技有限公司　　　　　　　　　　　　　　│
+*│　版权所有：湘竹科技有限公司　　　　　　　　　　　　　　│
 *└──────────────────────────────────┘
 */
 using System;
@@ -38,13 +38,23 @@ namespace Maticsoft.Model
 		private string _splt;
 		private string _sbmi;
 		private string _snrs2002;
-		private string _sfcog;
+		private string _secog;
+		private bool _bfucha= false;
+		private string _sct;
+		private string _smri;
+		private string _sneijing;
+		private string _spet;
 		private bool _bfufa= false;
 		private string _sweizhi;
 		private string _schulifangshi;
 		private string _sjiliang;
 		private string _sliaocheng;
 		private string _sliaoxiaopingfen;
+		private string _iuserid;
+		private string _szhuyuanhao;
+		private bool _bbaxiangyaowu= false;
+		private string _syaowupinzhong;
+		private string _sjianceresult;
 		/// <summary>
 		/// 
 		/// </summary>
@@ -144,10 +154,50 @@ namespace Maticsoft.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public string sFCOG
+		public string sECOG
 		{
-			set{ _sfcog=value;}
-			get{return _sfcog;}
+			set{ _secog=value;}
+			get{return _secog;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public bool bFuCha
+		{
+			set{ _bfucha=value;}
+			get{return _bfucha;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public string sCT
+		{
+			set{ _sct=value;}
+			get{return _sct;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public string sMRI
+		{
+			set{ _smri=value;}
+			get{return _smri;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public string sNeiJing
+		{
+			set{ _sneijing=value;}
+			get{return _sneijing;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public string sPET
+		{
+			set{ _spet=value;}
+			get{return _spet;}
 		}
 		/// <summary>
 		/// 
@@ -196,6 +246,46 @@ namespace Maticsoft.Model
 		{
 			set{ _sliaoxiaopingfen=value;}
 			get{return _sliaoxiaopingfen;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public string iUserID
+		{
+			set{ _iuserid=value;}
+			get{return _iuserid;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public string sZhuYuanHao
+		{
+			set{ _szhuyuanhao=value;}
+			get{return _szhuyuanhao;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public bool bBaXiangYaoWu
+		{
+			set{ _bbaxiangyaowu=value;}
+			get{return _bbaxiangyaowu;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public string sYaoWuPinZhong
+		{
+			set{ _syaowupinzhong=value;}
+			get{return _syaowupinzhong;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public string sJianCeResult
+		{
+			set{ _sjianceresult=value;}
+			get{return _sjianceresult;}
 		}
 		#endregion Model
 

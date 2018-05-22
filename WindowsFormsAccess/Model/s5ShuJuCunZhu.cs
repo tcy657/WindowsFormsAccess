@@ -6,12 +6,12 @@
 *
 * Ver    变更日期             负责人  变更内容
 * ───────────────────────────────────
-* V0.01  2018/5/19 12:22:50   N/A    初版
+* V0.01  2018/5/22 19:46:17   N/A    初版
 *
 * Copyright (c) 2012 Maticsoft Corporation. All rights reserved.
 *┌──────────────────────────────────┐
 *│　此技术信息为本公司机密信息，未经本公司书面同意禁止向第三方披露．　│
-*│　版权所有：动软卓越（北京）科技有限公司　　　　　　　　　　　　　　│
+*│　版权所有：湘竹科技有限公司　　　　　　　　　　　　　　│
 *└──────────────────────────────────┘
 */
 using System;
@@ -31,6 +31,7 @@ namespace Maticsoft.Model
 		private string _sct;
 		private string _scigongzheng;
 		private string _sbingli;
+		private string _iuserid;
 		/// <summary>
 		/// 
 		/// </summary>
@@ -70,6 +71,14 @@ namespace Maticsoft.Model
 		{
 			set{ _sbingli=value;}
 			get{return _sbingli;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public string iUserID
+		{
+			set{ _iuserid=value;}
+			get{return _iuserid;}
 		}
 		#endregion Model
 

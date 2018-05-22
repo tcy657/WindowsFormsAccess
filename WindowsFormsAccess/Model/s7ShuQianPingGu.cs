@@ -6,12 +6,12 @@
 *
 * Ver    变更日期             负责人  变更内容
 * ───────────────────────────────────
-* V0.01  2018/5/19 13:33:10   N/A    初版
+* V0.01  2018/5/22 19:46:19   N/A    初版
 *
 * Copyright (c) 2012 Maticsoft Corporation. All rights reserved.
 *┌──────────────────────────────────┐
 *│　此技术信息为本公司机密信息，未经本公司书面同意禁止向第三方披露．　│
-*│　版权所有：动软卓越（北京）科技有限公司　　　　　　　　　　　　　　│
+*│　版权所有：湘竹科技有限公司　　　　　　　　　　　　　　│
 *└──────────────────────────────────┘
 */
 using System;
@@ -34,13 +34,22 @@ namespace Maticsoft.Model
 		private bool _bwoyuanct= false;
 		private string _szhongliudaxiao;
 		private string _sjubuqinfang;
-		private string _slinbajiezhuanyi;
+		private bool _blinbajiezhuanyi= false;
 		private bool _bzhuanyi= false;
 		private string _sbuwei;
 		private bool _bwoyuanmri= false;
+		private string _smrizhongliudaxiao;
+		private string _smrijubuqinfang;
+		private bool _bmrilinbajiezhuanyi= false;
+		private bool _bmrizhuanyi= false;
+		private string _smribuwei;
 		private bool _bpet= false;
+		private string _spetzhongliudaxiao;
+		private string _spetjubuqinfang;
 		private string _sdaixieqiangdu;
 		private string _slinbazhuanyi;
+		private string _bpetzhuanyi;
+		private string _spetbuwei;
 		private string _szhuanyibuweidaixieqd;
 		private string _sct;
 		private string _scn;
@@ -86,7 +95,7 @@ namespace Maticsoft.Model
 		private bool _beras= false;
 		private bool _bicujianhu= false;
 		private string _sjianhutime;
-		private DateTime? _djinshushijian;
+		private DateTime? _djinshuishijian;
 		private DateTime? _dtongqitime;
 		private DateTime? _dpaibiantime;
 		private DateTime? _dfutonghuanjietime;
@@ -94,7 +103,7 @@ namespace Maticsoft.Model
 		private DateTime? _dyinliuguanbachutime;
 		private DateTime? _dxiachuangtime;
 		private DateTime? _djinshi;
-		private DateTime? _dchangneiyingyang;
+		private bool _bchangneiyingyang= false;
 		private DateTime? _dchangneiyingyangzhichitime;
 		private DateTime? _dtpntime;
 		private string _sshuhouchuxue;
@@ -108,8 +117,8 @@ namespace Maticsoft.Model
 		private string _sweiguantuochu;
 		private string _syingyangguantuochu;
 		private string _szaokoubingfazheng;
-		private string _s2thshoushu;
-		private bool _dshoushutime= false;
+		private bool _b2thshoushu= false;
+		private DateTime? _dshoushutime;
 		private string _sshoushufangshi;
 		private string _sjiejuewenti;
 		private string _sshuhoubinglizhengduan;
@@ -123,13 +132,16 @@ namespace Maticsoft.Model
 		private string _smsi;
 		private string _sher_2;
 		private string _sp53;
+		private string _ski_67;
 		private string _sk_ras;
+		private string _sn_ras;
 		private string _sshouhoubinglifenqi;
 		private string _smsiquezheng;
 		private string _sjiyinjiance;
 		private DateTime? _dchuyuantime;
 		private string _schuyuanqingkong;
 		private string _syiliaofeiyong;
+		private string _iuserid;
 		/// <summary>
 		/// 
 		/// </summary>
@@ -197,10 +209,10 @@ namespace Maticsoft.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public string sLinBaJieZhuanYi
+		public bool bLinBaJieZhuanYi
 		{
-			set{ _slinbajiezhuanyi=value;}
-			get{return _slinbajiezhuanyi;}
+			set{ _blinbajiezhuanyi=value;}
+			get{return _blinbajiezhuanyi;}
 		}
 		/// <summary>
 		/// 
@@ -229,10 +241,66 @@ namespace Maticsoft.Model
 		/// <summary>
 		/// 
 		/// </summary>
+		public string sMRIZhongliuDaXiao
+		{
+			set{ _smrizhongliudaxiao=value;}
+			get{return _smrizhongliudaxiao;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public string sMRIJuBuQinFang
+		{
+			set{ _smrijubuqinfang=value;}
+			get{return _smrijubuqinfang;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public bool bMRILinBaJieZhuanYi
+		{
+			set{ _bmrilinbajiezhuanyi=value;}
+			get{return _bmrilinbajiezhuanyi;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public bool bMRIZhuanYi
+		{
+			set{ _bmrizhuanyi=value;}
+			get{return _bmrizhuanyi;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public string sMRIBuWei
+		{
+			set{ _smribuwei=value;}
+			get{return _smribuwei;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
 		public bool bPET
 		{
 			set{ _bpet=value;}
 			get{return _bpet;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public string sPETZhongLiuDaXiao
+		{
+			set{ _spetzhongliudaxiao=value;}
+			get{return _spetzhongliudaxiao;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public string sPETJuBuQinFang
+		{
+			set{ _spetjubuqinfang=value;}
+			get{return _spetjubuqinfang;}
 		}
 		/// <summary>
 		/// 
@@ -249,6 +317,22 @@ namespace Maticsoft.Model
 		{
 			set{ _slinbazhuanyi=value;}
 			get{return _slinbazhuanyi;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public string bPETZhuanYi
+		{
+			set{ _bpetzhuanyi=value;}
+			get{return _bpetzhuanyi;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public string sPETBuWei
+		{
+			set{ _spetbuwei=value;}
+			get{return _spetbuwei;}
 		}
 		/// <summary>
 		/// 
@@ -613,10 +697,10 @@ namespace Maticsoft.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public DateTime? dJinShuShiJian
+		public DateTime? dJinShuiShiJian
 		{
-			set{ _djinshushijian=value;}
-			get{return _djinshushijian;}
+			set{ _djinshuishijian=value;}
+			get{return _djinshuishijian;}
 		}
 		/// <summary>
 		/// 
@@ -677,10 +761,10 @@ namespace Maticsoft.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public DateTime? dChangNeiYingYang
+		public bool bChangNeiYingYang
 		{
-			set{ _dchangneiyingyang=value;}
-			get{return _dchangneiyingyang;}
+			set{ _bchangneiyingyang=value;}
+			get{return _bchangneiyingyang;}
 		}
 		/// <summary>
 		/// 
@@ -789,15 +873,15 @@ namespace Maticsoft.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public string s2thShouShu
+		public bool b2thShouShu
 		{
-			set{ _s2thshoushu=value;}
-			get{return _s2thshoushu;}
+			set{ _b2thshoushu=value;}
+			get{return _b2thshoushu;}
 		}
 		/// <summary>
 		/// 
 		/// </summary>
-		public bool dShouShuTime
+		public DateTime? dShouShuTime
 		{
 			set{ _dshoushutime=value;}
 			get{return _dshoushutime;}
@@ -909,10 +993,26 @@ namespace Maticsoft.Model
 		/// <summary>
 		/// 
 		/// </summary>
+		public string sKi_67
+		{
+			set{ _ski_67=value;}
+			get{return _ski_67;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
 		public string sK_RAS
 		{
 			set{ _sk_ras=value;}
 			get{return _sk_ras;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public string sN_RAS
+		{
+			set{ _sn_ras=value;}
+			get{return _sn_ras;}
 		}
 		/// <summary>
 		/// 
@@ -961,6 +1061,14 @@ namespace Maticsoft.Model
 		{
 			set{ _syiliaofeiyong=value;}
 			get{return _syiliaofeiyong;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public string iUserID
+		{
+			set{ _iuserid=value;}
+			get{return _iuserid;}
 		}
 		#endregion Model
 

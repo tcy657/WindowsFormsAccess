@@ -6,12 +6,12 @@
 *
 * Ver    变更日期             负责人  变更内容
 * ───────────────────────────────────
-* V0.01  2018/5/19 12:22:50   N/A    初版
+* V0.01  2018/5/22 19:46:18   N/A    初版
 *
 * Copyright (c) 2012 Maticsoft Corporation. All rights reserved.
 *┌──────────────────────────────────┐
 *│　此技术信息为本公司机密信息，未经本公司书面同意禁止向第三方披露．　│
-*│　版权所有：动软卓越（北京）科技有限公司　　　　　　　　　　　　　　│
+*│　版权所有：湘竹科技有限公司　　　　　　　　　　　　　　│
 *└──────────────────────────────────┘
 */
 using System;
@@ -27,12 +27,14 @@ namespace Maticsoft.Model
 		{}
 		#region Model
 		private int _id;
-		private string _sbianhao;
+		private string _sbianma;
 		private string _szhongliubuwei;
 		private string _sshoufazhengzhuang;
 		private DateTime? _dtime;
 		private DateTime? _dchubuzhengduantime;
 		private string _sresult;
+		private string _szhenduanyijiu;
+		private string _iuserid;
 		/// <summary>
 		/// 
 		/// </summary>
@@ -44,10 +46,10 @@ namespace Maticsoft.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public string sBianHao
+		public string sBianMa
 		{
-			set{ _sbianhao=value;}
-			get{return _sbianhao;}
+			set{ _sbianma=value;}
+			get{return _sbianma;}
 		}
 		/// <summary>
 		/// 
@@ -88,6 +90,22 @@ namespace Maticsoft.Model
 		{
 			set{ _sresult=value;}
 			get{return _sresult;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public string sZhenDuanYiJiu
+		{
+			set{ _szhenduanyijiu=value;}
+			get{return _szhenduanyijiu;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public string iUserID
+		{
+			set{ _iuserid=value;}
+			get{return _iuserid;}
 		}
 		#endregion Model
 

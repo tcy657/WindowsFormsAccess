@@ -6,12 +6,12 @@
 *
 * Ver    变更日期             负责人  变更内容
 * ───────────────────────────────────
-* V0.01  2018/5/19 12:22:55   N/A    初版
+* V0.01  2018/5/22 19:46:23   N/A    初版
 *
 * Copyright (c) 2012 Maticsoft Corporation. All rights reserved.
 *┌──────────────────────────────────┐
 *│　此技术信息为本公司机密信息，未经本公司书面同意禁止向第三方披露．　│
-*│　版权所有：动软卓越（北京）科技有限公司　　　　　　　　　　　　　　│
+*│　版权所有：湘竹科技有限公司　　　　　　　　　　　　　　│
 *└──────────────────────────────────┘
 */
 using System;
@@ -19,6 +19,7 @@ using System.Data;
 using System.Text;
 using System.Data.OleDb;
 using Maticsoft.DBUtility;//Please add references
+using System.Collections;
 namespace Maticsoft.DAL
 {
 	/// <summary>
@@ -271,6 +272,39 @@ namespace Maticsoft.DAL
 			}
 			return DbHelperOleDb.Query(strSql.ToString());
 		}
+
+        /// <summary>
+        /// 获得数据列表ID
+        /// </summary>
+        public ArrayList GetListID(string strWhere)
+        {
+            ArrayList List = new ArrayList(); //保存返回值
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("select ID,fwhm,khmc,gsdq,dqpp,dqtc,dqzt,iUserID ");
+            strSql.Append(" FROM ycyx ");
+            if (strWhere.Trim() != "")
+            {
+                strSql.Append(" where " + strWhere);
+            }
+            //return 
+            DataSet DataSet1 = DbHelperOleDb.Query(strSql.ToString());
+
+            if(DataSet1.Tables[0].Rows.Count>0)
+			{
+				//遍历一个表多行一列
+                foreach (DataRow row in DataSet1.Tables[0].Rows)
+                {              
+                    List.Add(row[0].ToString());
+                }
+                return List;
+
+			}
+			else
+			{
+				return null;
+			}
+            
+        }
 
 		/// <summary>
 		/// 获取记录总数

@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using System.Data.OleDb;
 using System.Data;
 using System.IO;
+using System.Collections;
 
 namespace WindowsFormsAccess
 {
@@ -14,6 +15,24 @@ namespace WindowsFormsAccess
         
         #region 公用方法/变量
         int gOid = 0; //全局oid，记录Users的ID号
+
+        public struct globalID //定义所有sheet的索引ID
+        {
+            int sheet1; //sheet只有一项
+            ArrayList sheet2 = new ArrayList();
+            int sheet2Current;
+            ArrayList sheet3 = new ArrayList();
+            int sheet3Current;
+            ArrayList sheet4 = new ArrayList();
+            int sheet4Current;
+            ArrayList sheet5 = new ArrayList();
+            int sheet5Current;
+            ArrayList sheet6 = new ArrayList();
+            int sheet6Current;
+            ArrayList sheet7 = new ArrayList();
+            int sheet7Current;
+        }
+        globalID globalID;
 
             //日志输出函数
             private void output(string log)
@@ -272,7 +291,7 @@ namespace WindowsFormsAccess
 
             //读取数据库数据到model，中转        
             Maticsoft.Model.Users modelUsersBin = UsersDo.GetModel(oid); //获取Userswyth
-            modelYcyx = ycyxDo.GetModelByUserID(modelUsersBin.ID);
+            modelYcyx = ycyxDo.GetModelByiUserID(modelUsersBin.ID);
 
             //model赋值给窗体
             textBox1.Text = modelYcyx.fwhm.ToString();
