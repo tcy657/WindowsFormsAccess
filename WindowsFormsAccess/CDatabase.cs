@@ -56,6 +56,21 @@ namespace WindowsFormsAccess
                     ; //不处理。因为处理可能会导致死循环。若save2FileTime()出错，则save2FileTime()->output()->save2FileTime()
                 }
             }
+            //日志输出函数,label
+            private void outputLabel(string log)
+            {
+                try
+                {
+                    //添加日志
+                    this.tssLabel2.Text = log ;
+                    //save2FileTime(autoBackupLogPath, log);  //日志记录到文件
+                }//try
+                catch
+                {
+                    ; //不处理。
+                }
+            }
+
         #endregion 公用方法
 
         #region sheet1
