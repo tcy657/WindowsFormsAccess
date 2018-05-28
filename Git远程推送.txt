@@ -1,4 +1,4 @@
-向远程仓库的推送流程是：
+一 向远程仓库的推送流程是：
     1、在github上创建项目
     2、使用git clone https://github.com/xxxxxxx/xxxxx.git克隆到本地
     3、编辑项目
@@ -6,8 +6,11 @@
     5、git commit -m "提交说明"
     6、git push origin master 将本地更改推送到远程master分支。
 
-如果在github的remote上已经有了文件，会出现错误。此时应当先pull一下，即：
-git pull origin master
-然后再进行：
-git push origin master
+    可能出现问题：如果在github的remote上已经有了文件，会出现错误。此时应当先pull一下，即：
+    git pull origin master
+    然后再进行：
+    git push origin master
+
+二 创建忽略文件
+touch .gitignore
 链接：https://www.jianshu.com/p/8d26730386f3
