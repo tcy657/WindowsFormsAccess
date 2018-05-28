@@ -411,21 +411,28 @@ namespace WindowsFormsAccess
         /// 加载逻辑磁盘文件  
         private void button2_Click(object sender, EventArgs e)
         {
-             DriveInfo[] myDrivers = DriveInfo.GetDrives();  
-            foreach (DriveInfo di in myDrivers)  
-            {  
-                if (di.IsReady)  
-                {  
-                    TreeNode tNode = new TreeNode(di.Name.Split(':')[0]);  
-                    tNode.Name = di.Name;  
-                    tNode.Tag = tNode.Name;
-                    tNode.ImageIndex = 3;         //获取结点显示图片  ,IconIndexes.FixedDrive
-                    tNode.SelectedImageIndex = 3; //选择显示图片, IconIndexes.FixedDrive  
-                    tNode.Nodes.Add("DUMMY");
-                    treeViewS5.Nodes.Add(tNode); //加载驱动节点
+            // DriveInfo[] myDrivers = DriveInfo.GetDrives();  //添加所有磁盘
+            //foreach (DriveInfo di in myDrivers)  
+            //{  
+            //    if (di.IsReady)  
+            //    {  
+            //        TreeNode tNode = new TreeNode(di.Name.Split(':')[0]);  
+            //        tNode.Name = di.Name;  
+            //        tNode.Tag = tNode.Name;
+            //        tNode.ImageIndex = 3;         //获取结点显示图片  ,IconIndexes.FixedDrive
+            //        tNode.SelectedImageIndex = 3; //选择显示图片, IconIndexes.FixedDrive  
+            //        tNode.Nodes.Add("DUMMY");
+            //        treeViewS5.Nodes.Add(tNode); //加载驱动节点
                     
-                }  
-            } 
+            //    }  
+            //}
+            TreeNode tNode = new TreeNode(@"Y:\project\20180508-access\wfsAccessSvn\test");
+            tNode.Name = "文档结构";
+            tNode.Tag = tNode.Name;
+            tNode.ImageIndex = 3;         //获取结点显示图片  ,IconIndexes.FixedDrive
+            tNode.SelectedImageIndex = 3; //选择显示图片, IconIndexes.FixedDrive  
+            tNode.Nodes.Add("DUMMY");
+            treeViewS5.Nodes.Add(tNode); //加载驱动节点
 
             //添加鼠标右键的事件  
             //this.treeViewS5.ContextMenuStrip = new TreeViewContextMenu().Load();
@@ -599,7 +606,333 @@ namespace WindowsFormsAccess
 
         }
         #endregion
-        
+
+        private void tabPage6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //打开，路径1
+        private void button26_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string fileDir = label86.Text + @"\"; //globalWorkPath + @"\result";  保存路径
+                if (Directory.Exists(fileDir) == false)//不存在,就创建NE文件夹
+                {
+                    Directory.CreateDirectory(fileDir);
+                }
+
+                outputLabel("打开目录");
+                System.Diagnostics.Process.Start("explorer.exe", fileDir);
+            } //try
+            catch (Exception objException)
+            {
+                outputLabel("打开目录，失败");
+            }
+        }
+        //上传路径1
+        private void button28_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                outputLabel("上传文件");
+                string fileDir = label86.Text + @"\"; //globalWorkPath + @"\result";  保存路径
+                
+                OpenFileDialog filePath = new OpenFileDialog();
+				filePath.InitialDirectory = fileDir; //初始路径
+                filePath.Title = "选择上传文件";
+                filePath.Filter = "All files(*.*)|*.*"; //设备控件保存的文件类型
+                filePath.FilterIndex = 1; //默认打开*.ini            
+                filePath.RestoreDirectory = true; //记忆之前打开的目录
+                filePath.FileName = "";
+                
+                if (filePath.ShowDialog() == DialogResult.OK)
+                {
+                    string fileNe = filePath.FileName; //保存文件名
+                    outputLabel("选择文件");
+
+                    //拷贝到路径 
+                    File.Copy(fileNe, fileDir + Path.GetFileName(fileNe) );
+                }
+            } //try
+            catch (Exception objException)
+            {
+                outputLabel("上传，失败");
+            }
+        }
+        //打开文件1
+        private void button27_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                outputLabel("打开文件");
+                string fileDir = label86.Text + @"\"; //globalWorkPath + @"\result";  保存路径
+
+                OpenFileDialog filePath = new OpenFileDialog();
+                filePath.InitialDirectory = fileDir; //初始路径
+                filePath.Title = "选择文件";
+                filePath.Filter = "All files(*.*)|*.*"; //设备控件保存的文件类型
+                filePath.FilterIndex = 1; //默认打开*.*     
+                filePath.RestoreDirectory = true; //记忆之前打开的目录
+                filePath.FileName = "";
+
+                if (filePath.ShowDialog() == DialogResult.OK)
+                {
+                    string fileNe = filePath.FileName; //保存文件名
+                    outputLabel("选择文件");
+
+                    //拷贝到路径 
+                     System.Diagnostics.Process.Start(fileNe);
+                }
+            } //try
+            catch (Exception objException)
+            {
+                outputLabel("打开文件，失败");
+            }
+        }
+
+        //设置目录1
+        private void button29_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //显示folderBrowserDialog1控件
+                FolderBrowserDialog fbdPath = new FolderBrowserDialog();                
+                fbdPath.Description = "目录选择...";
+                if (fbdPath.ShowDialog() == DialogResult.OK)
+                {
+
+                    if (fbdPath.SelectedPath.IndexOf(" ") < 0) //路径非空
+                    {
+                        string PC_Path = fbdPath.SelectedPath ; //路径最后默认不加\
+                        label86.Text = PC_Path; //保存路径
+
+                        outputLabel("选择目录");
+                    }
+                    else
+                    {
+                        MessageBox.Show("错误！您选择的文件目录中带有空格，请重新选择: " + fbdPath.SelectedPath, "提示");
+                    }
+
+                }
+            }//try
+            catch (Exception objException)
+            {
+                outputLabel("选择目录，失败");
+            }
+            
+        }
+
+        //打开目录，s5
+        private void button31_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string fileDir ; //globalWorkPath + @"\result";  保存路径
+                 switch (comboBox18.SelectedIndex)
+                        {
+                            case 0:
+                               fileDir = label141.Text + @"\"; 
+                                break;
+                            case 1:
+                                fileDir = label89.Text + @"\";
+                                break;
+                            case 2:
+                                fileDir = label93.Text + @"\";
+                                break;
+                            default:
+                                fileDir = label141.Text + @"\";
+                                outputLabel("目录未找到");
+                                break;
+                        }      
+                if (Directory.Exists(fileDir) == false)//不存在,就创建NE文件夹
+                {
+                    Directory.CreateDirectory(fileDir);
+                }
+
+                outputLabel("打开目录");
+                System.Diagnostics.Process.Start("explorer.exe", fileDir);
+            } //try
+            catch (Exception objException)
+            {
+                outputLabel("打开目录，失败");
+            }
+        }
+        //设置目录，s5
+        private void button30_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //显示folderBrowserDialog1控件
+                FolderBrowserDialog fbdPath = new FolderBrowserDialog();
+                fbdPath.Description = "目录选择...";
+                if (fbdPath.ShowDialog() == DialogResult.OK)
+                {
+
+                    if (fbdPath.SelectedPath.IndexOf(" ") < 0) //路径非空
+                    {
+                        string PC_Path = fbdPath.SelectedPath; //路径最后默认不加\
+                        switch (comboBox18.SelectedIndex)
+                        {
+                            case 0:
+                                label141.Text = PC_Path; //保存路径
+                                break;
+                            case 1:
+                                label89.Text = PC_Path; //保存路径
+                                break;
+                            case 2:
+                                label83.Text = PC_Path; //保存路径
+                                break;
+                            default:
+                                outputLabel("目录未找到");
+                                break;
+                        }                                                
+                        outputLabel("选择目录");
+                    }
+                    else
+                    {
+                        MessageBox.Show("错误！您选择的文件目录中带有空格，请重新选择: " + fbdPath.SelectedPath, "提示");
+                    }
+
+                }
+            }//try
+            catch (Exception objException)
+            {
+                outputLabel("选择目录，失败");
+            }
+        }
+        //上传文件，s5
+        private void button32_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                outputLabel("上传文件");
+                string fileDir ; //globalWorkPath + @"\result";  保存路径
+                switch (comboBox18.SelectedIndex)
+                        {
+                            case 0:
+                               fileDir = label141.Text + @"\"; 
+                                break;
+                            case 1:
+                                fileDir = label89.Text + @"\";
+                                break;
+                            case 2:
+                                fileDir = label93.Text + @"\";
+                                break;
+                            default:
+                                fileDir = label141.Text + @"\";
+                                outputLabel("目录未找到");
+                                break;
+                        }      
+                OpenFileDialog filePath = new OpenFileDialog();
+                filePath.InitialDirectory = fileDir; //初始路径
+                filePath.Title = "选择上传文件";
+                filePath.Filter = "All files(*.*)|*.*"; //设备控件保存的文件类型
+                filePath.FilterIndex = 1; //默认打开*.ini            
+                filePath.RestoreDirectory = true; //记忆之前打开的目录
+                filePath.FileName = "";
+
+                if (filePath.ShowDialog() == DialogResult.OK)
+                {
+                    string fileNe = filePath.FileName; //保存文件名
+                    outputLabel("选择文件");
+
+                    //拷贝到路径 
+                    File.Copy(fileNe, fileDir + Path.GetFileName(fileNe));
+                }
+            } //try
+            catch (Exception objException)
+            {
+                outputLabel("上传，失败");
+            }
+        }
+        //打开文件，s5
+        private void button33_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                outputLabel("打开文件");
+                string fileDir;  //初始路径
+                switch (comboBox18.SelectedIndex)
+                        {
+                            case 0:
+                               fileDir = label141.Text + @"\"; 
+                                break;
+                            case 1:
+                                fileDir = label89.Text + @"\";
+                                break;
+                            case 2:
+                                fileDir = label93.Text + @"\";
+                                break;
+                            default:
+                                fileDir = label141.Text + @"\";
+                                outputLabel("目录未找到");
+                                break;
+                        }      
+                
+                
+                 //globalWorkPath + @"\result";  保存路径
+
+                OpenFileDialog filePath = new OpenFileDialog();
+                filePath.InitialDirectory = fileDir; //初始路径
+                filePath.Title = "选择文件";
+                filePath.Filter = "All files(*.*)|*.*"; //设备控件保存的文件类型
+                filePath.FilterIndex = 1; //默认打开*.*     
+                filePath.RestoreDirectory = true; //记忆之前打开的目录
+                filePath.FileName = "";
+
+                if (filePath.ShowDialog() == DialogResult.OK)
+                {
+                    string fileNe = filePath.FileName; //保存文件名
+                    outputLabel("选择文件");
+
+                    //拷贝到路径 
+                    System.Diagnostics.Process.Start(fileNe);
+                }
+            } //try
+            catch (Exception objException)
+            {
+                outputLabel("打开文件，失败");
+            }
+        }
+
+        //刷新treeview，显示新的目录结构
+        private void button12_Click(object sender, EventArgs e)
+        {
+             #region 递归加载所有的目录，按照层次结构显示到TreeView 上
+
+            //获取用户输入的一个路径
+            string path = textBox1.Text.Trim();
+            //调用该方法实现将指定路径下的子文件与子目录按照层次结构加载到TreeView
+            LoadFilesAndDirectoriesToTree(path, treeViewS5.Nodes);
+            #endregion
+        }
+       
+  //将目录与文件加载到TreeView上
+        private void LoadFilesAndDirectoriesToTree(string path, TreeNodeCollection treeNodeCollection)
+        {
+            //1.先根据路径获取所有的子文件和子文件夹
+            string[] files = Directory.GetFiles(path);
+            string[] dirs = Directory.GetDirectories(path);
+            //2.把所有的子文件与子目录加到TreeView上。
+            foreach (string item in files)
+            {
+                //把每一个子文件加到TreeView上
+                treeNodeCollection.Add(Path.GetFileName(item));
+            }
+            //文件夹
+            foreach (string item in dirs)
+            {
+                TreeNode node = treeNodeCollection.Add(Path.GetFileName(item));
+
+                //由于目录，可能下面还存在子目录，所以这时要对每个目录再次进行获取子目录与子文件的操作
+                //这里进行了递归
+                LoadFilesAndDirectoriesToTree(item, node.Nodes);
+            }
+
+        }
+       
 
         #region sheet4
 

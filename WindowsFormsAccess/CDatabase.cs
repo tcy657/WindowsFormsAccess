@@ -83,7 +83,7 @@ namespace WindowsFormsAccess
 
                 tabControl1.TabPages.Remove(tabPage2); //调试用
                 tabControl1.TabPages.Remove(tabPage3);  //test
-                tabControl1.TabPages.Remove(tabPageS5File);  //file
+                //tabControl1.TabPages.Remove(tabPageS5File);  //file, s5
                 //tabControl1.TabPages.Remove(tabPageS3);
 
                 string sql1 = "select * from Users"; //重新刷新
