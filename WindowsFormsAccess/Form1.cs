@@ -26,23 +26,8 @@ namespace WindowsFormsAccess
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            achelp = new AccessHelper();        //定义变量，设置列标题；
-            //string sql1 = "select * from ycyx";
-            string sql1 = "select * from Users"; //重新刷新
-            databind1(sql1);
-
-            dataGridView1.Columns[0].Visible = false;
-            dataGridView1.Columns[1].HeaderCell.Value = "手机号码";
-            dataGridView1.Columns[2].HeaderCell.Value = "员工名称";
-            dataGridView1.Columns[3].HeaderCell.Value = "归属地区";
-            dataGridView1.Columns[4].HeaderCell.Value = "当前部门";
-            dataGridView1.Columns[5].HeaderCell.Value = "当前专项";
-            dataGridView1.Columns[6].HeaderCell.Value = "当前状态";
-
-            tabControl1.TabPages.Remove(this.tabPage2);
-            tabControl1.TabPages.Remove(this.tabPage3);
-            tabControl1.TabPages.Remove(this.tabPageS5File);
-            tabControl1.TabPages.Remove(this.tabPageS3);
+            achelp = new AccessHelper();        //定义变量，设置列标题；       
+            initDo(); //所有初始化          
 
         }
 
@@ -54,38 +39,204 @@ namespace WindowsFormsAccess
             dataGridView1.DataSource = dt;  
         }
 
-       // 加载要更新记录到更新窗体控件；
+       // 加载, 要更新记录到更新窗体控件；
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
+            string sql1 = "None"; //保存sql语句
+
+            //step1，判断是否选中
             if (dataGridView1.SelectedRows.Count < 1 || dataGridView1.SelectedRows[0].Cells[1].Value == null)
             {
-                MessageBox.Show("没有选中行。", "M员工");
+                MessageBox.Show("没有选中行。", "系统提示");
                 return;
             }
 
-            DataTable dt = new DataTable();
+            //step2, 清空所有sheet并跳到“基本信息页面”
+            foreach (Control i in groupBox1.Controls)
+            {
+                if (i is TextBox)
+                    i.Text = "";
+                else if (i is ComboBox)
+                    i.Text = "";
+            }
+
+            foreach (Control i in groupBox2.Controls)
+            {
+                if (i is TextBox)
+                    i.Text = "";
+                else if (i is ComboBox)
+                    i.Text = "";
+            }
+
+            foreach (Control i in groupBox5.Controls)
+            {
+                if (i is TextBox)
+                    i.Text = "";
+                else if (i is ComboBox)
+                {
+                    i.Text = "";
+                }
+
+                //所有下拉框，取默认值，待补
+            }
+
+            //foreach (Control i in groupBox6.Controls)
+            //{
+            //    if (i is TextBox)
+            //        i.Text = "";
+            //    else if (i is ComboBox)
+            //        i.Text = "";
+            //}
+
+            foreach (Control i in groupBox7.Controls)
+            {
+                if (i is TextBox)
+                    i.Text = "";
+                else if (i is ComboBox)
+                    i.Text = "";
+            }
+
+            foreach (Control i in groupBox8.Controls)
+            {
+                if (i is TextBox)
+                    i.Text = "";
+                else if (i is ComboBox)
+                    i.Text = "";
+            }
+
+            //step3
             object oid = dataGridView1.SelectedRows[0].Cells[0].Value;
             gOid = Convert.ToInt32(oid);  //更新全局oid
 
             readSheet1(gOid);   //读取sheet1内容到页面1
-            readSheetX(gOid);   //读取内容到页面
+
+            //读取sheet2内容到页面
+            sql1 = "select * from s2XinFuZhu where iUserID='" +gOid.ToString() + "'"; //重新刷新
+            databind(sql1, dgView2);
+            dgView2.Columns[0].Visible = false;             //dgView2, sheet2
+            dgView2.Columns[1].HeaderCell.Value = "编码";
+            dgView2.Columns[2].HeaderCell.Value = "新辅助";
+            dgView2.Columns[3].HeaderCell.Value = "住院号";
+            dgView2.Columns[4].HeaderCell.Value = "方案";
+            dgView2.Columns[5].HeaderCell.Value = "剂量";
+            dgView2.Columns[6].HeaderCell.Value = "疗程";
+            dgView2.Columns[7].HeaderCell.Value = "疗效评价";
+            dgView2.Columns[8].HeaderCell.Value = "放疗方案";
+            dgView2.Columns[9].HeaderCell.Value = "放疗疗程";
+            dgView2.Columns[10].HeaderCell.Value = "术前二次病检";
+            dgView2.Columns[11].HeaderCell.Value = "结果";
+            dgView2.Columns[12].HeaderCell.Value = "新辅助放疗";
+            dgView2.Columns[13].HeaderCell.Value = "UserID";
+
+            //读取sheet3内容到页面
+            sql1 = "select * from s3ShuHouFuZhu where iUserID='" + gOid.ToString() + "'"; //重新刷新
+            databind(sql1, dgView3);
+            dgView3.Columns[0].Visible = false;
+            dgView3.Columns[1].HeaderCell.Value = "编码";
+            dgView3.Columns[2].HeaderCell.Value = "辅助化疗";
+            dgView3.Columns[3].HeaderCell.Value = "周期";
+            dgView3.Columns[4].HeaderCell.Value = "方案";
+            dgView3.Columns[5].HeaderCell.Value = "体表面积";
+            dgView3.Columns[6].HeaderCell.Value = "实际剂量";
+            dgView3.Columns[7].HeaderCell.Value = "WBC";
+            dgView3.Columns[8].HeaderCell.Value = "Hb";
+            dgView3.Columns[9].HeaderCell.Value = "PLT";
+            dgView3.Columns[10].HeaderCell.Value = "BMI";
+            dgView3.Columns[11].HeaderCell.Value = "NRS2002";
+            dgView3.Columns[12].HeaderCell.Value = "ECOG";
+            dgView3.Columns[13].HeaderCell.Value = "复查";
+            dgView3.Columns[14].HeaderCell.Value = "CT";
+            dgView3.Columns[15].HeaderCell.Value = "MRI";
+            dgView3.Columns[16].HeaderCell.Value = "内镜";
+            dgView3.Columns[17].HeaderCell.Value = "PET";
+            dgView3.Columns[18].HeaderCell.Value = "复发";
+            dgView3.Columns[19].HeaderCell.Value = "位置";
+            dgView3.Columns[20].HeaderCell.Value = "处理方式";
+            dgView3.Columns[21].HeaderCell.Value = "剂量";
+            dgView3.Columns[22].HeaderCell.Value = "疗程";
+            dgView3.Columns[23].HeaderCell.Value = "疗效评价";
+            dgView3.Columns[24].HeaderCell.Value = "用户ID";
+            dgView3.Columns[25].HeaderCell.Value = "住院号";
+            dgView3.Columns[26].HeaderCell.Value = "靶向药物";
+            dgView3.Columns[27].HeaderCell.Value = "药物品种";
+            dgView3.Columns[27].HeaderCell.Value = "检测结果";
+            
+            
+            
+            //readSheetX(gOid);   //读取内容到页面
 
             //测试同一sheet存在多个ID和单ID
-            ycyxDo.GetListID("iUserID = 5");
+            //ycyxDo.GetListID("iUserID = 5");
+
+            //置位为查看状态
+            gFlagAdd = 0;
         }
 
         //添加记录；
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            addSheet1();
-            addSheetX(gOid);
+            //清空所有sheet并跳到“基本信息页面”
+            foreach (Control i in groupBox1.Controls)
+            {
+                if (i is TextBox)
+                    i.Text = "";
+                else if (i is ComboBox)
+                    i.Text = "";
+            }
+
+            foreach (Control i in groupBox2.Controls)
+            {
+                if (i is TextBox)
+                    i.Text = "";
+                else if (i is ComboBox)
+                    i.Text = "";
+            }
+
+            foreach (Control i in groupBox5.Controls)
+            {
+                if (i is TextBox)
+                    i.Text = "";
+                else if (i is ComboBox)
+                {
+                    i.Text = "";                    
+                }
+
+                //所有下拉框，取默认值，待补
+            }
+
+            //foreach (Control i in groupBox6.Controls)
+            //{
+            //    if (i is TextBox)
+            //        i.Text = "";
+            //    else if (i is ComboBox)
+            //        i.Text = "";
+            //}
+
+            foreach (Control i in groupBox7.Controls)
+            {
+                if (i is TextBox)
+                    i.Text = "";
+                else if (i is ComboBox)
+                    i.Text = "";
+            }
+
+            foreach (Control i in groupBox8.Controls)
+            {
+                if (i is TextBox)
+                    i.Text = "";
+                else if (i is ComboBox)
+                    i.Text = "";
+            }
+
+            //置位为新增状态
+            gFlagAdd = 1;
         }
 
         // 删除记录
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            //deleteSheet1();
-            deleteSheetX();
+            deleteSheet1();
+            //deleteSheetX();
         }
 
         //查询
@@ -93,7 +244,7 @@ namespace WindowsFormsAccess
         {
             if (textBox23.Text == "")
             {
-                //MessageBox.Show("请输入要查询的员工当前部门", "M员工");
+                //MessageBox.Show("请输入要查询的员工当前部门", "系统提示");
                 labelCheck.Text = "请输入要查询的员工当前部门";
                 string sql1 = "select * from ycyx";
                 databind1(sql1);  
@@ -173,7 +324,7 @@ namespace WindowsFormsAccess
         {
             if (textBox8.Text == "" && textBox7.Text == "" )
             {
-                MessageBox.Show("没有要添加的内容", "M员工添加");
+                MessageBox.Show("没有要添加的内容", "系统提示添加");
                 return;
             }
             else
@@ -302,7 +453,169 @@ namespace WindowsFormsAccess
         private void buttonS1Flash_Click(object sender, EventArgs e)
         {
             readSheet1(gOid);
+            readSheet2();
         }
+
+        //sheet1，加载
+        private void button17_Click(object sender, EventArgs e)
+        {
+            readSheet1(gOid);
+        }
+
+
+
+        #region sheet2
+        //加载s2信息
+        private void button15_Click(object sender, EventArgs e)
+        {
+            readSheet2();
+        }
+
+        //保存s2信息
+        private void button3_Click(object sender, EventArgs e)
+        {
+            updateSheet2();
+        }
+
+        //添加前，清空
+        private void button16_Click(object sender, EventArgs e)
+        {
+            gFlagAdd2 = 1; //新建，局部新增
+            //清空
+            foreach (Control i in groupBox1.Controls)
+            {
+                if (i is TextBox)
+                    i.Text = "";
+                else if (i is ComboBox)
+                    i.Text = "";
+            }
+        }
+
+        //删除
+         private void button18_Click(object sender, EventArgs e)
+        {
+            deleteSheet2();
+
+        }
+        
+        #endregion
+     
+
+        #region sheet3
+
+        //保存,s3
+         private void button7_Click(object sender, EventArgs e)
+         {
+             updateSheet3();
+         }
+
+        //新建,s3 
+        private void button20_Click(object sender, EventArgs e)
+         {
+             gFlagAdd3 = 1; //新建，局部新增
+             //清空
+             foreach (Control i in groupBox5.Controls)
+             {
+                 if (i is TextBox)
+                     i.Text = "";
+                 else if (i is ComboBox)
+                     i.Text = "";
+             }
+         } 
+        
+        //删除，s3
+        private void button19_Click(object sender, EventArgs e)
+        {
+            deleteSheet3();
+        }
+        //加载，s3
+        private void button21_Click(object sender, EventArgs e)
+        {
+            readSheet3();
+        }
+        #endregion
+
+        //两个tabControll联动
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (this.tabControl1.SelectedIndex)
+            {
+                //case 0:
+                //    this.tabControl2.SelectedIndex = 2;
+                //    break;
+                //case 3:
+                //    this.tabControl2.SelectedIndex = 3;
+                //    break;
+                //case 5:
+                //    this.tabControl2.SelectedIndex = 0;
+                //    break;
+                default:
+                    break;
+            }
+        }
+
+        #region 全局
+        //保存，全局，区别于每个sheet页面上按键
+        private void button25_Click(object sender, EventArgs e)
+        {
+            switch (this.tabControl1.SelectedIndex)
+            {
+                case 0:
+                    this.tabControl2.SelectedIndex = 2;
+                    break;
+                case 3:
+                    this.tabControl2.SelectedIndex = 3;
+                    break;
+                case 5:
+                    this.tabControl2.SelectedIndex = 0;
+                    break;
+                case 6:
+                    this.tabControl2.SelectedIndex = 1;
+                    break;
+                case 7:
+                    this.tabControl2.SelectedIndex = 6;
+                    break;
+                case 8:
+                    this.tabControl2.SelectedIndex = 5;
+                    break;
+                default:
+                    
+                    break;
+            }
+        }
+        //新建，全局
+        private void button11_Click(object sender, EventArgs e)
+        {
+
+        }
+        //删除，全局
+        private void button9_Click(object sender, EventArgs e)
+        {
+
+        }
+        //加载，全局
+        private void button24_Click(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
+        
+
+        #region sheet4
+
+        #endregion
+
+        #region sheet5
+
+        #endregion
+
+        #region sheet6
+
+        #endregion
+
+        #region sheet7
+
+        #endregion
 
     }
 }

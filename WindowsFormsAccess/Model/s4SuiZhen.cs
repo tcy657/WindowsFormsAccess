@@ -6,7 +6,7 @@
 *
 * Ver    变更日期             负责人  变更内容
 * ───────────────────────────────────
-* V0.01  2018/5/22 19:46:15   N/A    初版
+* V0.01  2018/5/27 22:52:07   N/A    初版
 *
 * Copyright (c) 2012 Maticsoft Corporation. All rights reserved.
 *┌──────────────────────────────────┐
@@ -35,7 +35,7 @@ namespace Maticsoft.Model
 		private string _smri;
 		private string _sneijing;
 		private string _spet;
-		private DateTime? _bfufa;
+		private bool _bfufa= false;
 		private string _iuserid;
 		/// <summary>
 		/// 
@@ -112,7 +112,7 @@ namespace Maticsoft.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public DateTime? bFuFa
+		public bool bFuFa
 		{
 			set{ _bfufa=value;}
 			get{return _bfufa;}

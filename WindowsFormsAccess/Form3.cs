@@ -37,7 +37,7 @@ namespace WindowsFormsAccess
                     if (ret > -1)  
                     {  
                         this.Hide();  
-                        MessageBox.Show("更新成功", "M员工查询");  
+                        MessageBox.Show("更新成功", "查询");  
                     }  
                 }  
                 catch (Exception ex)  
