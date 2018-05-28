@@ -99,7 +99,20 @@ namespace WindowsFormsAccess
                 
             }
 
-       
+            //根据“true/false”转换为汉字(hanzi)“是/否”
+            public string bool2HanZi(bool stringBool)
+            {
+                string ret = "是";
+                if (false == stringBool) { ret = "否"; }
+                return ret;
+            }
+            //根据汉字(hanzi)“是/否”转换为“true/false”
+            public bool hanZi2Bool(string stringBin)
+            {
+                bool ret = true; //
+                if ("否" == stringBin) { ret = false; }
+                return ret;
+            }       
 
         #endregion 公用方法
 
@@ -713,8 +726,7 @@ namespace WindowsFormsAccess
             ms4SuiZhen.sMRI = textBox57.Text;
             ms4SuiZhen.sNeiJing = textBox46.Text;
             ms4SuiZhen.sPET = textBox52.Text;
-            ms4SuiZhen.bFuFa = true; //
-            if ("否" == comboBox21.Text) { ms4SuiZhen.bFuFa = false; }
+            ms4SuiZhen.bFuFa = hanZi2Bool( comboBox21.Text );//根据汉字“是/否”转换为“true/false”
 
             bool ret = dos4SuiZhen.Add(ms4SuiZhen);
 
@@ -778,8 +790,7 @@ namespace WindowsFormsAccess
             textBox57.Text = ms4SuiZhen.sMRI;
             textBox46.Text = ms4SuiZhen.sNeiJing;
             textBox52.Text = ms4SuiZhen.sPET;
-            comboBox21.Text = "是"; //
-            if (false == ms4SuiZhen.bFuFa) { comboBox21.Text = "否"; }
+            comboBox21.Text = bool2HanZi(ms4SuiZhen.bFuFa); //根据“true/false”转换为汉字“是/否”
 
             string sql1 = "select * from s4SuiZhen where iUserID = '" + gOid.ToString() + "'"; //重新刷新，只显示本用户的信息
             //刷新主页面，防止后台改了access数据库后，基本信息页面刷新了，主页面不刷新。

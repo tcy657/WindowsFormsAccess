@@ -38,3 +38,13 @@ D:\code_ipran\GitHub\WindowsFormsAccess\WindowsFormsAccess\obj\Debug\WindowsForm
 D:\code_ipran\GitHub\WindowsFormsAccess\WindowsFormsAccess\obj\Debug\WindowsFormsAccess.Form3.resources
 D:\code_ipran\GitHub\WindowsFormsAccess\WindowsFormsAccess\obj\Debug\WindowsFormsAccess.Properties.Resources.resources
 D:\code_ipran\GitHub\WindowsFormsAccess\WindowsFormsAccess\obj\Debug\WindowsFormsAccess.csproj.GenerateResource.Cache
+Y:\project\20180508-access\wfsAccessSvn\WindowsFormsAccess\obj\Debug\WindowsFormsAccess.csproj.ResolveComReference.cache
+Y:\project\20180508-access\wfsAccessSvn\WindowsFormsAccess\obj\Debug\WindowsFormsAccess.exe
+Y:\project\20180508-access\wfsAccessSvn\WindowsFormsAccess\obj\Debug\WindowsFormsAccess.pdb
+Y:\project\20180508-access\wfsAccessSvn\WindowsFormsAccess\bin\Debug\WindowsFormsAccess.exe
+Y:\project\20180508-access\wfsAccessSvn\WindowsFormsAccess\bin\Debug\WindowsFormsAccess.pdb
+Y:\project\20180508-access\wfsAccessSvn\WindowsFormsAccess\obj\Debug\ResolveAssemblyReference.cache
+Y:\project\20180508-access\wfsAccessSvn\WindowsFormsAccess\obj\Debug\WindowsFormsAccess.Form1.resources
+Y:\project\20180508-access\wfsAccessSvn\WindowsFormsAccess\obj\Debug\WindowsFormsAccess.Form3.resources
+Y:\project\20180508-access\wfsAccessSvn\WindowsFormsAccess\obj\Debug\WindowsFormsAccess.Properties.Resources.resources
+Y:\project\20180508-access\wfsAccessSvn\WindowsFormsAccess\obj\Debug\WindowsFormsAccess.csproj.GenerateResource.Cache
