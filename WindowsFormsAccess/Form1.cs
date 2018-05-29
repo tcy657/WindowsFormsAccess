@@ -407,47 +407,11 @@ namespace WindowsFormsAccess
             output("Count Exist: " +  ret1.ToString());
         }
 
-        //显示文件夹存储位置
-        /// 加载逻辑磁盘文件  
-        private void button2_Click(object sender, EventArgs e)
-        {
-            // DriveInfo[] myDrivers = DriveInfo.GetDrives();  //添加所有磁盘
-            //foreach (DriveInfo di in myDrivers)  
-            //{  
-            //    if (di.IsReady)  
-            //    {  
-            //        TreeNode tNode = new TreeNode(di.Name.Split(':')[0]);  
-            //        tNode.Name = di.Name;  
-            //        tNode.Tag = tNode.Name;
-            //        tNode.ImageIndex = 3;         //获取结点显示图片  ,IconIndexes.FixedDrive
-            //        tNode.SelectedImageIndex = 3; //选择显示图片, IconIndexes.FixedDrive  
-            //        tNode.Nodes.Add("DUMMY");
-            //        treeViewS5.Nodes.Add(tNode); //加载驱动节点
-                    
-            //    }  
-            //}
-            TreeNode tNode = new TreeNode(@"Y:\project\20180508-access\wfsAccessSvn\test");
-            tNode.Name = "文档结构";
-            tNode.Tag = tNode.Name;
-            tNode.ImageIndex = 3;         //获取结点显示图片  ,IconIndexes.FixedDrive
-            tNode.SelectedImageIndex = 3; //选择显示图片, IconIndexes.FixedDrive  
-            tNode.Nodes.Add("DUMMY");
-            treeViewS5.Nodes.Add(tNode); //加载驱动节点
-
-            //添加鼠标右键的事件  
-            //this.treeViewS5.ContextMenuStrip = new TreeViewContextMenu().Load();
-        }
 
         /// TreeView必须处理的两个事件之一  
         private void treeViewS5_AfterSelect(object sender, TreeViewEventArgs e)
         {
             e.Node.Expand();  
-        }
-
-        /// TreeView必须处理的两个事件之一  
-        private void treeViewS5_BeforeExpand(object sender, TreeViewCancelEventArgs e)
-        {
-            TreeViewItems.Add(sender, e);            
         }
 
         //保存sheet1-基本信息
@@ -545,19 +509,49 @@ namespace WindowsFormsAccess
         //两个tabControll联动
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch (this.tabControl1.SelectedIndex)
+            tabPage1Index = this.tabControl1.SelectedIndex;
+            switch (tabPage1Index)
             {
-                //case 0:
-                //    this.tabControl2.SelectedIndex = 2;
-                //    break;
-                //case 3:
-                //    this.tabControl2.SelectedIndex = 3;
-                //    break;
-                //case 5:
-                //    this.tabControl2.SelectedIndex = 0;
-                //    break;
-                default:
+                case 0:
+                    tabPage2Index = 2;
                     break;
+                case 1:     
+                    tabPage2Index = 5;
+                    break;
+                case 2:
+
+                    tabPage2Index = 3;
+                    button12.PerformClick(); //显示treeview
+                    break;
+                case 3:    
+                    tabPage2Index = 1;  
+                    break;
+                case 4:
+             
+                    tabPage2Index = 4;
+                    
+                    break;
+                case 5:
+           
+                    tabPage2Index = 0;
+                    break;
+                case 6:
+           
+                    tabPage2Index = 1;
+                    break;
+                case 7:
+                    tabPage1Index = 7;
+                    tabPage2Index = 6;
+                    break;
+                
+                default:
+                    tabPage1Index = 100;
+                    break;
+            }
+            outputLabel("tabpage: " + tabPage1Index.ToString());
+            if (100 != tabPage2Index)
+            {
+                this.tabControl2.SelectedIndex = tabPage2Index;
             }
         }
 
@@ -568,26 +562,41 @@ namespace WindowsFormsAccess
             switch (this.tabControl1.SelectedIndex)
             {
                 case 0:
-                    this.tabControl2.SelectedIndex = 2;
+                    tabPage1Index = 0;
+                    tabPage2Index = 2;
                     break;
                 case 3:
-                    this.tabControl2.SelectedIndex = 3;
+                    tabPage1Index = 3;
+                    tabPage2Index = 3;
+                    break;
+                case 4:
+                    tabPage1Index = 4;
+                    tabPage2Index = 4;
                     break;
                 case 5:
-                    this.tabControl2.SelectedIndex = 0;
+                    tabPage1Index = 5;
+                    tabPage2Index = 0;
                     break;
                 case 6:
-                    this.tabControl2.SelectedIndex = 1;
+                    tabPage1Index = 6;
+                    tabPage2Index = 1;
                     break;
                 case 7:
-                    this.tabControl2.SelectedIndex = 6;
+                    tabPage1Index = 7;
+                    tabPage2Index = 6;
                     break;
                 case 8:
-                    this.tabControl2.SelectedIndex = 5;
+                    tabPage1Index = 8;
+                    tabPage2Index = 5;
                     break;
                 default:
-                    
+                    tabPage1Index = 100;
                     break;
+            }
+
+            if (100 != tabPage2Index)
+            {
+                this.tabControl2.SelectedIndex = tabPage2Index;
             }
         }
         //新建，全局
@@ -900,13 +909,32 @@ namespace WindowsFormsAccess
         //刷新treeview，显示新的目录结构
         private void button12_Click(object sender, EventArgs e)
         {
-             #region 递归加载所有的目录，按照层次结构显示到TreeView 上
+            ImageList myImageList = new ImageList();
+            //myImageList.Images.Add(Image.FromFile("Default.gif"));
+            //myImageList.Images.Add(Image.FromFile("SelectedDefault.gif"));
+            //myImageList.Images.Add(Image.FromFile("Root.gif"));
+            //myImageList.Images.Add(Image.FromFile("UnselectedCustomer.gif"));
+            //myImageList.Images.Add(Image.FromFile("SelectedCustomer.gif"));
+            //myImageList.Images.Add(Image.FromFile("UnselectedOrder.gif"));
+            //myImageList.Images.Add(Image.FromFile("SelectedOrder.gif"));
+            myImageList.Images.Add(Image.FromFile(@"images\4.gif"));  //磁盘
+            myImageList.Images.Add(Image.FromFile(@"images\5.gif"));  //灯泡
+            myImageList.Images.Add(Image.FromFile(@"images\3.gif"));
 
-            //获取用户输入的一个路径
-            string path = textBox1.Text.Trim();
-            //调用该方法实现将指定路径下的子文件与子目录按照层次结构加载到TreeView
-            LoadFilesAndDirectoriesToTree(path, treeViewS5.Nodes);
+            // Assign the ImageList to the TreeView.
+            treeViewS5.ImageList = myImageList;
+
+            // Set the TreeView control's default image and selected image indexes.
+            treeViewS5.ImageIndex = 0;
+            treeViewS5.SelectedImageIndex = 1;
+            
+            
+            #region 递归加载所有的目录，按照层次结构显示到TreeView 上            
+            string path = @"Y:\project\20180508-access\wfsAccessSvn\test";  //获取用户输入的一个路径
+            treeViewS5.Nodes.Clear();  //清除所有结构，避免二次刷新时重复显示            
+            LoadFilesAndDirectoriesToTree(path, treeViewS5.Nodes);  //调用该方法实现将指定路径下的子文件与子目录按照层次结构加载到TreeView
             #endregion
+                        
         }
        
   //将目录与文件加载到TreeView上

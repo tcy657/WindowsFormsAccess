@@ -29,6 +29,9 @@ namespace WindowsFormsAccess
         int gFlagAdd6 = 0; //默认为查看，其他值则为新增
         int gFlagAdd7 = 0; //默认为查看，其他值则为新增
 
+        int tabPage1Index = 100; //tabControl1索引
+        int tabPage2Index = 100; //tabControl2索引
+
             //日志输出函数
             private void output(string log)
             {
