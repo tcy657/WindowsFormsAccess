@@ -80,13 +80,13 @@ namespace WindowsFormsAccess
                 //所有下拉框，取默认值，待补
             }
 
-            //foreach (Control i in groupBox6.Controls)
-            //{
-            //    if (i is TextBox)
-            //        i.Text = "";
-            //    else if (i is ComboBox)
-            //        i.Text = "";
-            //}
+            //sheet5
+            textBox81.Text = ""; //清空
+            textBox81.Enabled = false; 
+            button12.Enabled = false; //禁用treeview
+            button31.Enabled = false; //禁用按键
+            button33.Enabled = false; //禁用按键
+
 
             foreach (Control i in groupBox7.Controls)
             {
@@ -160,8 +160,18 @@ namespace WindowsFormsAccess
             dgView3.Columns[26].HeaderCell.Value = "靶向药物";
             dgView3.Columns[27].HeaderCell.Value = "药物品种";
             dgView3.Columns[27].HeaderCell.Value = "检测结果";
-            
-            
+
+            //读取sheet4内容到页面
+
+            //读取sheet5内容到页面
+            sql1 = "select * from s5ShuJuCunZhu where iUserID='" + gOid.ToString() + "'"; //重新刷新
+            databind(sql1, dgView5);
+            dgView5.Columns[0].Visible = false;
+            dgView5.Columns[1].HeaderCell.Value = "档案号/编码";
+            dgView5.Columns[2].HeaderCell.Value = "CT";
+            dgView5.Columns[3].HeaderCell.Value = "磁共振";
+            dgView5.Columns[4].HeaderCell.Value = "病理";
+            dgView5.Columns[5].HeaderCell.Value = "用户ID";
             
             //readSheetX(gOid);   //读取内容到页面
 
@@ -204,13 +214,12 @@ namespace WindowsFormsAccess
                 //所有下拉框，取默认值，待补
             }
 
-            //foreach (Control i in groupBox6.Controls)
-            //{
-            //    if (i is TextBox)
-            //        i.Text = "";
-            //    else if (i is ComboBox)
-            //        i.Text = "";
-            //}
+            //sheet5
+            textBox81.Text = ""; //清空
+            button12.Enabled = false; //禁用treeview
+            button31.Enabled = false; //禁用按键
+            button33.Enabled = false; //禁用按键
+            textBox81.Enabled = false;
 
             foreach (Control i in groupBox7.Controls)
             {
@@ -236,7 +245,7 @@ namespace WindowsFormsAccess
         private void buttonDelete_Click(object sender, EventArgs e)
         {
             deleteSheet1();
-            //deleteSheetX();
+            //待增加sheet2-sheet7的删除
         }
 
         //查询
@@ -509,39 +518,38 @@ namespace WindowsFormsAccess
         //两个tabControll联动
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            tabPage1Index = this.tabControl1.SelectedIndex;
+            tabPage1Index = this.tabControl1.SelectedIndex; //读取当前操作tab页
             switch (tabPage1Index)
             {
                 case 0:
-                    tabPage2Index = 2;
+                    tabPage2Index = 0;
                     break;
                 case 1:     
-                    tabPage2Index = 5;
+                    tabPage2Index = 1;
                     break;
                 case 2:
 
-                    tabPage2Index = 3;
-                    button12.PerformClick(); //显示treeview
+                    tabPage2Index = 2;                    
                     break;
                 case 3:    
-                    tabPage2Index = 1;  
+                    tabPage2Index = 3;  
                     break;
-                case 4:
-             
-                    tabPage2Index = 4;
-                    
+                case 4:             
+                    tabPage2Index = 4;                    
                     break;
-                case 5:
-           
-                    tabPage2Index = 0;
+                case 5:           
+                    tabPage2Index = 5;
+                    textBox81.Text = ""; //清空
+                    button12.Enabled = false; //禁用treeview
+                    button31.Enabled = false; //禁用按键
+                    button33.Enabled = false; //禁用按键
+                    textBox81.Enabled = false;
                     break;
                 case 6:
-           
-                    tabPage2Index = 1;
+                    tabPage2Index = 6;
                     break;
                 case 7:
-                    tabPage1Index = 7;
-                    tabPage2Index = 6;
+                    tabPage2Index = 7;
                     break;
                 
                 default:
@@ -562,64 +570,163 @@ namespace WindowsFormsAccess
             switch (this.tabControl1.SelectedIndex)
             {
                 case 0:
-                    tabPage1Index = 0;
-                    tabPage2Index = 2;
+
+                    break;
+                case 1:
+
+                    break;
+                case 2:
+
                     break;
                 case 3:
-                    tabPage1Index = 3;
-                    tabPage2Index = 3;
-                    break;
-                case 4:
-                    tabPage1Index = 4;
-                    tabPage2Index = 4;
+
+                    break;                
+                case 4:  //sheet5
+                    updateSheet5(); //保存
                     break;
                 case 5:
-                    tabPage1Index = 5;
-                    tabPage2Index = 0;
+
                     break;
                 case 6:
-                    tabPage1Index = 6;
-                    tabPage2Index = 1;
+
                     break;
                 case 7:
-                    tabPage1Index = 7;
-                    tabPage2Index = 6;
-                    break;
-                case 8:
-                    tabPage1Index = 8;
-                    tabPage2Index = 5;
+
                     break;
                 default:
-                    tabPage1Index = 100;
+
                     break;
             }
 
-            if (100 != tabPage2Index)
-            {
-                this.tabControl2.SelectedIndex = tabPage2Index;
-            }
         }
         //新建，全局
         private void button11_Click(object sender, EventArgs e)
         {
+            switch (this.tabControl1.SelectedIndex)
+            {
+                case 0:
 
+                    break;
+                case 1:
+
+                    break;
+                case 2:
+
+                    break;
+                case 3:
+
+                    break;
+                case 4: //sheet5
+
+                    gFlagAdd5 = 1; //新建，局部新增
+                    //清空
+                   textBox81.Text = "";
+                   treeViewS5.Nodes.Clear(); //清空treeview                 
+                   button12.Enabled = false; //禁用刷新按键
+                   button31.Enabled = false; //禁用按键
+                   button33.Enabled = false; //禁用按键
+                   textBox81.Enabled = true;
+                   break;
+                case 5:
+                    
+                    break;
+                case 6:
+
+                    break;
+                case 7:
+
+                    break;
+                default:
+
+                    break;
+            }                       
+            
         }
         //删除，全局
         private void button9_Click(object sender, EventArgs e)
         {
+            switch (this.tabControl1.SelectedIndex)
+            {
+                case 0:
+
+                    break;
+                case 1:
+
+                    break;
+                case 2:
+
+                    break;
+                case 3:
+
+                    break;
+                case 4: //sheet5
+
+                    deleteSheet5();
+                    //清空
+                    textBox81.Text = "";
+                    treeViewS5.Nodes.Clear(); //清空treeview                 
+                    button12.Enabled = false; //禁用刷新按键
+                    button31.Enabled = false; //禁用按键
+                    button33.Enabled = false; //禁用按键
+                    textBox81.Enabled = false;
+                    break;
+                case 5:
+                    
+                    break;
+                case 6:
+
+                    break;
+                case 7:
+
+                    break;
+                default:
+
+                    break;
+            }  
 
         }
         //加载，全局
         private void button24_Click(object sender, EventArgs e)
         {
+            switch (this.tabControl1.SelectedIndex)
+            {
+                case 0:
 
+                    break;
+                case 1:
+
+                    break;
+                case 2:
+
+                    break;
+                case 3:
+
+                    break;
+                case 4: //sheet5， 加载
+                    readSheet5(); 
+                    //使能                 
+                    button12.Enabled = true; //使能刷新按键
+                    button31.Enabled = true; //
+                    button33.Enabled = true; //
+                    textBox81.Enabled = true;
+                    //Delay(1000); //延时
+                    button12.PerformClick(); //显示treeview
+                    break;
+                case 5:
+                    
+                    break;
+                case 6:
+
+                    break;
+                case 7:
+
+                    break;
+                default:
+
+                    break;
+            }  
         }
         #endregion
-
-        private void tabPage6_Click(object sender, EventArgs e)
-        {
-
-        }
 
         //打开，路径1
         private void button26_Click(object sender, EventArgs e)
@@ -738,28 +845,31 @@ namespace WindowsFormsAccess
         {
             try
             {
-                string fileDir ; //globalWorkPath + @"\result";  保存路径
-                 switch (comboBox18.SelectedIndex)
-                        {
-                            case 0:
-                               fileDir = label141.Text + @"\"; 
-                                break;
-                            case 1:
-                                fileDir = label89.Text + @"\";
-                                break;
-                            case 2:
-                                fileDir = label93.Text + @"\";
-                                break;
-                            default:
-                                fileDir = label141.Text + @"\";
-                                outputLabel("目录未找到");
-                                break;
-                        }      
-                if (Directory.Exists(fileDir) == false)//不存在,就创建NE文件夹
+                if (textBox81.Text == "") //档案号不能为空
                 {
-                    Directory.CreateDirectory(fileDir);
+                    MessageBox.Show("档案号不能为空");
+                    return;
                 }
 
+                string fileDir = ftpRootPath + textBox81.Text.Trim();
+                if (Directory.Exists(fileDir) == false)//不存在,就创建NE文件夹
+                {
+                    Directory.CreateDirectory(fileDir); //以档案号创建主文件夹                    
+                }
+
+                if (Directory.Exists(fileDir + @"/CT") == false)//不存在,就创建NE文件夹
+                {
+                     Directory.CreateDirectory(fileDir + @"/CT"); //
+                }
+                if (Directory.Exists(fileDir + @"/磁共振") == false)//不存在,就创建NE文件夹
+                {
+                     Directory.CreateDirectory(fileDir + @"/磁共振"); //
+                }
+                if (Directory.Exists(fileDir + @"/病理") == false)//不存在,就创建NE文件夹
+                {
+                    Directory.CreateDirectory(fileDir + @"/病理"); //
+                }                                  
+                    
                 outputLabel("打开目录");
                 System.Diagnostics.Process.Start("explorer.exe", fileDir);
             } //try
@@ -862,23 +972,13 @@ namespace WindowsFormsAccess
             try
             {
                 outputLabel("打开文件");
-                string fileDir;  //初始路径
-                switch (comboBox18.SelectedIndex)
-                        {
-                            case 0:
-                               fileDir = label141.Text + @"\"; 
-                                break;
-                            case 1:
-                                fileDir = label89.Text + @"\";
-                                break;
-                            case 2:
-                                fileDir = label93.Text + @"\";
-                                break;
-                            default:
-                                fileDir = label141.Text + @"\";
-                                outputLabel("目录未找到");
-                                break;
-                        }      
+                if (textBox81.Text == "") //档案号不能为空
+                {
+                    MessageBox.Show("档案号不能为空");
+                    return;
+                }
+
+                string fileDir = ftpRootPath + textBox81.Text.Trim();
                 
                 
                  //globalWorkPath + @"\result";  保存路径
@@ -908,39 +1008,23 @@ namespace WindowsFormsAccess
 
         //刷新treeview，显示新的目录结构
         private void button12_Click(object sender, EventArgs e)
-        {
-            ImageList myImageList = new ImageList();
-            //myImageList.Images.Add(Image.FromFile("Default.gif"));
-            //myImageList.Images.Add(Image.FromFile("SelectedDefault.gif"));
-            //myImageList.Images.Add(Image.FromFile("Root.gif"));
-            //myImageList.Images.Add(Image.FromFile("UnselectedCustomer.gif"));
-            //myImageList.Images.Add(Image.FromFile("SelectedCustomer.gif"));
-            //myImageList.Images.Add(Image.FromFile("UnselectedOrder.gif"));
-            //myImageList.Images.Add(Image.FromFile("SelectedOrder.gif"));
-            myImageList.Images.Add(Image.FromFile(@"images\4.gif"));  //磁盘
-            myImageList.Images.Add(Image.FromFile(@"images\5.gif"));  //灯泡
-            myImageList.Images.Add(Image.FromFile(@"images\3.gif"));
-
-            // Assign the ImageList to the TreeView.
-            treeViewS5.ImageList = myImageList;
-
-            // Set the TreeView control's default image and selected image indexes.
-            treeViewS5.ImageIndex = 0;
-            treeViewS5.SelectedImageIndex = 1;
-            
+        {              
             
             #region 递归加载所有的目录，按照层次结构显示到TreeView 上            
-            string path = @"Y:\project\20180508-access\wfsAccessSvn\test";  //获取用户输入的一个路径
+            string path = ftpRootPath + textBox81.Text.Trim();  //获取用户输入的一个路径
             treeViewS5.Nodes.Clear();  //清除所有结构，避免二次刷新时重复显示            
             LoadFilesAndDirectoriesToTree(path, treeViewS5.Nodes);  //调用该方法实现将指定路径下的子文件与子目录按照层次结构加载到TreeView
             #endregion
                         
         }
        
-  //将目录与文件加载到TreeView上
+        //将目录与文件加载到TreeView上
         private void LoadFilesAndDirectoriesToTree(string path, TreeNodeCollection treeNodeCollection)
         {
             //1.先根据路径获取所有的子文件和子文件夹
+            //if (false == Directory.Exists(path)) //路径不存在，返回
+            //    return;
+
             string[] files = Directory.GetFiles(path);
             string[] dirs = Directory.GetDirectories(path);
             //2.把所有的子文件与子目录加到TreeView上。
@@ -959,6 +1043,24 @@ namespace WindowsFormsAccess
                 LoadFilesAndDirectoriesToTree(item, node.Nodes);
             }
 
+        }
+
+        // tabControl2_SelectedIndexChanged标签页切换
+        private void tabControl2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+            outputLabel("切换标签页");
+            tabPage2Index = this.tabControl2.SelectedIndex;
+
+            if ((0 <= tabPage2Index) && (7 >= tabPage2Index))
+            {
+                tabPage1Index = tabPage2Index;  //保存值
+                this.tabControl1.SelectedIndex = tabPage1Index;
+            }
+            else
+            {
+                tabPage1Index = 100; //不存在的值
+            }
         }
        
 

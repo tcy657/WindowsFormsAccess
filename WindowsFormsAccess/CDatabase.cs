@@ -7,6 +7,7 @@ using System.Data.OleDb;
 using System.Data;
 using System.IO;
 using System.Collections;
+using System.Drawing;
 
 namespace WindowsFormsAccess
 {
@@ -31,6 +32,8 @@ namespace WindowsFormsAccess
 
         int tabPage1Index = 100; //tabControl1索引
         int tabPage2Index = 100; //tabControl2索引
+
+        string ftpRootPath = @"d:\ftp\"; //文件存放位置
 
             //日志输出函数
             private void output(string log)
@@ -87,7 +90,7 @@ namespace WindowsFormsAccess
                 tabControl1.TabPages.Remove(tabPage2); //调试用
                 tabControl1.TabPages.Remove(tabPage3);  //test
                 //tabControl1.TabPages.Remove(tabPageS5File);  //file, s5
-                //tabControl1.TabPages.Remove(tabPageS3);
+                tabControl1.TabPages.Remove(tabPage6);
 
                 string sql1 = "select * from Users"; //重新刷新
                 databind(sql1, dataGridView1);
@@ -99,6 +102,21 @@ namespace WindowsFormsAccess
                 dataGridView1.Columns[5].HeaderCell.Value = "当前专项";
                 dataGridView1.Columns[6].HeaderCell.Value = "当前状态";
                 
+
+                //初始化treeview, sheet5
+                ImageList myImageList = new ImageList();
+                myImageList.Images.Add(Image.FromFile(@"images\4.gif"));  //磁盘
+                myImageList.Images.Add(Image.FromFile(@"images\5.gif"));  //灯泡
+                myImageList.Images.Add(Image.FromFile(@"images\3.gif"));
+
+                // Assign the ImageList to the TreeView.
+                treeViewS5.ImageList = myImageList;
+
+                // Set the TreeView control's default image and selected image indexes.
+                treeViewS5.ImageIndex = 0;
+                treeViewS5.SelectedImageIndex = 1;
+
+                //
                 
             }
 
@@ -115,7 +133,26 @@ namespace WindowsFormsAccess
                 bool ret = true; //
                 if ("否" == stringBin) { ret = false; }
                 return ret;
-            }       
+            }
+
+            /// <summary>
+            ///延时
+            /// </summary>
+            /// <param name="delayTime"></param>
+            /// <returns></returns>
+            public static bool Delay(int delayTime)
+            {
+                DateTime now = DateTime.Now;
+                int s;
+                do
+                {
+                    TimeSpan spand = DateTime.Now - now;
+                    s = spand.Seconds;
+                    Application.DoEvents();
+                }
+                while (s < delayTime);
+                return true;
+            }
 
         #endregion 公用方法
 
@@ -873,7 +910,167 @@ namespace WindowsFormsAccess
         #endregion
 
         #region sheet5
+        private Maticsoft.Model.s5ShuJuCunZhu ms5ShuJuCunZhu = new Maticsoft.Model.s5ShuJuCunZhu();
+        Maticsoft.DAL.s5ShuJuCunZhu dos5ShuJuCunZhu = new Maticsoft.DAL.s5ShuJuCunZhu();
 
+
+        //添加记录1-基本信息；
+        private void addSheet5()
+        {
+            if (textBox81.Text == "") //档案号
+            {
+                output("档案号不能为空");
+                return;
+            }
+
+            //ms5ShuJuCunZhu.ID                =  textBox.Text Text ;
+            ms5ShuJuCunZhu.iUserID = gOid.ToString();
+            ms5ShuJuCunZhu.sBianHao = textBox81.Text;
+            ms5ShuJuCunZhu.sCT = "default";
+            ms5ShuJuCunZhu.sCiGongZheng = "default";
+            ms5ShuJuCunZhu.sBingLi = "default";
+
+            bool ret = dos5ShuJuCunZhu.Add(ms5ShuJuCunZhu);
+
+            string sql1 = "select * from s5ShuJuCunZhu where iUserID = '" + gOid.ToString() + "'"; //重新刷新，只显示本用户的信息
+            databind(sql1, dgView5);
+
+            //清空
+
+
+            //显示
+            output("Sheet5添加成功!");
+
+        }
+
+        //删除记录1-基本信息；
+        private void deleteSheet5()
+        {
+            if (dgView5.SelectedRows.Count < 1 || dgView5.SelectedRows[0].Cells[1].Value == null)
+            {
+                MessageBox.Show("没有选中行。", "系统提示");
+            }
+            else
+            {
+                object oid = dgView5.SelectedRows[0].Cells[0].Value;
+                if (DialogResult.No == MessageBox.Show("将删除第 " + (dgView5.CurrentCell.RowIndex + 1).ToString() + " 行，确定？", "系统提示", MessageBoxButtons.YesNo))
+                {
+                    return;
+                }
+                else
+                {
+                    bool ret = dos5ShuJuCunZhu.Delete(Convert.ToInt32(oid));
+                }
+                string sql1 = "select * from s5ShuJuCunZhu where iUserID = '" + gOid.ToString() + "'"; //重新刷新，只显示本用户的信息
+                databind(sql1, dgView5);
+
+                //显示
+                output("Sheet5删除成功!");
+            }
+        }
+
+        //基本信息-加载；
+        private void readSheet5()
+        {
+            if (dgView5.SelectedRows.Count < 1 || dgView5.SelectedRows[0].Cells[1].Value == null)
+            {
+                MessageBox.Show("没有选中行。", "系统提醒");
+                return;
+            }
+
+            object oid = dgView5.SelectedRows[0].Cells[0].Value;
+            gOid5 = Convert.ToInt32(oid);  //更新全局oid
+
+            ms5ShuJuCunZhu = dos5ShuJuCunZhu.GetModel(Convert.ToInt32(oid)); //读取数据库数据到model，中转
+
+            //model赋值给窗体
+            textBox81.Text = ms5ShuJuCunZhu.sBianHao;
+
+            //若档案号主目录不存在，则创建。
+            string fileDir = ftpRootPath + textBox81.Text;
+            if (false == Directory.Exists(fileDir))
+            {
+                Directory.CreateDirectory(fileDir);
+            }
+
+            string sql1 = "select * from s5ShuJuCunZhu where iUserID = '" + gOid.ToString() + "'"; //重新刷新，只显示本用户的信息
+            //刷新主页面，防止后台改了access数据库后，基本信息页面刷新了，主页面不刷新。
+            databind(sql1, dgView5);
+
+            gFlagAdd5 = 0; //设置局部更新标志位
+
+
+            //显示
+            output("Sheet5加载成功!");
+        }
+
+        //基本信息-更新；
+        private bool updateSheet5()
+        {
+            bool result = false; //返回值
+            try
+            {
+                if (textBox81.Text == "") //档案号不能为空
+                {
+                    MessageBox.Show("档案号不能为空");
+                    return false;
+                }
+                
+                //更新前，重命名
+                string fileDir = ftpRootPath + textBox81.Text.Trim(); //获取新路径
+                string fileDirOld = ftpRootPath + ms5ShuJuCunZhu.sBianHao;
+
+                if (true == Directory.Exists(fileDirOld))
+                {
+                    Directory.Move(fileDirOld, fileDir);
+                }
+
+                //更新
+                ms5ShuJuCunZhu.ID = gOid5;
+                ms5ShuJuCunZhu.iUserID = gOid.ToString();
+                ms5ShuJuCunZhu.sBianHao = textBox81.Text;
+                ms5ShuJuCunZhu.sCT = "default";
+                ms5ShuJuCunZhu.sCiGongZheng = "default";
+                ms5ShuJuCunZhu.sBingLi = "default";
+
+                bool ret = false;
+                if (1 == gFlagAdd || 1 == gFlagAdd5)  //全局新增或单条新增，
+                {
+                    ret = dos5ShuJuCunZhu.Add(ms5ShuJuCunZhu);
+                }
+                else if (false == dos5ShuJuCunZhu.Exists(gOid5)) //若无记录，则点击保存也视为增加
+                    ret = dos5ShuJuCunZhu.Add(ms5ShuJuCunZhu);
+                else  //更新
+                {
+                    ret = dos5ShuJuCunZhu.Update(ms5ShuJuCunZhu);
+                }
+
+                gFlagAdd5 = 0; //局部新增还原
+
+                if (true == ret) //显示
+                {
+                    outputLabel("Sheet5更新成功");
+                    result = true;
+                }
+                else
+                {
+                    outputLabel("Sheet5更新失败");
+                    result = false;
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                outputLabel(ex.Message);
+                return false;
+            }
+
+            string sql1 = "select * from s5ShuJuCunZhu where iUserID = '" + gOid.ToString() + "'"; //重新刷新，只显示本用户的信息
+            databind(sql1, dgView5);
+
+            return result;
+        }
         #endregion
 
         #region sheet6
