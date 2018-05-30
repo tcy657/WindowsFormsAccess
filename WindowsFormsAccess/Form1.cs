@@ -79,6 +79,21 @@ namespace WindowsFormsAccess
 
                 //所有下拉框，取默认值，待补
             }
+            
+            //sheet 4; //清空
+            foreach (Control i in groupBox7.Controls)  //清空和使能
+            {
+                if (i is TextBox)
+                {
+                    i.Text = "";
+                    i.Enabled = false;
+                }
+                else if (i is ComboBox)
+                {
+                    i.Text = "";
+                    i.Enabled = false;
+                }
+            }
 
             //sheet5
             textBox81.Text = ""; //清空
@@ -86,14 +101,21 @@ namespace WindowsFormsAccess
             button12.Enabled = false; //禁用treeview
             button31.Enabled = false; //禁用按键
             button33.Enabled = false; //禁用按键
+            treeViewS5.Nodes.Clear(); //清空树型结构
 
-
-            foreach (Control i in groupBox7.Controls)
+            //sheet6
+            foreach (Control i in groupBox9.Controls)  //清空和使能
             {
                 if (i is TextBox)
+                {
                     i.Text = "";
+                    i.Enabled = false;
+                }
                 else if (i is ComboBox)
+                {
                     i.Text = "";
+                    i.Enabled = false;
+                }
             }
 
             foreach (Control i in groupBox8.Controls)
@@ -103,6 +125,8 @@ namespace WindowsFormsAccess
                 else if (i is ComboBox)
                     i.Text = "";
             }
+
+
 
             //step3
             object oid = dataGridView1.SelectedRows[0].Cells[0].Value;
@@ -162,6 +186,19 @@ namespace WindowsFormsAccess
             dgView3.Columns[27].HeaderCell.Value = "检测结果";
 
             //读取sheet4内容到页面
+            sql1 = "select * from s4SuiZhen where iUserID='" + gOid.ToString() + "'"; //重新刷新
+            databind(sql1, dgView4);
+            dgView4.Columns[0].Visible = false;
+            dgView4.Columns[1].HeaderCell.Value = "编码";
+            dgView4.Columns[2].HeaderCell.Value = "随诊次数";
+            dgView4.Columns[3].HeaderCell.Value = "随诊时间";
+            dgView4.Columns[4].HeaderCell.Value = "住院号";
+            dgView4.Columns[5].HeaderCell.Value = "CT";
+            dgView4.Columns[6].HeaderCell.Value = "MRI";
+            dgView4.Columns[7].HeaderCell.Value = "内镜";
+            dgView4.Columns[8].HeaderCell.Value = "PET";
+            dgView4.Columns[9].HeaderCell.Value = "复发";
+            dgView4.Columns[10].HeaderCell.Value = "用户ID";
 
             //读取sheet5内容到页面
             sql1 = "select * from s5ShuJuCunZhu where iUserID='" + gOid.ToString() + "'"; //重新刷新
@@ -172,6 +209,18 @@ namespace WindowsFormsAccess
             dgView5.Columns[3].HeaderCell.Value = "磁共振";
             dgView5.Columns[4].HeaderCell.Value = "病理";
             dgView5.Columns[5].HeaderCell.Value = "用户ID";
+
+            //读取sheet6内容到页面
+            sql1 = "select * from s6QiBingQingKuang where iUserID='" + gOid.ToString() + "'"; //重新刷新
+            databind(sql1, dgView6);
+            dgView6.Columns[0].Visible = false;
+            dgView6.Columns[1].HeaderCell.Value = "编码";
+            dgView6.Columns[2].HeaderCell.Value = "肿瘤位置";
+            dgView6.Columns[3].HeaderCell.Value = "首发症状";
+            dgView6.Columns[4].HeaderCell.Value = "时间";
+            dgView6.Columns[5].HeaderCell.Value = "初步诊断时间";
+            dgView6.Columns[6].HeaderCell.Value = "诊断依据";
+            dgView6.Columns[7].HeaderCell.Value = "用户ID";
             
             //readSheetX(gOid);   //读取内容到页面
 
@@ -221,7 +270,7 @@ namespace WindowsFormsAccess
             button33.Enabled = false; //禁用按键
             textBox81.Enabled = false;
 
-            foreach (Control i in groupBox7.Controls)
+            foreach (Control i in groupBox7.Controls) //清空sheet4
             {
                 if (i is TextBox)
                     i.Text = "";
@@ -578,16 +627,45 @@ namespace WindowsFormsAccess
                 case 2:
 
                     break;
-                case 3:
-
+                case 3: //sheet4
+                    updateSheet4(); //保存
+                    //sheet 4; //清空
+                    foreach (Control i in groupBox7.Controls)
+                    {
+                        if (i is TextBox)
+                            i.Text = "";
+                        else if (i is ComboBox)
+                            i.Text = "";
+                    }
+                    foreach (Control i in groupBox7.Controls) //禁用
+                    {
+                        if (i is TextBox)
+                            i.Enabled = false;
+                        else if (i is ComboBox)
+                            i.Enabled = false;
+                    }
                     break;                
                 case 4:  //sheet5
                     updateSheet5(); //保存
                     break;
-                case 5:
-
+                case 5:  //sheet6 起病情况
+                    updateSheet6();
+                    foreach (Control i in groupBox9.Controls)  //清空和禁用
+                    {
+                        if (i is TextBox)
+                        {
+                            i.Text = "";
+                            i.Enabled = false;
+                        }
+                        else if (i is ComboBox)
+                        {
+                            i.Text = "";
+                            i.Enabled = false;
+                        }
+                    }
+      
                     break;
-                case 6:
+                case 6: //sheet7
 
                     break;
                 case 7:
@@ -613,8 +691,22 @@ namespace WindowsFormsAccess
                 case 2:
 
                     break;
-                case 3:
-
+                case 3: //sheet4
+                    gFlagAdd4 = 1; //新建，局部新增
+                    foreach (Control i in groupBox7.Controls)
+                    {
+                        if (i is TextBox)
+                            i.Text = "";
+                        else if (i is ComboBox)
+                            i.Text = "";
+                    }
+                    foreach (Control i in groupBox7.Controls) //使能
+                    {
+                        if (i is TextBox)
+                            i.Enabled = true;
+                        else if (i is ComboBox)
+                            i.Enabled = true;
+                    }
                     break;
                 case 4: //sheet5
 
@@ -625,10 +717,23 @@ namespace WindowsFormsAccess
                    button12.Enabled = false; //禁用刷新按键
                    button31.Enabled = false; //禁用按键
                    button33.Enabled = false; //禁用按键
-                   textBox81.Enabled = true;
+                   textBox81.Enabled = true;  //使能
                    break;
-                case 5:
-                    
+                case 5:  //sheet6 起病情况
+                   gFlagAdd6 = 1; //新建，局部新增
+                   foreach (Control i in groupBox9.Controls)  //清空和使能
+                   {
+                       if (i is TextBox)
+                       {
+                           i.Text = "";
+                           i.Enabled = true;
+                       }
+                       else if (i is ComboBox)
+                       {
+                           i.Text = "";
+                           i.Enabled = true;
+                       }
+                   }
                     break;
                 case 6:
 
@@ -656,11 +761,24 @@ namespace WindowsFormsAccess
                 case 2:
 
                     break;
-                case 3:
-
+                case 3: //sheet4
+                    deleteSheet4();
+                    foreach (Control i in groupBox7.Controls) //清空
+                    {
+                        if (i is TextBox)
+                            i.Text = "";
+                        else if (i is ComboBox)
+                            i.Text = "";
+                    }
+                    foreach (Control i in groupBox7.Controls) //禁用
+                    {
+                        if (i is TextBox)
+                            i.Enabled = false;
+                        else if (i is ComboBox)
+                            i.Enabled = false;
+                    }
                     break;
                 case 4: //sheet5
-
                     deleteSheet5();
                     //清空
                     textBox81.Text = "";
@@ -670,8 +788,21 @@ namespace WindowsFormsAccess
                     button33.Enabled = false; //禁用按键
                     textBox81.Enabled = false;
                     break;
-                case 5:
-                    
+                case 5:  //sheet6 起病情况
+                    deleteSheet6();
+                    foreach (Control i in groupBox9.Controls)  //清空和使能
+                    {
+                        if (i is TextBox)
+                        {
+                            i.Text = "";
+                            i.Enabled = false;
+                        }
+                        else if (i is ComboBox)
+                        {
+                            i.Text = "";
+                            i.Enabled = false;
+                        }
+                    }
                     break;
                 case 6:
 
@@ -699,8 +830,15 @@ namespace WindowsFormsAccess
                 case 2:
 
                     break;
-                case 3:
-
+                case 3:  //sheet4
+                    readSheet4();
+                    foreach (Control i in groupBox7.Controls) //禁用
+                    {
+                        if (i is TextBox)
+                            i.Enabled = true;
+                        else if (i is ComboBox)
+                            i.Enabled = true;
+                    }
                     break;
                 case 4: //sheet5， 加载
                     readSheet5(); 
@@ -712,11 +850,25 @@ namespace WindowsFormsAccess
                     //Delay(1000); //延时
                     button12.PerformClick(); //显示treeview
                     break;
-                case 5:
-                    
+                case 5:  //sheet6
+                    readSheet6();
+                    foreach (Control i in groupBox9.Controls)  //清空和使能
+                    {
+                        if (i is TextBox)
+                        {
+                            //i.Text = "";
+                            i.Enabled = true;
+                        }
+                        else if (i is ComboBox)
+                        {
+                            //i.Text = "";
+                            i.Enabled = true;
+                        }
+                    }
                     break;
-                case 6:
-
+                case 6:  //sheet7
+                    
+                    
                     break;
                 case 7:
 

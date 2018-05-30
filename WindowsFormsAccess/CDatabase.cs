@@ -1018,9 +1018,9 @@ namespace WindowsFormsAccess
                 
                 //更新前，重命名
                 string fileDir = ftpRootPath + textBox81.Text.Trim(); //获取新路径
-                string fileDirOld = ftpRootPath + ms5ShuJuCunZhu.sBianHao;
 
-                if (true == Directory.Exists(fileDirOld))
+                string fileDirOld = ftpRootPath + ms5ShuJuCunZhu.sBianHao; //旧目录
+                if (true == (Directory.Exists(fileDirOld)) && fileDirOld != ftpRootPath && fileDirOld != fileDir) //同名则不改名
                 {
                     Directory.Move(fileDirOld, fileDir);
                 }
@@ -1062,7 +1062,7 @@ namespace WindowsFormsAccess
             }
             catch (Exception ex)
             {
-                outputLabel(ex.Message);
+                outputLabel("Sheet5更新失败，" + ex.Message);
                 return false;
             }
 
@@ -1074,7 +1074,166 @@ namespace WindowsFormsAccess
         #endregion
 
         #region sheet6
+        private Maticsoft.Model.s6QiBingQingKuang ms6QiBingQingKuang = new Maticsoft.Model.s6QiBingQingKuang();
+        Maticsoft.DAL.s6QiBingQingKuang dos6QiBingQingKuang = new Maticsoft.DAL.s6QiBingQingKuang();
 
+
+        //添加记录1-基本信息；
+        private void addSheet6()
+        {
+            if (textBox82.Text == "") //编号
+            {
+                output("编号不能为空");
+                return;
+            }
+
+            //ms6QiBingQingKuang.ID                =  textBox.Text Text ;
+            ms6QiBingQingKuang.iUserID = gOid.ToString();
+            ms6QiBingQingKuang.sBianMa = textBox82.Text;
+            ms6QiBingQingKuang.sZhongLiuBuWei = comboBox29.Text;
+            ms6QiBingQingKuang.sShouFaZhengZhuang = comboBox28.Text;
+            ms6QiBingQingKuang.dTime = dateTimePicker6.Value;
+            ms6QiBingQingKuang.dChuBuZhengDuanTime = dateTimePicker5.Value;
+            ms6QiBingQingKuang.sResult = "default";
+            ms6QiBingQingKuang.sZhenDuanYiJiu = comboBox27.Text;
+
+            bool ret = dos6QiBingQingKuang.Add(ms6QiBingQingKuang);
+
+            string sql1 = "select * from s6QiBingQingKuang where iUserID = '" + gOid.ToString() + "'"; //重新刷新，只显示本用户的信息
+            databind(sql1, dgView6);
+
+            //清空
+
+
+            //显示
+            outputLabel("Sheet6添加成功!");
+
+        }
+
+        //删除记录1-基本信息；
+        private void deleteSheet6()
+        {
+            if (dgView6.SelectedRows.Count < 1 || dgView6.SelectedRows[0].Cells[1].Value == null)
+            {
+                MessageBox.Show("没有选中行。", "系统提示");
+            }
+            else
+            {
+                object oid = dgView6.SelectedRows[0].Cells[0].Value;
+                if (DialogResult.No == MessageBox.Show("将删除第 " + (dgView6.CurrentCell.RowIndex + 1).ToString() + " 行，确定？", "系统提示", MessageBoxButtons.YesNo))
+                {
+                    return;
+                }
+                else
+                {
+                    bool ret = dos6QiBingQingKuang.Delete(Convert.ToInt32(oid));
+                }
+                string sql1 = "select * from s6QiBingQingKuang where iUserID = '" + gOid.ToString() + "'"; //重新刷新，只显示本用户的信息
+                databind(sql1, dgView6);
+
+                //显示
+                outputLabel("Sheet6删除成功!");
+            }
+        }
+
+        //基本信息-加载；
+        private void readSheet6()
+        {
+            if (dgView6.SelectedRows.Count < 1 || dgView6.SelectedRows[0].Cells[1].Value == null)
+            {
+                MessageBox.Show("没有选中行。", "系统提醒");
+                return;
+            }
+
+            object oid = dgView6.SelectedRows[0].Cells[0].Value;
+            gOid6 = Convert.ToInt32(oid);  //更新全局oid
+
+            ms6QiBingQingKuang = dos6QiBingQingKuang.GetModel(Convert.ToInt32(oid)); //读取数据库数据到model，中转
+
+            //model赋值给窗体
+            textBox81.Text = ms6QiBingQingKuang.sBianMa;
+
+            //ms6QiBingQingKuang.iUserID = gOid.ToString();
+            textBox82.Text = ms6QiBingQingKuang.sBianMa;
+            comboBox29.Text = ms6QiBingQingKuang.sZhongLiuBuWei;
+            comboBox28.Text = ms6QiBingQingKuang.sShouFaZhengZhuang;
+            dateTimePicker6.Value = Convert.ToDateTime(ms6QiBingQingKuang.dTime);
+            dateTimePicker5.Value = Convert.ToDateTime(ms6QiBingQingKuang.dChuBuZhengDuanTime);
+            //ms6QiBingQingKuang.sResult = "default";  //设计数据库时，多加了个字段
+            comboBox27.Text = ms6QiBingQingKuang.sZhenDuanYiJiu;
+
+            string sql1 = "select * from s6QiBingQingKuang where iUserID = '" + gOid.ToString() + "'"; //重新刷新，只显示本用户的信息
+            //刷新主页面，防止后台改了access数据库后，基本信息页面刷新了，主页面不刷新。
+            databind(sql1, dgView6);
+
+            gFlagAdd6 = 0; //设置局部更新标志位
+
+
+            //显示
+            output("Sheet6加载成功!");
+        }
+
+        //基本信息-更新；
+        private bool updateSheet6()
+        {
+            bool result = false; //返回值
+            try
+            {
+                if (textBox82.Text == "") //编号不能为空
+                {
+                    MessageBox.Show("编号不能为空");
+                    return false;
+                }
+
+                //更新
+                ms6QiBingQingKuang.ID = gOid6;
+                ms6QiBingQingKuang.iUserID = gOid.ToString();
+                ms6QiBingQingKuang.sBianMa = textBox82.Text;
+                ms6QiBingQingKuang.sZhongLiuBuWei = comboBox29.Text;
+                ms6QiBingQingKuang.sShouFaZhengZhuang = comboBox28.Text;
+                ms6QiBingQingKuang.dTime = dateTimePicker6.Value;
+                ms6QiBingQingKuang.dChuBuZhengDuanTime = dateTimePicker5.Value;
+                ms6QiBingQingKuang.sResult = "default";
+                ms6QiBingQingKuang.sZhenDuanYiJiu = comboBox27.Text;
+
+                bool ret = false;
+                if (1 == gFlagAdd || 1 == gFlagAdd6)  //全局新增或单条新增，
+                {
+                    ret = dos6QiBingQingKuang.Add(ms6QiBingQingKuang);
+                }
+                else if (false == dos6QiBingQingKuang.Exists(gOid6)) //若无记录，则点击保存也视为增加
+                    ret = dos6QiBingQingKuang.Add(ms6QiBingQingKuang);
+                else  //更新
+                {
+                    ret = dos6QiBingQingKuang.Update(ms6QiBingQingKuang);
+                }
+
+                gFlagAdd6 = 0; //局部新增还原
+
+                if (true == ret) //显示
+                {
+                    outputLabel("Sheet6更新成功");
+                    result = true;
+                }
+                else
+                {
+                    outputLabel("Sheet6更新失败");
+                    result = false;
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                outputLabel("Sheet6更新失败，" + ex.Message);
+                return false;
+            }
+
+            string sql1 = "select * from s6QiBingQingKuang where iUserID = '" + gOid.ToString() + "'"; //重新刷新，只显示本用户的信息
+            databind(sql1, dgView6);
+
+            return result;
+        }
         #endregion
 
         #region sheet7
