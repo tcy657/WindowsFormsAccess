@@ -1237,7 +1237,166 @@ namespace WindowsFormsAccess
         #endregion
 
         #region sheet7
+        private Maticsoft.Model.s7ShuQianPingGu ms7ShuQianPingGu = new Maticsoft.Model.s7ShuQianPingGu();
+        Maticsoft.DAL.s7ShuQianPingGu dos7ShuQianPingGu = new Maticsoft.DAL.s7ShuQianPingGu();
 
+
+        //添加记录1-基本信息；
+        private void addSheet7()
+        {
+            if (textBox82.Text == "") //编号
+            {
+                output("编号不能为空");
+                return;
+            }
+
+            //ms7ShuQianPingGu.ID                =  textBox.Text Text ;
+            ms7ShuQianPingGu.iUserID = gOid.ToString();
+            ms7ShuQianPingGu.sBianMa = textBox82.Text;
+            ms7ShuQianPingGu.sZhongLiuBuWei = comboBox29.Text;
+            ms7ShuQianPingGu.sShouFaZhengZhuang = comboBox28.Text;
+            ms7ShuQianPingGu.dTime = dateTimePicker6.Value;
+            ms7ShuQianPingGu.dChuBuZhengDuanTime = dateTimePicker5.Value;
+            ms7ShuQianPingGu.sResult = "default";
+            ms7ShuQianPingGu.sZhenDuanYiJiu = comboBox27.Text;
+
+            bool ret = dos7ShuQianPingGu.Add(ms7ShuQianPingGu);
+
+            string sql1 = "select * from s7ShuQianPingGu where iUserID = '" + gOid.ToString() + "'"; //重新刷新，只显示本用户的信息
+            databind(sql1, dgView7);
+
+            //清空
+
+
+            //显示
+            outputLabel("Sheet7添加成功!");
+
+        }
+
+        //删除记录1-基本信息；
+        private void deleteSheet7()
+        {
+            if (dgView7.SelectedRows.Count < 1 || dgView7.SelectedRows[0].Cells[1].Value == null)
+            {
+                MessageBox.Show("没有选中行。", "系统提示");
+            }
+            else
+            {
+                object oid = dgView7.SelectedRows[0].Cells[0].Value;
+                if (DialogResult.No == MessageBox.Show("将删除第 " + (dgView7.CurrentCell.RowIndex + 1).ToString() + " 行，确定？", "系统提示", MessageBoxButtons.YesNo))
+                {
+                    return;
+                }
+                else
+                {
+                    bool ret = dos7ShuQianPingGu.Delete(Convert.ToInt32(oid));
+                }
+                string sql1 = "select * from s7ShuQianPingGu where iUserID = '" + gOid.ToString() + "'"; //重新刷新，只显示本用户的信息
+                databind(sql1, dgView7);
+
+                //显示
+                outputLabel("Sheet7删除成功!");
+            }
+        }
+
+        //基本信息-加载；
+        private void readSheet7()
+        {
+            if (dgView7.SelectedRows.Count < 1 || dgView7.SelectedRows[0].Cells[1].Value == null)
+            {
+                MessageBox.Show("没有选中行。", "系统提醒");
+                return;
+            }
+
+            object oid = dgView7.SelectedRows[0].Cells[0].Value;
+            gOid6 = Convert.ToInt32(oid);  //更新全局oid
+
+            ms7ShuQianPingGu = dos7ShuQianPingGu.GetModel(Convert.ToInt32(oid)); //读取数据库数据到model，中转
+
+            //model赋值给窗体
+            textBox81.Text = ms7ShuQianPingGu.sBianMa;
+
+            //ms7ShuQianPingGu.iUserID = gOid.ToString();
+            textBox82.Text = ms7ShuQianPingGu.sBianMa;
+            comboBox29.Text = ms7ShuQianPingGu.sZhongLiuBuWei;
+            comboBox28.Text = ms7ShuQianPingGu.sShouFaZhengZhuang;
+            dateTimePicker6.Value = Convert.ToDateTime(ms7ShuQianPingGu.dTime);
+            dateTimePicker5.Value = Convert.ToDateTime(ms7ShuQianPingGu.dChuBuZhengDuanTime);
+            //ms7ShuQianPingGu.sResult = "default";  //设计数据库时，多加了个字段
+            comboBox27.Text = ms7ShuQianPingGu.sZhenDuanYiJiu;
+
+            string sql1 = "select * from s7ShuQianPingGu where iUserID = '" + gOid.ToString() + "'"; //重新刷新，只显示本用户的信息
+            //刷新主页面，防止后台改了access数据库后，基本信息页面刷新了，主页面不刷新。
+            databind(sql1, dgView7);
+
+            gFlagAdd7 = 0; //设置局部更新标志位
+
+
+            //显示
+            outputLabel("Sheet7加载成功!");
+        }
+
+        //基本信息-更新；
+        private bool updateSheet7()
+        {
+            bool result = false; //返回值
+            try
+            {
+                if (textBox82.Text == "") //编号不能为空
+                {
+                    MessageBox.Show("编号不能为空");
+                    return false;
+                }
+
+                //更新
+                ms7ShuQianPingGu.ID = gOid6;
+                ms7ShuQianPingGu.iUserID = gOid.ToString();
+                ms7ShuQianPingGu.sBianMa = textBox82.Text;
+                ms7ShuQianPingGu.sZhongLiuBuWei = comboBox29.Text;
+                ms7ShuQianPingGu.sShouFaZhengZhuang = comboBox28.Text;
+                ms7ShuQianPingGu.dTime = dateTimePicker6.Value;
+                ms7ShuQianPingGu.dChuBuZhengDuanTime = dateTimePicker5.Value;
+                ms7ShuQianPingGu.sResult = "default";
+                ms7ShuQianPingGu.sZhenDuanYiJiu = comboBox27.Text;
+
+                bool ret = false;
+                if (1 == gFlagAdd || 1 == gFlagAdd7)  //全局新增或单条新增，
+                {
+                    ret = dos7ShuQianPingGu.Add(ms7ShuQianPingGu);
+                }
+                else if (false == dos7ShuQianPingGu.Exists(gOid6)) //若无记录，则点击保存也视为增加
+                    ret = dos7ShuQianPingGu.Add(ms7ShuQianPingGu);
+                else  //更新
+                {
+                    ret = dos7ShuQianPingGu.Update(ms7ShuQianPingGu);
+                }
+
+                gFlagAdd7 = 0; //局部新增还原
+
+                if (true == ret) //显示
+                {
+                    outputLabel("Sheet7更新成功");
+                    result = true;
+                }
+                else
+                {
+                    outputLabel("Sheet7更新失败");
+                    result = false;
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                outputLabel("Sheet7更新失败，" + ex.Message);
+                return false;
+            }
+
+            string sql1 = "select * from s7ShuQianPingGu where iUserID = '" + gOid.ToString() + "'"; //重新刷新，只显示本用户的信息
+            databind(sql1, dgView7);
+
+            return result;
+        }
         #endregion
 
         #region test

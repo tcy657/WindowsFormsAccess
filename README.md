@@ -20,12 +20,18 @@ git常用命令
     };
 
 【问题】
+【待完成】是或否转换为true和false
 【待完成】查询功能
 【待完成】delete待增加其他Sheet的动作
 【待完成】所有的下拉框禁止输入，只能选择
 【待完成】增加try-catch捕获错误
 【待完成】sheet7文件管理功能未实现
-【待完成】excel导出功能
+【待完成】excel导出datagridview功能
+    ——https://jingyan.baidu.com/article/a24b33cd0682cd19fe002bb0.html C# 怎么导出dataGridView中的值到Excel
+    --** https://zhidao.baidu.com/question/1817909972118765668.html c#如何把datagridview导出到excel
+    --*** https://blog.csdn.net/u011981242/article/details/51083335 C# DataGridView导出Excel的两种经典方法
+    ——https://blog.csdn.net/licl19870605/article/details/5260795  C#实现Access导入导出Excel
+    --https://blog.csdn.net/angel20082008/article/details/51749780 C# 讲解五种导出access数据到Excel文件格式中
 【待完成】全局“刷新”按键功能待完善
 【优化】增加日志打印，记录操作步骤和出错信息
 【优化】将detail的dataGridView操作按键统一，放在Tabcontrol2控件旁边。 22:15 2018/5/27
@@ -45,6 +51,33 @@ git常用命令
 	2）操作页面按键代码，
 	3）总页面代码。
 		（1）表头 --对应数据表增加
+9 重要基准参考：https://blog.csdn.net/bcbobo21cn/article/details/52201955
+在窗体中更新的方法
+    private void button3_Click(object sender, EventArgs e)  
+    {  
+        if (dataGridView1.SelectedRows.Count < 1 || dataGridView1.SelectedRows[0].Cells[1].Value == null)  
+        {  
+            MessageBox.Show("没有选中行。", "M营销");  
+            return;  
+        }  
+        //f3.Owner = this;  
+        DataTable dt = new DataTable();  
+        object oid = dataGridView1.SelectedRows[0].Cells[0].Value;  
+        string sql = "select * from ycyx where ID=" + oid;  
+        dt = achelp.GetDataTableFromDB(sql);  
+        f3 = new Form3();  
+        f3.id = int.Parse(oid.ToString());  
+        //f3.id = 2;  
+        f3.Text1 = dt.Rows[0][1].ToString();  
+        f3.Text2 = dt.Rows[0][2].ToString();  
+        f3.Text3 = dt.Rows[0][3].ToString();  
+        f3.Text4 = dt.Rows[0][4].ToString();  
+        f3.Text5 = dt.Rows[0][5].ToString();  
+        f3.Text6 = dt.Rows[0][6].ToString();  
+      
+        f3.ShowDialog();  
+          
+    }  
 8 时间格式转换
      model.dRuYuanShiJian = dtp1time9Sheet1.Value;
      dtp1time9Sheet1.Value = Convert.ToDateTime(model.dRuYuanShiJian);
