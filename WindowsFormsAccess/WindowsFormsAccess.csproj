@@ -32,6 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" />
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -53,6 +54,7 @@
     <Compile Include="CDatabase.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="CExcel.cs" />
     <Compile Include="DAL\file.cs">
       <SubType>Code</SubType>
     </Compile>

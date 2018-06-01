@@ -293,8 +293,11 @@ namespace WindowsFormsAccess
         // 删除记录
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            deleteSheet1();
+            //deleteSheet1();
             //待增加sheet2-sheet7的删除
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            CExcel excelExport = new CExcel();
+            excelExport.ExportExcel("123", dataGridView1, saveFileDialog);
         }
 
         //查询

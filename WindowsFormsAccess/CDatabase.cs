@@ -1235,7 +1235,7 @@ namespace WindowsFormsAccess
             return result;
         }
         #endregion
-
+        /*
         #region sheet7
         private Maticsoft.Model.s7ShuQianPingGu ms7ShuQianPingGu = new Maticsoft.Model.s7ShuQianPingGu();
         Maticsoft.DAL.s7ShuQianPingGu dos7ShuQianPingGu = new Maticsoft.DAL.s7ShuQianPingGu();
@@ -1398,7 +1398,7 @@ namespace WindowsFormsAccess
             return result;
         }
         #endregion
-
+        */
         #region test
         private Maticsoft.Model.ycyx modelYcyx = new Maticsoft.Model.ycyx();
         Maticsoft.DAL.ycyx ycyxDo = new Maticsoft.DAL.ycyx();
