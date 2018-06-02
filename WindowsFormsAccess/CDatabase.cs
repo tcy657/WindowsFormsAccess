@@ -1235,16 +1235,16 @@ namespace WindowsFormsAccess
             return result;
         }
         #endregion
-        /*
+
         #region sheet7
         private Maticsoft.Model.s7ShuQianPingGu ms7ShuQianPingGu = new Maticsoft.Model.s7ShuQianPingGu();
         Maticsoft.DAL.s7ShuQianPingGu dos7ShuQianPingGu = new Maticsoft.DAL.s7ShuQianPingGu();
 
 
         //添加记录1-基本信息；
-        private void addSheet7()
+        private void addSheet7(ref FormSheet7 f7)
         {
-            if (textBox82.Text == "") //编号
+            if (f7.Text1 == "") //编号
             {
                 output("编号不能为空");
                 return;
@@ -1252,13 +1252,121 @@ namespace WindowsFormsAccess
 
             //ms7ShuQianPingGu.ID                =  textBox.Text Text ;
             ms7ShuQianPingGu.iUserID = gOid.ToString();
-            ms7ShuQianPingGu.sBianMa = textBox82.Text;
-            ms7ShuQianPingGu.sZhongLiuBuWei = comboBox29.Text;
-            ms7ShuQianPingGu.sShouFaZhengZhuang = comboBox28.Text;
-            ms7ShuQianPingGu.dTime = dateTimePicker6.Value;
-            ms7ShuQianPingGu.dChuBuZhengDuanTime = dateTimePicker5.Value;
-            ms7ShuQianPingGu.sResult = "default";
-            ms7ShuQianPingGu.sZhenDuanYiJiu = comboBox27.Text;
+            ms7ShuQianPingGu.ID = f7.lOid;
+            ms7ShuQianPingGu.sBianHao = f7.Text36;
+            ms7ShuQianPingGu.bWoYuanBingJian = hanZi2Bool(f7.Text37);
+            ms7ShuQianPingGu.sResult = f7.Text38;
+            ms7ShuQianPingGu.sBingLiHao = f7.Text35;
+            ms7ShuQianPingGu.bWoYuanCT = hanZi2Bool(f7.Text1);
+            ms7ShuQianPingGu.sZhongLiuDaXiao = f7.Text41;
+            ms7ShuQianPingGu.sJuBuQinFang = f7.Text42;
+            ms7ShuQianPingGu.bLinBaJieZhuanYi = hanZi2Bool(f7.Text43);
+            ms7ShuQianPingGu.bZhuanYi = hanZi2Bool(f7.Text40);
+            ms7ShuQianPingGu.sBuWei = f7.Text34;
+            ms7ShuQianPingGu.bWoYuanMRI = hanZi2Bool(f7.Text39);
+            ms7ShuQianPingGu.sMRIZhongliuDaXiao = f7.Text45;
+            ms7ShuQianPingGu.sMRIJuBuQinFang = f7.Text46;
+            ms7ShuQianPingGu.bMRILinBaJieZhuanYi = hanZi2Bool(f7.Text47);
+            ms7ShuQianPingGu.bMRIZhuanYi = hanZi2Bool(f7.Text44);
+            ms7ShuQianPingGu.sMRIBuWei = f7.Text48;
+            ms7ShuQianPingGu.bPET = hanZi2Bool(f7.Text54);
+            ms7ShuQianPingGu.sPETZhongLiuDaXiao = f7.Text50;
+            ms7ShuQianPingGu.sPETJuBuQinFang = f7.Text51;
+            ms7ShuQianPingGu.sDaiXieQiangDu = f7.Text55;
+            ms7ShuQianPingGu.sLinBaZhuanYi = f7.Text52;
+            ms7ShuQianPingGu.bPETZhuanYi = f7.Text49;
+            ms7ShuQianPingGu.sPETBuWei = f7.Text53;
+            ms7ShuQianPingGu.sZhuanYiBuWeiDaiXieQD = f7.Text56;
+            ms7ShuQianPingGu.sCT = f7.Text57;
+            ms7ShuQianPingGu.sCN = f7.Text58;
+            ms7ShuQianPingGu.sCM = f7.Text64;
+            ms7ShuQianPingGu.sWBC = f7.Text59;
+            ms7ShuQianPingGu.sHb = f7.Text65;
+            ms7ShuQianPingGu.sALB = f7.Text60;
+            ms7ShuQianPingGu.sCEA = f7.Text61;
+            ms7ShuQianPingGu.sCA125 = f7.Text62;
+            ms7ShuQianPingGu.sCA199 = f7.Text66;
+            ms7ShuQianPingGu.sCA724 = f7.Text63;
+            ms7ShuQianPingGu.sAFP = f7.Text20;
+            ms7ShuQianPingGu.bGengZhu = hanZi2Bool(f7.Text32);
+            ms7ShuQianPingGu.bChuXie = hanZi2Bool(f7.Text67);
+            ms7ShuQianPingGu.bChuanKong = hanZi2Bool(f7.Text68);
+            ms7ShuQianPingGu.sBMI = f7.Text11;
+            ms7ShuQianPingGu.sNRS2002 = f7.Text29;
+            ms7ShuQianPingGu.sTengTongPingFen = f7.Text30;
+            ms7ShuQianPingGu.sECOG = f7.Text33;
+            ms7ShuQianPingGu.sXinGongNeng = f7.Text19;
+            ms7ShuQianPingGu.sFeiGongNeng = f7.Text12;
+            ms7ShuQianPingGu.sShenGongNeng = f7.Text18;
+            ms7ShuQianPingGu.sGanGongNeng = f7.Text110;
+            ms7ShuQianPingGu.sNingXieGongneng = f7.Text109;
+            ms7ShuQianPingGu.bJiZhenShouShu = hanZi2Bool(f7.Text17);
+            ms7ShuQianPingGu.sShouShuRiqi = f7.Text114;
+            ms7ShuQianPingGu.sQiangjingKaiFu = f7.Text69;
+            ms7ShuQianPingGu.sShuShi = f7.Text31;
+            ms7ShuQianPingGu.sShouShuTime = f7.Text28;
+            ms7ShuQianPingGu.sKaiFuWenHeTime = f7.Text27;
+            ms7ShuQianPingGu.sZhongLiuJuTiWeiZhi = f7.Text16;
+            ms7ShuQianPingGu.bLianHeQiZhuangQieChu = hanZi2Bool(f7.Text70);
+            ms7ShuQianPingGu.sChuXieLiang = f7.Text26;
+            ms7ShuQianPingGu.sFuQiangWuRuan = f7.Text71;
+            ms7ShuQianPingGu.sFuShenShang = f7.Text21;
+            ms7ShuQianPingGu.bYingYangGuan = hanZi2Bool(f7.Text13);
+            ms7ShuQianPingGu.bZaoLou = hanZi2Bool(f7.Text72);
+            ms7ShuQianPingGu.bShuZhongBingLi = hanZi2Bool(f7.Text73);
+            ms7ShuQianPingGu.sResult2 = f7.Text77;
+            ms7ShuQianPingGu.sQieChuQingkong = f7.Text74;
+            ms7ShuQianPingGu.sLinBaJieQingShao = f7.Text75;
+            ms7ShuQianPingGu.sTeShuShuoMing = f7.Text78;
+            ms7ShuQianPingGu.bERAS = hanZi2Bool(f7.Text76);
+            ms7ShuQianPingGu.bICUJianHu = hanZi2Bool(f7.Text77);
+            ms7ShuQianPingGu.sJianHuTime = f7.Text37;
+            ms7ShuQianPingGu.sJinShuiShiJian = f7.Text14;
+            ms7ShuQianPingGu.sTongQiTime = f7.Text24;
+            ms7ShuQianPingGu.sPaiBianTime = f7.Text80;
+            ms7ShuQianPingGu.sFuTongHuanJieTime = f7.Text6;
+            ms7ShuQianPingGu.sNiaoGuanBaChuTime = f7.Text23;
+            ms7ShuQianPingGu.sYinLiuGuanBaChuTime = f7.Text15;
+            ms7ShuQianPingGu.sXiaChuangTime = f7.Text9;
+            ms7ShuQianPingGu.sJinShi = f7.Text10;
+            ms7ShuQianPingGu.bChangNeiYingYang = hanZi2Bool(f7.Text113);
+            ms7ShuQianPingGu.sChangNeiYingYangZhiChiTime = f7.Text1;
+            ms7ShuQianPingGu.sTPNtime = f7.Text2;
+            ms7ShuQianPingGu.sShuHouChuXue = f7.Text81;
+            ms7ShuQianPingGu.sFuQiangGanRuan = f7.Text82;
+            ms7ShuQianPingGu.sQieKouGanRuan = f7.Text84;
+            ms7ShuQianPingGu.sWenHeKouLou = f7.Text85;
+            ms7ShuQianPingGu.sChangGenZhu = f7.Text86;
+            ms7ShuQianPingGu.sWeiTan = f7.Text5;
+            ms7ShuQianPingGu.sFeiBuFanRuan = f7.Text83;
+            ms7ShuQianPingGu.sDiDanBaiXueZheng = f7.Text8;
+            ms7ShuQianPingGu.sWEiGuanTuoChu = f7.Text98;
+            ms7ShuQianPingGu.sYingYangGuanTuoChu = f7.Text90;
+            ms7ShuQianPingGu.sZaoKouBingFaZheng = f7.Text87;
+            ms7ShuQianPingGu.b2thShouShu = hanZi2Bool(f7.Text4);
+            ms7ShuQianPingGu.sShouShuTime = f7.Text88;
+            ms7ShuQianPingGu.sShouShuFangShi = f7.Text7;
+            ms7ShuQianPingGu.sJieJueWenTi = f7.Text3;
+            ms7ShuQianPingGu.sShuHouBingLiZhengDuan = f7.Text102;
+            ms7ShuQianPingGu.sFenHuaChengDu = f7.Text101;
+            ms7ShuQianPingGu.sJinRunShenDu = f7.Text91;
+            ms7ShuQianPingGu.sMaiGuanAiShuan = f7.Text100;
+            ms7ShuQianPingGu.sShenJingQinFang = f7.Text99;
+            ms7ShuQianPingGu.sAiJieJie = f7.Text98;
+            ms7ShuQianPingGu.sZongLinBaJieShu = f7.Text104;
+            ms7ShuQianPingGu.sZhuanyiLinBaJieShu = f7.Text93;
+            ms7ShuQianPingGu.sMSI = f7.Text92;
+            ms7ShuQianPingGu.sHER_2 = f7.Text106;
+            ms7ShuQianPingGu.sP53 = f7.Text103;
+            ms7ShuQianPingGu.sKi_67 = f7.Text105;
+            ms7ShuQianPingGu.sK_RAS = f7.Text95;
+            ms7ShuQianPingGu.sN_RAS = f7.Text94;
+            ms7ShuQianPingGu.sShouHouBingLiFenQi = f7.Text107;
+            ms7ShuQianPingGu.sMSIQueZheng = f7.Text111;
+            ms7ShuQianPingGu.sJiYinJianCe = f7.Text112;
+            ms7ShuQianPingGu.sChuYuanTime = f7.Text97;
+            ms7ShuQianPingGu.sChuYuanQingKong = f7.Text96;
+            ms7ShuQianPingGu.sYiLiaoFeiYong = f7.Text108;
 
             bool ret = dos7ShuQianPingGu.Add(ms7ShuQianPingGu);
 
@@ -1300,7 +1408,8 @@ namespace WindowsFormsAccess
         }
 
         //基本信息-加载；
-        private void readSheet7()
+        //加载完后，show，f3.ShowDialog(); 
+        private void readSheet7(ref FormSheet7 f7)
         {
             if (dgView7.SelectedRows.Count < 1 || dgView7.SelectedRows[0].Cells[1].Value == null)
             {
@@ -1309,21 +1418,128 @@ namespace WindowsFormsAccess
             }
 
             object oid = dgView7.SelectedRows[0].Cells[0].Value;
-            gOid6 = Convert.ToInt32(oid);  //更新全局oid
+            gOid7 = Convert.ToInt32(oid);  //更新全局oid
 
             ms7ShuQianPingGu = dos7ShuQianPingGu.GetModel(Convert.ToInt32(oid)); //读取数据库数据到model，中转
 
-            //model赋值给窗体
-            textBox81.Text = ms7ShuQianPingGu.sBianMa;
-
-            //ms7ShuQianPingGu.iUserID = gOid.ToString();
-            textBox82.Text = ms7ShuQianPingGu.sBianMa;
-            comboBox29.Text = ms7ShuQianPingGu.sZhongLiuBuWei;
-            comboBox28.Text = ms7ShuQianPingGu.sShouFaZhengZhuang;
-            dateTimePicker6.Value = Convert.ToDateTime(ms7ShuQianPingGu.dTime);
-            dateTimePicker5.Value = Convert.ToDateTime(ms7ShuQianPingGu.dChuBuZhengDuanTime);
-            //ms7ShuQianPingGu.sResult = "default";  //设计数据库时，多加了个字段
-            comboBox27.Text = ms7ShuQianPingGu.sZhenDuanYiJiu;
+            //model赋值给窗体, TextX并非全为文本类型，命名是为了方便统一处理
+            //ms7ShuQianPingGu.iUserID = gOid.ToString();            
+            f7.lOid = ms7ShuQianPingGu.ID;
+            f7.iUserID = ms7ShuQianPingGu.iUserID;
+            f7.Text36 = ms7ShuQianPingGu.sBianHao;
+            f7.Text37 = bool2HanZi(ms7ShuQianPingGu.bWoYuanBingJian);
+            f7.Text38 = ms7ShuQianPingGu.sResult;
+            f7.Text35 = ms7ShuQianPingGu.sBingLiHao;
+            f7.Text1 = bool2HanZi(ms7ShuQianPingGu.bWoYuanCT);
+            f7.Text41 = ms7ShuQianPingGu.sZhongLiuDaXiao;
+            f7.Text42 = ms7ShuQianPingGu.sJuBuQinFang;
+            f7.Text43 = bool2HanZi(ms7ShuQianPingGu.bLinBaJieZhuanYi);
+            f7.Text40 = bool2HanZi(ms7ShuQianPingGu.bZhuanYi);
+            f7.Text34 = ms7ShuQianPingGu.sBuWei;
+            f7.Text39 = bool2HanZi(ms7ShuQianPingGu.bWoYuanMRI);
+            f7.Text45 = ms7ShuQianPingGu.sMRIZhongliuDaXiao;
+            f7.Text46 = ms7ShuQianPingGu.sMRIJuBuQinFang;
+            f7.Text47 = bool2HanZi(ms7ShuQianPingGu.bMRILinBaJieZhuanYi);
+            f7.Text44 = bool2HanZi(ms7ShuQianPingGu.bMRIZhuanYi);
+            f7.Text48 = ms7ShuQianPingGu.sMRIBuWei;
+            f7.Text54 = bool2HanZi(ms7ShuQianPingGu.bPET);
+            f7.Text50 = ms7ShuQianPingGu.sPETZhongLiuDaXiao;
+            f7.Text51 = ms7ShuQianPingGu.sPETJuBuQinFang;
+            f7.Text55 = ms7ShuQianPingGu.sDaiXieQiangDu;
+            f7.Text52 = ms7ShuQianPingGu.sLinBaZhuanYi;
+            f7.Text49 = ms7ShuQianPingGu.bPETZhuanYi;
+            f7.Text53 = ms7ShuQianPingGu.sPETBuWei;
+            f7.Text56 = ms7ShuQianPingGu.sZhuanYiBuWeiDaiXieQD;
+            f7.Text57 = ms7ShuQianPingGu.sCT;
+            f7.Text58 = ms7ShuQianPingGu.sCN;
+            f7.Text64 = ms7ShuQianPingGu.sCM;
+            f7.Text59 = ms7ShuQianPingGu.sWBC;
+            f7.Text65 = ms7ShuQianPingGu.sHb;
+            f7.Text60 = ms7ShuQianPingGu.sALB;
+            f7.Text61 = ms7ShuQianPingGu.sCEA;
+            f7.Text62 = ms7ShuQianPingGu.sCA125;
+            f7.Text66 = ms7ShuQianPingGu.sCA199;
+            f7.Text63 = ms7ShuQianPingGu.sCA724;
+            f7.Text20 = ms7ShuQianPingGu.sAFP;
+            f7.Text32 = bool2HanZi(ms7ShuQianPingGu.bGengZhu);
+            f7.Text67 = bool2HanZi(ms7ShuQianPingGu.bChuXie);
+            f7.Text68 = bool2HanZi(ms7ShuQianPingGu.bChuanKong);
+            f7.Text11 = ms7ShuQianPingGu.sBMI;
+            f7.Text29 = ms7ShuQianPingGu.sNRS2002;
+            f7.Text30 = ms7ShuQianPingGu.sTengTongPingFen;
+            f7.Text33 = ms7ShuQianPingGu.sECOG;
+            f7.Text19 = ms7ShuQianPingGu.sXinGongNeng;
+            f7.Text12 = ms7ShuQianPingGu.sFeiGongNeng;
+            f7.Text18 = ms7ShuQianPingGu.sShenGongNeng;
+            f7.Text110 = ms7ShuQianPingGu.sGanGongNeng;
+            f7.Text109 = ms7ShuQianPingGu.sNingXieGongneng;
+            f7.Text17 = bool2HanZi(ms7ShuQianPingGu.bJiZhenShouShu);
+            f7.Text114 = ms7ShuQianPingGu.sShouShuRiqi;
+            f7.Text69 = ms7ShuQianPingGu.sQiangjingKaiFu;
+            f7.Text31 = ms7ShuQianPingGu.sShuShi;
+            f7.Text28 = ms7ShuQianPingGu.sShouShuTime;
+            f7.Text27 = ms7ShuQianPingGu.sKaiFuWenHeTime;
+            f7.Text16 = ms7ShuQianPingGu.sZhongLiuJuTiWeiZhi;
+            f7.Text70 = bool2HanZi(ms7ShuQianPingGu.bLianHeQiZhuangQieChu);
+            f7.Text26 = ms7ShuQianPingGu.sChuXieLiang;
+            f7.Text71 = ms7ShuQianPingGu.sFuQiangWuRuan;
+            f7.Text21 = ms7ShuQianPingGu.sFuShenShang;
+            f7.Text13 = bool2HanZi(ms7ShuQianPingGu.bYingYangGuan);
+            f7.Text72 = bool2HanZi(ms7ShuQianPingGu.bZaoLou);
+            f7.Text73 = bool2HanZi(ms7ShuQianPingGu.bShuZhongBingLi);
+            f7.Text77 = ms7ShuQianPingGu.sResult2;
+            f7.Text74 = ms7ShuQianPingGu.sQieChuQingkong;
+            f7.Text75 = ms7ShuQianPingGu.sLinBaJieQingShao;
+            f7.Text78 = ms7ShuQianPingGu.sTeShuShuoMing;
+            f7.Text76 = bool2HanZi(ms7ShuQianPingGu.bERAS);
+            f7.Text77 = bool2HanZi(ms7ShuQianPingGu.bICUJianHu);
+            f7.Text37 = ms7ShuQianPingGu.sJianHuTime;
+            f7.Text14 = ms7ShuQianPingGu.sJinShuiShiJian;
+            f7.Text24 = ms7ShuQianPingGu.sTongQiTime;
+            f7.Text80 = ms7ShuQianPingGu.sPaiBianTime;
+            f7.Text6 = ms7ShuQianPingGu.sFuTongHuanJieTime;
+            f7.Text23 = ms7ShuQianPingGu.sNiaoGuanBaChuTime;
+            f7.Text15 = ms7ShuQianPingGu.sYinLiuGuanBaChuTime;
+            f7.Text9 = ms7ShuQianPingGu.sXiaChuangTime;
+            f7.Text10 = ms7ShuQianPingGu.sJinShi;
+            f7.Text113 = bool2HanZi(ms7ShuQianPingGu.bChangNeiYingYang);
+            f7.Text1 = ms7ShuQianPingGu.sChangNeiYingYangZhiChiTime;
+            f7.Text2 = ms7ShuQianPingGu.sTPNtime;
+            f7.Text81 = ms7ShuQianPingGu.sShuHouChuXue;
+            f7.Text82 = ms7ShuQianPingGu.sFuQiangGanRuan;
+            f7.Text84 = ms7ShuQianPingGu.sQieKouGanRuan;
+            f7.Text85 = ms7ShuQianPingGu.sWenHeKouLou;
+            f7.Text86 = ms7ShuQianPingGu.sChangGenZhu;
+            f7.Text5 = ms7ShuQianPingGu.sWeiTan;
+            f7.Text83 = ms7ShuQianPingGu.sFeiBuFanRuan;
+            f7.Text8 = ms7ShuQianPingGu.sDiDanBaiXueZheng;
+            f7.Text98 = ms7ShuQianPingGu.sWEiGuanTuoChu;
+            f7.Text90 = ms7ShuQianPingGu.sYingYangGuanTuoChu;
+            f7.Text87 = ms7ShuQianPingGu.sZaoKouBingFaZheng;
+            f7.Text4 = bool2HanZi(ms7ShuQianPingGu.b2thShouShu);
+            f7.Text88 = ms7ShuQianPingGu.sShouShuTime;
+            f7.Text7 = ms7ShuQianPingGu.sShouShuFangShi;
+            f7.Text3 = ms7ShuQianPingGu.sJieJueWenTi;
+            f7.Text102 = ms7ShuQianPingGu.sShuHouBingLiZhengDuan;
+            f7.Text101 = ms7ShuQianPingGu.sFenHuaChengDu;
+            f7.Text91 = ms7ShuQianPingGu.sJinRunShenDu;
+            f7.Text100 = ms7ShuQianPingGu.sMaiGuanAiShuan;
+            f7.Text99 = ms7ShuQianPingGu.sShenJingQinFang;
+            f7.Text98 = ms7ShuQianPingGu.sAiJieJie;
+            f7.Text104 = ms7ShuQianPingGu.sZongLinBaJieShu;
+            f7.Text93 = ms7ShuQianPingGu.sZhuanyiLinBaJieShu;
+            f7.Text92 = ms7ShuQianPingGu.sMSI;
+            f7.Text106 = ms7ShuQianPingGu.sHER_2;
+            f7.Text103 = ms7ShuQianPingGu.sP53;
+            f7.Text105 = ms7ShuQianPingGu.sKi_67;
+            f7.Text95 = ms7ShuQianPingGu.sK_RAS;
+            f7.Text94 = ms7ShuQianPingGu.sN_RAS;
+            f7.Text107 = ms7ShuQianPingGu.sShouHouBingLiFenQi;
+            f7.Text111 = ms7ShuQianPingGu.sMSIQueZheng;
+            f7.Text112 = ms7ShuQianPingGu.sJiYinJianCe;
+            f7.Text97 = ms7ShuQianPingGu.sChuYuanTime;
+            f7.Text96 = ms7ShuQianPingGu.sChuYuanQingKong;
+            f7.Text108 = ms7ShuQianPingGu.sYiLiaoFeiYong;
 
             string sql1 = "select * from s7ShuQianPingGu where iUserID = '" + gOid.ToString() + "'"; //重新刷新，只显示本用户的信息
             //刷新主页面，防止后台改了access数据库后，基本信息页面刷新了，主页面不刷新。
@@ -1331,13 +1547,12 @@ namespace WindowsFormsAccess
 
             gFlagAdd7 = 0; //设置局部更新标志位
 
-
             //显示
             outputLabel("Sheet7加载成功!");
         }
 
         //基本信息-更新；
-        private bool updateSheet7()
+        private bool updateSheet7(ref FormSheet7 f7)
         {
             bool result = false; //返回值
             try
@@ -1349,22 +1564,138 @@ namespace WindowsFormsAccess
                 }
 
                 //更新
-                ms7ShuQianPingGu.ID = gOid6;
+                ms7ShuQianPingGu.ID = gOid7;
                 ms7ShuQianPingGu.iUserID = gOid.ToString();
-                ms7ShuQianPingGu.sBianMa = textBox82.Text;
-                ms7ShuQianPingGu.sZhongLiuBuWei = comboBox29.Text;
-                ms7ShuQianPingGu.sShouFaZhengZhuang = comboBox28.Text;
-                ms7ShuQianPingGu.dTime = dateTimePicker6.Value;
-                ms7ShuQianPingGu.dChuBuZhengDuanTime = dateTimePicker5.Value;
-                ms7ShuQianPingGu.sResult = "default";
-                ms7ShuQianPingGu.sZhenDuanYiJiu = comboBox27.Text;
+                if (f7.Text1 == "") //编号
+                {
+                    output("编号不能为空");
+                    return false;
+                }
+
+                //ms7ShuQianPingGu.ID                =  textBox.Text Text ;
+                ms7ShuQianPingGu.iUserID = gOid.ToString();
+                ms7ShuQianPingGu.ID = gOid7;
+                ms7ShuQianPingGu.sBianHao = f7.Text36;
+                ms7ShuQianPingGu.bWoYuanBingJian = hanZi2Bool(f7.Text37);
+                ms7ShuQianPingGu.sResult = f7.Text38;
+                ms7ShuQianPingGu.sBingLiHao = f7.Text35;
+                ms7ShuQianPingGu.bWoYuanCT = hanZi2Bool(f7.Text1);
+                ms7ShuQianPingGu.sZhongLiuDaXiao = f7.Text41;
+                ms7ShuQianPingGu.sJuBuQinFang = f7.Text42;
+                ms7ShuQianPingGu.bLinBaJieZhuanYi = hanZi2Bool(f7.Text43);
+                ms7ShuQianPingGu.bZhuanYi = hanZi2Bool(f7.Text40);
+                ms7ShuQianPingGu.sBuWei = f7.Text34;
+                ms7ShuQianPingGu.bWoYuanMRI = hanZi2Bool(f7.Text39);
+                ms7ShuQianPingGu.sMRIZhongliuDaXiao = f7.Text45;
+                ms7ShuQianPingGu.sMRIJuBuQinFang = f7.Text46;
+                ms7ShuQianPingGu.bMRILinBaJieZhuanYi = hanZi2Bool(f7.Text47);
+                ms7ShuQianPingGu.bMRIZhuanYi = hanZi2Bool(f7.Text44);
+                ms7ShuQianPingGu.sMRIBuWei = f7.Text48;
+                ms7ShuQianPingGu.bPET = hanZi2Bool(f7.Text54);
+                ms7ShuQianPingGu.sPETZhongLiuDaXiao = f7.Text50;
+                ms7ShuQianPingGu.sPETJuBuQinFang = f7.Text51;
+                ms7ShuQianPingGu.sDaiXieQiangDu = f7.Text55;
+                ms7ShuQianPingGu.sLinBaZhuanYi = f7.Text52;
+                ms7ShuQianPingGu.bPETZhuanYi = f7.Text49;
+                ms7ShuQianPingGu.sPETBuWei = f7.Text53;
+                ms7ShuQianPingGu.sZhuanYiBuWeiDaiXieQD = f7.Text56;
+                ms7ShuQianPingGu.sCT = f7.Text57;
+                ms7ShuQianPingGu.sCN = f7.Text58;
+                ms7ShuQianPingGu.sCM = f7.Text64;
+                ms7ShuQianPingGu.sWBC = f7.Text59;
+                ms7ShuQianPingGu.sHb = f7.Text65;
+                ms7ShuQianPingGu.sALB = f7.Text60;
+                ms7ShuQianPingGu.sCEA = f7.Text61;
+                ms7ShuQianPingGu.sCA125 = f7.Text62;
+                ms7ShuQianPingGu.sCA199 = f7.Text66;
+                ms7ShuQianPingGu.sCA724 = f7.Text63;
+                ms7ShuQianPingGu.sAFP = f7.Text20;
+                ms7ShuQianPingGu.bGengZhu = hanZi2Bool(f7.Text32);
+                ms7ShuQianPingGu.bChuXie = hanZi2Bool(f7.Text67);
+                ms7ShuQianPingGu.bChuanKong = hanZi2Bool(f7.Text68);
+                ms7ShuQianPingGu.sBMI = f7.Text11;
+                ms7ShuQianPingGu.sNRS2002 = f7.Text29;
+                ms7ShuQianPingGu.sTengTongPingFen = f7.Text30;
+                ms7ShuQianPingGu.sECOG = f7.Text33;
+                ms7ShuQianPingGu.sXinGongNeng = f7.Text19;
+                ms7ShuQianPingGu.sFeiGongNeng = f7.Text12;
+                ms7ShuQianPingGu.sShenGongNeng = f7.Text18;
+                ms7ShuQianPingGu.sGanGongNeng = f7.Text110;
+                ms7ShuQianPingGu.sNingXieGongneng = f7.Text109;
+                ms7ShuQianPingGu.bJiZhenShouShu = hanZi2Bool(f7.Text17);
+                ms7ShuQianPingGu.sShouShuRiqi = f7.Text114;
+                ms7ShuQianPingGu.sQiangjingKaiFu = f7.Text69;
+                ms7ShuQianPingGu.sShuShi = f7.Text31;
+                ms7ShuQianPingGu.sShouShuTime = f7.Text28;
+                ms7ShuQianPingGu.sKaiFuWenHeTime = f7.Text27;
+                ms7ShuQianPingGu.sZhongLiuJuTiWeiZhi = f7.Text16;
+                ms7ShuQianPingGu.bLianHeQiZhuangQieChu = hanZi2Bool(f7.Text70);
+                ms7ShuQianPingGu.sChuXieLiang = f7.Text26;
+                ms7ShuQianPingGu.sFuQiangWuRuan = f7.Text71;
+                ms7ShuQianPingGu.sFuShenShang = f7.Text21;
+                ms7ShuQianPingGu.bYingYangGuan = hanZi2Bool(f7.Text13);
+                ms7ShuQianPingGu.bZaoLou = hanZi2Bool(f7.Text72);
+                ms7ShuQianPingGu.bShuZhongBingLi = hanZi2Bool(f7.Text73);
+                ms7ShuQianPingGu.sResult2 = f7.Text77;
+                ms7ShuQianPingGu.sQieChuQingkong = f7.Text74;
+                ms7ShuQianPingGu.sLinBaJieQingShao = f7.Text75;
+                ms7ShuQianPingGu.sTeShuShuoMing = f7.Text78;
+                ms7ShuQianPingGu.bERAS = hanZi2Bool(f7.Text76);
+                ms7ShuQianPingGu.bICUJianHu = hanZi2Bool(f7.Text77);
+                ms7ShuQianPingGu.sJianHuTime = f7.Text37;
+                ms7ShuQianPingGu.sJinShuiShiJian = f7.Text14;
+                ms7ShuQianPingGu.sTongQiTime = f7.Text24;
+                ms7ShuQianPingGu.sPaiBianTime = f7.Text80;
+                ms7ShuQianPingGu.sFuTongHuanJieTime = f7.Text6;
+                ms7ShuQianPingGu.sNiaoGuanBaChuTime = f7.Text23;
+                ms7ShuQianPingGu.sYinLiuGuanBaChuTime = f7.Text15;
+                ms7ShuQianPingGu.sXiaChuangTime = f7.Text9;
+                ms7ShuQianPingGu.sJinShi = f7.Text10;
+                ms7ShuQianPingGu.bChangNeiYingYang = hanZi2Bool(f7.Text113);
+                ms7ShuQianPingGu.sChangNeiYingYangZhiChiTime = f7.Text1;
+                ms7ShuQianPingGu.sTPNtime = f7.Text2;
+                ms7ShuQianPingGu.sShuHouChuXue = f7.Text81;
+                ms7ShuQianPingGu.sFuQiangGanRuan = f7.Text82;
+                ms7ShuQianPingGu.sQieKouGanRuan = f7.Text84;
+                ms7ShuQianPingGu.sWenHeKouLou = f7.Text85;
+                ms7ShuQianPingGu.sChangGenZhu = f7.Text86;
+                ms7ShuQianPingGu.sWeiTan = f7.Text5;
+                ms7ShuQianPingGu.sFeiBuFanRuan = f7.Text83;
+                ms7ShuQianPingGu.sDiDanBaiXueZheng = f7.Text8;
+                ms7ShuQianPingGu.sWEiGuanTuoChu = f7.Text98;
+                ms7ShuQianPingGu.sYingYangGuanTuoChu = f7.Text90;
+                ms7ShuQianPingGu.sZaoKouBingFaZheng = f7.Text87;
+                ms7ShuQianPingGu.b2thShouShu = hanZi2Bool(f7.Text4);
+                ms7ShuQianPingGu.sShouShuTime = f7.Text88;
+                ms7ShuQianPingGu.sShouShuFangShi = f7.Text7;
+                ms7ShuQianPingGu.sJieJueWenTi = f7.Text3;
+                ms7ShuQianPingGu.sShuHouBingLiZhengDuan = f7.Text102;
+                ms7ShuQianPingGu.sFenHuaChengDu = f7.Text101;
+                ms7ShuQianPingGu.sJinRunShenDu = f7.Text91;
+                ms7ShuQianPingGu.sMaiGuanAiShuan = f7.Text100;
+                ms7ShuQianPingGu.sShenJingQinFang = f7.Text99;
+                ms7ShuQianPingGu.sAiJieJie = f7.Text98;
+                ms7ShuQianPingGu.sZongLinBaJieShu = f7.Text104;
+                ms7ShuQianPingGu.sZhuanyiLinBaJieShu = f7.Text93;
+                ms7ShuQianPingGu.sMSI = f7.Text92;
+                ms7ShuQianPingGu.sHER_2 = f7.Text106;
+                ms7ShuQianPingGu.sP53 = f7.Text103;
+                ms7ShuQianPingGu.sKi_67 = f7.Text105;
+                ms7ShuQianPingGu.sK_RAS = f7.Text95;
+                ms7ShuQianPingGu.sN_RAS = f7.Text94;
+                ms7ShuQianPingGu.sShouHouBingLiFenQi = f7.Text107;
+                ms7ShuQianPingGu.sMSIQueZheng = f7.Text111;
+                ms7ShuQianPingGu.sJiYinJianCe = f7.Text112;
+                ms7ShuQianPingGu.sChuYuanTime = f7.Text97;
+                ms7ShuQianPingGu.sChuYuanQingKong = f7.Text96;
+                ms7ShuQianPingGu.sYiLiaoFeiYong = f7.Text108;
 
                 bool ret = false;
                 if (1 == gFlagAdd || 1 == gFlagAdd7)  //全局新增或单条新增，
                 {
                     ret = dos7ShuQianPingGu.Add(ms7ShuQianPingGu);
                 }
-                else if (false == dos7ShuQianPingGu.Exists(gOid6)) //若无记录，则点击保存也视为增加
+                else if (false == dos7ShuQianPingGu.Exists(gOid7)) //若无记录，则点击保存也视为增加
                     ret = dos7ShuQianPingGu.Add(ms7ShuQianPingGu);
                 else  //更新
                 {
@@ -1398,7 +1729,8 @@ namespace WindowsFormsAccess
             return result;
         }
         #endregion
-        */
+       
+      
         #region test
         private Maticsoft.Model.ycyx modelYcyx = new Maticsoft.Model.ycyx();
         Maticsoft.DAL.ycyx ycyxDo = new Maticsoft.DAL.ycyx();

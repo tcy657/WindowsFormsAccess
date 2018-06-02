@@ -118,13 +118,13 @@ namespace WindowsFormsAccess
                 }
             }
 
-            foreach (Control i in groupBox8.Controls)
-            {
-                if (i is TextBox)
-                    i.Text = "";
-                else if (i is ComboBox)
-                    i.Text = "";
-            }
+            //foreach (Control i in groupBox8.Controls)
+            //{
+            //    if (i is TextBox)
+            //        i.Text = "";
+            //    else if (i is ComboBox)
+            //        i.Text = "";
+            //}
 
 
 
@@ -222,6 +222,128 @@ namespace WindowsFormsAccess
             dgView6.Columns[6].HeaderCell.Value = "诊断依据";
             dgView6.Columns[7].HeaderCell.Value = "用户ID";
             
+            //读取sheet7内容到页面
+            sql1 = "select * from s7ShuQianPingGu where iUserID='" + gOid.ToString() + "'"; //重新刷新
+            databind(sql1, dgView7);
+            dgView7.Columns[0].Visible = false;
+            dgView7.Columns[1].HeaderCell.Value = "编码";
+            dgView7.Columns[2].HeaderCell.Value = "我院病检";
+            dgView7.Columns[3].HeaderCell.Value = "结果";
+            dgView7.Columns[4].HeaderCell.Value = "病理号";
+            dgView7.Columns[5].HeaderCell.Value = "我院CT";
+            dgView7.Columns[6].HeaderCell.Value = "肿瘤大小";
+            dgView7.Columns[7].HeaderCell.Value = "局部侵犯";
+			dgView7.Columns[8].HeaderCell.Value = "淋巴结转移";
+			dgView7.Columns[9].HeaderCell.Value = "转移";
+			dgView7.Columns[10].HeaderCell.Value = "部位";
+			dgView7.Columns[11].HeaderCell.Value = "我院MRI";
+			dgView7.Columns[12].HeaderCell.Value = "MRI肿瘤大小";
+			dgView7.Columns[13].HeaderCell.Value = "MRI局部侵犯";
+			dgView7.Columns[14].HeaderCell.Value = "MRI淋巴转移";
+			dgView7.Columns[15].HeaderCell.Value = "MRI转移";
+			dgView7.Columns[16].HeaderCell.Value = "MRI部位";
+			dgView7.Columns[17].HeaderCell.Value = "PET";
+			dgView7.Columns[18].HeaderCell.Value = "PET肿瘤大小";
+			dgView7.Columns[19].HeaderCell.Value = "PET局部侵犯";
+			dgView7.Columns[20].HeaderCell.Value = "PET代谢强度";
+			dgView7.Columns[21].HeaderCell.Value = "PET淋巴转移";
+			dgView7.Columns[22].HeaderCell.Value = "PET转移";
+			dgView7.Columns[23].HeaderCell.Value = "PET部位";
+			dgView7.Columns[24].HeaderCell.Value = "转移部位代谢强度";
+			dgView7.Columns[25].HeaderCell.Value = "CT";   
+			dgView7.Columns[26].HeaderCell.Value = "CN";   
+			dgView7.Columns[27].HeaderCell.Value = "CM";   
+			dgView7.Columns[28].HeaderCell.Value = "WBC";  
+			dgView7.Columns[29].HeaderCell.Value = "Hb";   
+			dgView7.Columns[30].HeaderCell.Value = "ALB";  
+			dgView7.Columns[31].HeaderCell.Value = "CEA";  
+			dgView7.Columns[32].HeaderCell.Value = "CA125";
+			dgView7.Columns[33].HeaderCell.Value = "CA199";
+			dgView7.Columns[34].HeaderCell.Value = "CA724";
+			dgView7.Columns[35].HeaderCell.Value = "AFP";  
+			dgView7.Columns[36].HeaderCell.Value = "是否梗阻";
+			dgView7.Columns[37].HeaderCell.Value = "是否出血";
+			dgView7.Columns[38].HeaderCell.Value = "是否穿孔";
+			dgView7.Columns[39].HeaderCell.Value = "BMI";
+			dgView7.Columns[40].HeaderCell.Value = "NRS2002";
+			dgView7.Columns[41].HeaderCell.Value = "疼痛评分";
+			dgView7.Columns[42].HeaderCell.Value = "ECOG";
+			dgView7.Columns[43].HeaderCell.Value = "心功能";
+			dgView7.Columns[44].HeaderCell.Value = "肺功能";
+			dgView7.Columns[45].HeaderCell.Value = "肾功能";
+			dgView7.Columns[46].HeaderCell.Value = "肝功能";
+			dgView7.Columns[47].HeaderCell.Value = "凝血功能";
+			dgView7.Columns[48].HeaderCell.Value = "是否急诊手术";
+			dgView7.Columns[49].HeaderCell.Value = "手术日期";
+			dgView7.Columns[50].HeaderCell.Value = "腔镜/开腹";
+			dgView7.Columns[51].HeaderCell.Value = "术式";
+			dgView7.Columns[52].HeaderCell.Value = "手术时间";
+			dgView7.Columns[53].HeaderCell.Value = "开腹吻合时间";
+			dgView7.Columns[54].HeaderCell.Value = "肿瘤具体位置";
+			dgView7.Columns[55].HeaderCell.Value = "联合器脏切除";
+			dgView7.Columns[56].HeaderCell.Value = "出血量";
+			dgView7.Columns[57].HeaderCell.Value = "腹腔污染";
+			dgView7.Columns[58].HeaderCell.Value = "副损伤";
+			dgView7.Columns[59].HeaderCell.Value = "是否营养管";
+			dgView7.Columns[60].HeaderCell.Value = "是否造篓";
+			dgView7.Columns[61].HeaderCell.Value = "是否术中病理";
+			dgView7.Columns[62].HeaderCell.Value = "结果2";
+			dgView7.Columns[63].HeaderCell.Value = "切除情况";
+			dgView7.Columns[64].HeaderCell.Value = "淋巴结清扫";
+			dgView7.Columns[65].HeaderCell.Value = "特殊说明";
+			dgView7.Columns[66].HeaderCell.Value = "ERAS";
+			dgView7.Columns[67].HeaderCell.Value = "ICU监护";
+			dgView7.Columns[68].HeaderCell.Value = "监护时间";
+			dgView7.Columns[69].HeaderCell.Value = "进水时间";
+			dgView7.Columns[70].HeaderCell.Value = "通气时间";
+			dgView7.Columns[71].HeaderCell.Value = "排便时间";
+			dgView7.Columns[72].HeaderCell.Value = "腹痛缓解时间";
+			dgView7.Columns[73].HeaderCell.Value = "尿管拔除时间";
+			dgView7.Columns[74].HeaderCell.Value = "引流管拔除时间";
+			dgView7.Columns[75].HeaderCell.Value = "下床时间";
+			dgView7.Columns[76].HeaderCell.Value = "进食时间";
+			dgView7.Columns[77].HeaderCell.Value = "是否肠内营养管";
+			dgView7.Columns[78].HeaderCell.Value = "肠内营养管时间";
+			dgView7.Columns[79].HeaderCell.Value = "TPN时间";
+			dgView7.Columns[80].HeaderCell.Value = "术后出血";
+			dgView7.Columns[81].HeaderCell.Value = "腹腔感染";
+			dgView7.Columns[82].HeaderCell.Value = "切口感染";
+			dgView7.Columns[83].HeaderCell.Value = "吻合口瘘";
+			dgView7.Columns[84].HeaderCell.Value = "肠梗阻";
+			dgView7.Columns[85].HeaderCell.Value = "胃瘫";
+			dgView7.Columns[86].HeaderCell.Value = "肺部感染";
+			dgView7.Columns[87].HeaderCell.Value = "低蛋白血症";
+			dgView7.Columns[88].HeaderCell.Value = "胃管脱出";
+			dgView7.Columns[89].HeaderCell.Value = "营养管脱出";
+			dgView7.Columns[90].HeaderCell.Value = "造口并发症";
+			dgView7.Columns[91].HeaderCell.Value = "是否二次手术";
+			dgView7.Columns[92].HeaderCell.Value = "手术时间2";
+			dgView7.Columns[93].HeaderCell.Value = "手术方式2";
+			dgView7.Columns[94].HeaderCell.Value = "解决问题";
+			dgView7.Columns[95].HeaderCell.Value = "术后病理诊断";
+			dgView7.Columns[96].HeaderCell.Value = "分化程度";
+			dgView7.Columns[97].HeaderCell.Value = "浸润深度";
+			dgView7.Columns[98].HeaderCell.Value = "脉管癌栓";
+			dgView7.Columns[99].HeaderCell.Value = "神经侵犯";
+			dgView7.Columns[100].HeaderCell.Value = "癌结节";
+			dgView7.Columns[101].HeaderCell.Value = "总淋巴结数";
+			dgView7.Columns[102].HeaderCell.Value = "转移淋巴结数";
+			dgView7.Columns[103].HeaderCell.Value = "MSI";  
+			dgView7.Columns[104].HeaderCell.Value = "HER_2";
+			dgView7.Columns[105].HeaderCell.Value = "P53";
+			dgView7.Columns[106].HeaderCell.Value = "Ki_67";
+			dgView7.Columns[107].HeaderCell.Value = "K_RAS";
+			dgView7.Columns[108].HeaderCell.Value = "N_RAS";
+			dgView7.Columns[109].HeaderCell.Value = "术后病理分期";
+			dgView7.Columns[110].HeaderCell.Value = "MSI确证";
+			dgView7.Columns[111].HeaderCell.Value = "基因检测";
+			dgView7.Columns[112].HeaderCell.Value = "出院时间";
+			dgView7.Columns[113].HeaderCell.Value = "出院情况";
+			dgView7.Columns[114].HeaderCell.Value = "医疗费用";
+			dgView7.Columns[115].HeaderCell.Value = "用户ID";
+
+		
+
             //readSheetX(gOid);   //读取内容到页面
 
             //测试同一sheet存在多个ID和单ID
@@ -278,13 +400,13 @@ namespace WindowsFormsAccess
                     i.Text = "";
             }
 
-            foreach (Control i in groupBox8.Controls)
-            {
-                if (i is TextBox)
-                    i.Text = "";
-                else if (i is ComboBox)
-                    i.Text = "";
-            }
+            //foreach (Control i in groupBox8.Controls)
+            //{
+            //    if (i is TextBox)
+            //        i.Text = "";
+            //    else if (i is ComboBox)
+            //        i.Text = "";
+            //}
 
             //置位为新增状态
             gFlagAdd = 1;
@@ -738,8 +860,11 @@ namespace WindowsFormsAccess
                        }
                    }
                     break;
-                case 6:
-
+                case 6: //sheet7
+                    FormSheet7 f7 = new FormSheet7(); //创建一个新窗口7
+                    gFlagAdd7 = 1; //新建，局部新增
+                    f7.ShowDialog();
+  
                     break;
                 case 7:
 
@@ -807,8 +932,8 @@ namespace WindowsFormsAccess
                         }
                     }
                     break;
-                case 6:
-
+                case 6: //sheet 7，不需要清空窗体
+                    deleteSheet7();
                     break;
                 case 7:
 
@@ -870,8 +995,9 @@ namespace WindowsFormsAccess
                     }
                     break;
                 case 6:  //sheet7
-                    
-                    
+                    FormSheet7 f7 = new FormSheet7();
+                    readSheet7(ref f7);
+                    f7.ShowDialog();
                     break;
                 case 7:
 

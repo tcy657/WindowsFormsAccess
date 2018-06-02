@@ -6,7 +6,6 @@ git常用命令
 
 1 增加类定义代替数据库公共操作dll引用
 2 替换一个sql变量
-3 增加一个GetModelByUserID()的方法
 
 公共结构体
 1   struct {
@@ -20,12 +19,13 @@ git常用命令
     };
 
 【问题】
+【待确认】sheet7中“术后病理分期”应为”术后病理分析“？ 11:54 2018/6/2
 【待完成】是或否转换为true和false
 【待完成】查询功能
 【待完成】delete待增加其他Sheet的动作
 【待完成】所有的下拉框禁止输入，只能选择
 【待完成】增加try-catch捕获错误
-【待完成】sheet7文件管理功能未实现
+【待完成】sheet7未实现
 【待完成】excel导出datagridview功能
     ——https://jingyan.baidu.com/article/a24b33cd0682cd19fe002bb0.html C# 怎么导出dataGridView中的值到Excel
     --** https://zhidao.baidu.com/question/1817909972118765668.html c#如何把datagridview导出到excel
@@ -38,7 +38,13 @@ git常用命令
 【优化】output()都用outputLabel()
 【优化】sheet页的禁用和使能  23:20 2018-5-30
 【优化】美化界面，菜单/工具栏/状态栏/右键（可选）
+【优化，界面】分组/分块，增默认值
+【优化】切换到sheet7时，禁用“保存”按键
 【优化】
+【优化】
+【优化】
+【优化】
+【优化】字段类型是否准确，如时间，选日期的话可以用控件，鼠标就可以完成操作
 1 sheet7有100多个字段，不好维护，建议拆分多个sheet页
 2 sheet2字段疗程、剂量、方案等重复
 3 sheet3、sheet4中住院号与sheet1中重复，没必要显示？

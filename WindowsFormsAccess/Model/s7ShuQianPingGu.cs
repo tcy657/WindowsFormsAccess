@@ -6,7 +6,7 @@
 *
 * Ver    变更日期             负责人  变更内容
 * ───────────────────────────────────
-* V0.01  2018/5/22 19:46:19   N/A    初版
+* V0.01  2018/6/2 15:05:22   N/A    初版
 *
 * Copyright (c) 2012 Maticsoft Corporation. All rights reserved.
 *┌──────────────────────────────────┐
@@ -75,11 +75,11 @@ namespace Maticsoft.Model
 		private string _sgangongneng;
 		private string _sningxiegongneng;
 		private bool _bjizhenshoushu= false;
-		private DateTime? _dshoushuriqi;
+		private string _sshoushuriqi;
 		private string _sqiangjingkaifu;
 		private string _sshushi;
 		private string _sshoushutime;
-		private DateTime? _dkaifuwenhetime;
+		private string _skaifuwenhetime;
 		private string _szhongliujutiweizhi;
 		private bool _blianheqizhuangqiechu= false;
 		private string _schuxieliang;
@@ -95,17 +95,17 @@ namespace Maticsoft.Model
 		private bool _beras= false;
 		private bool _bicujianhu= false;
 		private string _sjianhutime;
-		private DateTime? _djinshuishijian;
-		private DateTime? _dtongqitime;
-		private DateTime? _dpaibiantime;
-		private DateTime? _dfutonghuanjietime;
-		private DateTime? _dniaoguanbachutime;
-		private DateTime? _dyinliuguanbachutime;
-		private DateTime? _dxiachuangtime;
-		private DateTime? _djinshi;
+		private string _sjinshuishijian;
+		private string _stongqitime;
+		private string _spaibiantime;
+		private string _sfutonghuanjietime;
+		private string _sniaoguanbachutime;
+		private string _syinliuguanbachutime;
+		private string _sxiachuangtime;
+		private string _sjinshi;
 		private bool _bchangneiyingyang= false;
-		private DateTime? _dchangneiyingyangzhichitime;
-		private DateTime? _dtpntime;
+		private string _schangneiyingyangzhichitime;
+		private string _stpntime;
 		private string _sshuhouchuxue;
 		private string _sfuqiangganruan;
 		private string _sqiekouganruan;
@@ -118,7 +118,7 @@ namespace Maticsoft.Model
 		private string _syingyangguantuochu;
 		private string _szaokoubingfazheng;
 		private bool _b2thshoushu= false;
-		private DateTime? _dshoushutime;
+		private string _sshoushutime2;
 		private string _sshoushufangshi;
 		private string _sjiejuewenti;
 		private string _sshuhoubinglizhengduan;
@@ -138,7 +138,7 @@ namespace Maticsoft.Model
 		private string _sshouhoubinglifenqi;
 		private string _smsiquezheng;
 		private string _sjiyinjiance;
-		private DateTime? _dchuyuantime;
+		private string _schuyuantime;
 		private string _schuyuanqingkong;
 		private string _syiliaofeiyong;
 		private string _iuserid;
@@ -537,10 +537,10 @@ namespace Maticsoft.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public DateTime? dShouShuRiqi
+		public string sShouShuRiqi
 		{
-			set{ _dshoushuriqi=value;}
-			get{return _dshoushuriqi;}
+			set{ _sshoushuriqi=value;}
+			get{return _sshoushuriqi;}
 		}
 		/// <summary>
 		/// 
@@ -569,10 +569,10 @@ namespace Maticsoft.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public DateTime? dKaiFuWenHeTime
+		public string sKaiFuWenHeTime
 		{
-			set{ _dkaifuwenhetime=value;}
-			get{return _dkaifuwenhetime;}
+			set{ _skaifuwenhetime=value;}
+			get{return _skaifuwenhetime;}
 		}
 		/// <summary>
 		/// 
@@ -697,66 +697,66 @@ namespace Maticsoft.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public DateTime? dJinShuiShiJian
+		public string sJinShuiShiJian
 		{
-			set{ _djinshuishijian=value;}
-			get{return _djinshuishijian;}
+			set{ _sjinshuishijian=value;}
+			get{return _sjinshuishijian;}
 		}
 		/// <summary>
 		/// 
 		/// </summary>
-		public DateTime? dTongQiTime
+		public string sTongQiTime
 		{
-			set{ _dtongqitime=value;}
-			get{return _dtongqitime;}
+			set{ _stongqitime=value;}
+			get{return _stongqitime;}
 		}
 		/// <summary>
 		/// 
 		/// </summary>
-		public DateTime? dPaiBianTime
+		public string sPaiBianTime
 		{
-			set{ _dpaibiantime=value;}
-			get{return _dpaibiantime;}
+			set{ _spaibiantime=value;}
+			get{return _spaibiantime;}
 		}
 		/// <summary>
 		/// 
 		/// </summary>
-		public DateTime? dFuTongHuanJieTime
+		public string sFuTongHuanJieTime
 		{
-			set{ _dfutonghuanjietime=value;}
-			get{return _dfutonghuanjietime;}
+			set{ _sfutonghuanjietime=value;}
+			get{return _sfutonghuanjietime;}
 		}
 		/// <summary>
 		/// 
 		/// </summary>
-		public DateTime? dNiaoGuanBaChuTime
+		public string sNiaoGuanBaChuTime
 		{
-			set{ _dniaoguanbachutime=value;}
-			get{return _dniaoguanbachutime;}
+			set{ _sniaoguanbachutime=value;}
+			get{return _sniaoguanbachutime;}
 		}
 		/// <summary>
 		/// 
 		/// </summary>
-		public DateTime? dYinLiuGuanBaChuTime
+		public string sYinLiuGuanBaChuTime
 		{
-			set{ _dyinliuguanbachutime=value;}
-			get{return _dyinliuguanbachutime;}
+			set{ _syinliuguanbachutime=value;}
+			get{return _syinliuguanbachutime;}
 		}
 		/// <summary>
 		/// 
 		/// </summary>
-		public DateTime? dXiaChuangTime
+		public string sXiaChuangTime
 		{
-			set{ _dxiachuangtime=value;}
-			get{return _dxiachuangtime;}
+			set{ _sxiachuangtime=value;}
+			get{return _sxiachuangtime;}
 		}
 		/// <summary>
 		/// 
 		/// </summary>
-		public DateTime? dJinShi
+		public string sJinShi
 		{
-			set{ _djinshi=value;}
-			get{return _djinshi;}
+			set{ _sjinshi=value;}
+			get{return _sjinshi;}
 		}
 		/// <summary>
 		/// 
@@ -769,18 +769,18 @@ namespace Maticsoft.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public DateTime? dChangNeiYingYangZhiChiTime
+		public string sChangNeiYingYangZhiChiTime
 		{
-			set{ _dchangneiyingyangzhichitime=value;}
-			get{return _dchangneiyingyangzhichitime;}
+			set{ _schangneiyingyangzhichitime=value;}
+			get{return _schangneiyingyangzhichitime;}
 		}
 		/// <summary>
 		/// 
 		/// </summary>
-		public DateTime? dTPNtime
+		public string sTPNtime
 		{
-			set{ _dtpntime=value;}
-			get{return _dtpntime;}
+			set{ _stpntime=value;}
+			get{return _stpntime;}
 		}
 		/// <summary>
 		/// 
@@ -881,10 +881,10 @@ namespace Maticsoft.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public DateTime? dShouShuTime
+		public string sShouShuTime2
 		{
-			set{ _dshoushutime=value;}
-			get{return _dshoushutime;}
+			set{ _sshoushutime2=value;}
+			get{return _sshoushutime2;}
 		}
 		/// <summary>
 		/// 
@@ -1041,10 +1041,10 @@ namespace Maticsoft.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public DateTime? dChuYuanTime
+		public string sChuYuanTime
 		{
-			set{ _dchuyuantime=value;}
-			get{return _dchuyuantime;}
+			set{ _schuyuantime=value;}
+			get{return _schuyuantime;}
 		}
 		/// <summary>
 		/// 
