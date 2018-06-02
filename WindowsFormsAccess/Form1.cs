@@ -118,16 +118,6 @@ namespace WindowsFormsAccess
                 }
             }
 
-            //foreach (Control i in groupBox8.Controls)
-            //{
-            //    if (i is TextBox)
-            //        i.Text = "";
-            //    else if (i is ComboBox)
-            //        i.Text = "";
-            //}
-
-
-
             //step3
             object oid = dataGridView1.SelectedRows[0].Cells[0].Value;
             gOid = Convert.ToInt32(oid);  //更新全局oid
@@ -754,11 +744,11 @@ namespace WindowsFormsAccess
                 case 0:
 
                     break;
-                case 1:
-
+                case 1: //sheet2
+                    updateSheet2();
                     break;
-                case 2:
-
+                case 2: //sheet3
+                    updateSheet3();
                     break;
                 case 3: //sheet4
                     updateSheet4(); //保存
@@ -818,11 +808,27 @@ namespace WindowsFormsAccess
                 case 0:
 
                     break;
-                case 1:
-
+                case 1://sheet2
+                    gFlagAdd2 = 1; //新建，局部新增
+                    //清空
+                    foreach (Control i in groupBox1.Controls)
+                    {
+                        if (i is TextBox)
+                            i.Text = "";
+                        else if (i is ComboBox)
+                            i.Text = "";
+                    }
                     break;
-                case 2:
-
+                case 2: //sheet3
+                    gFlagAdd3 = 1; //新建，局部新增
+                    //清空
+                    foreach (Control i in groupBox5.Controls)
+                    {
+                        if (i is TextBox)
+                            i.Text = "";
+                        else if (i is ComboBox)
+                            i.Text = "";
+                    }
                     break;
                 case 3: //sheet4
                     gFlagAdd4 = 1; //新建，局部新增
@@ -894,11 +900,37 @@ namespace WindowsFormsAccess
                 case 0:
 
                     break;
-                case 1:
-
+                case 1: //sheet2
+                    deleteSheet2();
+                    foreach (Control i in groupBox1.Controls) //清空
+                    {
+                        if (i is TextBox)
+                        {
+                            i.Text = "";
+                            i.Enabled = false;
+                        }
+                        else if (i is ComboBox)
+                        {
+                            i.Text = "";
+                            i.Enabled = false;
+                        }
+                    }
                     break;
-                case 2:
-
+                case 2: //sheet3
+                    deleteSheet3();
+                    foreach (Control i in groupBox5.Controls) //清空
+                    {
+                        if (i is TextBox)
+                        {
+                            i.Text = "";
+                            i.Enabled = false;
+                        }
+                        else if (i is ComboBox)
+                        {
+                            i.Text = "";
+                            i.Enabled = false;
+                        }
+                    }
                     break;
                 case 3: //sheet4
                     deleteSheet4();
@@ -963,11 +995,25 @@ namespace WindowsFormsAccess
                 case 0:
 
                     break;
-                case 1:
-
+                case 1: //sheet
+                    readSheet2();
+                    foreach (Control i in groupBox1.Controls) //使能
+                    {
+                        if (i is TextBox)
+                            i.Enabled = true;
+                        else if (i is ComboBox)
+                            i.Enabled = true;
+                    }
                     break;
-                case 2:
-
+                case 2: //sheet3
+                    readSheet3();
+                    foreach (Control i in groupBox5.Controls) //使能
+                    {
+                        if (i is TextBox)
+                            i.Enabled = true;
+                        else if (i is ComboBox)
+                            i.Enabled = true;
+                    }
                     break;
                 case 3:  //sheet4
                     readSheet4();
