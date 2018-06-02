@@ -6,19 +6,90 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Maticsoft.DBUtility; //引入命名空间
 
 namespace WindowsFormsAccess
 {
     public partial class FormSheet7 : Form
     {
+        private Maticsoft.Model.s7ShuQianPingGu ms7ShuQianPingGu = new Maticsoft.Model.s7ShuQianPingGu();
+        private Maticsoft.DAL.s7ShuQianPingGu dos7ShuQianPingGu = new Maticsoft.DAL.s7ShuQianPingGu();
+
+        #region 公用方法/变量
+        int gOid = 0; //全局oid，记录Users的ID号, s1
+        int gFlagAdd7 = 0; //默认为查看，其他值则为新增
+
+        //日志输出函数
+
+        //日志输出函数,label
+        private void outputLabel(string log)
+        {
+            try
+            {
+                //添加日志
+                this.toolStripStatusLabel2.Text = log;
+                //save2FileTime(autoBackupLogPath, log);  //日志记录到文件
+            }//try
+            catch
+            {
+                ; //不处理。
+            }
+        }
+
+        //初始化
+        private void initDo()
+        {
+            //当前用户
+            toolStripStatusLabel1.Text = "当前用户：管理员";
+            toolStripStatusLabel2.Text = "| 一定成功，加油！";          
+
+        }
+
+        //根据“true/false”转换为汉字(hanzi)“是/否”
+        public string bool2HanZi(bool stringBool)
+        {
+            string ret = "是";
+            if (false == stringBool) { ret = "否"; }
+            return ret;
+        }
+        //根据汉字(hanzi)“是/否”转换为“true/false”
+        public bool hanZi2Bool(string stringBin)
+        {
+            bool ret = true; //
+            if ("否" == stringBin) { ret = false; }
+            return ret;
+        }
+
+        /// <summary>
+        ///延时
+        /// </summary>
+        /// <param name="delayTime"></param>
+        /// <returns></returns>
+        public static bool Delay(int delayTime)
+        {
+            DateTime now = DateTime.Now;
+            int s;
+            do
+            {
+                TimeSpan spand = DateTime.Now - now;
+                s = spand.Seconds;
+                Application.DoEvents();
+            }
+            while (s < delayTime);
+            return true;
+        }
+
+        #endregion 公用方法
+
+        
         public FormSheet7()
         {
             InitializeComponent();
         }
 
         #region 控件值可读写
-        private int iid;
-        private string siUserID;
+        private int iid = 0;
+        private string siUserID = "0";
   
         public int lOid  //local id
         {
@@ -717,6 +788,230 @@ namespace WindowsFormsAccess
         }
 
         #endregion
+             
+
+        #region 读写数据库方法
+        //基本信息-更新；
+        private bool updateSheet7()
+        {
+            bool result = false; //返回值
+            try
+            {
+                if (textBox53.Text == "") //编号不能为空
+                {
+                    MessageBox.Show("编号不能为空");
+                    return false;
+                }
+
+                //更新
+                ms7ShuQianPingGu.ID = lOid;  //gOid7
+                ms7ShuQianPingGu.iUserID = iUserID; //gOid.ToString();  
+
+                ms7ShuQianPingGu.sBianHao = this.Text36;
+                ms7ShuQianPingGu.bWoYuanBingJian = hanZi2Bool(this.Text37);
+                ms7ShuQianPingGu.sResult = this.Text38;
+                ms7ShuQianPingGu.sBingLiHao = this.Text35;
+                ms7ShuQianPingGu.bWoYuanCT = hanZi2Bool(this.Text1);
+                ms7ShuQianPingGu.sZhongLiuDaXiao = this.Text41;
+                ms7ShuQianPingGu.sJuBuQinFang = this.Text42;
+                ms7ShuQianPingGu.bLinBaJieZhuanYi = hanZi2Bool(this.Text43);
+                ms7ShuQianPingGu.bZhuanYi = hanZi2Bool(this.Text40);
+                ms7ShuQianPingGu.sBuWei = this.Text34;
+                ms7ShuQianPingGu.bWoYuanMRI = hanZi2Bool(this.Text39);
+                ms7ShuQianPingGu.sMRIZhongliuDaXiao = this.Text45;
+                ms7ShuQianPingGu.sMRIJuBuQinFang = this.Text46;
+                ms7ShuQianPingGu.bMRILinBaJieZhuanYi = hanZi2Bool(this.Text47);
+                ms7ShuQianPingGu.bMRIZhuanYi = hanZi2Bool(this.Text44);
+                ms7ShuQianPingGu.sMRIBuWei = this.Text48;
+                ms7ShuQianPingGu.bPET = hanZi2Bool(this.Text54);
+                ms7ShuQianPingGu.sPETZhongLiuDaXiao = this.Text50;
+                ms7ShuQianPingGu.sPETJuBuQinFang = this.Text51;
+                ms7ShuQianPingGu.sDaiXieQiangDu = this.Text55;
+                ms7ShuQianPingGu.sLinBaZhuanYi = this.Text52;
+                ms7ShuQianPingGu.bPETZhuanYi = this.Text49;
+                ms7ShuQianPingGu.sPETBuWei = this.Text53;
+                ms7ShuQianPingGu.sZhuanYiBuWeiDaiXieQD = this.Text56;
+                ms7ShuQianPingGu.sCT = this.Text57;
+                ms7ShuQianPingGu.sCN = this.Text54;
+                ms7ShuQianPingGu.sCM = this.Text64;
+                ms7ShuQianPingGu.sWBC = this.Text59;
+                ms7ShuQianPingGu.sHb = this.Text65;
+                ms7ShuQianPingGu.sALB = this.Text60;
+                ms7ShuQianPingGu.sCEA = this.Text61;
+                ms7ShuQianPingGu.sCA125 = this.Text62;
+                ms7ShuQianPingGu.sCA199 = this.Text66;
+                ms7ShuQianPingGu.sCA724 = this.Text63;
+                ms7ShuQianPingGu.sAFP = this.Text20;
+                ms7ShuQianPingGu.bGengZhu = hanZi2Bool(this.Text32);
+                ms7ShuQianPingGu.bChuXie = hanZi2Bool(this.Text67);
+                ms7ShuQianPingGu.bChuanKong = hanZi2Bool(this.Text68);
+                ms7ShuQianPingGu.sBMI = this.Text11;
+                ms7ShuQianPingGu.sNRS2002 = this.Text29;
+                ms7ShuQianPingGu.sTengTongPingFen = this.Text30;
+                ms7ShuQianPingGu.sECOG = this.Text33;
+                ms7ShuQianPingGu.sXinGongNeng = this.Text19;
+                ms7ShuQianPingGu.sFeiGongNeng = this.Text12;
+                ms7ShuQianPingGu.sShenGongNeng = this.Text18;
+                ms7ShuQianPingGu.sGanGongNeng = this.Text110;
+                ms7ShuQianPingGu.sNingXieGongneng = this.Text109;
+                ms7ShuQianPingGu.bJiZhenShouShu = hanZi2Bool(this.Text17);
+                ms7ShuQianPingGu.sShouShuRiqi = this.Text114;
+                ms7ShuQianPingGu.sQiangjingKaiFu = this.Text69;
+                ms7ShuQianPingGu.sShuShi = this.Text31;
+                ms7ShuQianPingGu.sShouShuTime = this.Text28;
+                ms7ShuQianPingGu.sKaiFuWenHeTime = this.Text27;
+                ms7ShuQianPingGu.sZhongLiuJuTiWeiZhi = this.Text16;
+                ms7ShuQianPingGu.bLianHeQiZhuangQieChu = hanZi2Bool(this.Text70);
+                ms7ShuQianPingGu.sChuXieLiang = this.Text26;
+                ms7ShuQianPingGu.sFuQiangWuRuan = this.Text71;
+                ms7ShuQianPingGu.sFuShenShang = this.Text21;
+                ms7ShuQianPingGu.bYingYangGuan = hanZi2Bool(this.Text13);
+                ms7ShuQianPingGu.bZaoLou = hanZi2Bool(this.Text72);
+                ms7ShuQianPingGu.bShuZhongBingLi = hanZi2Bool(this.Text73);
+                ms7ShuQianPingGu.sResult2 = this.Text77;
+                ms7ShuQianPingGu.sQieChuQingkong = this.Text74;
+                ms7ShuQianPingGu.sLinBaJieQingShao = this.Text75;
+                ms7ShuQianPingGu.sTeShuShuoMing = this.Text78;
+                ms7ShuQianPingGu.bERAS = hanZi2Bool(this.Text76);
+                ms7ShuQianPingGu.bICUJianHu = hanZi2Bool(this.Text77);
+                ms7ShuQianPingGu.sJianHuTime = this.Text37;
+                ms7ShuQianPingGu.sJinShuiShiJian = this.Text14;
+                ms7ShuQianPingGu.sTongQiTime = this.Text24;
+                ms7ShuQianPingGu.sPaiBianTime = this.Text80;
+                ms7ShuQianPingGu.sFuTongHuanJieTime = this.Text6;
+                ms7ShuQianPingGu.sNiaoGuanBaChuTime = this.Text23;
+                ms7ShuQianPingGu.sYinLiuGuanBaChuTime = this.Text15;
+                ms7ShuQianPingGu.sXiaChuangTime = this.Text9;
+                ms7ShuQianPingGu.sJinShi = this.Text10;
+                ms7ShuQianPingGu.bChangNeiYingYang = hanZi2Bool(this.Text113);
+                ms7ShuQianPingGu.sChangNeiYingYangZhiChiTime = this.Text1;
+                ms7ShuQianPingGu.sTPNtime = this.Text2;
+                ms7ShuQianPingGu.sShuHouChuXue = this.Text81;
+                ms7ShuQianPingGu.sFuQiangGanRuan = this.Text82;
+                ms7ShuQianPingGu.sQieKouGanRuan = this.Text84;
+                ms7ShuQianPingGu.sWenHeKouLou = this.Text85;
+                ms7ShuQianPingGu.sChangGenZhu = this.Text86;
+                ms7ShuQianPingGu.sWeiTan = this.Text5;
+                ms7ShuQianPingGu.sFeiBuFanRuan = this.Text83;
+                ms7ShuQianPingGu.sDiDanBaiXueZheng = this.Text8;
+                ms7ShuQianPingGu.sWEiGuanTuoChu = this.Text98;
+                ms7ShuQianPingGu.sYingYangGuanTuoChu = this.Text90;
+                ms7ShuQianPingGu.sZaoKouBingFaZheng = this.Text87;
+                ms7ShuQianPingGu.b2thShouShu = hanZi2Bool(this.Text4);
+                ms7ShuQianPingGu.sShouShuTime2 = this.Text88;
+                ms7ShuQianPingGu.sShouShuFangShi = this.Text7;
+                ms7ShuQianPingGu.sJieJueWenTi = this.Text3;
+                ms7ShuQianPingGu.sShuHouBingLiZhengDuan = this.Text102;
+                ms7ShuQianPingGu.sFenHuaChengDu = this.Text101;
+                ms7ShuQianPingGu.sJinRunShenDu = this.Text91;
+                ms7ShuQianPingGu.sMaiGuanAiShuan = this.Text100;
+                ms7ShuQianPingGu.sShenJingQinFang = this.Text99;
+                ms7ShuQianPingGu.sAiJieJie = this.Text98;
+                ms7ShuQianPingGu.sZongLinBaJieShu = this.Text104;
+                ms7ShuQianPingGu.sZhuanyiLinBaJieShu = this.Text93;
+                ms7ShuQianPingGu.sMSI = this.Text92;
+                ms7ShuQianPingGu.sHER_2 = this.Text106;
+                ms7ShuQianPingGu.sP53 = this.Text103;
+                ms7ShuQianPingGu.sKi_67 = this.Text105;
+                ms7ShuQianPingGu.sK_RAS = this.Text95;
+                ms7ShuQianPingGu.sN_RAS = this.Text94;
+                ms7ShuQianPingGu.sShouHouBingLiFenQi = this.Text107;
+                ms7ShuQianPingGu.sMSIQueZheng = this.Text111;
+                ms7ShuQianPingGu.sJiYinJianCe = this.Text112;
+                ms7ShuQianPingGu.sChuYuanTime = this.Text97;
+                ms7ShuQianPingGu.sChuYuanQingKong = this.Text96;
+                ms7ShuQianPingGu.sYiLiaoFeiYong = this.Text108;
+
+                bool ret = false;
+                if ( 0 == lOid)  //单条新增，
+                {
+                    ret = dos7ShuQianPingGu.Add(ms7ShuQianPingGu);
+                }
+                else if (false == dos7ShuQianPingGu.Exists(lOid)) //若无记录，则点击保存也视为增加
+                    ret = dos7ShuQianPingGu.Add(ms7ShuQianPingGu);
+                else  //更新
+                {
+                    ret = dos7ShuQianPingGu.Update(ms7ShuQianPingGu);
+                }
+
+                lOid = 0; //局部新增还原
+
+                if (true == ret) //显示
+                {
+                    outputLabel("Sheet7更新成功");
+                    result = true;
+                }
+                else
+                {
+                    outputLabel("Sheet7更新失败");
+                    result = false;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                outputLabel("Sheet7更新失败，" + ex.Message);
+                return false;
+            }
+
+
+
+            return result;
+        }
+        #endregion
+        //保存
+        private void buttonUpdate_Click(object sender, EventArgs e)
+        {
+            updateSheet7();
+
+            //foreach (Control i in groupBox1.Controls)  //清空和禁用
+            //{
+            //    if (i is TextBox)
+            //    {
+            //        i.Text = "";
+            //        i.Enabled = false;
+            //    }
+            //    else if (i is ComboBox)
+            //    {
+            //        i.Text = "";
+            //        i.Enabled = false;
+            //    }
+            //}
+
+            outputLabel("保存成功");
+
+        }
+        //取消
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
+        //新建
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            foreach (Control i in groupBox1.Controls)  //清空和使能
+                   {
+                       if (i is TextBox)
+                       {
+                           i.Text = "";
+                           i.Enabled = true;
+                       }
+                       else if (i is ComboBox)
+                       {
+                           i.Text = "";
+                           i.Enabled = true;
+                       }
+                   }
+            lOid = 0; //恢复默认值, iUserID不变
+
+            outputLabel("新建成功");
+
+        }
+
+        private void FormSheet7_Load(object sender, EventArgs e)
+        {
+            initDo();
+        }
 
     }
 }

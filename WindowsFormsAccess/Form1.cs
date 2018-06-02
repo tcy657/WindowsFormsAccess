@@ -697,33 +697,41 @@ namespace WindowsFormsAccess
             {
                 case 0:
                     tabPage2Index = 0;
+                    button25.Enabled = true; //detail-保存使能
                     break;
                 case 1:     
                     tabPage2Index = 1;
+                    button25.Enabled = true; //detail-保存使能
                     break;
                 case 2:
 
-                    tabPage2Index = 2;                    
+                    tabPage2Index = 2;
+                    button25.Enabled = true; //detail-保存使能
                     break;
                 case 3:    
-                    tabPage2Index = 3;  
+                    tabPage2Index = 3;
+                    button25.Enabled = true; //detail-保存使能
                     break;
                 case 4:             
-                    tabPage2Index = 4;                    
+                    tabPage2Index = 4;
+                    button25.Enabled = true; //detail-保存使能
                     break;
                 case 5:           
                     tabPage2Index = 5;
+                    button25.Enabled = true; //detail-保存使能
+
                     textBox81.Text = ""; //清空
                     button12.Enabled = false; //禁用treeview
                     button31.Enabled = false; //禁用按键
                     button33.Enabled = false; //禁用按键
                     textBox81.Enabled = false;
                     break;
-                case 6:
+                case 6: //sheet
                     tabPage2Index = 6;
+                    button25.Enabled = false; //detail-保存, 不使能
                     break;
                 case 7:
-                    tabPage2Index = 7;
+                    tabPage2Index = 0;
                     break;
                 
                 default:
@@ -862,8 +870,11 @@ namespace WindowsFormsAccess
                     break;
                 case 6: //sheet7
                     FormSheet7 f7 = new FormSheet7(); //创建一个新窗口7
-                    gFlagAdd7 = 1; //新建，局部新增
+                    f7.iUserID = gOid.ToString(); //iUserID必须带过去
+                    
                     f7.ShowDialog();
+                    string sql1 = "select * from s7ShuQianPingGu where iUserID = '" + gOid.ToString() + "'"; //重新刷新，只显示本用户的信息
+                    databind(sql1, dgView7);
   
                     break;
                 case 7:
@@ -996,8 +1007,13 @@ namespace WindowsFormsAccess
                     break;
                 case 6:  //sheet7
                     FormSheet7 f7 = new FormSheet7();
-                    readSheet7(ref f7);
-                    f7.ShowDialog();
+                    bool ret = readSheet7(ref f7);
+                    if (true == ret)
+                    {
+                        f7.ShowDialog();
+                        string sql1 = "select * from s7ShuQianPingGu where iUserID = '" + gOid.ToString() + "'"; //重新刷新，只显示本用户的信息
+                        databind(sql1, dgView7);
+                    }
                     break;
                 case 7:
 

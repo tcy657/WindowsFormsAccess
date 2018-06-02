@@ -1409,12 +1409,12 @@ namespace WindowsFormsAccess
 
         //基本信息-加载；
         //加载完后，show，f3.ShowDialog(); 
-        private void readSheet7(ref FormSheet7 f7)
+        private bool readSheet7(ref FormSheet7 f7)
         {
             if (dgView7.SelectedRows.Count < 1 || dgView7.SelectedRows[0].Cells[1].Value == null)
             {
                 MessageBox.Show("没有选中行。", "系统提醒");
-                return;
+                return false;
             }
 
             object oid = dgView7.SelectedRows[0].Cells[0].Value;
@@ -1549,6 +1549,7 @@ namespace WindowsFormsAccess
 
             //显示
             outputLabel("Sheet7加载成功!");
+            return true;
         }
 
         //基本信息-更新；

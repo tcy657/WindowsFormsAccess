@@ -29,6 +29,100 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.comboBox41 = new System.Windows.Forms.ComboBox();
+            this.comboBox42 = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.buttonCancel = new System.Windows.Forms.Button();
+            this.buttonUpdate = new System.Windows.Forms.Button();
+            this.label108 = new System.Windows.Forms.Label();
+            this.label109 = new System.Windows.Forms.Label();
+            this.textBox34 = new System.Windows.Forms.TextBox();
+            this.label110 = new System.Windows.Forms.Label();
+            this.label111 = new System.Windows.Forms.Label();
+            this.textBox38 = new System.Windows.Forms.TextBox();
+            this.label112 = new System.Windows.Forms.Label();
+            this.label103 = new System.Windows.Forms.Label();
+            this.label104 = new System.Windows.Forms.Label();
+            this.textBox32 = new System.Windows.Forms.TextBox();
+            this.label105 = new System.Windows.Forms.Label();
+            this.label106 = new System.Windows.Forms.Label();
+            this.textBox33 = new System.Windows.Forms.TextBox();
+            this.label107 = new System.Windows.Forms.Label();
+            this.label98 = new System.Windows.Forms.Label();
+            this.label99 = new System.Windows.Forms.Label();
+            this.textBox27 = new System.Windows.Forms.TextBox();
+            this.label100 = new System.Windows.Forms.Label();
+            this.label101 = new System.Windows.Forms.Label();
+            this.textBox31 = new System.Windows.Forms.TextBox();
+            this.label102 = new System.Windows.Forms.Label();
+            this.label93 = new System.Windows.Forms.Label();
+            this.label94 = new System.Windows.Forms.Label();
+            this.label95 = new System.Windows.Forms.Label();
+            this.label96 = new System.Windows.Forms.Label();
+            this.textBox30 = new System.Windows.Forms.TextBox();
+            this.label97 = new System.Windows.Forms.Label();
+            this.comboBox29 = new System.Windows.Forms.ComboBox();
+            this.comboBox9 = new System.Windows.Forms.ComboBox();
+            this.comboBox26 = new System.Windows.Forms.ComboBox();
+            this.comboBox23 = new System.Windows.Forms.ComboBox();
+            this.comboBox20 = new System.Windows.Forms.ComboBox();
+            this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.comboBox19 = new System.Windows.Forms.ComboBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.label55 = new System.Windows.Forms.Label();
+            this.textBox64 = new System.Windows.Forms.TextBox();
+            this.textBox63 = new System.Windows.Forms.TextBox();
+            this.label87 = new System.Windows.Forms.Label();
+            this.textBox56 = new System.Windows.Forms.TextBox();
+            this.textBox60 = new System.Windows.Forms.TextBox();
+            this.label88 = new System.Windows.Forms.Label();
+            this.label89 = new System.Windows.Forms.Label();
+            this.label90 = new System.Windows.Forms.Label();
+            this.textBox61 = new System.Windows.Forms.TextBox();
+            this.textBox62 = new System.Windows.Forms.TextBox();
+            this.label91 = new System.Windows.Forms.Label();
+            this.label92 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label85 = new System.Windows.Forms.Label();
+            this.textBox54 = new System.Windows.Forms.TextBox();
+            this.textBox55 = new System.Windows.Forms.TextBox();
+            this.label86 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.comboBox18 = new System.Windows.Forms.ComboBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.textBox69 = new System.Windows.Forms.TextBox();
+            this.label80 = new System.Windows.Forms.Label();
+            this.label81 = new System.Windows.Forms.Label();
+            this.label82 = new System.Windows.Forms.Label();
+            this.textBox71 = new System.Windows.Forms.TextBox();
+            this.label83 = new System.Windows.Forms.Label();
+            this.comboBox25 = new System.Windows.Forms.ComboBox();
+            this.label84 = new System.Windows.Forms.Label();
+            this.comboBox43 = new System.Windows.Forms.ComboBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.label76 = new System.Windows.Forms.Label();
+            this.label77 = new System.Windows.Forms.Label();
+            this.label78 = new System.Windows.Forms.Label();
+            this.textBox73 = new System.Windows.Forms.TextBox();
+            this.label79 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.comboBox21 = new System.Windows.Forms.ComboBox();
             this.comboBox17 = new System.Windows.Forms.ComboBox();
             this.textBox44 = new System.Windows.Forms.TextBox();
             this.label56 = new System.Windows.Forms.Label();
@@ -37,6 +131,21 @@
             this.label58 = new System.Windows.Forms.Label();
             this.label59 = new System.Windows.Forms.Label();
             this.comboBox13 = new System.Windows.Forms.ComboBox();
+            this.comboBox32 = new System.Windows.Forms.ComboBox();
+            this.comboBox34 = new System.Windows.Forms.ComboBox();
+            this.comboBox33 = new System.Windows.Forms.ComboBox();
+            this.comboBox31 = new System.Windows.Forms.ComboBox();
+            this.comboBox40 = new System.Windows.Forms.ComboBox();
+            this.comboBox30 = new System.Windows.Forms.ComboBox();
+            this.comboBox12 = new System.Windows.Forms.ComboBox();
+            this.comboBox8 = new System.Windows.Forms.ComboBox();
+            this.comboBox7 = new System.Windows.Forms.ComboBox();
+            this.comboBox37 = new System.Windows.Forms.ComboBox();
+            this.comboBox36 = new System.Windows.Forms.ComboBox();
+            this.comboBox39 = new System.Windows.Forms.ComboBox();
+            this.comboBox38 = new System.Windows.Forms.ComboBox();
+            this.comboBox35 = new System.Windows.Forms.ComboBox();
+            this.comboBox14 = new System.Windows.Forms.ComboBox();
             this.comboBox15 = new System.Windows.Forms.ComboBox();
             this.comboBox16 = new System.Windows.Forms.ComboBox();
             this.label60 = new System.Windows.Forms.Label();
@@ -44,6 +153,15 @@
             this.textBox48 = new System.Windows.Forms.TextBox();
             this.label62 = new System.Windows.Forms.Label();
             this.label63 = new System.Windows.Forms.Label();
+            this.textBox21 = new System.Windows.Forms.TextBox();
+            this.textBox57 = new System.Windows.Forms.TextBox();
+            this.textBox52 = new System.Windows.Forms.TextBox();
+            this.textBox51 = new System.Windows.Forms.TextBox();
+            this.textBox49 = new System.Windows.Forms.TextBox();
+            this.textBox47 = new System.Windows.Forms.TextBox();
+            this.textBox46 = new System.Windows.Forms.TextBox();
+            this.textBox43 = new System.Windows.Forms.TextBox();
+            this.textBox28 = new System.Windows.Forms.TextBox();
             this.textBox50 = new System.Windows.Forms.TextBox();
             this.label64 = new System.Windows.Forms.Label();
             this.label65 = new System.Windows.Forms.Label();
@@ -51,14 +169,17 @@
             this.label67 = new System.Windows.Forms.Label();
             this.label68 = new System.Windows.Forms.Label();
             this.label69 = new System.Windows.Forms.Label();
+            this.textBox17 = new System.Windows.Forms.TextBox();
             this.label70 = new System.Windows.Forms.Label();
             this.label71 = new System.Windows.Forms.Label();
             this.label72 = new System.Windows.Forms.Label();
             this.textBox78 = new System.Windows.Forms.TextBox();
             this.label73 = new System.Windows.Forms.Label();
+            this.textBox19 = new System.Windows.Forms.TextBox();
             this.textBox79 = new System.Windows.Forms.TextBox();
             this.label74 = new System.Windows.Forms.Label();
             this.label75 = new System.Windows.Forms.Label();
+            this.label113 = new System.Windows.Forms.Label();
             this.textBox13 = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.textBox14 = new System.Windows.Forms.TextBox();
@@ -70,6 +191,7 @@
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
+            this.textBox58 = new System.Windows.Forms.TextBox();
             this.textBox18 = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
             this.comboBox6 = new System.Windows.Forms.ComboBox();
@@ -78,15 +200,21 @@
             this.textBox20 = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
+            this.textBox67 = new System.Windows.Forms.TextBox();
+            this.textBox59 = new System.Windows.Forms.TextBox();
             this.textBox22 = new System.Windows.Forms.TextBox();
             this.label28 = new System.Windows.Forms.Label();
             this.textBox23 = new System.Windows.Forms.TextBox();
+            this.comboBox22 = new System.Windows.Forms.ComboBox();
+            this.comboBox28 = new System.Windows.Forms.ComboBox();
+            this.comboBox27 = new System.Windows.Forms.ComboBox();
             this.comboBox10 = new System.Windows.Forms.ComboBox();
             this.label29 = new System.Windows.Forms.Label();
             this.textBox24 = new System.Windows.Forms.TextBox();
             this.label30 = new System.Windows.Forms.Label();
             this.textBox25 = new System.Windows.Forms.TextBox();
             this.label31 = new System.Windows.Forms.Label();
+            this.textBox12 = new System.Windows.Forms.TextBox();
             this.textBox26 = new System.Windows.Forms.TextBox();
             this.label32 = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
@@ -133,140 +261,17 @@
             this.label127 = new System.Windows.Forms.Label();
             this.textBox76 = new System.Windows.Forms.TextBox();
             this.label146 = new System.Windows.Forms.Label();
-            this.comboBox21 = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.label76 = new System.Windows.Forms.Label();
-            this.label77 = new System.Windows.Forms.Label();
-            this.label78 = new System.Windows.Forms.Label();
-            this.textBox73 = new System.Windows.Forms.TextBox();
-            this.label79 = new System.Windows.Forms.Label();
-            this.comboBox18 = new System.Windows.Forms.ComboBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.textBox69 = new System.Windows.Forms.TextBox();
-            this.label80 = new System.Windows.Forms.Label();
-            this.label81 = new System.Windows.Forms.Label();
-            this.label82 = new System.Windows.Forms.Label();
-            this.textBox71 = new System.Windows.Forms.TextBox();
-            this.label83 = new System.Windows.Forms.Label();
-            this.comboBox25 = new System.Windows.Forms.ComboBox();
-            this.label84 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label85 = new System.Windows.Forms.Label();
-            this.textBox54 = new System.Windows.Forms.TextBox();
-            this.textBox55 = new System.Windows.Forms.TextBox();
-            this.label86 = new System.Windows.Forms.Label();
-            this.label87 = new System.Windows.Forms.Label();
-            this.textBox56 = new System.Windows.Forms.TextBox();
-            this.textBox60 = new System.Windows.Forms.TextBox();
-            this.label88 = new System.Windows.Forms.Label();
-            this.label89 = new System.Windows.Forms.Label();
-            this.label90 = new System.Windows.Forms.Label();
-            this.textBox61 = new System.Windows.Forms.TextBox();
-            this.textBox62 = new System.Windows.Forms.TextBox();
-            this.label91 = new System.Windows.Forms.Label();
-            this.label92 = new System.Windows.Forms.Label();
-            this.textBox63 = new System.Windows.Forms.TextBox();
-            this.textBox64 = new System.Windows.Forms.TextBox();
             this.textBox65 = new System.Windows.Forms.TextBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.label55 = new System.Windows.Forms.Label();
-            this.comboBox19 = new System.Windows.Forms.ComboBox();
-            this.label27 = new System.Windows.Forms.Label();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
-            this.comboBox20 = new System.Windows.Forms.ComboBox();
-            this.comboBox22 = new System.Windows.Forms.ComboBox();
-            this.comboBox23 = new System.Windows.Forms.ComboBox();
-            this.comboBox26 = new System.Windows.Forms.ComboBox();
-            this.comboBox27 = new System.Windows.Forms.ComboBox();
-            this.comboBox28 = new System.Windows.Forms.ComboBox();
-            this.comboBox9 = new System.Windows.Forms.ComboBox();
-            this.comboBox29 = new System.Windows.Forms.ComboBox();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.textBox17 = new System.Windows.Forms.TextBox();
-            this.textBox19 = new System.Windows.Forms.TextBox();
-            this.comboBox7 = new System.Windows.Forms.ComboBox();
-            this.comboBox8 = new System.Windows.Forms.ComboBox();
-            this.comboBox12 = new System.Windows.Forms.ComboBox();
-            this.comboBox30 = new System.Windows.Forms.ComboBox();
-            this.comboBox31 = new System.Windows.Forms.ComboBox();
-            this.comboBox32 = new System.Windows.Forms.ComboBox();
-            this.comboBox14 = new System.Windows.Forms.ComboBox();
-            this.textBox21 = new System.Windows.Forms.TextBox();
-            this.comboBox33 = new System.Windows.Forms.ComboBox();
-            this.comboBox34 = new System.Windows.Forms.ComboBox();
-            this.label93 = new System.Windows.Forms.Label();
-            this.label94 = new System.Windows.Forms.Label();
-            this.label95 = new System.Windows.Forms.Label();
-            this.label96 = new System.Windows.Forms.Label();
-            this.textBox30 = new System.Windows.Forms.TextBox();
-            this.label97 = new System.Windows.Forms.Label();
-            this.label98 = new System.Windows.Forms.Label();
-            this.label99 = new System.Windows.Forms.Label();
-            this.textBox27 = new System.Windows.Forms.TextBox();
-            this.label100 = new System.Windows.Forms.Label();
-            this.label101 = new System.Windows.Forms.Label();
-            this.textBox31 = new System.Windows.Forms.TextBox();
-            this.label102 = new System.Windows.Forms.Label();
-            this.label103 = new System.Windows.Forms.Label();
-            this.label104 = new System.Windows.Forms.Label();
-            this.textBox32 = new System.Windows.Forms.TextBox();
-            this.label105 = new System.Windows.Forms.Label();
-            this.label106 = new System.Windows.Forms.Label();
-            this.textBox33 = new System.Windows.Forms.TextBox();
-            this.label107 = new System.Windows.Forms.Label();
-            this.label108 = new System.Windows.Forms.Label();
-            this.label109 = new System.Windows.Forms.Label();
-            this.textBox34 = new System.Windows.Forms.TextBox();
-            this.label110 = new System.Windows.Forms.Label();
-            this.label111 = new System.Windows.Forms.Label();
-            this.textBox38 = new System.Windows.Forms.TextBox();
-            this.label112 = new System.Windows.Forms.Label();
-            this.comboBox35 = new System.Windows.Forms.ComboBox();
-            this.comboBox36 = new System.Windows.Forms.ComboBox();
-            this.comboBox37 = new System.Windows.Forms.ComboBox();
-            this.textBox28 = new System.Windows.Forms.TextBox();
-            this.textBox43 = new System.Windows.Forms.TextBox();
-            this.textBox46 = new System.Windows.Forms.TextBox();
-            this.textBox47 = new System.Windows.Forms.TextBox();
-            this.textBox49 = new System.Windows.Forms.TextBox();
-            this.textBox51 = new System.Windows.Forms.TextBox();
-            this.textBox52 = new System.Windows.Forms.TextBox();
-            this.textBox57 = new System.Windows.Forms.TextBox();
-            this.textBox59 = new System.Windows.Forms.TextBox();
-            this.textBox67 = new System.Windows.Forms.TextBox();
-            this.comboBox38 = new System.Windows.Forms.ComboBox();
-            this.comboBox39 = new System.Windows.Forms.ComboBox();
-            this.comboBox40 = new System.Windows.Forms.ComboBox();
-            this.buttonCancel = new System.Windows.Forms.Button();
-            this.buttonUpdate = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox58 = new System.Windows.Forms.TextBox();
-            this.label113 = new System.Windows.Forms.Label();
-            this.comboBox41 = new System.Windows.Forms.ComboBox();
-            this.comboBox42 = new System.Windows.Forms.ComboBox();
-            this.comboBox43 = new System.Windows.Forms.ComboBox();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBox1.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.statusStrip1);
             this.groupBox1.Controls.Add(this.comboBox41);
             this.groupBox1.Controls.Add(this.comboBox42);
             this.groupBox1.Controls.Add(this.button1);
@@ -500,12 +505,857 @@
             this.groupBox1.Controls.Add(this.textBox76);
             this.groupBox1.Controls.Add(this.label146);
             this.groupBox1.Controls.Add(this.textBox65);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(12, 8);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(942, 693);
+            this.groupBox1.Size = new System.Drawing.Size(942, 680);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "7术后情况";
+            // 
+            // comboBox41
+            // 
+            this.comboBox41.FormattingEnabled = true;
+            this.comboBox41.Items.AddRange(new object[] {
+            "是",
+            "否"});
+            this.comboBox41.Location = new System.Drawing.Point(589, 79);
+            this.comboBox41.Name = "comboBox41";
+            this.comboBox41.Size = new System.Drawing.Size(60, 20);
+            this.comboBox41.TabIndex = 521;
+            this.comboBox41.Text = "是";
+            // 
+            // comboBox42
+            // 
+            this.comboBox42.FormattingEnabled = true;
+            this.comboBox42.Items.AddRange(new object[] {
+            "是",
+            "否"});
+            this.comboBox42.Location = new System.Drawing.Point(589, 49);
+            this.comboBox42.Name = "comboBox42";
+            this.comboBox42.Size = new System.Drawing.Size(60, 20);
+            this.comboBox42.TabIndex = 520;
+            this.comboBox42.Text = "是";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(858, 15);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 519;
+            this.button1.Text = "取消";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // buttonCancel
+            // 
+            this.buttonCancel.Location = new System.Drawing.Point(765, 15);
+            this.buttonCancel.Name = "buttonCancel";
+            this.buttonCancel.Size = new System.Drawing.Size(75, 23);
+            this.buttonCancel.TabIndex = 518;
+            this.buttonCancel.Text = "新建";
+            this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
+            // 
+            // buttonUpdate
+            // 
+            this.buttonUpdate.Location = new System.Drawing.Point(672, 15);
+            this.buttonUpdate.Name = "buttonUpdate";
+            this.buttonUpdate.Size = new System.Drawing.Size(75, 23);
+            this.buttonUpdate.TabIndex = 517;
+            this.buttonUpdate.Text = "保存";
+            this.buttonUpdate.UseVisualStyleBackColor = true;
+            this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
+            // 
+            // label108
+            // 
+            this.label108.AutoSize = true;
+            this.label108.Location = new System.Drawing.Point(747, 631);
+            this.label108.Name = "label108";
+            this.label108.Size = new System.Drawing.Size(83, 12);
+            this.label108.TabIndex = 515;
+            this.label108.Text = "医疗费用(元）";
+            // 
+            // label109
+            // 
+            this.label109.AutoSize = true;
+            this.label109.Location = new System.Drawing.Point(194, 631);
+            this.label109.Name = "label109";
+            this.label109.Size = new System.Drawing.Size(53, 12);
+            this.label109.TabIndex = 514;
+            this.label109.Text = "基因检测";
+            // 
+            // textBox34
+            // 
+            this.textBox34.Location = new System.Drawing.Point(636, 627);
+            this.textBox34.Name = "textBox34";
+            this.textBox34.Size = new System.Drawing.Size(100, 21);
+            this.textBox34.TabIndex = 513;
+            // 
+            // label110
+            // 
+            this.label110.AutoSize = true;
+            this.label110.Location = new System.Drawing.Point(8, 630);
+            this.label110.Name = "label110";
+            this.label110.Size = new System.Drawing.Size(47, 12);
+            this.label110.TabIndex = 512;
+            this.label110.Text = "MSI确证";
+            // 
+            // label111
+            // 
+            this.label111.AutoSize = true;
+            this.label111.Location = new System.Drawing.Point(559, 631);
+            this.label111.Name = "label111";
+            this.label111.Size = new System.Drawing.Size(53, 12);
+            this.label111.TabIndex = 511;
+            this.label111.Text = "出院情况";
+            // 
+            // textBox38
+            // 
+            this.textBox38.Location = new System.Drawing.Point(435, 627);
+            this.textBox38.Name = "textBox38";
+            this.textBox38.Size = new System.Drawing.Size(80, 21);
+            this.textBox38.TabIndex = 510;
+            // 
+            // label112
+            // 
+            this.label112.AutoSize = true;
+            this.label112.Location = new System.Drawing.Point(364, 631);
+            this.label112.Name = "label112";
+            this.label112.Size = new System.Drawing.Size(53, 12);
+            this.label112.TabIndex = 509;
+            this.label112.Text = "出院时间";
+            // 
+            // label103
+            // 
+            this.label103.AutoSize = true;
+            this.label103.Location = new System.Drawing.Point(751, 604);
+            this.label103.Name = "label103";
+            this.label103.Size = new System.Drawing.Size(77, 12);
+            this.label103.TabIndex = 508;
+            this.label103.Text = "术后病理分期";
+            // 
+            // label104
+            // 
+            this.label104.AutoSize = true;
+            this.label104.Location = new System.Drawing.Point(194, 604);
+            this.label104.Name = "label104";
+            this.label104.Size = new System.Drawing.Size(35, 12);
+            this.label104.TabIndex = 507;
+            this.label104.Text = "Ki-67";
+            // 
+            // textBox32
+            // 
+            this.textBox32.Location = new System.Drawing.Point(636, 600);
+            this.textBox32.Name = "textBox32";
+            this.textBox32.Size = new System.Drawing.Size(100, 21);
+            this.textBox32.TabIndex = 506;
+            // 
+            // label105
+            // 
+            this.label105.AutoSize = true;
+            this.label105.Location = new System.Drawing.Point(8, 604);
+            this.label105.Name = "label105";
+            this.label105.Size = new System.Drawing.Size(23, 12);
+            this.label105.TabIndex = 505;
+            this.label105.Text = "p53";
+            // 
+            // label106
+            // 
+            this.label106.AutoSize = true;
+            this.label106.Location = new System.Drawing.Point(559, 604);
+            this.label106.Name = "label106";
+            this.label106.Size = new System.Drawing.Size(35, 12);
+            this.label106.TabIndex = 504;
+            this.label106.Text = "N-RAS";
+            // 
+            // textBox33
+            // 
+            this.textBox33.Location = new System.Drawing.Point(435, 600);
+            this.textBox33.Name = "textBox33";
+            this.textBox33.Size = new System.Drawing.Size(80, 21);
+            this.textBox33.TabIndex = 503;
+            // 
+            // label107
+            // 
+            this.label107.AutoSize = true;
+            this.label107.Location = new System.Drawing.Point(364, 604);
+            this.label107.Name = "label107";
+            this.label107.Size = new System.Drawing.Size(35, 12);
+            this.label107.TabIndex = 502;
+            this.label107.Text = "K-RAS";
+            // 
+            // label98
+            // 
+            this.label98.AutoSize = true;
+            this.label98.Location = new System.Drawing.Point(763, 576);
+            this.label98.Name = "label98";
+            this.label98.Size = new System.Drawing.Size(35, 12);
+            this.label98.TabIndex = 501;
+            this.label98.Text = "HER-2";
+            // 
+            // label99
+            // 
+            this.label99.AutoSize = true;
+            this.label99.Location = new System.Drawing.Point(184, 576);
+            this.label99.Name = "label99";
+            this.label99.Size = new System.Drawing.Size(65, 12);
+            this.label99.TabIndex = 500;
+            this.label99.Text = "总淋巴结数";
+            // 
+            // textBox27
+            // 
+            this.textBox27.Location = new System.Drawing.Point(636, 572);
+            this.textBox27.Name = "textBox27";
+            this.textBox27.Size = new System.Drawing.Size(100, 21);
+            this.textBox27.TabIndex = 499;
+            // 
+            // label100
+            // 
+            this.label100.AutoSize = true;
+            this.label100.Location = new System.Drawing.Point(8, 576);
+            this.label100.Name = "label100";
+            this.label100.Size = new System.Drawing.Size(41, 12);
+            this.label100.TabIndex = 498;
+            this.label100.Text = "癌结节";
+            // 
+            // label101
+            // 
+            this.label101.AutoSize = true;
+            this.label101.Location = new System.Drawing.Point(569, 576);
+            this.label101.Name = "label101";
+            this.label101.Size = new System.Drawing.Size(23, 12);
+            this.label101.TabIndex = 497;
+            this.label101.Text = "MSI";
+            // 
+            // textBox31
+            // 
+            this.textBox31.Location = new System.Drawing.Point(435, 572);
+            this.textBox31.Name = "textBox31";
+            this.textBox31.Size = new System.Drawing.Size(80, 21);
+            this.textBox31.TabIndex = 496;
+            // 
+            // label102
+            // 
+            this.label102.AutoSize = true;
+            this.label102.Location = new System.Drawing.Point(357, 576);
+            this.label102.Name = "label102";
+            this.label102.Size = new System.Drawing.Size(77, 12);
+            this.label102.TabIndex = 495;
+            this.label102.Text = "转移淋巴结数";
+            // 
+            // label93
+            // 
+            this.label93.AutoSize = true;
+            this.label93.Location = new System.Drawing.Point(763, 548);
+            this.label93.Name = "label93";
+            this.label93.Size = new System.Drawing.Size(53, 12);
+            this.label93.TabIndex = 494;
+            this.label93.Text = "神经侵犯";
+            // 
+            // label94
+            // 
+            this.label94.AutoSize = true;
+            this.label94.Location = new System.Drawing.Point(194, 548);
+            this.label94.Name = "label94";
+            this.label94.Size = new System.Drawing.Size(53, 12);
+            this.label94.TabIndex = 491;
+            this.label94.Text = "分化程度";
+            // 
+            // label95
+            // 
+            this.label95.AutoSize = true;
+            this.label95.Location = new System.Drawing.Point(8, 548);
+            this.label95.Name = "label95";
+            this.label95.Size = new System.Drawing.Size(77, 12);
+            this.label95.TabIndex = 489;
+            this.label95.Text = "术后病理诊断";
+            // 
+            // label96
+            // 
+            this.label96.AutoSize = true;
+            this.label96.Location = new System.Drawing.Point(559, 548);
+            this.label96.Name = "label96";
+            this.label96.Size = new System.Drawing.Size(53, 12);
+            this.label96.TabIndex = 488;
+            this.label96.Text = "脉管癌栓";
+            // 
+            // textBox30
+            // 
+            this.textBox30.Location = new System.Drawing.Point(435, 544);
+            this.textBox30.Name = "textBox30";
+            this.textBox30.Size = new System.Drawing.Size(80, 21);
+            this.textBox30.TabIndex = 487;
+            // 
+            // label97
+            // 
+            this.label97.AutoSize = true;
+            this.label97.Location = new System.Drawing.Point(364, 548);
+            this.label97.Name = "label97";
+            this.label97.Size = new System.Drawing.Size(53, 12);
+            this.label97.TabIndex = 486;
+            this.label97.Text = "浸润深度";
+            // 
+            // comboBox29
+            // 
+            this.comboBox29.FormattingEnabled = true;
+            this.comboBox29.Items.AddRange(new object[] {
+            "是",
+            "否"});
+            this.comboBox29.Location = new System.Drawing.Point(435, 366);
+            this.comboBox29.Name = "comboBox29";
+            this.comboBox29.Size = new System.Drawing.Size(60, 20);
+            this.comboBox29.TabIndex = 485;
+            this.comboBox29.Text = "是";
+            // 
+            // comboBox9
+            // 
+            this.comboBox9.FormattingEnabled = true;
+            this.comboBox9.Items.AddRange(new object[] {
+            "是",
+            "否"});
+            this.comboBox9.Location = new System.Drawing.Point(256, 366);
+            this.comboBox9.Name = "comboBox9";
+            this.comboBox9.Size = new System.Drawing.Size(60, 20);
+            this.comboBox9.TabIndex = 485;
+            this.comboBox9.Text = "是";
+            // 
+            // comboBox26
+            // 
+            this.comboBox26.FormattingEnabled = true;
+            this.comboBox26.Items.AddRange(new object[] {
+            "是",
+            "否"});
+            this.comboBox26.Location = new System.Drawing.Point(256, 339);
+            this.comboBox26.Name = "comboBox26";
+            this.comboBox26.Size = new System.Drawing.Size(60, 20);
+            this.comboBox26.TabIndex = 485;
+            this.comboBox26.Text = "是";
+            // 
+            // comboBox23
+            // 
+            this.comboBox23.FormattingEnabled = true;
+            this.comboBox23.Items.AddRange(new object[] {
+            "是",
+            "否"});
+            this.comboBox23.Location = new System.Drawing.Point(84, 339);
+            this.comboBox23.Name = "comboBox23";
+            this.comboBox23.Size = new System.Drawing.Size(60, 20);
+            this.comboBox23.TabIndex = 485;
+            this.comboBox23.Text = "是";
+            // 
+            // comboBox20
+            // 
+            this.comboBox20.FormattingEnabled = true;
+            this.comboBox20.Items.AddRange(new object[] {
+            "是",
+            "否"});
+            this.comboBox20.Location = new System.Drawing.Point(84, 311);
+            this.comboBox20.Name = "comboBox20";
+            this.comboBox20.Size = new System.Drawing.Size(60, 20);
+            this.comboBox20.TabIndex = 485;
+            this.comboBox20.Text = "是";
+            // 
+            // comboBox5
+            // 
+            this.comboBox5.FormattingEnabled = true;
+            this.comboBox5.Items.AddRange(new object[] {
+            "是",
+            "否"});
+            this.comboBox5.Location = new System.Drawing.Point(84, 279);
+            this.comboBox5.Name = "comboBox5";
+            this.comboBox5.Size = new System.Drawing.Size(60, 20);
+            this.comboBox5.TabIndex = 485;
+            this.comboBox5.Text = "是";
+            // 
+            // comboBox19
+            // 
+            this.comboBox19.FormattingEnabled = true;
+            this.comboBox19.Items.AddRange(new object[] {
+            "是",
+            "否"});
+            this.comboBox19.Location = new System.Drawing.Point(636, 194);
+            this.comboBox19.Name = "comboBox19";
+            this.comboBox19.Size = new System.Drawing.Size(60, 20);
+            this.comboBox19.TabIndex = 484;
+            this.comboBox19.Text = "是";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(559, 198);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(53, 12);
+            this.label27.TabIndex = 483;
+            this.label27.Text = "是否穿孔";
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Items.AddRange(new object[] {
+            "是",
+            "否"});
+            this.comboBox3.Location = new System.Drawing.Point(435, 194);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(60, 20);
+            this.comboBox3.TabIndex = 482;
+            this.comboBox3.Text = "是";
+            // 
+            // label55
+            // 
+            this.label55.AutoSize = true;
+            this.label55.Location = new System.Drawing.Point(364, 198);
+            this.label55.Name = "label55";
+            this.label55.Size = new System.Drawing.Size(53, 12);
+            this.label55.TabIndex = 481;
+            this.label55.Text = "是否出血";
+            // 
+            // textBox64
+            // 
+            this.textBox64.Location = new System.Drawing.Point(84, 163);
+            this.textBox64.Name = "textBox64";
+            this.textBox64.Size = new System.Drawing.Size(60, 21);
+            this.textBox64.TabIndex = 479;
+            // 
+            // textBox63
+            // 
+            this.textBox63.Location = new System.Drawing.Point(742, 133);
+            this.textBox63.Name = "textBox63";
+            this.textBox63.Size = new System.Drawing.Size(64, 21);
+            this.textBox63.TabIndex = 478;
+            // 
+            // label87
+            // 
+            this.label87.AutoSize = true;
+            this.label87.Location = new System.Drawing.Point(672, 167);
+            this.label87.Name = "label87";
+            this.label87.Size = new System.Drawing.Size(35, 12);
+            this.label87.TabIndex = 476;
+            this.label87.Text = "CA199";
+            // 
+            // textBox56
+            // 
+            this.textBox56.Location = new System.Drawing.Point(256, 163);
+            this.textBox56.Name = "textBox56";
+            this.textBox56.Size = new System.Drawing.Size(80, 21);
+            this.textBox56.TabIndex = 470;
+            // 
+            // textBox60
+            // 
+            this.textBox60.Location = new System.Drawing.Point(435, 163);
+            this.textBox60.Name = "textBox60";
+            this.textBox60.Size = new System.Drawing.Size(80, 21);
+            this.textBox60.TabIndex = 471;
+            // 
+            // label88
+            // 
+            this.label88.AutoSize = true;
+            this.label88.Location = new System.Drawing.Point(194, 167);
+            this.label88.Name = "label88";
+            this.label88.Size = new System.Drawing.Size(23, 12);
+            this.label88.TabIndex = 472;
+            this.label88.Text = "ALB";
+            // 
+            // label89
+            // 
+            this.label89.AutoSize = true;
+            this.label89.Location = new System.Drawing.Point(364, 167);
+            this.label89.Name = "label89";
+            this.label89.Size = new System.Drawing.Size(23, 12);
+            this.label89.TabIndex = 473;
+            this.label89.Text = "CEA";
+            // 
+            // label90
+            // 
+            this.label90.AutoSize = true;
+            this.label90.Location = new System.Drawing.Point(523, 167);
+            this.label90.Name = "label90";
+            this.label90.Size = new System.Drawing.Size(35, 12);
+            this.label90.TabIndex = 475;
+            this.label90.Text = "CA125";
+            // 
+            // textBox61
+            // 
+            this.textBox61.Location = new System.Drawing.Point(589, 163);
+            this.textBox61.Name = "textBox61";
+            this.textBox61.Size = new System.Drawing.Size(64, 21);
+            this.textBox61.TabIndex = 474;
+            // 
+            // textBox62
+            // 
+            this.textBox62.Location = new System.Drawing.Point(873, 163);
+            this.textBox62.Name = "textBox62";
+            this.textBox62.Size = new System.Drawing.Size(60, 21);
+            this.textBox62.TabIndex = 469;
+            // 
+            // label91
+            // 
+            this.label91.AutoSize = true;
+            this.label91.Location = new System.Drawing.Point(824, 167);
+            this.label91.Name = "label91";
+            this.label91.Size = new System.Drawing.Size(35, 12);
+            this.label91.TabIndex = 468;
+            this.label91.Text = "CA724";
+            // 
+            // label92
+            // 
+            this.label92.AutoSize = true;
+            this.label92.Location = new System.Drawing.Point(8, 167);
+            this.label92.Name = "label92";
+            this.label92.Size = new System.Drawing.Size(17, 12);
+            this.label92.TabIndex = 466;
+            this.label92.Text = "Hb";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(672, 137);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(17, 12);
+            this.label12.TabIndex = 464;
+            this.label12.Text = "cM";
+            // 
+            // textBox10
+            // 
+            this.textBox10.Location = new System.Drawing.Point(435, 133);
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(80, 21);
+            this.textBox10.TabIndex = 460;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(364, 137);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(17, 12);
+            this.label13.TabIndex = 461;
+            this.label13.Text = "cT";
+            // 
+            // label85
+            // 
+            this.label85.AutoSize = true;
+            this.label85.Location = new System.Drawing.Point(523, 137);
+            this.label85.Name = "label85";
+            this.label85.Size = new System.Drawing.Size(17, 12);
+            this.label85.TabIndex = 463;
+            this.label85.Text = "cN";
+            // 
+            // textBox54
+            // 
+            this.textBox54.Location = new System.Drawing.Point(589, 133);
+            this.textBox54.Name = "textBox54";
+            this.textBox54.Size = new System.Drawing.Size(64, 21);
+            this.textBox54.TabIndex = 462;
+            // 
+            // textBox55
+            // 
+            this.textBox55.Location = new System.Drawing.Point(873, 133);
+            this.textBox55.Name = "textBox55";
+            this.textBox55.Size = new System.Drawing.Size(60, 21);
+            this.textBox55.TabIndex = 459;
+            // 
+            // label86
+            // 
+            this.label86.AutoSize = true;
+            this.label86.Location = new System.Drawing.Point(824, 137);
+            this.label86.Name = "label86";
+            this.label86.Size = new System.Drawing.Size(23, 12);
+            this.label86.TabIndex = 458;
+            this.label86.Text = "WBC";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(152, 137);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(101, 12);
+            this.label11.TabIndex = 457;
+            this.label11.Text = "转移部位代谢强度";
+            // 
+            // textBox9
+            // 
+            this.textBox9.Location = new System.Drawing.Point(256, 133);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.Size = new System.Drawing.Size(80, 21);
+            this.textBox9.TabIndex = 456;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(523, 110);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(53, 12);
+            this.label10.TabIndex = 455;
+            this.label10.Text = "代谢强度";
+            // 
+            // textBox8
+            // 
+            this.textBox8.Location = new System.Drawing.Point(589, 106);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(64, 21);
+            this.textBox8.TabIndex = 454;
+            // 
+            // comboBox18
+            // 
+            this.comboBox18.FormattingEnabled = true;
+            this.comboBox18.Items.AddRange(new object[] {
+            "是",
+            "否"});
+            this.comboBox18.Location = new System.Drawing.Point(873, 106);
+            this.comboBox18.Name = "comboBox18";
+            this.comboBox18.Size = new System.Drawing.Size(60, 20);
+            this.comboBox18.TabIndex = 453;
+            this.comboBox18.Text = "是";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(816, 110);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(53, 12);
+            this.label14.TabIndex = 452;
+            this.label14.Text = "是否转移";
+            // 
+            // textBox11
+            // 
+            this.textBox11.Location = new System.Drawing.Point(256, 106);
+            this.textBox11.Name = "textBox11";
+            this.textBox11.Size = new System.Drawing.Size(80, 21);
+            this.textBox11.TabIndex = 446;
+            // 
+            // textBox69
+            // 
+            this.textBox69.Location = new System.Drawing.Point(435, 106);
+            this.textBox69.Name = "textBox69";
+            this.textBox69.Size = new System.Drawing.Size(80, 21);
+            this.textBox69.TabIndex = 447;
+            // 
+            // label80
+            // 
+            this.label80.AutoSize = true;
+            this.label80.Location = new System.Drawing.Point(194, 110);
+            this.label80.Name = "label80";
+            this.label80.Size = new System.Drawing.Size(53, 12);
+            this.label80.TabIndex = 448;
+            this.label80.Text = "肿瘤大小";
+            // 
+            // label81
+            // 
+            this.label81.AutoSize = true;
+            this.label81.Location = new System.Drawing.Point(364, 110);
+            this.label81.Name = "label81";
+            this.label81.Size = new System.Drawing.Size(53, 12);
+            this.label81.TabIndex = 449;
+            this.label81.Text = "局部侵犯";
+            // 
+            // label82
+            // 
+            this.label82.AutoSize = true;
+            this.label82.Location = new System.Drawing.Point(672, 110);
+            this.label82.Name = "label82";
+            this.label82.Size = new System.Drawing.Size(65, 12);
+            this.label82.TabIndex = 451;
+            this.label82.Text = "淋巴结转移";
+            // 
+            // textBox71
+            // 
+            this.textBox71.Location = new System.Drawing.Point(84, 133);
+            this.textBox71.Name = "textBox71";
+            this.textBox71.Size = new System.Drawing.Size(60, 21);
+            this.textBox71.TabIndex = 445;
+            // 
+            // label83
+            // 
+            this.label83.AutoSize = true;
+            this.label83.Location = new System.Drawing.Point(8, 137);
+            this.label83.Name = "label83";
+            this.label83.Size = new System.Drawing.Size(29, 12);
+            this.label83.TabIndex = 444;
+            this.label83.Text = "部位";
+            // 
+            // comboBox25
+            // 
+            this.comboBox25.FormattingEnabled = true;
+            this.comboBox25.Items.AddRange(new object[] {
+            "是",
+            "否"});
+            this.comboBox25.Location = new System.Drawing.Point(84, 106);
+            this.comboBox25.Name = "comboBox25";
+            this.comboBox25.Size = new System.Drawing.Size(60, 20);
+            this.comboBox25.TabIndex = 443;
+            this.comboBox25.Text = "是";
+            // 
+            // label84
+            // 
+            this.label84.AutoSize = true;
+            this.label84.Location = new System.Drawing.Point(8, 110);
+            this.label84.Name = "label84";
+            this.label84.Size = new System.Drawing.Size(47, 12);
+            this.label84.TabIndex = 442;
+            this.label84.Text = "我院PET";
+            // 
+            // comboBox43
+            // 
+            this.comboBox43.FormattingEnabled = true;
+            this.comboBox43.Items.AddRange(new object[] {
+            "是",
+            "否"});
+            this.comboBox43.Location = new System.Drawing.Point(742, 106);
+            this.comboBox43.Name = "comboBox43";
+            this.comboBox43.Size = new System.Drawing.Size(60, 20);
+            this.comboBox43.TabIndex = 441;
+            this.comboBox43.Text = "是";
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "是",
+            "否"});
+            this.comboBox2.Location = new System.Drawing.Point(742, 79);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(60, 20);
+            this.comboBox2.TabIndex = 441;
+            this.comboBox2.Text = "是";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(672, 83);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(53, 12);
+            this.label2.TabIndex = 440;
+            this.label2.Text = "是否转移";
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(256, 79);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(80, 21);
+            this.textBox5.TabIndex = 434;
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(435, 79);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(80, 21);
+            this.textBox6.TabIndex = 435;
+            // 
+            // label76
+            // 
+            this.label76.AutoSize = true;
+            this.label76.Location = new System.Drawing.Point(194, 83);
+            this.label76.Name = "label76";
+            this.label76.Size = new System.Drawing.Size(53, 12);
+            this.label76.TabIndex = 436;
+            this.label76.Text = "肿瘤大小";
+            // 
+            // label77
+            // 
+            this.label77.AutoSize = true;
+            this.label77.Location = new System.Drawing.Point(364, 83);
+            this.label77.Name = "label77";
+            this.label77.Size = new System.Drawing.Size(53, 12);
+            this.label77.TabIndex = 437;
+            this.label77.Text = "局部侵犯";
+            // 
+            // label78
+            // 
+            this.label78.AutoSize = true;
+            this.label78.Location = new System.Drawing.Point(523, 83);
+            this.label78.Name = "label78";
+            this.label78.Size = new System.Drawing.Size(65, 12);
+            this.label78.TabIndex = 439;
+            this.label78.Text = "淋巴结转移";
+            // 
+            // textBox73
+            // 
+            this.textBox73.Location = new System.Drawing.Point(873, 79);
+            this.textBox73.Name = "textBox73";
+            this.textBox73.Size = new System.Drawing.Size(60, 21);
+            this.textBox73.TabIndex = 433;
+            // 
+            // label79
+            // 
+            this.label79.AutoSize = true;
+            this.label79.Location = new System.Drawing.Point(824, 83);
+            this.label79.Name = "label79";
+            this.label79.Size = new System.Drawing.Size(29, 12);
+            this.label79.TabIndex = 432;
+            this.label79.Text = "部位";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "是",
+            "否"});
+            this.comboBox1.Location = new System.Drawing.Point(742, 49);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(60, 20);
+            this.comboBox1.TabIndex = 431;
+            this.comboBox1.Text = "是";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(672, 53);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(53, 12);
+            this.label3.TabIndex = 430;
+            this.label3.Text = "是否转移";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(256, 49);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(80, 21);
+            this.textBox2.TabIndex = 424;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(435, 49);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(80, 21);
+            this.textBox3.TabIndex = 425;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(194, 53);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(53, 12);
+            this.label5.TabIndex = 426;
+            this.label5.Text = "肿瘤大小";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(364, 53);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(53, 12);
+            this.label6.TabIndex = 427;
+            this.label6.Text = "局部侵犯";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(523, 53);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(65, 12);
+            this.label7.TabIndex = 429;
+            this.label7.Text = "淋巴结转移";
+            // 
+            // comboBox21
+            // 
+            this.comboBox21.FormattingEnabled = true;
+            this.comboBox21.Items.AddRange(new object[] {
+            "是",
+            "否"});
+            this.comboBox21.Location = new System.Drawing.Point(84, 79);
+            this.comboBox21.Name = "comboBox21";
+            this.comboBox21.Size = new System.Drawing.Size(60, 20);
+            this.comboBox21.TabIndex = 423;
+            this.comboBox21.Text = "是";
             // 
             // comboBox17
             // 
@@ -581,6 +1431,186 @@
             this.comboBox13.TabIndex = 412;
             this.comboBox13.Text = "是";
             // 
+            // comboBox32
+            // 
+            this.comboBox32.FormattingEnabled = true;
+            this.comboBox32.Items.AddRange(new object[] {
+            "是",
+            "否"});
+            this.comboBox32.Location = new System.Drawing.Point(833, 459);
+            this.comboBox32.Name = "comboBox32";
+            this.comboBox32.Size = new System.Drawing.Size(60, 20);
+            this.comboBox32.TabIndex = 410;
+            this.comboBox32.Text = "是";
+            // 
+            // comboBox34
+            // 
+            this.comboBox34.FormattingEnabled = true;
+            this.comboBox34.Items.AddRange(new object[] {
+            "是",
+            "否"});
+            this.comboBox34.Location = new System.Drawing.Point(833, 486);
+            this.comboBox34.Name = "comboBox34";
+            this.comboBox34.Size = new System.Drawing.Size(60, 20);
+            this.comboBox34.TabIndex = 410;
+            this.comboBox34.Text = "否";
+            // 
+            // comboBox33
+            // 
+            this.comboBox33.FormattingEnabled = true;
+            this.comboBox33.Items.AddRange(new object[] {
+            "是",
+            "否"});
+            this.comboBox33.Location = new System.Drawing.Point(636, 486);
+            this.comboBox33.Name = "comboBox33";
+            this.comboBox33.Size = new System.Drawing.Size(60, 20);
+            this.comboBox33.TabIndex = 410;
+            this.comboBox33.Text = "否";
+            // 
+            // comboBox31
+            // 
+            this.comboBox31.FormattingEnabled = true;
+            this.comboBox31.Items.AddRange(new object[] {
+            "是",
+            "否"});
+            this.comboBox31.Location = new System.Drawing.Point(636, 459);
+            this.comboBox31.Name = "comboBox31";
+            this.comboBox31.Size = new System.Drawing.Size(60, 20);
+            this.comboBox31.TabIndex = 410;
+            this.comboBox31.Text = "是";
+            // 
+            // comboBox40
+            // 
+            this.comboBox40.FormattingEnabled = true;
+            this.comboBox40.Items.AddRange(new object[] {
+            "是",
+            "否"});
+            this.comboBox40.Location = new System.Drawing.Point(435, 428);
+            this.comboBox40.Name = "comboBox40";
+            this.comboBox40.Size = new System.Drawing.Size(60, 20);
+            this.comboBox40.TabIndex = 410;
+            this.comboBox40.Text = "是";
+            // 
+            // comboBox30
+            // 
+            this.comboBox30.FormattingEnabled = true;
+            this.comboBox30.Items.AddRange(new object[] {
+            "是",
+            "否"});
+            this.comboBox30.Location = new System.Drawing.Point(435, 459);
+            this.comboBox30.Name = "comboBox30";
+            this.comboBox30.Size = new System.Drawing.Size(60, 20);
+            this.comboBox30.TabIndex = 410;
+            this.comboBox30.Text = "是";
+            // 
+            // comboBox12
+            // 
+            this.comboBox12.FormattingEnabled = true;
+            this.comboBox12.Items.AddRange(new object[] {
+            "是",
+            "否"});
+            this.comboBox12.Location = new System.Drawing.Point(256, 486);
+            this.comboBox12.Name = "comboBox12";
+            this.comboBox12.Size = new System.Drawing.Size(60, 20);
+            this.comboBox12.TabIndex = 410;
+            this.comboBox12.Text = "否";
+            // 
+            // comboBox8
+            // 
+            this.comboBox8.FormattingEnabled = true;
+            this.comboBox8.Items.AddRange(new object[] {
+            "是",
+            "否"});
+            this.comboBox8.Location = new System.Drawing.Point(256, 459);
+            this.comboBox8.Name = "comboBox8";
+            this.comboBox8.Size = new System.Drawing.Size(60, 20);
+            this.comboBox8.TabIndex = 410;
+            this.comboBox8.Text = "是";
+            // 
+            // comboBox7
+            // 
+            this.comboBox7.FormattingEnabled = true;
+            this.comboBox7.Items.AddRange(new object[] {
+            "是",
+            "否"});
+            this.comboBox7.Location = new System.Drawing.Point(84, 459);
+            this.comboBox7.Name = "comboBox7";
+            this.comboBox7.Size = new System.Drawing.Size(60, 20);
+            this.comboBox7.TabIndex = 410;
+            this.comboBox7.Text = "是";
+            // 
+            // comboBox37
+            // 
+            this.comboBox37.FormattingEnabled = true;
+            this.comboBox37.Items.AddRange(new object[] {
+            "是",
+            "否"});
+            this.comboBox37.Location = new System.Drawing.Point(636, 544);
+            this.comboBox37.Name = "comboBox37";
+            this.comboBox37.Size = new System.Drawing.Size(60, 20);
+            this.comboBox37.TabIndex = 410;
+            this.comboBox37.Text = "否";
+            // 
+            // comboBox36
+            // 
+            this.comboBox36.FormattingEnabled = true;
+            this.comboBox36.Items.AddRange(new object[] {
+            "是",
+            "否"});
+            this.comboBox36.Location = new System.Drawing.Point(833, 544);
+            this.comboBox36.Name = "comboBox36";
+            this.comboBox36.Size = new System.Drawing.Size(60, 20);
+            this.comboBox36.TabIndex = 410;
+            this.comboBox36.Text = "否";
+            // 
+            // comboBox39
+            // 
+            this.comboBox39.FormattingEnabled = true;
+            this.comboBox39.Items.AddRange(new object[] {
+            "是",
+            "否"});
+            this.comboBox39.Location = new System.Drawing.Point(256, 627);
+            this.comboBox39.Name = "comboBox39";
+            this.comboBox39.Size = new System.Drawing.Size(60, 20);
+            this.comboBox39.TabIndex = 410;
+            this.comboBox39.Text = "否";
+            // 
+            // comboBox38
+            // 
+            this.comboBox38.FormattingEnabled = true;
+            this.comboBox38.Items.AddRange(new object[] {
+            "是",
+            "否"});
+            this.comboBox38.Location = new System.Drawing.Point(84, 627);
+            this.comboBox38.Name = "comboBox38";
+            this.comboBox38.Size = new System.Drawing.Size(60, 20);
+            this.comboBox38.TabIndex = 410;
+            this.comboBox38.Text = "否";
+            // 
+            // comboBox35
+            // 
+            this.comboBox35.FormattingEnabled = true;
+            this.comboBox35.Items.AddRange(new object[] {
+            "是",
+            "否"});
+            this.comboBox35.Location = new System.Drawing.Point(84, 572);
+            this.comboBox35.Name = "comboBox35";
+            this.comboBox35.Size = new System.Drawing.Size(60, 20);
+            this.comboBox35.TabIndex = 410;
+            this.comboBox35.Text = "否";
+            // 
+            // comboBox14
+            // 
+            this.comboBox14.FormattingEnabled = true;
+            this.comboBox14.Items.AddRange(new object[] {
+            "是",
+            "否"});
+            this.comboBox14.Location = new System.Drawing.Point(84, 516);
+            this.comboBox14.Name = "comboBox14";
+            this.comboBox14.Size = new System.Drawing.Size(60, 20);
+            this.comboBox14.TabIndex = 410;
+            this.comboBox14.Text = "否";
+            // 
             // comboBox15
             // 
             this.comboBox15.FormattingEnabled = true;
@@ -603,7 +1633,7 @@
             this.comboBox16.Name = "comboBox16";
             this.comboBox16.Size = new System.Drawing.Size(60, 20);
             this.comboBox16.TabIndex = 409;
-            this.comboBox16.Text = "否";
+            this.comboBox16.Text = "是";
             // 
             // label60
             // 
@@ -647,6 +1677,69 @@
             this.label63.Size = new System.Drawing.Size(29, 12);
             this.label63.TabIndex = 402;
             this.label63.Text = "术式";
+            // 
+            // textBox21
+            // 
+            this.textBox21.Location = new System.Drawing.Point(435, 515);
+            this.textBox21.Name = "textBox21";
+            this.textBox21.Size = new System.Drawing.Size(80, 21);
+            this.textBox21.TabIndex = 400;
+            // 
+            // textBox57
+            // 
+            this.textBox57.Location = new System.Drawing.Point(833, 627);
+            this.textBox57.Name = "textBox57";
+            this.textBox57.Size = new System.Drawing.Size(80, 21);
+            this.textBox57.TabIndex = 400;
+            // 
+            // textBox52
+            // 
+            this.textBox52.Location = new System.Drawing.Point(833, 600);
+            this.textBox52.Name = "textBox52";
+            this.textBox52.Size = new System.Drawing.Size(80, 21);
+            this.textBox52.TabIndex = 400;
+            // 
+            // textBox51
+            // 
+            this.textBox51.Location = new System.Drawing.Point(833, 572);
+            this.textBox51.Name = "textBox51";
+            this.textBox51.Size = new System.Drawing.Size(80, 21);
+            this.textBox51.TabIndex = 400;
+            // 
+            // textBox49
+            // 
+            this.textBox49.Location = new System.Drawing.Point(256, 600);
+            this.textBox49.Name = "textBox49";
+            this.textBox49.Size = new System.Drawing.Size(80, 21);
+            this.textBox49.TabIndex = 400;
+            // 
+            // textBox47
+            // 
+            this.textBox47.Location = new System.Drawing.Point(256, 572);
+            this.textBox47.Name = "textBox47";
+            this.textBox47.Size = new System.Drawing.Size(80, 21);
+            this.textBox47.TabIndex = 400;
+            // 
+            // textBox46
+            // 
+            this.textBox46.Location = new System.Drawing.Point(84, 600);
+            this.textBox46.Name = "textBox46";
+            this.textBox46.Size = new System.Drawing.Size(80, 21);
+            this.textBox46.TabIndex = 400;
+            // 
+            // textBox43
+            // 
+            this.textBox43.Location = new System.Drawing.Point(93, 544);
+            this.textBox43.Name = "textBox43";
+            this.textBox43.Size = new System.Drawing.Size(80, 21);
+            this.textBox43.TabIndex = 400;
+            // 
+            // textBox28
+            // 
+            this.textBox28.Location = new System.Drawing.Point(256, 544);
+            this.textBox28.Name = "textBox28";
+            this.textBox28.Size = new System.Drawing.Size(80, 21);
+            this.textBox28.TabIndex = 400;
             // 
             // textBox50
             // 
@@ -709,6 +1802,13 @@
             this.label69.TabIndex = 392;
             this.label69.Text = "吻合口瘘";
             // 
+            // textBox17
+            // 
+            this.textBox17.Location = new System.Drawing.Point(636, 428);
+            this.textBox17.Name = "textBox17";
+            this.textBox17.Size = new System.Drawing.Size(100, 21);
+            this.textBox17.TabIndex = 388;
+            // 
             // label70
             // 
             this.label70.AutoSize = true;
@@ -752,6 +1852,13 @@
             this.label73.TabIndex = 384;
             this.label73.Text = "肠内营养支持时间";
             // 
+            // textBox19
+            // 
+            this.textBox19.Location = new System.Drawing.Point(256, 396);
+            this.textBox19.Name = "textBox19";
+            this.textBox19.Size = new System.Drawing.Size(100, 21);
+            this.textBox19.TabIndex = 381;
+            // 
             // textBox79
             // 
             this.textBox79.Location = new System.Drawing.Point(256, 428);
@@ -777,11 +1884,20 @@
             this.label75.TabIndex = 383;
             this.label75.Text = "进食时间";
             // 
+            // label113
+            // 
+            this.label113.AutoSize = true;
+            this.label113.Location = new System.Drawing.Point(763, 253);
+            this.label113.Name = "label113";
+            this.label113.Size = new System.Drawing.Size(53, 12);
+            this.label113.TabIndex = 379;
+            this.label113.Text = "手术日期";
+            // 
             // textBox13
             // 
             this.textBox13.Location = new System.Drawing.Point(833, 193);
             this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(64, 21);
+            this.textBox13.Size = new System.Drawing.Size(80, 21);
             this.textBox13.TabIndex = 377;
             // 
             // label16
@@ -820,7 +1936,7 @@
             this.comboBox4.Name = "comboBox4";
             this.comboBox4.Size = new System.Drawing.Size(60, 20);
             this.comboBox4.TabIndex = 374;
-            this.comboBox4.Text = "否";
+            this.comboBox4.Text = "是";
             // 
             // textBox15
             // 
@@ -872,6 +1988,13 @@
             this.label21.TabIndex = 367;
             this.label21.Text = "营养管";
             // 
+            // textBox58
+            // 
+            this.textBox58.Location = new System.Drawing.Point(833, 249);
+            this.textBox58.Name = "textBox58";
+            this.textBox58.Size = new System.Drawing.Size(80, 21);
+            this.textBox58.TabIndex = 365;
+            // 
             // textBox18
             // 
             this.textBox18.Location = new System.Drawing.Point(833, 279);
@@ -898,7 +2021,7 @@
             this.comboBox6.Name = "comboBox6";
             this.comboBox6.Size = new System.Drawing.Size(60, 20);
             this.comboBox6.TabIndex = 363;
-            this.comboBox6.Text = "否";
+            this.comboBox6.Text = "是";
             // 
             // label23
             // 
@@ -944,6 +2067,22 @@
             this.label26.TabIndex = 357;
             this.label26.Text = "凝血功能";
             // 
+            // textBox67
+            // 
+            this.textBox67.Location = new System.Drawing.Point(256, 250);
+            this.textBox67.Name = "textBox67";
+            this.textBox67.Size = new System.Drawing.Size(100, 21);
+            this.textBox67.TabIndex = 354;
+            this.textBox67.Text = "正常";
+            // 
+            // textBox59
+            // 
+            this.textBox59.Location = new System.Drawing.Point(435, 250);
+            this.textBox59.Name = "textBox59";
+            this.textBox59.Size = new System.Drawing.Size(80, 21);
+            this.textBox59.TabIndex = 354;
+            this.textBox59.Text = "正常";
+            // 
             // textBox22
             // 
             this.textBox22.Location = new System.Drawing.Point(636, 221);
@@ -968,6 +2107,44 @@
             this.textBox23.Size = new System.Drawing.Size(100, 21);
             this.textBox23.TabIndex = 352;
             // 
+            // comboBox22
+            // 
+            this.comboBox22.FormattingEnabled = true;
+            this.comboBox22.Items.AddRange(new object[] {
+            "是",
+            "否"});
+            this.comboBox22.Location = new System.Drawing.Point(435, 311);
+            this.comboBox22.Name = "comboBox22";
+            this.comboBox22.Size = new System.Drawing.Size(60, 20);
+            this.comboBox22.TabIndex = 348;
+            this.comboBox22.Text = "是";
+            // 
+            // comboBox28
+            // 
+            this.comboBox28.FormattingEnabled = true;
+            this.comboBox28.Items.AddRange(new object[] {
+            "D1",
+            "D2",
+            "D3"});
+            this.comboBox28.Location = new System.Drawing.Point(833, 339);
+            this.comboBox28.Name = "comboBox28";
+            this.comboBox28.Size = new System.Drawing.Size(60, 20);
+            this.comboBox28.TabIndex = 348;
+            this.comboBox28.Text = "D1";
+            // 
+            // comboBox27
+            // 
+            this.comboBox27.FormattingEnabled = true;
+            this.comboBox27.Items.AddRange(new object[] {
+            "R0",
+            "R1",
+            "R2"});
+            this.comboBox27.Location = new System.Drawing.Point(636, 339);
+            this.comboBox27.Name = "comboBox27";
+            this.comboBox27.Size = new System.Drawing.Size(60, 20);
+            this.comboBox27.TabIndex = 348;
+            this.comboBox27.Text = "R0";
+            // 
             // comboBox10
             // 
             this.comboBox10.FormattingEnabled = true;
@@ -978,7 +2155,7 @@
             this.comboBox10.Name = "comboBox10";
             this.comboBox10.Size = new System.Drawing.Size(60, 20);
             this.comboBox10.TabIndex = 348;
-            this.comboBox10.Text = "否";
+            this.comboBox10.Text = "是";
             // 
             // label29
             // 
@@ -1020,6 +2197,14 @@
             this.label31.Size = new System.Drawing.Size(53, 12);
             this.label31.TabIndex = 343;
             this.label31.Text = "通气时间";
+            // 
+            // textBox12
+            // 
+            this.textBox12.Location = new System.Drawing.Point(84, 366);
+            this.textBox12.Name = "textBox12";
+            this.textBox12.Size = new System.Drawing.Size(100, 21);
+            this.textBox12.TabIndex = 342;
+            this.textBox12.Text = "1";
             // 
             // textBox26
             // 
@@ -1257,7 +2442,7 @@
             this.comboBox11.Name = "comboBox11";
             this.comboBox11.Size = new System.Drawing.Size(60, 20);
             this.comboBox11.TabIndex = 313;
-            this.comboBox11.Text = "否";
+            this.comboBox11.Text = "是";
             // 
             // label51
             // 
@@ -1413,442 +2598,6 @@
             this.label146.TabIndex = 225;
             this.label146.Text = "结果";
             // 
-            // comboBox21
-            // 
-            this.comboBox21.FormattingEnabled = true;
-            this.comboBox21.Items.AddRange(new object[] {
-            "是",
-            "否"});
-            this.comboBox21.Location = new System.Drawing.Point(84, 79);
-            this.comboBox21.Name = "comboBox21";
-            this.comboBox21.Size = new System.Drawing.Size(60, 20);
-            this.comboBox21.TabIndex = 423;
-            this.comboBox21.Text = "是";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "是",
-            "否"});
-            this.comboBox1.Location = new System.Drawing.Point(742, 49);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(60, 20);
-            this.comboBox1.TabIndex = 431;
-            this.comboBox1.Text = "是";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(672, 53);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 12);
-            this.label3.TabIndex = 430;
-            this.label3.Text = "是否转移";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(256, 49);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(80, 21);
-            this.textBox2.TabIndex = 424;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(435, 49);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(80, 21);
-            this.textBox3.TabIndex = 425;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(194, 53);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(53, 12);
-            this.label5.TabIndex = 426;
-            this.label5.Text = "肿瘤大小";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(364, 53);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(53, 12);
-            this.label6.TabIndex = 427;
-            this.label6.Text = "局部侵犯";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(523, 53);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(65, 12);
-            this.label7.TabIndex = 429;
-            this.label7.Text = "淋巴结转移";
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            "是",
-            "否"});
-            this.comboBox2.Location = new System.Drawing.Point(742, 79);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(60, 20);
-            this.comboBox2.TabIndex = 441;
-            this.comboBox2.Text = "是";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(672, 83);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 12);
-            this.label2.TabIndex = 440;
-            this.label2.Text = "是否转移";
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(256, 79);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(80, 21);
-            this.textBox5.TabIndex = 434;
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(435, 79);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(80, 21);
-            this.textBox6.TabIndex = 435;
-            // 
-            // label76
-            // 
-            this.label76.AutoSize = true;
-            this.label76.Location = new System.Drawing.Point(194, 83);
-            this.label76.Name = "label76";
-            this.label76.Size = new System.Drawing.Size(53, 12);
-            this.label76.TabIndex = 436;
-            this.label76.Text = "肿瘤大小";
-            // 
-            // label77
-            // 
-            this.label77.AutoSize = true;
-            this.label77.Location = new System.Drawing.Point(364, 83);
-            this.label77.Name = "label77";
-            this.label77.Size = new System.Drawing.Size(53, 12);
-            this.label77.TabIndex = 437;
-            this.label77.Text = "局部侵犯";
-            // 
-            // label78
-            // 
-            this.label78.AutoSize = true;
-            this.label78.Location = new System.Drawing.Point(523, 83);
-            this.label78.Name = "label78";
-            this.label78.Size = new System.Drawing.Size(65, 12);
-            this.label78.TabIndex = 439;
-            this.label78.Text = "淋巴结转移";
-            // 
-            // textBox73
-            // 
-            this.textBox73.Location = new System.Drawing.Point(873, 79);
-            this.textBox73.Name = "textBox73";
-            this.textBox73.Size = new System.Drawing.Size(60, 21);
-            this.textBox73.TabIndex = 433;
-            // 
-            // label79
-            // 
-            this.label79.AutoSize = true;
-            this.label79.Location = new System.Drawing.Point(824, 83);
-            this.label79.Name = "label79";
-            this.label79.Size = new System.Drawing.Size(29, 12);
-            this.label79.TabIndex = 432;
-            this.label79.Text = "部位";
-            // 
-            // comboBox18
-            // 
-            this.comboBox18.FormattingEnabled = true;
-            this.comboBox18.Items.AddRange(new object[] {
-            "是",
-            "否"});
-            this.comboBox18.Location = new System.Drawing.Point(873, 106);
-            this.comboBox18.Name = "comboBox18";
-            this.comboBox18.Size = new System.Drawing.Size(60, 20);
-            this.comboBox18.TabIndex = 453;
-            this.comboBox18.Text = "是";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(816, 110);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(53, 12);
-            this.label14.TabIndex = 452;
-            this.label14.Text = "是否转移";
-            // 
-            // textBox11
-            // 
-            this.textBox11.Location = new System.Drawing.Point(256, 106);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(80, 21);
-            this.textBox11.TabIndex = 446;
-            // 
-            // textBox69
-            // 
-            this.textBox69.Location = new System.Drawing.Point(435, 106);
-            this.textBox69.Name = "textBox69";
-            this.textBox69.Size = new System.Drawing.Size(80, 21);
-            this.textBox69.TabIndex = 447;
-            // 
-            // label80
-            // 
-            this.label80.AutoSize = true;
-            this.label80.Location = new System.Drawing.Point(194, 110);
-            this.label80.Name = "label80";
-            this.label80.Size = new System.Drawing.Size(53, 12);
-            this.label80.TabIndex = 448;
-            this.label80.Text = "肿瘤大小";
-            // 
-            // label81
-            // 
-            this.label81.AutoSize = true;
-            this.label81.Location = new System.Drawing.Point(364, 110);
-            this.label81.Name = "label81";
-            this.label81.Size = new System.Drawing.Size(53, 12);
-            this.label81.TabIndex = 449;
-            this.label81.Text = "局部侵犯";
-            // 
-            // label82
-            // 
-            this.label82.AutoSize = true;
-            this.label82.Location = new System.Drawing.Point(672, 110);
-            this.label82.Name = "label82";
-            this.label82.Size = new System.Drawing.Size(65, 12);
-            this.label82.TabIndex = 451;
-            this.label82.Text = "淋巴结转移";
-            // 
-            // textBox71
-            // 
-            this.textBox71.Location = new System.Drawing.Point(84, 133);
-            this.textBox71.Name = "textBox71";
-            this.textBox71.Size = new System.Drawing.Size(60, 21);
-            this.textBox71.TabIndex = 445;
-            // 
-            // label83
-            // 
-            this.label83.AutoSize = true;
-            this.label83.Location = new System.Drawing.Point(8, 137);
-            this.label83.Name = "label83";
-            this.label83.Size = new System.Drawing.Size(29, 12);
-            this.label83.TabIndex = 444;
-            this.label83.Text = "部位";
-            // 
-            // comboBox25
-            // 
-            this.comboBox25.FormattingEnabled = true;
-            this.comboBox25.Items.AddRange(new object[] {
-            "是",
-            "否"});
-            this.comboBox25.Location = new System.Drawing.Point(84, 106);
-            this.comboBox25.Name = "comboBox25";
-            this.comboBox25.Size = new System.Drawing.Size(60, 20);
-            this.comboBox25.TabIndex = 443;
-            this.comboBox25.Text = "是";
-            // 
-            // label84
-            // 
-            this.label84.AutoSize = true;
-            this.label84.Location = new System.Drawing.Point(8, 110);
-            this.label84.Name = "label84";
-            this.label84.Size = new System.Drawing.Size(47, 12);
-            this.label84.TabIndex = 442;
-            this.label84.Text = "我院PET";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(523, 110);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(53, 12);
-            this.label10.TabIndex = 455;
-            this.label10.Text = "代谢强度";
-            // 
-            // textBox8
-            // 
-            this.textBox8.Location = new System.Drawing.Point(589, 106);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(64, 21);
-            this.textBox8.TabIndex = 454;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(152, 137);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(101, 12);
-            this.label11.TabIndex = 457;
-            this.label11.Text = "转移部位代谢强度";
-            // 
-            // textBox9
-            // 
-            this.textBox9.Location = new System.Drawing.Point(256, 133);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(80, 21);
-            this.textBox9.TabIndex = 456;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(672, 137);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(17, 12);
-            this.label12.TabIndex = 464;
-            this.label12.Text = "cM";
-            // 
-            // textBox10
-            // 
-            this.textBox10.Location = new System.Drawing.Point(435, 133);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(80, 21);
-            this.textBox10.TabIndex = 460;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(364, 137);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(17, 12);
-            this.label13.TabIndex = 461;
-            this.label13.Text = "cT";
-            // 
-            // label85
-            // 
-            this.label85.AutoSize = true;
-            this.label85.Location = new System.Drawing.Point(523, 137);
-            this.label85.Name = "label85";
-            this.label85.Size = new System.Drawing.Size(17, 12);
-            this.label85.TabIndex = 463;
-            this.label85.Text = "cN";
-            // 
-            // textBox54
-            // 
-            this.textBox54.Location = new System.Drawing.Point(589, 133);
-            this.textBox54.Name = "textBox54";
-            this.textBox54.Size = new System.Drawing.Size(64, 21);
-            this.textBox54.TabIndex = 462;
-            // 
-            // textBox55
-            // 
-            this.textBox55.Location = new System.Drawing.Point(873, 133);
-            this.textBox55.Name = "textBox55";
-            this.textBox55.Size = new System.Drawing.Size(60, 21);
-            this.textBox55.TabIndex = 459;
-            // 
-            // label86
-            // 
-            this.label86.AutoSize = true;
-            this.label86.Location = new System.Drawing.Point(824, 137);
-            this.label86.Name = "label86";
-            this.label86.Size = new System.Drawing.Size(23, 12);
-            this.label86.TabIndex = 458;
-            this.label86.Text = "WBC";
-            // 
-            // label87
-            // 
-            this.label87.AutoSize = true;
-            this.label87.Location = new System.Drawing.Point(672, 167);
-            this.label87.Name = "label87";
-            this.label87.Size = new System.Drawing.Size(35, 12);
-            this.label87.TabIndex = 476;
-            this.label87.Text = "CA199";
-            // 
-            // textBox56
-            // 
-            this.textBox56.Location = new System.Drawing.Point(256, 163);
-            this.textBox56.Name = "textBox56";
-            this.textBox56.Size = new System.Drawing.Size(80, 21);
-            this.textBox56.TabIndex = 470;
-            // 
-            // textBox60
-            // 
-            this.textBox60.Location = new System.Drawing.Point(435, 163);
-            this.textBox60.Name = "textBox60";
-            this.textBox60.Size = new System.Drawing.Size(80, 21);
-            this.textBox60.TabIndex = 471;
-            // 
-            // label88
-            // 
-            this.label88.AutoSize = true;
-            this.label88.Location = new System.Drawing.Point(194, 167);
-            this.label88.Name = "label88";
-            this.label88.Size = new System.Drawing.Size(23, 12);
-            this.label88.TabIndex = 472;
-            this.label88.Text = "ALB";
-            // 
-            // label89
-            // 
-            this.label89.AutoSize = true;
-            this.label89.Location = new System.Drawing.Point(364, 167);
-            this.label89.Name = "label89";
-            this.label89.Size = new System.Drawing.Size(23, 12);
-            this.label89.TabIndex = 473;
-            this.label89.Text = "CEA";
-            // 
-            // label90
-            // 
-            this.label90.AutoSize = true;
-            this.label90.Location = new System.Drawing.Point(523, 167);
-            this.label90.Name = "label90";
-            this.label90.Size = new System.Drawing.Size(35, 12);
-            this.label90.TabIndex = 475;
-            this.label90.Text = "CA125";
-            // 
-            // textBox61
-            // 
-            this.textBox61.Location = new System.Drawing.Point(589, 163);
-            this.textBox61.Name = "textBox61";
-            this.textBox61.Size = new System.Drawing.Size(64, 21);
-            this.textBox61.TabIndex = 474;
-            // 
-            // textBox62
-            // 
-            this.textBox62.Location = new System.Drawing.Point(873, 163);
-            this.textBox62.Name = "textBox62";
-            this.textBox62.Size = new System.Drawing.Size(60, 21);
-            this.textBox62.TabIndex = 469;
-            // 
-            // label91
-            // 
-            this.label91.AutoSize = true;
-            this.label91.Location = new System.Drawing.Point(824, 167);
-            this.label91.Name = "label91";
-            this.label91.Size = new System.Drawing.Size(35, 12);
-            this.label91.TabIndex = 468;
-            this.label91.Text = "CA724";
-            // 
-            // label92
-            // 
-            this.label92.AutoSize = true;
-            this.label92.Location = new System.Drawing.Point(8, 167);
-            this.label92.Name = "label92";
-            this.label92.Size = new System.Drawing.Size(17, 12);
-            this.label92.TabIndex = 466;
-            this.label92.Text = "Hb";
-            // 
-            // textBox63
-            // 
-            this.textBox63.Location = new System.Drawing.Point(742, 133);
-            this.textBox63.Name = "textBox63";
-            this.textBox63.Size = new System.Drawing.Size(64, 21);
-            this.textBox63.TabIndex = 478;
-            // 
-            // textBox64
-            // 
-            this.textBox64.Location = new System.Drawing.Point(84, 163);
-            this.textBox64.Name = "textBox64";
-            this.textBox64.Size = new System.Drawing.Size(60, 21);
-            this.textBox64.TabIndex = 479;
-            // 
             // textBox65
             // 
             this.textBox65.Location = new System.Drawing.Point(742, 163);
@@ -1856,757 +2605,42 @@
             this.textBox65.Size = new System.Drawing.Size(64, 21);
             this.textBox65.TabIndex = 480;
             // 
-            // comboBox3
-            // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Items.AddRange(new object[] {
-            "是",
-            "否"});
-            this.comboBox3.Location = new System.Drawing.Point(435, 194);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(60, 20);
-            this.comboBox3.TabIndex = 482;
-            this.comboBox3.Text = "否";
-            // 
-            // label55
-            // 
-            this.label55.AutoSize = true;
-            this.label55.Location = new System.Drawing.Point(364, 198);
-            this.label55.Name = "label55";
-            this.label55.Size = new System.Drawing.Size(53, 12);
-            this.label55.TabIndex = 481;
-            this.label55.Text = "是否出血";
-            // 
-            // comboBox19
-            // 
-            this.comboBox19.FormattingEnabled = true;
-            this.comboBox19.Items.AddRange(new object[] {
-            "是",
-            "否"});
-            this.comboBox19.Location = new System.Drawing.Point(636, 194);
-            this.comboBox19.Name = "comboBox19";
-            this.comboBox19.Size = new System.Drawing.Size(60, 20);
-            this.comboBox19.TabIndex = 484;
-            this.comboBox19.Text = "否";
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(559, 198);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(53, 12);
-            this.label27.TabIndex = 483;
-            this.label27.Text = "是否穿孔";
-            // 
-            // comboBox5
-            // 
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Items.AddRange(new object[] {
-            "是",
-            "否"});
-            this.comboBox5.Location = new System.Drawing.Point(84, 279);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(60, 20);
-            this.comboBox5.TabIndex = 485;
-            this.comboBox5.Text = "否";
-            // 
-            // comboBox20
-            // 
-            this.comboBox20.FormattingEnabled = true;
-            this.comboBox20.Items.AddRange(new object[] {
-            "是",
-            "否"});
-            this.comboBox20.Location = new System.Drawing.Point(84, 311);
-            this.comboBox20.Name = "comboBox20";
-            this.comboBox20.Size = new System.Drawing.Size(60, 20);
-            this.comboBox20.TabIndex = 485;
-            this.comboBox20.Text = "否";
-            // 
-            // comboBox22
-            // 
-            this.comboBox22.FormattingEnabled = true;
-            this.comboBox22.Items.AddRange(new object[] {
-            "是",
-            "否"});
-            this.comboBox22.Location = new System.Drawing.Point(435, 311);
-            this.comboBox22.Name = "comboBox22";
-            this.comboBox22.Size = new System.Drawing.Size(60, 20);
-            this.comboBox22.TabIndex = 348;
-            this.comboBox22.Text = "否";
-            // 
-            // comboBox23
-            // 
-            this.comboBox23.FormattingEnabled = true;
-            this.comboBox23.Items.AddRange(new object[] {
-            "是",
-            "否"});
-            this.comboBox23.Location = new System.Drawing.Point(84, 339);
-            this.comboBox23.Name = "comboBox23";
-            this.comboBox23.Size = new System.Drawing.Size(60, 20);
-            this.comboBox23.TabIndex = 485;
-            this.comboBox23.Text = "否";
-            // 
-            // comboBox26
-            // 
-            this.comboBox26.FormattingEnabled = true;
-            this.comboBox26.Items.AddRange(new object[] {
-            "是",
-            "否"});
-            this.comboBox26.Location = new System.Drawing.Point(256, 339);
-            this.comboBox26.Name = "comboBox26";
-            this.comboBox26.Size = new System.Drawing.Size(60, 20);
-            this.comboBox26.TabIndex = 485;
-            this.comboBox26.Text = "否";
-            // 
-            // comboBox27
-            // 
-            this.comboBox27.FormattingEnabled = true;
-            this.comboBox27.Items.AddRange(new object[] {
-            "R0",
-            "R1",
-            "R2"});
-            this.comboBox27.Location = new System.Drawing.Point(636, 339);
-            this.comboBox27.Name = "comboBox27";
-            this.comboBox27.Size = new System.Drawing.Size(60, 20);
-            this.comboBox27.TabIndex = 348;
-            this.comboBox27.Text = "R0";
-            // 
-            // comboBox28
-            // 
-            this.comboBox28.FormattingEnabled = true;
-            this.comboBox28.Items.AddRange(new object[] {
-            "D1",
-            "D2",
-            "D3"});
-            this.comboBox28.Location = new System.Drawing.Point(833, 339);
-            this.comboBox28.Name = "comboBox28";
-            this.comboBox28.Size = new System.Drawing.Size(60, 20);
-            this.comboBox28.TabIndex = 348;
-            this.comboBox28.Text = "D1";
-            // 
-            // comboBox9
-            // 
-            this.comboBox9.FormattingEnabled = true;
-            this.comboBox9.Items.AddRange(new object[] {
-            "是",
-            "否"});
-            this.comboBox9.Location = new System.Drawing.Point(256, 366);
-            this.comboBox9.Name = "comboBox9";
-            this.comboBox9.Size = new System.Drawing.Size(60, 20);
-            this.comboBox9.TabIndex = 485;
-            this.comboBox9.Text = "否";
-            // 
-            // comboBox29
-            // 
-            this.comboBox29.FormattingEnabled = true;
-            this.comboBox29.Items.AddRange(new object[] {
-            "是",
-            "否"});
-            this.comboBox29.Location = new System.Drawing.Point(435, 366);
-            this.comboBox29.Name = "comboBox29";
-            this.comboBox29.Size = new System.Drawing.Size(60, 20);
-            this.comboBox29.TabIndex = 485;
-            this.comboBox29.Text = "否";
-            // 
-            // textBox12
-            // 
-            this.textBox12.Location = new System.Drawing.Point(84, 366);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(100, 21);
-            this.textBox12.TabIndex = 342;
-            this.textBox12.Text = "1";
-            // 
-            // textBox17
-            // 
-            this.textBox17.Location = new System.Drawing.Point(636, 428);
-            this.textBox17.Name = "textBox17";
-            this.textBox17.Size = new System.Drawing.Size(100, 21);
-            this.textBox17.TabIndex = 388;
-            // 
-            // textBox19
-            // 
-            this.textBox19.Location = new System.Drawing.Point(256, 396);
-            this.textBox19.Name = "textBox19";
-            this.textBox19.Size = new System.Drawing.Size(100, 21);
-            this.textBox19.TabIndex = 381;
-            // 
-            // comboBox7
-            // 
-            this.comboBox7.FormattingEnabled = true;
-            this.comboBox7.Items.AddRange(new object[] {
-            "是",
-            "否"});
-            this.comboBox7.Location = new System.Drawing.Point(84, 459);
-            this.comboBox7.Name = "comboBox7";
-            this.comboBox7.Size = new System.Drawing.Size(60, 20);
-            this.comboBox7.TabIndex = 410;
-            this.comboBox7.Text = "否";
-            // 
-            // comboBox8
-            // 
-            this.comboBox8.FormattingEnabled = true;
-            this.comboBox8.Items.AddRange(new object[] {
-            "是",
-            "否"});
-            this.comboBox8.Location = new System.Drawing.Point(256, 459);
-            this.comboBox8.Name = "comboBox8";
-            this.comboBox8.Size = new System.Drawing.Size(60, 20);
-            this.comboBox8.TabIndex = 410;
-            this.comboBox8.Text = "否";
-            // 
-            // comboBox12
-            // 
-            this.comboBox12.FormattingEnabled = true;
-            this.comboBox12.Items.AddRange(new object[] {
-            "是",
-            "否"});
-            this.comboBox12.Location = new System.Drawing.Point(256, 486);
-            this.comboBox12.Name = "comboBox12";
-            this.comboBox12.Size = new System.Drawing.Size(60, 20);
-            this.comboBox12.TabIndex = 410;
-            this.comboBox12.Text = "否";
-            // 
-            // comboBox30
-            // 
-            this.comboBox30.FormattingEnabled = true;
-            this.comboBox30.Items.AddRange(new object[] {
-            "是",
-            "否"});
-            this.comboBox30.Location = new System.Drawing.Point(435, 459);
-            this.comboBox30.Name = "comboBox30";
-            this.comboBox30.Size = new System.Drawing.Size(60, 20);
-            this.comboBox30.TabIndex = 410;
-            this.comboBox30.Text = "否";
-            // 
-            // comboBox31
-            // 
-            this.comboBox31.FormattingEnabled = true;
-            this.comboBox31.Items.AddRange(new object[] {
-            "是",
-            "否"});
-            this.comboBox31.Location = new System.Drawing.Point(636, 459);
-            this.comboBox31.Name = "comboBox31";
-            this.comboBox31.Size = new System.Drawing.Size(60, 20);
-            this.comboBox31.TabIndex = 410;
-            this.comboBox31.Text = "否";
-            // 
-            // comboBox32
-            // 
-            this.comboBox32.FormattingEnabled = true;
-            this.comboBox32.Items.AddRange(new object[] {
-            "是",
-            "否"});
-            this.comboBox32.Location = new System.Drawing.Point(833, 459);
-            this.comboBox32.Name = "comboBox32";
-            this.comboBox32.Size = new System.Drawing.Size(60, 20);
-            this.comboBox32.TabIndex = 410;
-            this.comboBox32.Text = "否";
-            // 
-            // comboBox14
-            // 
-            this.comboBox14.FormattingEnabled = true;
-            this.comboBox14.Items.AddRange(new object[] {
-            "是",
-            "否"});
-            this.comboBox14.Location = new System.Drawing.Point(84, 516);
-            this.comboBox14.Name = "comboBox14";
-            this.comboBox14.Size = new System.Drawing.Size(60, 20);
-            this.comboBox14.TabIndex = 410;
-            this.comboBox14.Text = "否";
-            // 
-            // textBox21
-            // 
-            this.textBox21.Location = new System.Drawing.Point(435, 515);
-            this.textBox21.Name = "textBox21";
-            this.textBox21.Size = new System.Drawing.Size(80, 21);
-            this.textBox21.TabIndex = 400;
-            // 
-            // comboBox33
-            // 
-            this.comboBox33.FormattingEnabled = true;
-            this.comboBox33.Items.AddRange(new object[] {
-            "是",
-            "否"});
-            this.comboBox33.Location = new System.Drawing.Point(636, 486);
-            this.comboBox33.Name = "comboBox33";
-            this.comboBox33.Size = new System.Drawing.Size(60, 20);
-            this.comboBox33.TabIndex = 410;
-            this.comboBox33.Text = "否";
-            // 
-            // comboBox34
-            // 
-            this.comboBox34.FormattingEnabled = true;
-            this.comboBox34.Items.AddRange(new object[] {
-            "是",
-            "否"});
-            this.comboBox34.Location = new System.Drawing.Point(833, 486);
-            this.comboBox34.Name = "comboBox34";
-            this.comboBox34.Size = new System.Drawing.Size(60, 20);
-            this.comboBox34.TabIndex = 410;
-            this.comboBox34.Text = "否";
-            // 
-            // label93
-            // 
-            this.label93.AutoSize = true;
-            this.label93.Location = new System.Drawing.Point(763, 548);
-            this.label93.Name = "label93";
-            this.label93.Size = new System.Drawing.Size(53, 12);
-            this.label93.TabIndex = 494;
-            this.label93.Text = "神经侵犯";
-            // 
-            // label94
-            // 
-            this.label94.AutoSize = true;
-            this.label94.Location = new System.Drawing.Point(194, 548);
-            this.label94.Name = "label94";
-            this.label94.Size = new System.Drawing.Size(53, 12);
-            this.label94.TabIndex = 491;
-            this.label94.Text = "分化程度";
-            // 
-            // label95
-            // 
-            this.label95.AutoSize = true;
-            this.label95.Location = new System.Drawing.Point(8, 548);
-            this.label95.Name = "label95";
-            this.label95.Size = new System.Drawing.Size(77, 12);
-            this.label95.TabIndex = 489;
-            this.label95.Text = "术后病理诊断";
-            // 
-            // label96
-            // 
-            this.label96.AutoSize = true;
-            this.label96.Location = new System.Drawing.Point(559, 548);
-            this.label96.Name = "label96";
-            this.label96.Size = new System.Drawing.Size(53, 12);
-            this.label96.TabIndex = 488;
-            this.label96.Text = "脉管癌栓";
-            // 
-            // textBox30
-            // 
-            this.textBox30.Location = new System.Drawing.Point(435, 544);
-            this.textBox30.Name = "textBox30";
-            this.textBox30.Size = new System.Drawing.Size(80, 21);
-            this.textBox30.TabIndex = 487;
-            // 
-            // label97
-            // 
-            this.label97.AutoSize = true;
-            this.label97.Location = new System.Drawing.Point(364, 548);
-            this.label97.Name = "label97";
-            this.label97.Size = new System.Drawing.Size(53, 12);
-            this.label97.TabIndex = 486;
-            this.label97.Text = "浸润深度";
-            // 
-            // label98
-            // 
-            this.label98.AutoSize = true;
-            this.label98.Location = new System.Drawing.Point(763, 576);
-            this.label98.Name = "label98";
-            this.label98.Size = new System.Drawing.Size(35, 12);
-            this.label98.TabIndex = 501;
-            this.label98.Text = "HER-2";
-            // 
-            // label99
-            // 
-            this.label99.AutoSize = true;
-            this.label99.Location = new System.Drawing.Point(184, 576);
-            this.label99.Name = "label99";
-            this.label99.Size = new System.Drawing.Size(65, 12);
-            this.label99.TabIndex = 500;
-            this.label99.Text = "总淋巴结数";
-            // 
-            // textBox27
-            // 
-            this.textBox27.Location = new System.Drawing.Point(636, 572);
-            this.textBox27.Name = "textBox27";
-            this.textBox27.Size = new System.Drawing.Size(100, 21);
-            this.textBox27.TabIndex = 499;
-            // 
-            // label100
-            // 
-            this.label100.AutoSize = true;
-            this.label100.Location = new System.Drawing.Point(8, 576);
-            this.label100.Name = "label100";
-            this.label100.Size = new System.Drawing.Size(41, 12);
-            this.label100.TabIndex = 498;
-            this.label100.Text = "癌结节";
-            // 
-            // label101
-            // 
-            this.label101.AutoSize = true;
-            this.label101.Location = new System.Drawing.Point(569, 576);
-            this.label101.Name = "label101";
-            this.label101.Size = new System.Drawing.Size(23, 12);
-            this.label101.TabIndex = 497;
-            this.label101.Text = "MSI";
-            // 
-            // textBox31
-            // 
-            this.textBox31.Location = new System.Drawing.Point(435, 572);
-            this.textBox31.Name = "textBox31";
-            this.textBox31.Size = new System.Drawing.Size(80, 21);
-            this.textBox31.TabIndex = 496;
-            // 
-            // label102
-            // 
-            this.label102.AutoSize = true;
-            this.label102.Location = new System.Drawing.Point(357, 576);
-            this.label102.Name = "label102";
-            this.label102.Size = new System.Drawing.Size(77, 12);
-            this.label102.TabIndex = 495;
-            this.label102.Text = "转移淋巴结数";
-            // 
-            // label103
-            // 
-            this.label103.AutoSize = true;
-            this.label103.Location = new System.Drawing.Point(751, 604);
-            this.label103.Name = "label103";
-            this.label103.Size = new System.Drawing.Size(77, 12);
-            this.label103.TabIndex = 508;
-            this.label103.Text = "术后病理分期";
-            // 
-            // label104
-            // 
-            this.label104.AutoSize = true;
-            this.label104.Location = new System.Drawing.Point(194, 604);
-            this.label104.Name = "label104";
-            this.label104.Size = new System.Drawing.Size(35, 12);
-            this.label104.TabIndex = 507;
-            this.label104.Text = "Ki-67";
-            // 
-            // textBox32
-            // 
-            this.textBox32.Location = new System.Drawing.Point(636, 600);
-            this.textBox32.Name = "textBox32";
-            this.textBox32.Size = new System.Drawing.Size(100, 21);
-            this.textBox32.TabIndex = 506;
-            // 
-            // label105
-            // 
-            this.label105.AutoSize = true;
-            this.label105.Location = new System.Drawing.Point(8, 604);
-            this.label105.Name = "label105";
-            this.label105.Size = new System.Drawing.Size(23, 12);
-            this.label105.TabIndex = 505;
-            this.label105.Text = "p53";
-            // 
-            // label106
-            // 
-            this.label106.AutoSize = true;
-            this.label106.Location = new System.Drawing.Point(559, 604);
-            this.label106.Name = "label106";
-            this.label106.Size = new System.Drawing.Size(35, 12);
-            this.label106.TabIndex = 504;
-            this.label106.Text = "N-RAS";
-            // 
-            // textBox33
-            // 
-            this.textBox33.Location = new System.Drawing.Point(435, 600);
-            this.textBox33.Name = "textBox33";
-            this.textBox33.Size = new System.Drawing.Size(80, 21);
-            this.textBox33.TabIndex = 503;
-            // 
-            // label107
-            // 
-            this.label107.AutoSize = true;
-            this.label107.Location = new System.Drawing.Point(364, 604);
-            this.label107.Name = "label107";
-            this.label107.Size = new System.Drawing.Size(35, 12);
-            this.label107.TabIndex = 502;
-            this.label107.Text = "K-RAS";
-            // 
-            // label108
-            // 
-            this.label108.AutoSize = true;
-            this.label108.Location = new System.Drawing.Point(763, 631);
-            this.label108.Name = "label108";
-            this.label108.Size = new System.Drawing.Size(53, 12);
-            this.label108.TabIndex = 515;
-            this.label108.Text = "医疗费用";
-            // 
-            // label109
-            // 
-            this.label109.AutoSize = true;
-            this.label109.Location = new System.Drawing.Point(194, 631);
-            this.label109.Name = "label109";
-            this.label109.Size = new System.Drawing.Size(53, 12);
-            this.label109.TabIndex = 514;
-            this.label109.Text = "基因检测";
-            // 
-            // textBox34
-            // 
-            this.textBox34.Location = new System.Drawing.Point(636, 627);
-            this.textBox34.Name = "textBox34";
-            this.textBox34.Size = new System.Drawing.Size(100, 21);
-            this.textBox34.TabIndex = 513;
-            // 
-            // label110
-            // 
-            this.label110.AutoSize = true;
-            this.label110.Location = new System.Drawing.Point(8, 630);
-            this.label110.Name = "label110";
-            this.label110.Size = new System.Drawing.Size(47, 12);
-            this.label110.TabIndex = 512;
-            this.label110.Text = "MSI确证";
-            // 
-            // label111
-            // 
-            this.label111.AutoSize = true;
-            this.label111.Location = new System.Drawing.Point(559, 631);
-            this.label111.Name = "label111";
-            this.label111.Size = new System.Drawing.Size(53, 12);
-            this.label111.TabIndex = 511;
-            this.label111.Text = "出院情况";
-            // 
-            // textBox38
-            // 
-            this.textBox38.Location = new System.Drawing.Point(435, 627);
-            this.textBox38.Name = "textBox38";
-            this.textBox38.Size = new System.Drawing.Size(80, 21);
-            this.textBox38.TabIndex = 510;
-            // 
-            // label112
-            // 
-            this.label112.AutoSize = true;
-            this.label112.Location = new System.Drawing.Point(364, 631);
-            this.label112.Name = "label112";
-            this.label112.Size = new System.Drawing.Size(53, 12);
-            this.label112.TabIndex = 509;
-            this.label112.Text = "出院时间";
-            // 
-            // comboBox35
-            // 
-            this.comboBox35.FormattingEnabled = true;
-            this.comboBox35.Items.AddRange(new object[] {
-            "是",
-            "否"});
-            this.comboBox35.Location = new System.Drawing.Point(84, 572);
-            this.comboBox35.Name = "comboBox35";
-            this.comboBox35.Size = new System.Drawing.Size(60, 20);
-            this.comboBox35.TabIndex = 410;
-            this.comboBox35.Text = "否";
-            // 
-            // comboBox36
-            // 
-            this.comboBox36.FormattingEnabled = true;
-            this.comboBox36.Items.AddRange(new object[] {
-            "是",
-            "否"});
-            this.comboBox36.Location = new System.Drawing.Point(833, 544);
-            this.comboBox36.Name = "comboBox36";
-            this.comboBox36.Size = new System.Drawing.Size(60, 20);
-            this.comboBox36.TabIndex = 410;
-            this.comboBox36.Text = "否";
-            // 
-            // comboBox37
-            // 
-            this.comboBox37.FormattingEnabled = true;
-            this.comboBox37.Items.AddRange(new object[] {
-            "是",
-            "否"});
-            this.comboBox37.Location = new System.Drawing.Point(636, 544);
-            this.comboBox37.Name = "comboBox37";
-            this.comboBox37.Size = new System.Drawing.Size(60, 20);
-            this.comboBox37.TabIndex = 410;
-            this.comboBox37.Text = "否";
-            // 
-            // textBox28
-            // 
-            this.textBox28.Location = new System.Drawing.Point(256, 544);
-            this.textBox28.Name = "textBox28";
-            this.textBox28.Size = new System.Drawing.Size(80, 21);
-            this.textBox28.TabIndex = 400;
-            // 
-            // textBox43
-            // 
-            this.textBox43.Location = new System.Drawing.Point(93, 544);
-            this.textBox43.Name = "textBox43";
-            this.textBox43.Size = new System.Drawing.Size(80, 21);
-            this.textBox43.TabIndex = 400;
-            // 
-            // textBox46
-            // 
-            this.textBox46.Location = new System.Drawing.Point(84, 600);
-            this.textBox46.Name = "textBox46";
-            this.textBox46.Size = new System.Drawing.Size(80, 21);
-            this.textBox46.TabIndex = 400;
-            // 
-            // textBox47
-            // 
-            this.textBox47.Location = new System.Drawing.Point(256, 572);
-            this.textBox47.Name = "textBox47";
-            this.textBox47.Size = new System.Drawing.Size(80, 21);
-            this.textBox47.TabIndex = 400;
-            // 
-            // textBox49
-            // 
-            this.textBox49.Location = new System.Drawing.Point(256, 600);
-            this.textBox49.Name = "textBox49";
-            this.textBox49.Size = new System.Drawing.Size(80, 21);
-            this.textBox49.TabIndex = 400;
-            // 
-            // textBox51
-            // 
-            this.textBox51.Location = new System.Drawing.Point(833, 572);
-            this.textBox51.Name = "textBox51";
-            this.textBox51.Size = new System.Drawing.Size(80, 21);
-            this.textBox51.TabIndex = 400;
-            // 
-            // textBox52
-            // 
-            this.textBox52.Location = new System.Drawing.Point(833, 600);
-            this.textBox52.Name = "textBox52";
-            this.textBox52.Size = new System.Drawing.Size(80, 21);
-            this.textBox52.TabIndex = 400;
-            // 
-            // textBox57
-            // 
-            this.textBox57.Location = new System.Drawing.Point(833, 627);
-            this.textBox57.Name = "textBox57";
-            this.textBox57.Size = new System.Drawing.Size(80, 21);
-            this.textBox57.TabIndex = 400;
-            // 
-            // textBox59
-            // 
-            this.textBox59.Location = new System.Drawing.Point(435, 250);
-            this.textBox59.Name = "textBox59";
-            this.textBox59.Size = new System.Drawing.Size(80, 21);
-            this.textBox59.TabIndex = 354;
-            this.textBox59.Text = "正常";
-            // 
-            // textBox67
-            // 
-            this.textBox67.Location = new System.Drawing.Point(256, 250);
-            this.textBox67.Name = "textBox67";
-            this.textBox67.Size = new System.Drawing.Size(100, 21);
-            this.textBox67.TabIndex = 354;
-            this.textBox67.Text = "正常";
-            // 
-            // comboBox38
-            // 
-            this.comboBox38.FormattingEnabled = true;
-            this.comboBox38.Items.AddRange(new object[] {
-            "是",
-            "否"});
-            this.comboBox38.Location = new System.Drawing.Point(84, 627);
-            this.comboBox38.Name = "comboBox38";
-            this.comboBox38.Size = new System.Drawing.Size(60, 20);
-            this.comboBox38.TabIndex = 410;
-            this.comboBox38.Text = "否";
-            // 
-            // comboBox39
-            // 
-            this.comboBox39.FormattingEnabled = true;
-            this.comboBox39.Items.AddRange(new object[] {
-            "是",
-            "否"});
-            this.comboBox39.Location = new System.Drawing.Point(256, 627);
-            this.comboBox39.Name = "comboBox39";
-            this.comboBox39.Size = new System.Drawing.Size(60, 20);
-            this.comboBox39.TabIndex = 410;
-            this.comboBox39.Text = "否";
-            // 
-            // comboBox40
-            // 
-            this.comboBox40.FormattingEnabled = true;
-            this.comboBox40.Items.AddRange(new object[] {
-            "是",
-            "否"});
-            this.comboBox40.Location = new System.Drawing.Point(435, 428);
-            this.comboBox40.Name = "comboBox40";
-            this.comboBox40.Size = new System.Drawing.Size(60, 20);
-            this.comboBox40.TabIndex = 410;
-            this.comboBox40.Text = "否";
-            // 
-            // buttonCancel
-            // 
-            this.buttonCancel.Location = new System.Drawing.Point(765, 15);
-            this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(75, 23);
-            this.buttonCancel.TabIndex = 518;
-            this.buttonCancel.Text = "新建";
-            this.buttonCancel.UseVisualStyleBackColor = true;
-            // 
-            // buttonUpdate
-            // 
-            this.buttonUpdate.Location = new System.Drawing.Point(672, 15);
-            this.buttonUpdate.Name = "buttonUpdate";
-            this.buttonUpdate.Size = new System.Drawing.Size(75, 23);
-            this.buttonUpdate.TabIndex = 517;
-            this.buttonUpdate.Text = "保存";
-            this.buttonUpdate.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(858, 15);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 519;
-            this.button1.Text = "取消";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // textBox58
-            // 
-            this.textBox58.Location = new System.Drawing.Point(833, 249);
-            this.textBox58.Name = "textBox58";
-            this.textBox58.Size = new System.Drawing.Size(80, 21);
-            this.textBox58.TabIndex = 365;
-            // 
-            // label113
-            // 
-            this.label113.AutoSize = true;
-            this.label113.Location = new System.Drawing.Point(763, 253);
-            this.label113.Name = "label113";
-            this.label113.Size = new System.Drawing.Size(53, 12);
-            this.label113.TabIndex = 379;
-            this.label113.Text = "手术日期";
-            // 
-            // comboBox41
-            // 
-            this.comboBox41.FormattingEnabled = true;
-            this.comboBox41.Items.AddRange(new object[] {
-            "是",
-            "否"});
-            this.comboBox41.Location = new System.Drawing.Point(589, 79);
-            this.comboBox41.Name = "comboBox41";
-            this.comboBox41.Size = new System.Drawing.Size(60, 20);
-            this.comboBox41.TabIndex = 521;
-            this.comboBox41.Text = "是";
-            // 
-            // comboBox42
-            // 
-            this.comboBox42.FormattingEnabled = true;
-            this.comboBox42.Items.AddRange(new object[] {
-            "是",
-            "否"});
-            this.comboBox42.Location = new System.Drawing.Point(589, 49);
-            this.comboBox42.Name = "comboBox42";
-            this.comboBox42.Size = new System.Drawing.Size(60, 20);
-            this.comboBox42.TabIndex = 520;
-            this.comboBox42.Text = "是";
-            // 
-            // comboBox43
-            // 
-            this.comboBox43.FormattingEnabled = true;
-            this.comboBox43.Items.AddRange(new object[] {
-            "是",
-            "否"});
-            this.comboBox43.Location = new System.Drawing.Point(742, 106);
-            this.comboBox43.Name = "comboBox43";
-            this.comboBox43.Size = new System.Drawing.Size(60, 20);
-            this.comboBox43.TabIndex = 441;
-            this.comboBox43.Text = "是";
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1,
+            this.toolStripStatusLabel2});
+            this.statusStrip1.Location = new System.Drawing.Point(3, 655);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(936, 22);
+            this.statusStrip1.TabIndex = 522;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(131, 17);
+            this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
+            // 
+            // toolStripStatusLabel2
+            // 
+            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(131, 17);
+            this.toolStripStatusLabel2.Text = "toolStripStatusLabel2";
             // 
             // FormSheet7
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(964, 704);
+            this.ClientSize = new System.Drawing.Size(964, 690);
             this.Controls.Add(this.groupBox1);
             this.Name = "FormSheet7";
             this.Text = "FormSheet7";
+            this.Load += new System.EventHandler(this.FormSheet7_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -2847,5 +2881,8 @@
         private System.Windows.Forms.ComboBox comboBox41;
         private System.Windows.Forms.ComboBox comboBox42;
         private System.Windows.Forms.ComboBox comboBox43;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
     }
 }

@@ -59,3 +59,4 @@ D:\code_ipran\access\WindowsFormsAccess\WindowsFormsAccess\obj\Debug\WindowsForm
 D:\code_ipran\access\WindowsFormsAccess\WindowsFormsAccess\obj\Debug\WindowsFormsAccess.Properties.Resources.resources
 D:\code_ipran\access\WindowsFormsAccess\WindowsFormsAccess\obj\Debug\WindowsFormsAccess.csproj.GenerateResource.Cache
 Y:\project\20180508-access\wfsAccessSvn\WindowsFormsAccess\obj\Debug\WindowsFormsAccess.FormSheet7.resources
+D:\code_ipran\access\WindowsFormsAccess\WindowsFormsAccess\obj\Debug\WindowsFormsAccess.FormSheet7.resources
