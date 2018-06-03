@@ -42,6 +42,7 @@ namespace WindowsFormsAccess
        // 加载, 要更新记录到更新窗体控件；
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
+            outputLabel("加载开始");
             string sql1 = "None"; //保存sql语句
 
             //step1，判断是否选中
@@ -55,26 +56,42 @@ namespace WindowsFormsAccess
             foreach (Control i in groupBox1.Controls)
             {
                 if (i is TextBox)
+                {
                     i.Text = "";
+                    i.Enabled = false;
+                }
                 else if (i is ComboBox)
+                {
                     i.Text = "";
+                    i.Enabled = false;
+                }
             }
 
-            foreach (Control i in groupBox2.Controls)
+            foreach (Control i in groupBox2.Controls) //用户基本信息页，被加载后直接可编辑
             {
                 if (i is TextBox)
+                {
                     i.Text = "";
+                    i.Enabled = true;
+                }
                 else if (i is ComboBox)
+                {
                     i.Text = "";
+                    i.Enabled = true;
+                }
             }
 
             foreach (Control i in groupBox5.Controls)
             {
                 if (i is TextBox)
+                {
                     i.Text = "";
+                    i.Enabled = false;
+                }
                 else if (i is ComboBox)
                 {
                     i.Text = "";
+                    i.Enabled = false;
                 }
 
                 //所有下拉框，取默认值，待补
@@ -341,6 +358,9 @@ namespace WindowsFormsAccess
 
             //置位为查看状态
             gFlagAdd = 0;
+
+            tabControl1.SelectedIndex = 1; //跳到“用户基本”信息页
+            outputLabel("加载结束");
         }
 
         //添加记录；
@@ -355,7 +375,7 @@ namespace WindowsFormsAccess
                     i.Text = "";
             }
 
-            foreach (Control i in groupBox2.Controls)
+            foreach (Control i in groupBox2.Controls)  //“基本信息页面”
             {
                 if (i is TextBox)
                     i.Text = "";
@@ -390,13 +410,9 @@ namespace WindowsFormsAccess
                     i.Text = "";
             }
 
-            //foreach (Control i in groupBox8.Controls)
-            //{
-            //    if (i is TextBox)
-            //        i.Text = "";
-            //    else if (i is ComboBox)
-            //        i.Text = "";
-            //}
+            //跳到“基本信息页面”
+            gOid = achelp.GetMaxID("ID","Users"); //gOid为0，无法跳到其他Tab页
+            tabControl1.SelectedIndex = 1;
 
             //置位为新增状态
             gFlagAdd = 1;
@@ -415,21 +431,34 @@ namespace WindowsFormsAccess
         //查询
         private void buttonCheck_Click(object sender, EventArgs e)
         {
-            if (textBox23.Text == "")
-            {
-                //MessageBox.Show("请输入要查询的员工当前部门", "系统提示");
-                labelCheck.Text = "请输入要查询的员工当前部门";
-                string sql1 = "select * from ycyx";
-                databind1(sql1);  
+            outputLabel("查询开始");
 
-                return;
+            string sql1 = "select * from Users";
+            if (textBox23.Text.Trim() == "")  //内容为空，取所有值
+            {
+                //MessageBox.Show("请输入要查询的内容", "系统提示");
+                outputLabel("请输入要查询的内容");                 
             }
             else
             {
-                string sql = "select * from ycyx where dqpp='" + textBox23.Text + "'";
-                DataTable dt = new System.Data.DataTable();
-                dt = achelp.GetDataTableFromDB(sql);
-                dataGridView1.DataSource = dt;
+                string checkType = comboBox19.Text; //查询条件
+                switch (checkType)
+                {
+                    case "编码":
+                        sql1 = "select * from Users where sBianMa='" + textBox23.Text.Trim() + "'";
+                        break;
+                    case "姓名":
+                        sql1 = "select * from Users where sName='" + textBox23.Text.Trim() + "'";
+                        break;
+                    default:
+                        sql1 = "select * from Users";
+                        break;
+                }
+
+                databind(sql1, dataGridView1); //更新DataGridView
+
+                outputLabel("查询结束");
+                return;
             }  
         }
 
@@ -683,6 +712,16 @@ namespace WindowsFormsAccess
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
             tabPage1Index = this.tabControl1.SelectedIndex; //读取当前操作tab页
+
+            //未加载，则不允许从“首页”切换到其他页。
+            if (0 == gOid &&  0 != tabPage1Index) //未加载，且当前页为首页不显示
+            {
+                MessageBox.Show("请加载用户信息！", "系统提示");
+                this.tabControl1.SelectedIndex = 0; //跳到首页                 
+                this.tabControl2.SelectedIndex = 0; //跳到首页                 
+                return;
+            }
+
             switch (tabPage1Index)
             {
                 case 0:
@@ -732,6 +771,24 @@ namespace WindowsFormsAccess
             if (100 != tabPage2Index)
             {
                 this.tabControl2.SelectedIndex = tabPage2Index;
+            }
+
+            //首页则只显示首页按键，分页显示分页按键
+            if(0 == tabPage1Index) 
+            {
+                groupBox8.Visible = true;  //使能-总操作
+                groupBox8.Enabled = true;
+
+                groupBox6.Visible = false; //禁用-分操作
+                groupBox6.Enabled = false;
+            }
+            else
+            {
+                groupBox8.Visible = false;  //禁用-总操作
+                groupBox8.Enabled = false;
+
+                groupBox6.Visible = true; //使能-分操作
+                groupBox6.Enabled = true;
             }
         }
 
@@ -814,9 +871,15 @@ namespace WindowsFormsAccess
                     foreach (Control i in groupBox1.Controls)
                     {
                         if (i is TextBox)
+                        {
                             i.Text = "";
+                            i.Enabled = true;
+                        }
                         else if (i is ComboBox)
+                        {
                             i.Text = "";
+                            i.Enabled = true;
+                        }
                     }
                     break;
                 case 2: //sheet3
@@ -825,9 +888,15 @@ namespace WindowsFormsAccess
                     foreach (Control i in groupBox5.Controls)
                     {
                         if (i is TextBox)
+                        {
                             i.Text = "";
+                            i.Enabled = true;
+                        }
                         else if (i is ComboBox)
+                        {
                             i.Text = "";
+                            i.Enabled = true;
+                        }
                     }
                     break;
                 case 3: //sheet4
@@ -835,17 +904,16 @@ namespace WindowsFormsAccess
                     foreach (Control i in groupBox7.Controls)
                     {
                         if (i is TextBox)
+                        {
                             i.Text = "";
+                            i.Enabled = true;
+                        }
                         else if (i is ComboBox)
+                        {
                             i.Text = "";
-                    }
-                    foreach (Control i in groupBox7.Controls) //使能
-                    {
-                        if (i is TextBox)
                             i.Enabled = true;
-                        else if (i is ComboBox)
-                            i.Enabled = true;
-                    }
+                        }
+                    }                   
                     break;
                 case 4: //sheet5
 
@@ -1395,6 +1463,16 @@ namespace WindowsFormsAccess
             outputLabel("切换标签页");
             tabPage2Index = this.tabControl2.SelectedIndex;
 
+            //未加载，则不允许从“首页”切换到其他页。
+            if (0 == gOid && 0 != tabPage2Index) //未加载，且当前页为首页不显示
+            {
+                MessageBox.Show("请加载用户信息！", "系统提示");
+                this.tabControl1.SelectedIndex = 0; //跳到首页                 
+                this.tabControl2.SelectedIndex = 0; //跳到首页                 
+                return;
+            }
+
+
             if ((0 <= tabPage2Index) && (7 >= tabPage2Index))
             {
                 tabPage1Index = tabPage2Index;  //保存值
@@ -1404,8 +1482,26 @@ namespace WindowsFormsAccess
             {
                 tabPage1Index = 100; //不存在的值
             }
+
+            //首页则只显示首页按键，分页显示分页按键
+            if (0 == tabPage1Index)
+            {
+                groupBox8.Visible = true;  //使能-总操作
+                groupBox8.Enabled = true;
+
+                groupBox6.Visible = false; //禁用-分操作
+                groupBox6.Enabled = false;
+            }
+            else
+            {
+                groupBox8.Visible = false;  //禁用-总操作
+                groupBox8.Enabled = false;
+
+                groupBox6.Visible = true; //使能-分操作
+                groupBox6.Enabled = true;
+            }
         }
-       
+
 
         #region sheet4
 

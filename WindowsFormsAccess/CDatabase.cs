@@ -36,27 +36,27 @@ namespace WindowsFormsAccess
         string ftpRootPath = @"d:\ftp\"; //文件存放位置
 
             //日志输出函数
-            private void output(string log)
+        private void output(string log)
+        {
+            try
             {
-                try
+                //如果日志超过100行，则自动清空；                
+                if (txtLog.GetLineFromCharIndex(txtLog.Text.Length) > 100)
                 {
-                    //如果日志超过100行，则自动清空；                
-                    if (txtLog.GetLineFromCharIndex(txtLog.Text.Length) > 100)
-                    {
-                        //清空显示框
-                        txtLog.Text = "";
-                    } //if 日志超过100行
+                    //清空显示框
+                    txtLog.Text = "";
+                } //if 日志超过100行
 
-                    //添加日志
-                    txtLog.AppendText(DateTime.Now.ToString("yyyy-MM-dd, HH:mm:ss ") + log + "\r\n");
-                    //save2FileTime(autoBackupLogPath, log);  //日志记录到文件
-                }//try
-                catch
-                {
-                    //output("日志输出时发生意外：" + objException.Message);
-                    ; //不处理。因为处理可能会导致死循环。若save2FileTime()出错，则save2FileTime()->output()->save2FileTime()
-                }
+                //添加日志
+                txtLog.AppendText(DateTime.Now.ToString("yyyy-MM-dd, HH:mm:ss ") + log + "\r\n");
+                //save2FileTime(autoBackupLogPath, log);  //日志记录到文件
+            }//try
+            catch
+            {
+                //output("日志输出时发生意外：" + objException.Message);
+                ; //不处理。因为处理可能会导致死循环。若save2FileTime()出错，则save2FileTime()->output()->save2FileTime()
             }
+        }
             //日志输出函数,label
             private void outputLabel(string log)
             {
@@ -83,27 +83,31 @@ namespace WindowsFormsAccess
             //初始化
             private void initDo()
             {               
-                //当前用户
+                //1 当前用户
                 tssLabel1.Text = "当前用户：管理员";
                 tssLabel2.Text = "| 一定成功，加油！";
 
+                //2 隐藏多余tab页
                 tabControl1.TabPages.Remove(tabPage2); //调试用
                 tabControl1.TabPages.Remove(tabPage3);  //test
-                //tabControl1.TabPages.Remove(tabPageS5File);  //file, s5
                 tabControl1.TabPages.Remove(tabPage6);
 
+                //3 显示用户列表
                 string sql1 = "select * from Users"; //重新刷新
                 databind(sql1, dataGridView1);
                 dataGridView1.Columns[0].Visible = false;
-                dataGridView1.Columns[1].HeaderCell.Value = "手机号码";
-                dataGridView1.Columns[2].HeaderCell.Value = "员工名称";
-                dataGridView1.Columns[3].HeaderCell.Value = "归属地区";
-                dataGridView1.Columns[4].HeaderCell.Value = "当前部门";
-                dataGridView1.Columns[5].HeaderCell.Value = "当前专项";
-                dataGridView1.Columns[6].HeaderCell.Value = "当前状态";
-                
+                dataGridView1.Columns[1].Visible = false; //不显示“编号”
+                dataGridView1.Columns[2].HeaderCell.Value = "编码";
+                dataGridView1.Columns[3].HeaderCell.Value = "住院号";
+                dataGridView1.Columns[4].HeaderCell.Value = "姓名";
+                dataGridView1.Columns[5].HeaderCell.Value = "性别";
+                dataGridView1.Columns[6].HeaderCell.Value = "年龄";
+                dataGridView1.Columns[7].HeaderCell.Value = "职业";
+                dataGridView1.Columns[8].HeaderCell.Value = "入院时间";
+                dataGridView1.Columns[9].HeaderCell.Value = "联系方式";
+                dataGridView1.Columns[10].HeaderCell.Value = "民族";
 
-                //初始化treeview, sheet5
+                //4 初始化treeview, sheet5
                 ImageList myImageList = new ImageList();
                 myImageList.Images.Add(Image.FromFile(@"images\4.gif"));  //磁盘
                 myImageList.Images.Add(Image.FromFile(@"images\5.gif"));  //灯泡
@@ -116,7 +120,32 @@ namespace WindowsFormsAccess
                 treeViewS5.ImageIndex = 0;
                 treeViewS5.SelectedImageIndex = 1;
 
-                //
+                //5 首页则只显示首页按键，禁用分页按键；分页显示分页按键，禁用首页按键
+                tabPage1Index = tabControl1.SelectedIndex;
+                if (0 == tabPage1Index)
+                {
+                    groupBox8.Visible = true;  //使能-总操作
+                    groupBox8.Enabled = true;
+
+                    groupBox6.Visible = false; //禁用-分操作
+                    groupBox6.Enabled = false;
+                }
+                else
+                {
+                    groupBox8.Visible = false;  //禁用-总操作
+                    groupBox8.Enabled = false;
+
+                    groupBox6.Visible = true; //使能-分操作
+                    groupBox6.Enabled = true;
+                }
+
+                //6 首页初始化 
+               
+                comboBox19.SelectedIndex = 2;  //设置查询条件默认为"姓名"
+                this.tabControl1.SelectedIndex = 0; //跳到首页 
+                this.tabControl2.SelectedIndex = 0; //跳到首页 
+
+                
                 
             }
 
@@ -179,6 +208,7 @@ namespace WindowsFormsAccess
                 model.sZhiYe = textBox3Sheet1.Text;
                 model.dRuYuanShiJian = dtp1time9Sheet1.Value;
                 model.sPhone = textBox6Sheet1.Text;
+                model.sMinZu = textBox5Sheet1.Text;
 
                 bool ret = UsersDo.Add(model);
 
@@ -222,13 +252,7 @@ namespace WindowsFormsAccess
         //基本信息-加载；
         private void readSheet1(int oid)
         {
-            //if (dataGridView1.SelectedRows.Count < 1 || dataGridView1.SelectedRows[0].Cells[1].Value == null)
-            //{
-            //    MessageBox.Show("没有选中行。", "系统提示");
-            //    return;
-            //}
-
-            
+                       
             model = UsersDo.GetModel(Convert.ToInt32(oid)); //读取数据库数据到model，中转
 
             //model赋值给窗体
@@ -241,9 +265,10 @@ namespace WindowsFormsAccess
             textBox3Sheet1.Text = model.sZhiYe;
             dtp1time9Sheet1.Value = Convert.ToDateTime(model.dRuYuanShiJian);
             textBox6Sheet1.Text = model.sPhone;
+            textBox5Sheet1.Text = model.sMinZu;
 
-            string sql1 = "select * from Users"; //刷新主页面，防止后台改了access数据库后，基本信息页面刷新了，主页面不刷新。
-            databind1(sql1);  
+            //刷新主页面，防止后台改了access数据库后，基本信息页面刷新了，主页面不刷新。
+            buttonCheck.PerformClick(); //点击查询，设置查询条件后，点击加载，此时应以查询条件过滤
 
             //显示
             output("sheet1加载成功!");
@@ -270,6 +295,7 @@ namespace WindowsFormsAccess
                 model.sZhiYe = textBox3Sheet1.Text;
                 model.dRuYuanShiJian = dtp1time9Sheet1.Value;
                 model.sPhone = textBox6Sheet1.Text;
+                model.sMinZu = textBox5Sheet1.Text;
                 model.ID = gOid;
 
                 bool ret = false;
