@@ -34,6 +34,9 @@ namespace WindowsFormsAccess
         int tabPage2Index = 100; //tabControl2索引
 
         string ftpRootPath = @"d:\ftp\"; //文件存放位置
+        bool bXinJian = false; //新建则为true,控制detail-datagridview的操作控件使能（false）/禁用(true)。
+                               //新建则控件禁用，加载后恢复使能
+                               //防止在未创建“用户基本信息”时，先创建后面的sheet2-sheet7信息，导致信息不可用
 
             //日志输出函数
         private void output(string log)
@@ -95,8 +98,9 @@ namespace WindowsFormsAccess
                 //3 显示用户列表
                 string sql1 = "select * from Users"; //重新刷新
                 databind(sql1, dataGridView1);
-                dataGridView1.Columns[0].Visible = false;
-                dataGridView1.Columns[1].Visible = false; //不显示“编号”
+                //dataGridView1.Columns[0].Visible = false;
+                dataGridView1.Columns[0].HeaderCell.Value = "编号"; //自动递增项
+                dataGridView1.Columns[1].Visible = false; //不显示“编号”，多余的设计字段
                 dataGridView1.Columns[2].HeaderCell.Value = "编码";
                 dataGridView1.Columns[3].HeaderCell.Value = "住院号";
                 dataGridView1.Columns[4].HeaderCell.Value = "姓名";
@@ -194,7 +198,7 @@ namespace WindowsFormsAccess
         {
             if (textBox1Sheet1.Text == "") //姓名不能为空
             {
-                output("员工添加时，没有要添加的内容");
+                MessageBox.Show("姓名不能为空","系统提示");
                 return;
             }
             else
@@ -219,7 +223,7 @@ namespace WindowsFormsAccess
                
 
                 //显示
-                output("sheet1添加成功!");
+                outputLabel("sheet1添加成功!");
             }
         }
 
@@ -245,7 +249,7 @@ namespace WindowsFormsAccess
                 databind1(sql1);
 
                 //显示
-                output("sheet1删除成功!");
+                outputLabel("sheet1删除成功!");
             }
         }       
 
@@ -271,7 +275,7 @@ namespace WindowsFormsAccess
             buttonCheck.PerformClick(); //点击查询，设置查询条件后，点击加载，此时应以查询条件过滤
 
             //显示
-            output("sheet1加载成功!");
+            outputLabel("sheet1加载成功!");
         }
 
         //基本信息-更新；
@@ -282,7 +286,7 @@ namespace WindowsFormsAccess
             {
                 if (textBox1Sheet1.Text == "") //住院号不能为空
                 {
-                    output("姓名不能为空");
+                    MessageBox.Show("住院号不能为空","系统提示");
                     return false;
                 }
                 
@@ -312,12 +316,12 @@ namespace WindowsFormsAccess
 
                 if (true == ret) //显示
                 {
-                    output("sheet1更新成功");
+                    outputLabel("sheet1更新成功");
                     result = true;
                 }
                 else
                 {
-                    output("sheet1更新失败");
+                    outputLabel("sheet1更新失败");
                     result = false;
                 }
 
@@ -325,7 +329,7 @@ namespace WindowsFormsAccess
             }
             catch (Exception ex)
             {
-                output(ex.Message);
+                outputLabel(ex.Message);
                 return false;
             }
 
@@ -1272,7 +1276,7 @@ namespace WindowsFormsAccess
         {
             if (f7.Text1 == "") //编号
             {
-                output("编号不能为空");
+                MessageBox.Show("编号不能为空","系统提示");
                 return;
             }
 
@@ -1788,7 +1792,7 @@ namespace WindowsFormsAccess
                 textBox6.Text = "";
 
                 //显示
-                output("添加成功!");
+                outputLabel("添加成功!");
             }
         }
 
@@ -1799,7 +1803,7 @@ namespace WindowsFormsAccess
         {
             if (textBox1Sheet1.Text == "") //姓名不能为空
             {
-                output("员工添加时，没有要添加的内容");
+                MessageBox.Show("姓名不能为空","系统提示");
                 return;
             }
             else
@@ -1819,7 +1823,7 @@ namespace WindowsFormsAccess
 
                 //清空
                 //显示
-                output("sheetX添加成功!");
+                outputLabel("sheetX添加成功!");
             }
         }
 
@@ -1845,7 +1849,7 @@ namespace WindowsFormsAccess
                 databind1(sql1);
 
                 //显示
-                output("sheetX删除成功!");
+                outputLabel("sheetX删除成功!");
             }
         }
 
@@ -1871,7 +1875,7 @@ namespace WindowsFormsAccess
             //textBox6.Text = modelYcyx.dqzt.ToString();
 
             //显示
-            output("sheetX加载成功!");
+            outputLabel("sheetX加载成功!");
         }
 
         //基本信息-更新；
@@ -1892,16 +1896,16 @@ namespace WindowsFormsAccess
 
                 if (true == ret) //显示
                 {
-                    output("sheetX更新成功");
+                    outputLabel("sheetX更新成功");
                 }
                 else 
                 {
-                    output("sheetX更新失败");
+                    outputLabel("sheetX更新失败");
                 }
             }
             catch (Exception ex)
             {
-                output(ex.Message);
+                outputLabel(ex.Message);
             }
 
             string sql1 = "select * from ycyx"; //重新刷新
@@ -1919,7 +1923,7 @@ namespace WindowsFormsAccess
             }
             catch (Exception ex)
             {
-                output(ex.Message);
+                outputLabel(ex.Message);
                 return 0;
             }
 
@@ -1935,7 +1939,7 @@ namespace WindowsFormsAccess
             }
             catch (Exception ex)
             {
-                output(ex.Message);
+                outputLabel(ex.Message);
                 return false;
             }
 
@@ -1951,7 +1955,7 @@ namespace WindowsFormsAccess
             }
             catch (Exception ex)
             {
-                output(ex.Message);
+                outputLabel(ex.Message);
                 return 0;
             }
 

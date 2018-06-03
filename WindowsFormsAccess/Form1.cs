@@ -43,6 +43,8 @@ namespace WindowsFormsAccess
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
             outputLabel("加载开始");
+            bXinJian = false; //解除新建状态
+
             string sql1 = "None"; //保存sql语句
 
             //step1，判断是否选中
@@ -367,32 +369,57 @@ namespace WindowsFormsAccess
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             //清空所有sheet并跳到“基本信息页面”
-            foreach (Control i in groupBox1.Controls)
+            foreach (Control i in groupBox1.Controls) //sheet2
             {
                 if (i is TextBox)
+                {
                     i.Text = "";
-                else if (i is ComboBox)
-                    i.Text = "";
-            }
-
-            foreach (Control i in groupBox2.Controls)  //“基本信息页面”
-            {
-                if (i is TextBox)
-                    i.Text = "";
-                else if (i is ComboBox)
-                    i.Text = "";
-            }
-
-            foreach (Control i in groupBox5.Controls)
-            {
-                if (i is TextBox)
-                    i.Text = "";
+                    i.Enabled = false;
+                }
                 else if (i is ComboBox)
                 {
-                    i.Text = "";                    
+                    i.Text = "";
+                    i.Enabled = false;
+                }
+            }
+
+            foreach (Control i in groupBox2.Controls)  //sheet1, “基本信息页面”
+            {
+                if (i is TextBox)
+                    i.Text = "";
+                else if (i is ComboBox)
+                    i.Text = "";
+            }
+
+            foreach (Control i in groupBox5.Controls) //sheet3
+            {
+                if (i is TextBox)
+                {
+                    i.Text = "";
+                    i.Enabled = false;
+                }
+                else if (i is ComboBox)
+                {
+                    i.Text = "";
+                    i.Enabled = false;
                 }
 
                 //所有下拉框，取默认值，待补
+            }
+           
+
+            foreach (Control i in groupBox7.Controls) //清空sheet4
+            {
+                if (i is TextBox)
+                {
+                    i.Text = "";
+                    i.Enabled = false;
+                }
+                else if (i is ComboBox)
+                {
+                    i.Text = "";
+                    i.Enabled = false;
+                }
             }
 
             //sheet5
@@ -402,30 +429,70 @@ namespace WindowsFormsAccess
             button33.Enabled = false; //禁用按键
             textBox81.Enabled = false;
 
-            foreach (Control i in groupBox7.Controls) //清空sheet4
+            foreach (Control i in groupBox9.Controls) //sheet6
             {
                 if (i is TextBox)
+                {
                     i.Text = "";
+                    i.Enabled = false;
+                }
                 else if (i is ComboBox)
+                {
                     i.Text = "";
+                    i.Enabled = false;
+                }
             }
 
             //跳到“基本信息页面”
-            gOid = achelp.GetMaxID("ID","Users"); //gOid为0，无法跳到其他Tab页
+
+            gOid = UsersDo.GetMaxId(); //gOid为0，无法跳到其他Tab页。另一种方法（实为同一种）gOid = achelp.GetMaxID("ID","Users"); 
             tabControl1.SelectedIndex = 1;
+
+            //清空查询条件，加载时默认使用查询条件过滤
+            textBox23.Text = ""; 
 
             //置位为新增状态
             gFlagAdd = 1;
+
+            bXinJian = true;   //新建状态，detail-datagridview的操作控件禁用
+            groupBox6.Enabled = false; //detail-datagridview的操作控件禁用
         }
 
         // 删除记录
         private void buttonDelete_Click(object sender, EventArgs e)
         {
             //deleteSheet1();
+            if (dataGridView1.SelectedRows.Count < 1 || dataGridView1.SelectedRows[0].Cells[1].Value == null)
+            {
+                MessageBox.Show("没有选中行。", "系统提示");
+            }
+            else
+            {
+                object oid = dataGridView1.SelectedRows[0].Cells[0].Value;
+                if (DialogResult.No == MessageBox.Show("将删除第 " + (dataGridView1.CurrentCell.RowIndex + 1).ToString() + " 行，确定？", "系统提示", MessageBoxButtons.YesNo))
+                {
+                    return;
+                }
+                else
+                {
+                    //删除sheet1-sheet7
+                    bool bRet1 = UsersDo.Delete(Convert.ToInt32(oid));
+                    int iRet2 = achelp.ExcuteSql("delete from s2XinFuZhu where iUserID = '" + oid.ToString() + "'"); //s2
+                    int iRet3 = achelp.ExcuteSql("delete from s3ShuHouFuZhu where iUserID = '" + oid.ToString() + "'"); //s3
+                    int iRet4 = achelp.ExcuteSql("delete from s4SuiZhen where iUserID = '" + oid.ToString() + "'"); //s4
+                    int iRet5 = achelp.ExcuteSql("delete from s5ShuJuCunZhu where iUserID = '" + oid.ToString() + "'"); //s5
+                    int iRet6 = achelp.ExcuteSql("delete from s6QiBingQingKuang where iUserID = '" + oid.ToString() + "'"); //s6
+                    int iRet7 = achelp.ExcuteSql("delete from s7ShuQianPingGu where iUserID = '" + oid.ToString() + "'"); //s7
+                }
+                string sql1 = "select * from Users";
+                databind(sql1,dataGridView1);
+                gOid = 0; //不让切换到其他sheet，只能从"首页"开始
+
+                //显示
+                outputLabel("sheet1删除成功!");
+            }
             //待增加sheet2-sheet7的删除
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            CExcel excelExport = new CExcel();
-            excelExport.ExportExcel("123", dataGridView1, saveFileDialog);
+            
         }
 
         //查询
@@ -453,13 +520,13 @@ namespace WindowsFormsAccess
                     default:
                         sql1 = "select * from Users";
                         break;
-                }
+                }                
+            }
 
-                databind(sql1, dataGridView1); //更新DataGridView
+            databind(sql1, dataGridView1); //更新DataGridView
 
-                outputLabel("查询结束");
-                return;
-            }  
+            outputLabel("查询结束");
+            return;
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -597,16 +664,16 @@ namespace WindowsFormsAccess
         //test page 测试
         private void buttonTest_Click(object sender, EventArgs e)
         {
-            output("max ID: " + getMaxIDFromSheetX().ToString());
+            outputLabel("max ID: " + getMaxIDFromSheetX().ToString());
             if ( "" != textBox10.Text)
             {
             int id = int.Parse(textBox10.Text);
             bool ret = checkIDFromSheetX(id);
-            output("ID Exist: " + textBox10.Text + "," + ret.ToString());
+            outputLabel("ID Exist: " + textBox10.Text + "," + ret.ToString());
             }
 
             int ret1 = getCountFromSheetX("khmc = " + int.Parse(textBox10.Text));
-            output("Count Exist: " +  ret1.ToString());
+            outputLabel("Count Exist: " +  ret1.ToString());
         }
 
 
@@ -619,7 +686,18 @@ namespace WindowsFormsAccess
         //保存sheet1-基本信息
         private void buttonS1Save_Click(object sender, EventArgs e)
         {
-            updateSheet1();
+            bool ret = updateSheet1();
+            if (true == ret)  //保存成功
+            {
+                tabControl1.SelectedIndex = 0; //跳到首页
+                gOid = 0; //回到初始流程
+            }
+            else
+            {
+                outputLabel("保存不成功!");
+            }
+           
+
         }
 
         //刷新sheet1-基本信息
@@ -789,6 +867,13 @@ namespace WindowsFormsAccess
 
                 groupBox6.Visible = true; //使能-分操作
                 groupBox6.Enabled = true;
+            }
+
+            //新建状态，则不使分detail-datagridview的操作控件
+            //加else会有误判断
+            if (true == bXinJian )
+            {
+                groupBox6.Enabled = false;
             }
         }
 
@@ -1500,6 +1585,35 @@ namespace WindowsFormsAccess
                 groupBox6.Visible = true; //使能-分操作
                 groupBox6.Enabled = true;
             }
+        }
+
+        //将所有dataGrid导出到excel，分sheet页导出
+        private void button23_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            //保存                    
+            saveFileDialog.Filter = "Execl files (*.xls)|*.xls";  
+            saveFileDialog.FilterIndex = 0;  
+            saveFileDialog.RestoreDirectory = true;  
+            //saveFileDialog.CreatePrompt = true;  
+            saveFileDialog.Title = "Export Excel File";  
+            if ( saveFileDialog.ShowDialog()== DialogResult.OK)  
+            {  
+                if (saveFileDialog.FileName == "")  
+                {  
+                    MessageBox.Show("请输入保存文件名！"); 
+                    saveFileDialog.ShowDialog();  
+                }
+            }
+            else
+            {
+                return ;
+            }
+
+            CExcel excelExport = new CExcel();
+            //excelExport.ExportExcel("123", dataGridView1, saveFileDialog);
+            excelExport.ExportExcelSheet(1, "123", dataGridView1, saveFileDialog.FileName);
+            excelExport.ExportExcelSheet(2, "123", dataGridView1, saveFileDialog.FileName);
         }
 
 

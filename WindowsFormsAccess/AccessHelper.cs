@@ -124,7 +124,10 @@ namespace Maticsoft.DBUtility
 
             try
             {
-                ole_connection.Open();//打开连接  
+                if (ole_connection.State != ConnectionState.Open)  //数据库未打开，则连接。防止二次打开报错
+                {
+                    ole_connection.Open();//打开数据库连接 
+                }
 
                 if (ole_connection.State == ConnectionState.Closed)
                 {
@@ -168,7 +171,11 @@ namespace Maticsoft.DBUtility
 
             try
             {
-                ole_connection.Open();//打开数据库连接  
+                 
+                if (ole_connection.State != ConnectionState.Open)  //数据库未打开，则连接。防止二次打开报错
+                {
+                    ole_connection.Open();//打开数据库连接 
+                }
                 if (ole_connection.State == ConnectionState.Closed)
                 {
                     return nResult;

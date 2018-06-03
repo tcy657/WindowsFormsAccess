@@ -923,18 +923,17 @@ namespace WindowsFormsAccess
                 ms7ShuQianPingGu.sYiLiaoFeiYong = this.Text108;
 
                 bool ret = false;
-                if ( 0 == lOid)  //单条新增，
+                if (false == dos7ShuQianPingGu.Exists(lOid)) //若无记录，则点击保存也视为增加
                 {
                     ret = dos7ShuQianPingGu.Add(ms7ShuQianPingGu);
+                    
                 }
-                else if (false == dos7ShuQianPingGu.Exists(lOid)) //若无记录，则点击保存也视为增加
-                    ret = dos7ShuQianPingGu.Add(ms7ShuQianPingGu);
                 else  //更新
                 {
                     ret = dos7ShuQianPingGu.Update(ms7ShuQianPingGu);
                 }
 
-                lOid = 0; //局部新增还原
+                               
 
                 if (true == ret) //显示
                 {
@@ -946,7 +945,6 @@ namespace WindowsFormsAccess
                     outputLabel("Sheet7更新失败");
                     result = false;
                 }
-
             }
             catch (Exception ex)
             {
@@ -954,7 +952,10 @@ namespace WindowsFormsAccess
                 return false;
             }
 
-
+            if (0 == lOid) //新建后则禁用“新建”按键，防止“新建”后，连续两次点击“保存”则存为两条
+            {
+                buttonUpdate.Enabled = false;
+            }
 
             return result;
         }
@@ -979,6 +980,7 @@ namespace WindowsFormsAccess
             //}
 
             outputLabel("保存成功");
+            
 
         }
         //取消
