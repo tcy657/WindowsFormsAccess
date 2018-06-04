@@ -30,10 +30,9 @@ git常用命令
     ——https://jingyan.baidu.com/article/a24b33cd0682cd19fe002bb0.html C# 怎么导出dataGridView中的值到Excel
     --** https://zhidao.baidu.com/question/1817909972118765668.html c#如何把datagridview导出到excel
     --*** https://blog.csdn.net/u011981242/article/details/51083335 C# DataGridView导出Excel的两种经典方法
+    --https://bbs.csdn.net/topics/392069817 Excel创建多sheet
     ——https://blog.csdn.net/licl19870605/article/details/5260795  C#实现Access导入导出Excel
     --https://blog.csdn.net/angel20082008/article/details/51749780 C# 讲解五种导出access数据到Excel文件格式中
-【待完成】全局“刷新”按键功能待完善
-【优化】增加日志打印，记录操作步骤和出错信息
 【优化，界面】分组/分块，增默认值
 【优化】删除用户基本信息时，不支持多条删除。只能删除第一条
 查询，类别3种
@@ -42,9 +41,11 @@ git常用命令
 菜单栏
 工具栏/状态栏/右键（可选）
 容错try
-日志
+【优化】增加日志打印，记录操作步骤和出错信息
 界面美化/锁定
+登录验证
 【问题】点击导出时，检索 COM 类工厂中 CLSID 为 {00024500-0000-0000-C000-000000000046} 的组件时失败，原因是出现以下错误: 80040154。
+【优化】dateTimePicker控件同时设置时间和日期。 https://jingyan.baidu.com/article/6fb756ec9e6215241858fbbd.html
 【优化】字段类型是否准确，如时间，选日期的话可以用控件，鼠标就可以完成操作
 1 sheet7有100多个字段，不好维护，建议拆分多个sheet页
 2 sheet2字段疗程、剂量、方案等重复
@@ -90,15 +91,6 @@ git常用命令
      dtp1time9Sheet1.Value = Convert.ToDateTime(model.dRuYuanShiJian);
 7 隐藏/删除()remove) tab页后，索引会发生变化。 20:12 2018/5/29
 6 在同一份代码中，互相忽略SVN和GIT，可同时用这两者管理	20:11 2018/5/29
-5 tabControl1对应表  -tabControl2 --未成功
-index0 -首页            -- 2
-index3 -员工基本信息，2  --3
-index5 -3术后辅助化疗    --0
-index6 -4随诊情况       --1
-index7 -7               --6
-index8 -6起病情况       --5
-
-		
 3 获取 object oid = dataGridView1.SelectedRows[0].Cells[0].Value;
             gOid = Convert.ToInt32(oid);  //更新全局oid
 2 dataGridView有绑定数据源后，设表头才有效。
