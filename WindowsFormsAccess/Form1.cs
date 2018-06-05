@@ -1590,30 +1590,30 @@ namespace WindowsFormsAccess
         //将所有dataGrid导出到excel，分sheet页导出
         private void button23_Click(object sender, EventArgs e)
         {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            //保存                    
-            saveFileDialog.Filter = "Execl files (*.xls)|*.xls";  
-            saveFileDialog.FilterIndex = 0;  
-            saveFileDialog.RestoreDirectory = true;  
-            //saveFileDialog.CreatePrompt = true;  
-            saveFileDialog.Title = "Export Excel File";  
-            if ( saveFileDialog.ShowDialog()== DialogResult.OK)  
-            {  
-                if (saveFileDialog.FileName == "")  
-                {  
-                    MessageBox.Show("请输入保存文件名！"); 
-                    saveFileDialog.ShowDialog();  
-                }
-            }
-            else
-            {
-                return ;
-            }
-
+            string fileName = @"c:\" + "all_" + DateTime.Now.ToString("yyyyMMddHHmmss" + ".xls");
+            //SaveFileDialog save = new SaveFileDialog();
+            //////保存                    
+            //save.Filter = "excel files(*.xls)|*.xls";
+            //save.Title = @"C:\AutoTestTool";
+            //save.FileName = "all_" + DateTime.Now.ToString("yyyyMMddHHmmss");
+            //if (save.ShowDialog() == DialogResult.OK)
+            //{
+            //   fileName = save.FileName;
+            //    //MessageBox.Show(save.FileName);  
+            //}
+            //else
+            //{
+            //    return;
+            //}
+            
             CExcel excelExport = new CExcel();
-            //excelExport.ExportExcel("123", dataGridView1, saveFileDialog);
-            excelExport.ExportExcelSheet(1, "123", dataGridView1, saveFileDialog.FileName);
-            excelExport.ExportExcelSheet(2, "123", dataGridView1, saveFileDialog.FileName);
+            //excelExport.ExportExcel("123", dataGridView1, save);
+            excelExport.ExportExcelSheet(1, "123", dataGridView1, dgView2, fileName);
+            //excelExport.ExportExcelSheet(2, "124", dataGridView1, fileName);
+
+            //Dictionary<string, DataGridView> Dic2Excel = new Dictionary<string, DataGridView> {
+            //      {"123",dataGridView1},{"124",dataGridView1} };
+            //CExcelSheet.setMoreExcelSheet(Dic2Excel);
         }
 
 

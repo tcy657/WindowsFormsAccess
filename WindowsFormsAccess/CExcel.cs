@@ -10,7 +10,9 @@ namespace WindowsFormsAccess
 {
     public class CExcel
     {    
-            /// <summary>  
+                
+        
+        /// <summary>  
             /// DataGridView导出Excel  
             /// </summary>  
             /// <param name="strCaption">Excel文件中的标题，显示在第一行</param>  
@@ -121,7 +123,7 @@ namespace WindowsFormsAccess
             /// <param name="myDGV">DataGridView 控件</param>  
             /// fileDirectory， 保存的文件路径
             /// <returns>0:成功;1:DataGridView中无记录;2:Excel无法启动;9999:异常错误</returns> 
-            public int ExportExcelSheet(int index, string strCaption, DataGridView myDGV, string fileDirectory)
+            public int ExportExcelSheet(int index, string strCaption, DataGridView myDGV, DataGridView myDGV2, string fileDirectory)
             {
                 int result = 9999;
 
@@ -153,13 +155,14 @@ namespace WindowsFormsAccess
                     // 创建Excel工作薄  
                     Microsoft.Office.Interop.Excel.Workbook xlBook = xlApp.Workbooks.Add(true);
                     Microsoft.Office.Interop.Excel.Worksheet xlSheet = (Microsoft.Office.Interop.Excel.Worksheet)xlBook.Worksheets[index];
-                    // 设置标题  
-                    Microsoft.Office.Interop.Excel.Range range = xlSheet.get_Range(xlApp.Cells[1, 1], xlApp.Cells[1, ColCount]); //标题所占的单元格数与DataGridView中的列数相同  
+                    // 设置标题                    
+                    Microsoft.Office.Interop.Excel.Range range = xlSheet.get_Range(xlSheet.Cells[1, 1], xlSheet.Cells[1, ColCount]); //标题所占的单元格数与DataGridView中的列数相同  
                     range.MergeCells = true;
                     xlApp.ActiveCell.FormulaR1C1 = strCaption;
                     xlApp.ActiveCell.Font.Size = 20;
                     xlApp.ActiveCell.Font.Bold = true;
                     xlApp.ActiveCell.HorizontalAlignment = Microsoft.Office.Interop.Excel.Constants.xlCenter;
+                    xlSheet.Name = "s1";
                     // 创建缓存数据  
                     object[,] objData = new object[RowCount + 1, ColCount];
                     //获取列标题  
@@ -185,11 +188,61 @@ namespace WindowsFormsAccess
                         System.Windows.Forms.Application.DoEvents();
                     }
                     // 写入Excel  
-                    range = xlSheet.get_Range(xlApp.Cells[2, 1], xlApp.Cells[RowCount, ColCount]);
+                    range = xlSheet.get_Range(xlSheet.Cells[2, 1], xlSheet.Cells[RowCount, ColCount]);
                     range.Value2 = objData;
+
+                    #region sheet2
+                    // 列索引，行索引，总列数，总行数  
+                    ColIndex = 0;
+                    RowIndex = 0;
+                    ColCount = myDGV2.ColumnCount;
+                    RowCount = myDGV2.RowCount;
+
+                    Microsoft.Office.Interop.Excel.Worksheet xlSheet2 = (Microsoft.Office.Interop.Excel.Worksheet)xlBook.Worksheets[2];
+                    // 设置标题                    
+                    Microsoft.Office.Interop.Excel.Range range2 = xlSheet.get_Range(xlSheet2.Cells[1, 1], xlSheet2.Cells[1, ColCount]); //标题所占的单元格数与DataGridView中的列数相同  
+                    range2.MergeCells = true;                   
+                    xlApp.ActiveCell.FormulaR1C1 = "s2";  //标题2
+                    xlApp.ActiveCell.Font.Size = 20;
+                    xlApp.ActiveCell.Font.Bold = true;
+                    xlApp.ActiveCell.HorizontalAlignment = Microsoft.Office.Interop.Excel.Constants.xlCenter;                  
+                    xlSheet2.Name = "s2";
+                    // 创建缓存数据  
+                    object[,] objData2 = new object[RowCount + 1, ColCount];
+                    //获取列标题  
+                    foreach (DataGridViewColumn col in myDGV2.Columns)
+                    {
+                        objData2[RowIndex, ColIndex++] = col.HeaderText;
+                    }
+                    // 获取数据  
+                    for (RowIndex = 1; RowIndex < RowCount; RowIndex++)
+                    {
+                        for (ColIndex = 0; ColIndex < ColCount; ColIndex++)
+                        {
+                            if (myDGV2[ColIndex, RowIndex - 1].ValueType == typeof(string)
+                                || myDGV2[ColIndex, RowIndex - 1].ValueType == typeof(DateTime))//这里就是验证DataGridView单元格中的类型,如果是string或是DataTime类型,则在放入缓存时在该内容前加入" ";  
+                            {
+                                objData2[RowIndex, ColIndex] = "" + myDGV2[ColIndex, RowIndex - 1].Value;
+                            }
+                            else
+                            {
+                                objData2[RowIndex, ColIndex] = myDGV2[ColIndex, RowIndex - 1].Value;
+                            }
+                        }
+                        System.Windows.Forms.Application.DoEvents();
+                    }
+                    // 写入Excel  
+                    range2 = xlSheet2.get_Range(xlSheet2.Cells[2, 1], xlSheet2.Cells[RowCount, ColCount]);
+                    range2.Value2 = objData2;
+
+                    #endregion sheet2
+
+
+
 
                     xlBook.Saved = true;
                     xlBook.SaveCopyAs(fileDirectory);
+                    
                 }
                 catch (Exception err)
                 {

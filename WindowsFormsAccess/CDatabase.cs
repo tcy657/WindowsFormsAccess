@@ -189,6 +189,9 @@ namespace WindowsFormsAccess
 
         #endregion 公用方法
 
+        
+        
+        
         #region sheet1
         private Maticsoft.Model.Users model = new Maticsoft.Model.Users();
         Maticsoft.DAL.Users UsersDo = new Maticsoft.DAL.Users();
@@ -1992,6 +1995,8 @@ namespace WindowsFormsAccess
            }  
        }
         }
+
+
         #endregion
     } //class
 } //nameSpace
