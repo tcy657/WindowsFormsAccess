@@ -1617,33 +1617,40 @@ namespace WindowsFormsAccess
             buttonUpdate.PerformClick(); //加载，产生DataGridView报头。
             tabControl1.SelectedIndex = 0; //跳到首页
 
+            outputLabel("2/5，收集数据");
             //Step2-7
-            string sql2 = "select * from s2XinFuZhu where iUserID in (" + sql1 + ")";
-            MessageBox.Show("sql2: " + sql2);
+            string sql2 = "select * from s2XinFuZhu where iUserID in (" + sql1 + ")";            
             databind(sql2, dgView2); //更新DataGridView2
-            //sql2 = "select * from s3ShuHouFuZhu where iUserID in (" + sql1 + ")"; //dos3ShuHouFuZhu
-            //databind(sql2, dgView3);
-            //sql2 = "select * from s4SuiZhen where iUserID in (" + sql1 + ")"; //dos4SuiZhen
-            //databind(sql2, dgView4);
-            //sql2 = "select * from s5ShuJuCunZhu where iUserID in (" + sql1 + ")"; //dos5ShuJuCunZhu
-            //databind(sql2, dgView5);
-            //sql2 = "select * from s6QiBingQingKuang where iUserID in (" + sql1 + ")"; //dos6QiBingQingKuang
-            //databind(sql2, dgView6);
-            //sql2 = "select * from s7ShuQianPingGu where iUserID in (" + sql1 + ")"; //dos7ShuQianPingGu
-            //databind(sql2, dgView7); 
+            sql2 = "select * from s3ShuHouFuZhu where iUserID in (" + sql1 + ")"; //dos3ShuHouFuZhu
+            databind(sql2, dgView3);
+            sql2 = "select * from s4SuiZhen where iUserID in (" + sql1 + ")"; //dos4SuiZhen
+            databind(sql2, dgView4);
+            sql2 = "select * from s5ShuJuCunZhu where iUserID in (" + sql1 + ")"; //dos5ShuJuCunZhu
+            databind(sql2, dgView5);
+            sql2 = "select * from s6QiBingQingKuang where iUserID in (" + sql1 + ")"; //dos6QiBingQingKuang
+            databind(sql2, dgView6);
+            sql2 = "select * from s7ShuQianPingGu where iUserID in (" + sql1 + ")"; //dos7ShuQianPingGu
+            databind(sql2, dgView7);
 
-            //Dictionary<string, DataGridView> Dic2Excel = new Dictionary<string, DataGridView> {
-            //      {"基本信息",dataGridView1} ,
-            //      {"新辅助",dgView2},
-            //      {"术后辅助化疗",dgView3},
-            //      {"随诊情况",dgView4},
-            //      {"文件档案",dgView5},
-            //      {"起病情况",dgView6},
-            //      {"术前评估",dgView7} };
             Dictionary<string, DataGridView> Dic2Excel = new Dictionary<string, DataGridView> {
                   {"基本信息",dataGridView1} ,
-                  {"新辅助",dgView2} };
+                  {"新辅助",dgView2},
+                  {"术后辅助化疗",dgView3},
+                  {"随诊情况",dgView4},
+                  {"文件档案",dgView5},
+                  {"起病情况",dgView6},
+                  {"术前评估",dgView7} };
+            //Dictionary<string, DataGridView> Dic2Excel = new Dictionary<string, DataGridView> {
+            //      {"基本信息",dataGridView1} ,
+            //      {"新辅助",dgView2} };
+            outputLabel("3/5，导出数据");
             CExcelSheet.setMoreExcelSheet2(Dic2Excel);
+            outputLabel("5/5，导出结束");
+        }
+
+        private void 文件FToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
 
 

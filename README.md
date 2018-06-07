@@ -1,14 +1,35 @@
 # WindowsFormsAccess
-WindowsFormsAccess
-
 git常用命令
 推送远程仓库 git push origin master
 
 1 增加类定义代替数据库公共操作dll引用
 2 替换一个sql变量
 
-公共结构体
-1   struct {
+【问题】
+【待完成】所有的下拉框禁止输入，只能选择
+*菜单栏/工具栏
+*容错try,增加try-catch捕获错误
+*使用文档
+
+【优化】状态栏显示更为友好
+【优化】增加日志打印，记录操作步骤和出错信息
+【优化】删除用户基本信息时，不支持多条删除。只能删除第一条
+【优化，界面】分组/分块，增默认值
+【优化】登录验证
+
+【问题】点击导出时，检索 COM 类工厂中 CLSID 为 {00024500-0000-0000-C000-000000000046} 的组件时失败，原因是出现以下错误: 80040154。
+【优化】dateTimePicker控件同时设置时间和日期。 https://jingyan.baidu.com/article/6fb756ec9e6215241858fbbd.html
+【优化】字段类型是否准确，如时间，选日期的话可以用控件，鼠标就可以完成操作
+1 sheet7有100多个字段，不好维护，建议拆分多个sheet页
+2 sheet2字段疗程、剂量、方案等重复
+3 sheet3、sheet4中住院号与sheet1中重复，没必要显示？
+4 sheet3、sheet4中省略号“……”代表什么意思？ 
+5 字段太多，界面开发已完成，进入后期核对数据准确性阶段了，最好给出一份样本数据   
+【待确认】sheet7中“术后病理分期”应为”术后病理分析“？ 11:54 2018/6/2
+
+【注意事项】
+13 公共结构体
+   struct {
     int status; //
     int oid1; //sheet1
     int oid2; //sheet2
@@ -18,48 +39,22 @@ git常用命令
     int oid6; //sheet6
     };
 
-【问题】
-【待确认】sheet7中“术后病理分期”应为”术后病理分析“？ 11:54 2018/6/2
-【待完成】是或否转换为true和false
-【待完成】查询功能
-【待完成】delete待增加其他Sheet的动作
-【待完成】所有的下拉框禁止输入，只能选择
-【待完成】增加try-catch捕获错误
-【待完成】sheet7未实现
-【待完成】excel导出datagridview功能
+12 excel导出datagridview功能
     ——https://jingyan.baidu.com/article/a24b33cd0682cd19fe002bb0.html C# 怎么导出dataGridView中的值到Excel
     --** https://zhidao.baidu.com/question/1817909972118765668.html c#如何把datagridview导出到excel
     --*** https://blog.csdn.net/u011981242/article/details/51083335 C# DataGridView导出Excel的两种经典方法
     --https://bbs.csdn.net/topics/392069817 Excel创建多sheet
     ——https://blog.csdn.net/licl19870605/article/details/5260795  C#实现Access导入导出Excel
     --https://blog.csdn.net/angel20082008/article/details/51749780 C# 讲解五种导出access数据到Excel文件格式中
-【优化，界面】分组/分块，增默认值
-【优化】删除用户基本信息时，不支持多条删除。只能删除第一条
-查询，类别3种
-导出
-编码自动
-菜单栏
-工具栏/状态栏/右键（可选）
-容错try
-【优化】增加日志打印，记录操作步骤和出错信息
-使用文档
-界面美化/锁定
-登录验证
-【问题】点击导出时，检索 COM 类工厂中 CLSID 为 {00024500-0000-0000-C000-000000000046} 的组件时失败，原因是出现以下错误: 80040154。
-【优化】dateTimePicker控件同时设置时间和日期。 https://jingyan.baidu.com/article/6fb756ec9e6215241858fbbd.html
-【优化】字段类型是否准确，如时间，选日期的话可以用控件，鼠标就可以完成操作
-1 sheet7有100多个字段，不好维护，建议拆分多个sheet页
-2 sheet2字段疗程、剂量、方案等重复
-3 sheet3、sheet4中住院号与sheet1中重复，没必要显示？
-4 sheet3、sheet4中省略号“……”代表什么意思？ 
-5 字段太多，界面开发已完成，进入后期核对数据准确性阶段了，最好给出一份样本数据   
-
-【注意事项】
 4 新增Sheet页流程
 	1）数据库业务层代码，增加/删除/修改
 	2）操作页面按键代码，
 	3）总页面代码。
 		（1）表头 --对应数据表增加
+11 固定窗口大小，禁止对窗口的自由调整了。
+   1)找到【FormBorderStyle】选项，在选项列表中选择【FixedDialog】，这样就可以
+   2）隐藏窗口的最大化和最小化按钮，选项中【MaximizeBox】【MinimizeBox】都修改【false】。
+10 sql = " where sProID in (select CONVERT(varchar(100), iSN) from ccmGroup where sCPXBH='" + dlArea2.SelectedValue + "')"
 9 重要基准参考：https://blog.csdn.net/bcbobo21cn/article/details/52201955
 在窗体中更新的方法
     private void button3_Click(object sender, EventArgs e)  
