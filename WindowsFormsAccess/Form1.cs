@@ -144,7 +144,7 @@ namespace WindowsFormsAccess
             readSheet1(gOid);   //读取sheet1内容到页面1
 
             //读取sheet2内容到页面
-            sql1 = "select * from s2XinFuZhu where iUserID='" +gOid.ToString() + "'"; //重新刷新
+            sql1 = "select * from s2XinFuZhu where iUserID=" +gOid ; //重新刷新
             databind(sql1, dgView2);
             dgView2.Columns[0].Visible = false;             //dgView2, sheet2
             dgView2.Columns[1].HeaderCell.Value = "编码";
@@ -162,7 +162,7 @@ namespace WindowsFormsAccess
             dgView2.Columns[13].HeaderCell.Value = "UserID";
 
             //读取sheet3内容到页面
-            sql1 = "select * from s3ShuHouFuZhu where iUserID='" + gOid.ToString() + "'"; //重新刷新
+            sql1 = "select * from s3ShuHouFuZhu where iUserID=" + gOid.ToString() ; //重新刷新
             databind(sql1, dgView3);
             dgView3.Columns[0].Visible = false;
             dgView3.Columns[1].HeaderCell.Value = "编码";
@@ -195,7 +195,7 @@ namespace WindowsFormsAccess
             dgView3.Columns[27].HeaderCell.Value = "检测结果";
 
             //读取sheet4内容到页面
-            sql1 = "select * from s4SuiZhen where iUserID='" + gOid.ToString() + "'"; //重新刷新
+            sql1 = "select * from s4SuiZhen where iUserID=" + gOid.ToString(); //重新刷新
             databind(sql1, dgView4);
             dgView4.Columns[0].Visible = false;
             dgView4.Columns[1].HeaderCell.Value = "编码";
@@ -210,7 +210,7 @@ namespace WindowsFormsAccess
             dgView4.Columns[10].HeaderCell.Value = "用户ID";
 
             //读取sheet5内容到页面
-            sql1 = "select * from s5ShuJuCunZhu where iUserID='" + gOid.ToString() + "'"; //重新刷新
+            sql1 = "select * from s5ShuJuCunZhu where iUserID=" + gOid.ToString(); //重新刷新
             databind(sql1, dgView5);
             dgView5.Columns[0].Visible = false;
             dgView5.Columns[1].HeaderCell.Value = "档案号/编码";
@@ -220,7 +220,7 @@ namespace WindowsFormsAccess
             dgView5.Columns[5].HeaderCell.Value = "用户ID";
 
             //读取sheet6内容到页面
-            sql1 = "select * from s6QiBingQingKuang where iUserID='" + gOid.ToString() + "'"; //重新刷新
+            sql1 = "select * from s6QiBingQingKuang where iUserID=" + gOid.ToString(); //重新刷新
             databind(sql1, dgView6);
             dgView6.Columns[0].Visible = false;
             dgView6.Columns[1].HeaderCell.Value = "编码";
@@ -232,7 +232,7 @@ namespace WindowsFormsAccess
             dgView6.Columns[7].HeaderCell.Value = "用户ID";
             
             //读取sheet7内容到页面
-            sql1 = "select * from s7ShuQianPingGu where iUserID='" + gOid.ToString() + "'"; //重新刷新
+            sql1 = "select * from s7ShuQianPingGu where iUserID=" + gOid.ToString(); //重新刷新
             databind(sql1, dgView7);
             dgView7.Columns[0].Visible = false;
             dgView7.Columns[1].HeaderCell.Value = "编码";
@@ -1032,7 +1032,7 @@ namespace WindowsFormsAccess
                     f7.iUserID = gOid; //iUserID必须带过去
                     
                     f7.ShowDialog();
-                    string sql1 = "select * from s7ShuQianPingGu where iUserID = '" + gOid.ToString() + "'"; //重新刷新，只显示本用户的信息
+                    string sql1 = "select * from s7ShuQianPingGu where iUserID = " + gOid.ToString(); //重新刷新，只显示本用户的信息
                     databind(sql1, dgView7);
   
                     break;
@@ -1210,7 +1210,7 @@ namespace WindowsFormsAccess
                     if (true == ret)
                     {
                         f7.ShowDialog();
-                        string sql1 = "select * from s7ShuQianPingGu where iUserID = '" + gOid.ToString() + "'"; //重新刷新，只显示本用户的信息
+                        string sql1 = "select * from s7ShuQianPingGu where iUserID = " + gOid.ToString(); //重新刷新，只显示本用户的信息
                         databind(sql1, dgView7);
                     }
                     break;

@@ -381,7 +381,7 @@ namespace WindowsFormsAccess
 
                bool ret = doS2XinFuZhu.Add(modelS2XinFuZhu);
 
-               string sql1 = "select * from s2XinFuZhu where iUserID = '" + gOid.ToString() + "'"; //重新刷新，只显示本用户的信息
+               string sql1 = "select * from s2XinFuZhu where iUserID = " + gOid.ToString(); //重新刷新，只显示本用户的信息
                 databind(sql1, dgView2);
 
                 //清空
@@ -410,7 +410,7 @@ namespace WindowsFormsAccess
                 {
                     bool ret = doS2XinFuZhu.Delete(Convert.ToInt32(oid));
                 }
-                string sql1 = "select * from s2XinFuZhu where iUserID = '" + gOid.ToString() + "'"; //重新刷新，只显示本用户的信息
+                string sql1 = "select * from s2XinFuZhu where iUserID = " + gOid.ToString(); //重新刷新，只显示本用户的信息
                 databind(sql1, dgView2);
 
                 //显示
@@ -453,7 +453,7 @@ namespace WindowsFormsAccess
             textBox78.Text = modelS2XinFuZhu.sFangLiaoFangAn ; //新放疗方案
             textBox79.Text = modelS2XinFuZhu.sFangLiaoLiaoCheng ; //新放疗疗程
 
-            string sql1 = "select * from s2XinFuZhu where iUserID = '" + gOid.ToString() + "'"; //重新刷新，只显示本用户的信息
+            string sql1 = "select * from s2XinFuZhu where iUserID = " + gOid.ToString(); //重新刷新，只显示本用户的信息
                 //刷新主页面，防止后台改了access数据库后，基本信息页面刷新了，主页面不刷新。
             databind(sql1, dgView2);
 
@@ -531,7 +531,7 @@ namespace WindowsFormsAccess
                 return false;
             }
 
-            string sql1 = "select * from s2XinFuZhu where iUserID = '" + gOid.ToString() + "'"; //重新刷新，只显示本用户的信息
+            string sql1 = "select * from s2XinFuZhu where iUserID = " + gOid.ToString(); //重新刷新，只显示本用户的信息
             databind(sql1, dgView2);
 
             return result;
@@ -588,7 +588,7 @@ namespace WindowsFormsAccess
             ms3ShuHouFuZhu.sJianCeResult                 = textBox51.Text;
             bool ret = dos3ShuHouFuZhu.Add(ms3ShuHouFuZhu);
 
-            string sql1 = "select * from s3ShuHouFuZhu where iUserID = '" + gOid.ToString() + "'"; //重新刷新，只显示本用户的信息
+            string sql1 = "select * from s3ShuHouFuZhu where iUserID = " + gOid.ToString(); //重新刷新，只显示本用户的信息
             databind(sql1, dgView3);
 
             //清空
@@ -617,7 +617,7 @@ namespace WindowsFormsAccess
                 {
                     bool ret = dos3ShuHouFuZhu.Delete(Convert.ToInt32(oid));
                 }
-                string sql1 = "select * from s3ShuHouFuZhu where iUserID = '" + gOid.ToString() + "'"; //重新刷新，只显示本用户的信息
+                string sql1 = "select * from s3ShuHouFuZhu where iUserID = " + gOid.ToString(); //重新刷新，只显示本用户的信息
                 databind(sql1, dgView3);
 
                 //显示
@@ -677,7 +677,7 @@ namespace WindowsFormsAccess
             textBox49.Text = ms3ShuHouFuZhu.sYaoWuPinZhong;
             textBox51.Text = ms3ShuHouFuZhu.sJianCeResult;
 
-            string sql1 = "select * from s3ShuHouFuZhu where iUserID = '" + gOid.ToString() + "'"; //重新刷新，只显示本用户的信息
+            string sql1 = "select * from s3ShuHouFuZhu where iUserID = " + gOid.ToString(); //重新刷新，只显示本用户的信息
             //刷新主页面，防止后台改了access数据库后，基本信息页面刷新了，主页面不刷新。
             databind(sql1, dgView3);
 
@@ -768,7 +768,7 @@ namespace WindowsFormsAccess
                 return false;
             }
 
-            string sql1 = "select * from s3ShuHouFuZhu where iUserID = '" + gOid.ToString() + "'"; //重新刷新，只显示本用户的信息
+            string sql1 = "select * from s3ShuHouFuZhu where iUserID = " + gOid.ToString(); //重新刷新，只显示本用户的信息
             databind(sql1, dgView3);
 
             return result;
@@ -803,7 +803,7 @@ namespace WindowsFormsAccess
 
             bool ret = dos4SuiZhen.Add(ms4SuiZhen);
 
-            string sql1 = "select * from s4SuiZhen where iUserID = '" + gOid.ToString() + "'"; //重新刷新，只显示本用户的信息
+            string sql1 = "select * from s4SuiZhen where iUserID = " + gOid.ToString(); //重新刷新，只显示本用户的信息
             databind(sql1, dgView4);
 
             //清空
@@ -832,7 +832,7 @@ namespace WindowsFormsAccess
                 {
                     bool ret = dos4SuiZhen.Delete(Convert.ToInt32(oid));
                 }
-                string sql1 = "select * from s4SuiZhen where iUserID = '" + gOid.ToString() + "'"; //重新刷新，只显示本用户的信息
+                string sql1 = "select * from s4SuiZhen where iUserID = " + gOid.ToString(); //重新刷新，只显示本用户的信息
                 databind(sql1, dgView4);
 
                 //显示
@@ -865,7 +865,7 @@ namespace WindowsFormsAccess
             textBox52.Text = ms4SuiZhen.sPET;
             comboBox21.Text = bool2HanZi(ms4SuiZhen.bFuFa); //根据“true/false”转换为汉字“是/否”
 
-            string sql1 = "select * from s4SuiZhen where iUserID = '" + gOid.ToString() + "'"; //重新刷新，只显示本用户的信息
+            string sql1 = "select * from s4SuiZhen where iUserID = " + gOid.ToString(); //重新刷新，只显示本用户的信息
             //刷新主页面，防止后台改了access数据库后，基本信息页面刷新了，主页面不刷新。
             databind(sql1, dgView4);
 
@@ -934,7 +934,7 @@ namespace WindowsFormsAccess
                 return false;
             }
 
-            string sql1 = "select * from s4SuiZhen where iUserID = '" + gOid.ToString() + "'"; //重新刷新，只显示本用户的信息
+            string sql1 = "select * from s4SuiZhen where iUserID = " + gOid.ToString(); //重新刷新，只显示本用户的信息
             databind(sql1, dgView4);
 
             return result;
@@ -965,7 +965,7 @@ namespace WindowsFormsAccess
 
             bool ret = dos5ShuJuCunZhu.Add(ms5ShuJuCunZhu);
 
-            string sql1 = "select * from s5ShuJuCunZhu where iUserID = '" + gOid.ToString() + "'"; //重新刷新，只显示本用户的信息
+            string sql1 = "select * from s5ShuJuCunZhu where iUserID = " + gOid.ToString(); //重新刷新，只显示本用户的信息
             databind(sql1, dgView5);
 
             //清空
@@ -994,7 +994,7 @@ namespace WindowsFormsAccess
                 {
                     bool ret = dos5ShuJuCunZhu.Delete(Convert.ToInt32(oid));
                 }
-                string sql1 = "select * from s5ShuJuCunZhu where iUserID = '" + gOid.ToString() + "'"; //重新刷新，只显示本用户的信息
+                string sql1 = "select * from s5ShuJuCunZhu where iUserID = " + gOid.ToString(); //重新刷新，只显示本用户的信息
                 databind(sql1, dgView5);
 
                 //显示
@@ -1026,7 +1026,7 @@ namespace WindowsFormsAccess
                 Directory.CreateDirectory(fileDir);
             }
 
-            string sql1 = "select * from s5ShuJuCunZhu where iUserID = '" + gOid.ToString() + "'"; //重新刷新，只显示本用户的信息
+            string sql1 = "select * from s5ShuJuCunZhu where iUserID = " + gOid.ToString(); //重新刷新，只显示本用户的信息
             //刷新主页面，防止后台改了access数据库后，基本信息页面刷新了，主页面不刷新。
             databind(sql1, dgView5);
 
@@ -1099,7 +1099,7 @@ namespace WindowsFormsAccess
                 return false;
             }
 
-            string sql1 = "select * from s5ShuJuCunZhu where iUserID = '" + gOid.ToString() + "'"; //重新刷新，只显示本用户的信息
+            string sql1 = "select * from s5ShuJuCunZhu where iUserID = " + gOid.ToString(); //重新刷新，只显示本用户的信息
             databind(sql1, dgView5);
 
             return result;
@@ -1132,7 +1132,7 @@ namespace WindowsFormsAccess
 
             bool ret = dos6QiBingQingKuang.Add(ms6QiBingQingKuang);
 
-            string sql1 = "select * from s6QiBingQingKuang where iUserID = '" + gOid.ToString() + "'"; //重新刷新，只显示本用户的信息
+            string sql1 = "select * from s6QiBingQingKuang where iUserID = " + gOid.ToString(); //重新刷新，只显示本用户的信息
             databind(sql1, dgView6);
 
             //清空
@@ -1161,7 +1161,7 @@ namespace WindowsFormsAccess
                 {
                     bool ret = dos6QiBingQingKuang.Delete(Convert.ToInt32(oid));
                 }
-                string sql1 = "select * from s6QiBingQingKuang where iUserID = '" + gOid.ToString() + "'"; //重新刷新，只显示本用户的信息
+                string sql1 = "select * from s6QiBingQingKuang where iUserID = " + gOid.ToString(); //重新刷新，只显示本用户的信息
                 databind(sql1, dgView6);
 
                 //显示
@@ -1195,7 +1195,7 @@ namespace WindowsFormsAccess
             //ms6QiBingQingKuang.sResult = "default";  //设计数据库时，多加了个字段
             comboBox27.Text = ms6QiBingQingKuang.sZhenDuanYiJiu;
 
-            string sql1 = "select * from s6QiBingQingKuang where iUserID = '" + gOid.ToString() + "'"; //重新刷新，只显示本用户的信息
+            string sql1 = "select * from s6QiBingQingKuang where iUserID = " + gOid.ToString(); //重新刷新，只显示本用户的信息
             //刷新主页面，防止后台改了access数据库后，基本信息页面刷新了，主页面不刷新。
             databind(sql1, dgView6);
 
@@ -1262,7 +1262,7 @@ namespace WindowsFormsAccess
                 return false;
             }
 
-            string sql1 = "select * from s6QiBingQingKuang where iUserID = '" + gOid.ToString() + "'"; //重新刷新，只显示本用户的信息
+            string sql1 = "select * from s6QiBingQingKuang where iUserID = " + gOid.ToString(); //重新刷新，只显示本用户的信息
             databind(sql1, dgView6);
 
             return result;
@@ -1403,7 +1403,7 @@ namespace WindowsFormsAccess
 
             bool ret = dos7ShuQianPingGu.Add(ms7ShuQianPingGu);
 
-            string sql1 = "select * from s7ShuQianPingGu where iUserID = '" + gOid.ToString() + "'"; //重新刷新，只显示本用户的信息
+            string sql1 = "select * from s7ShuQianPingGu where iUserID = " + gOid.ToString(); //重新刷新，只显示本用户的信息
             databind(sql1, dgView7);
 
             //清空
@@ -1432,7 +1432,7 @@ namespace WindowsFormsAccess
                 {
                     bool ret = dos7ShuQianPingGu.Delete(Convert.ToInt32(oid));
                 }
-                string sql1 = "select * from s7ShuQianPingGu where iUserID = '" + gOid.ToString() + "'"; //重新刷新，只显示本用户的信息
+                string sql1 = "select * from s7ShuQianPingGu where iUserID = " + gOid.ToString(); //重新刷新，只显示本用户的信息
                 databind(sql1, dgView7);
 
                 //显示
@@ -1574,7 +1574,7 @@ namespace WindowsFormsAccess
             f7.Text96 = ms7ShuQianPingGu.sChuYuanQingKong;
             f7.Text108 = ms7ShuQianPingGu.sYiLiaoFeiYong;
 
-            string sql1 = "select * from s7ShuQianPingGu where iUserID = '" + gOid.ToString() + "'"; //重新刷新，只显示本用户的信息
+            string sql1 = "select * from s7ShuQianPingGu where iUserID = " + gOid.ToString(); //重新刷新，只显示本用户的信息
             //刷新主页面，防止后台改了access数据库后，基本信息页面刷新了，主页面不刷新。
             databind(sql1, dgView7);
 
@@ -1757,7 +1757,7 @@ namespace WindowsFormsAccess
                 return false;
             }
 
-            string sql1 = "select * from s7ShuQianPingGu where iUserID = '" + gOid.ToString() + "'"; //重新刷新，只显示本用户的信息
+            string sql1 = "select * from s7ShuQianPingGu where iUserID = " + gOid.ToString(); //重新刷新，只显示本用户的信息
             databind(sql1, dgView7);
 
             return result;
