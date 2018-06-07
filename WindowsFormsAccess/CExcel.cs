@@ -201,12 +201,13 @@ namespace WindowsFormsAccess
                     Microsoft.Office.Interop.Excel.Worksheet xlSheet2 = (Microsoft.Office.Interop.Excel.Worksheet)xlBook.Worksheets[2];
                     // 设置标题                    
                     Microsoft.Office.Interop.Excel.Range range2 = xlSheet.get_Range(xlSheet2.Cells[1, 1], xlSheet2.Cells[1, ColCount]); //标题所占的单元格数与DataGridView中的列数相同  
-                    range2.MergeCells = true;                   
-                    xlApp.ActiveCell.FormulaR1C1 = "s2";  //标题2
-                    xlApp.ActiveCell.Font.Size = 20;
-                    xlApp.ActiveCell.Font.Bold = true;
-                    xlApp.ActiveCell.HorizontalAlignment = Microsoft.Office.Interop.Excel.Constants.xlCenter;                  
+                    range2.MergeCells = true;
+                    //xlApp.ActiveCell.FormulaR1C1 = "s2";  //标题2
+                    //xlApp.ActiveCell.Font.Size = 20;
+                    //xlApp.ActiveCell.Font.Bold = true;
+                    //xlApp.ActiveCell.HorizontalAlignment = Microsoft.Office.Interop.Excel.Constants.xlCenter;                  
                     xlSheet2.Name = "s2";
+
                     // 创建缓存数据  
                     object[,] objData2 = new object[RowCount + 1, ColCount];
                     //获取列标题  

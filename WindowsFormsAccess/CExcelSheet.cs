@@ -236,7 +236,150 @@ namespace WindowsFormsAccess
         }
 
 
+        public static void setMoreExcelSheet2(Dictionary<string, DataGridView> myDics)
+        {
+            string fileName = "";
+            Microsoft.Office.Interop.Excel.Application excel = null;
+            //选择创建文件的路径
+         
+            SaveFileDialog save = new SaveFileDialog();
+            save.Filter = "excel files(*.xls)|*.xls";
+            save.Title = @"C:\AutoTestTool";
+            save.FileName = "all_" + DateTime.Now.ToString("yyyyMMddHHmmss");
+            if (save.ShowDialog() == DialogResult.OK)
+            {
+                fileName = save.FileName;
+                //MessageBox.Show(save.FileName);
+                // 创建Excel对象
+                excel = new Microsoft.Office.Interop.Excel.Application();
+                if (excel == null)
+                {
+                    MessageBox.Show("Excel无法启动", "提示");
+                    return;
+                }
+            }
+            else
+            {
+                return;
+            }
+            
+            //fileName = @"\\isilonpri.fiberhome.com\fiberhomePuser\cytao\Desktop\excel_ouput\all_" + DateTime.Now.ToString("yyyyMMddHHmmss");
+            Microsoft.Office.Interop.Excel.Workbook excelBook = null;
+            Microsoft.Office.Interop.Excel.Worksheet excelSheet = null;
 
+            //创建Excel工作薄
+            excelBook = excel.Workbooks.Add(true);
+            foreach (KeyValuePair<string, DataGridView> kvp in myDics)
+            {
+                DataGridView dataGridView = kvp.Value;
+                string name = kvp.Key;
+
+                Console.WriteLine("Key = {0}, Value = {1}", name, dataGridView);
+
+
+
+                //总可见列数，总可见行数
+                int colCount = dataGridView.Columns.GetColumnCount(DataGridViewElementStates.Visible);
+                int rowCount = dataGridView.Rows.GetRowCount(DataGridViewElementStates.Visible);
+                //dataGridView 没有数据提示
+                if (dataGridView.Rows.Count == 0 || rowCount == 0)
+                {
+                    MessageBox.Show("表中没有数据", "提示");
+                }
+                else
+                {
+                    if (null == excelSheet)
+                    {
+                        excelSheet = (Microsoft.Office.Interop.Excel.Worksheet)excelBook.Worksheets[1];
+                        excelSheet.Name = name;
+
+                    }
+                    else
+                    {
+                        //expression.Add(Before, After, Count, Type)
+                        //expression     ：    必需。该表达式返回上面的对象之一。
+                        //Before    ：    Variant 类型，可选。指定工作表对象，新建的工作表将置于此工作表之前。
+                        //After    ：    Variant 类型，可选。指定工作表对象，新建的工作表将置于此工作表之后。
+                        //Count    ：    Variant 类型，可选。要新建的工作表的数目。默认值为 1。
+                        //Type    ：    Variant 类型，可选。指定工作表类型。
+                        excelSheet = (Microsoft.Office.Interop.Excel.Worksheet)excelBook.Worksheets.Add(Type.Missing,
+                            excelSheet, 1, Type.Missing);
+                        excelSheet.Name = name;
+                    }
+
+                    //生成字段名称
+                    int k = 0;
+                    for (int i = 0; i < dataGridView.ColumnCount; i++)
+                    {
+                        if (dataGridView.Columns[i].Visible)  //不导出隐藏的列
+                        {
+                            excel.Cells[1, k + 1] = dataGridView.Columns[i].HeaderText;
+                            k++;
+                        }
+                    }
+                    //填充数据
+                    //for (int i = 0; i < dataGridView.RowCount; i++)
+                    //{
+                    //    k = 0;
+                    //    for (int j = 0; j < dataGridView.ColumnCount; j++)
+                    //    {
+                    //        if (dataGridView.Columns[j].Visible)  //不导出隐藏的列
+                    //        {
+                    //            if (dataGridView[j, i].ValueType == typeof(string))
+                    //            {
+                    //                excel.Cells[i + 2, k + 1] = "" + dataGridView[j, i].Value.ToString();
+                    //            }
+                    //            else
+                    //            {
+                    //                excel.Cells[i + 2, k + 1] = dataGridView[j, i].Value.ToString();
+                    //            }
+                    //        }
+                    //        k++;
+                    //    }
+                    //}
+                    for (int i = 1; i < dataGridView.RowCount; i++)
+                    {
+                        k = 0;
+                        for (int j = 0; j < dataGridView.ColumnCount; j++)
+                        {
+                            if (dataGridView.Columns[j].Visible)  //不导出隐藏的列
+                            {
+                                if (dataGridView[j, i-1].ValueType == typeof(string))
+                                {
+                                    excel.Cells[i + 1, k + 1] = "" + dataGridView[j, i-1].Value.ToString();
+                                }
+                                else
+                                {
+                                    excel.Cells[i + 1, k + 1] = dataGridView[j, i-1].Value.ToString();
+                                }
+
+                                k++; 
+                            }
+                        }
+                    }
+                }
+            }
+
+
+            try
+            {
+                excelBook.Saved = true;
+                excelBook.SaveCopyAs(fileName);
+
+
+                //excelBook.Close(true);
+                excel.Quit();
+                releaseObject(excelSheet);
+                releaseObject(excelBook);
+                releaseObject(excel);
+            }
+            catch
+            {
+                MessageBox.Show("导出失败，文件可能正在使用中", "提示");
+            }
+
+            MessageBox.Show("导出成功!", "提示");
+        }
 
         /// <summary>
         /// 释放对象

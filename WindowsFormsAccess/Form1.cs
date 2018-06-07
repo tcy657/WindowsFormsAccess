@@ -1590,30 +1590,60 @@ namespace WindowsFormsAccess
         //将所有dataGrid导出到excel，分sheet页导出
         private void button23_Click(object sender, EventArgs e)
         {
-            string fileName = @"c:\" + "all_" + DateTime.Now.ToString("yyyyMMddHHmmss" + ".xls");
-            //SaveFileDialog save = new SaveFileDialog();
-            //////保存                    
-            //save.Filter = "excel files(*.xls)|*.xls";
-            //save.Title = @"C:\AutoTestTool";
-            //save.FileName = "all_" + DateTime.Now.ToString("yyyyMMddHHmmss");
-            //if (save.ShowDialog() == DialogResult.OK)
-            //{
-            //   fileName = save.FileName;
-            //    //MessageBox.Show(save.FileName);  
-            //}
-            //else
-            //{
-            //    return;
-            //}
-            
-            CExcel excelExport = new CExcel();
-            //excelExport.ExportExcel("123", dataGridView1, save);
-            excelExport.ExportExcelSheet(1, "123", dataGridView1, dgView2, fileName);
-            //excelExport.ExportExcelSheet(2, "124", dataGridView1, fileName);
+            //Step1， 获取用户ID
+            string sql1 = "select ID from Users ";
+            if (textBox23.Text.Trim() != "")  //内容为空，取所有值
+            {
+                string checkType = comboBox19.Text; //查询条件
+                switch (checkType)
+                {
+                    case "编码":
+                        sql1 = sql1 + "where sBianMa='" + textBox23.Text.Trim() + "'";
+                        break;
+                    case "姓名":
+                        sql1 = sql1 + "where sName='" + textBox23.Text.Trim() + "'";
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            if ((dataGridView1.DataSource as DataTable).Rows.Count == 0) //绑定的数据源，但数据为空
+            {
+                MessageBox.Show("数据为空，退出!");
+                return; 
+            }
+            dataGridView1.Rows[0].Selected = true; //取第一行
+            buttonUpdate.PerformClick(); //加载，产生DataGridView报头。
+            tabControl1.SelectedIndex = 0; //跳到首页
+
+            //Step2-7
+            string sql2 = "select * from s2XinFuZhu where iUserID in (" + sql1 + ")";
+            MessageBox.Show("sql2: " + sql2);
+            databind(sql2, dgView2); //更新DataGridView2
+            //sql2 = "select * from s3ShuHouFuZhu where iUserID in (" + sql1 + ")"; //dos3ShuHouFuZhu
+            //databind(sql2, dgView3);
+            //sql2 = "select * from s4SuiZhen where iUserID in (" + sql1 + ")"; //dos4SuiZhen
+            //databind(sql2, dgView4);
+            //sql2 = "select * from s5ShuJuCunZhu where iUserID in (" + sql1 + ")"; //dos5ShuJuCunZhu
+            //databind(sql2, dgView5);
+            //sql2 = "select * from s6QiBingQingKuang where iUserID in (" + sql1 + ")"; //dos6QiBingQingKuang
+            //databind(sql2, dgView6);
+            //sql2 = "select * from s7ShuQianPingGu where iUserID in (" + sql1 + ")"; //dos7ShuQianPingGu
+            //databind(sql2, dgView7); 
 
             //Dictionary<string, DataGridView> Dic2Excel = new Dictionary<string, DataGridView> {
-            //      {"123",dataGridView1},{"124",dataGridView1} };
-            //CExcelSheet.setMoreExcelSheet(Dic2Excel);
+            //      {"基本信息",dataGridView1} ,
+            //      {"新辅助",dgView2},
+            //      {"术后辅助化疗",dgView3},
+            //      {"随诊情况",dgView4},
+            //      {"文件档案",dgView5},
+            //      {"起病情况",dgView6},
+            //      {"术前评估",dgView7} };
+            Dictionary<string, DataGridView> Dic2Excel = new Dictionary<string, DataGridView> {
+                  {"基本信息",dataGridView1} ,
+                  {"新辅助",dgView2} };
+            CExcelSheet.setMoreExcelSheet2(Dic2Excel);
         }
 
 
