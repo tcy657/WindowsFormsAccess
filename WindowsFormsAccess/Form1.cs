@@ -1029,7 +1029,7 @@ namespace WindowsFormsAccess
                     break;
                 case 6: //sheet7
                     FormSheet7 f7 = new FormSheet7(); //创建一个新窗口7
-                    f7.iUserID = gOid.ToString(); //iUserID必须带过去
+                    f7.iUserID = gOid; //iUserID必须带过去
                     
                     f7.ShowDialog();
                     string sql1 = "select * from s7ShuQianPingGu where iUserID = '" + gOid.ToString() + "'"; //重新刷新，只显示本用户的信息

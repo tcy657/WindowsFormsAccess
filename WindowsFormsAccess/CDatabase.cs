@@ -375,7 +375,7 @@ namespace WindowsFormsAccess
             if ("否" == comboBox5.Text) { modelS2XinFuZhu.bShuQian2thBingJian = false; }
 
             modelS2XinFuZhu.sResult = textBox13.Text;  //结果
-            modelS2XinFuZhu.iUserID = gOid.ToString(); //用户id
+            modelS2XinFuZhu.iUserID = gOid; //用户id
             modelS2XinFuZhu.sFangLiaoFangAn = textBox78.Text; //新放疗方案
             modelS2XinFuZhu.sFangLiaoLiaoCheng = textBox79.Text; //新放疗疗程
 
@@ -493,7 +493,7 @@ namespace WindowsFormsAccess
                 if ("否" == comboBox5.Text) { modelS2XinFuZhu.bShuQian2thBingJian = false; }
 
                 modelS2XinFuZhu.sResult = textBox13.Text;  //结果
-                modelS2XinFuZhu.iUserID = gOid.ToString(); //用户id
+                modelS2XinFuZhu.iUserID = gOid; //用户id
                 modelS2XinFuZhu.sFangLiaoFangAn = textBox78.Text; //新放疗方案
                 modelS2XinFuZhu.ID = gOid2;
                 modelS2XinFuZhu.sFangLiaoLiaoCheng = textBox79.Text; //新放疗疗程
@@ -580,7 +580,7 @@ namespace WindowsFormsAccess
             ms3ShuHouFuZhu.sLiaoCheng                = textBox50.Text;
             ms3ShuHouFuZhu.sLiaoXiaoPingFen                = "true"; //数据库设计失误，考虑兼容，故不改
              if ("否" == comboBox17.Text) { ms3ShuHouFuZhu.sLiaoXiaoPingFen = "false"; }
-             ms3ShuHouFuZhu.iUserID = gOid.ToString();
+             ms3ShuHouFuZhu.iUserID = gOid;
             ms3ShuHouFuZhu.sZhuYuanHao                = textBox28.Text;
             ms3ShuHouFuZhu.bBaXiangYaoWu                = true; //
              if ("否" == comboBox16.Text) { ms3ShuHouFuZhu.bBaXiangYaoWu = false; }
@@ -669,7 +669,7 @@ namespace WindowsFormsAccess
             comboBox17.Text = "是"; //
             if ("false" == ms3ShuHouFuZhu.sLiaoXiaoPingFen) { comboBox17.Text = "否"; }
 
-            label133.Text = ms3ShuHouFuZhu.iUserID;
+            label133.Text = ms3ShuHouFuZhu.iUserID.ToString();
             textBox28.Text = ms3ShuHouFuZhu.sZhuYuanHao;
             comboBox16.Text = "是"; //
             if (false == ms3ShuHouFuZhu.bBaXiangYaoWu) { comboBox16.Text = "否"; }
@@ -728,7 +728,7 @@ namespace WindowsFormsAccess
                 ms3ShuHouFuZhu.sLiaoCheng = textBox50.Text;
                 ms3ShuHouFuZhu.sLiaoXiaoPingFen = "true"; //数据库设计失误，考虑兼容，故不改
                 if ("否" == comboBox17.Text) { ms3ShuHouFuZhu.sLiaoXiaoPingFen = "false"; }
-                ms3ShuHouFuZhu.iUserID = gOid.ToString();
+                ms3ShuHouFuZhu.iUserID = gOid;
                 ms3ShuHouFuZhu.sZhuYuanHao = textBox28.Text;
                 ms3ShuHouFuZhu.bBaXiangYaoWu = true; //
                 if ("否" == comboBox16.Text) { ms3ShuHouFuZhu.bBaXiangYaoWu = false; }
@@ -790,7 +790,7 @@ namespace WindowsFormsAccess
             }
 
             //ms4SuiZhen.ID                =  textBox.Text Text ;
-            ms4SuiZhen.iUserID = gOid.ToString();
+            ms4SuiZhen.iUserID = gOid;
             ms4SuiZhen.sBianHao = textBox30.Text;
             ms4SuiZhen.sSuiZhenCiShu = textBox38.Text;
             ms4SuiZhen.dSuiZhenTime = dateTimePicker2.Value;
@@ -889,7 +889,7 @@ namespace WindowsFormsAccess
                 }
 
                 ms4SuiZhen.ID = gOid4;
-                ms4SuiZhen.iUserID = gOid.ToString();
+                ms4SuiZhen.iUserID = gOid;
                 ms4SuiZhen.sBianHao = textBox30.Text;
                 ms4SuiZhen.sSuiZhenCiShu = textBox38.Text;
                 ms4SuiZhen.dSuiZhenTime = dateTimePicker2.Value;
@@ -957,7 +957,7 @@ namespace WindowsFormsAccess
             }
 
             //ms5ShuJuCunZhu.ID                =  textBox.Text Text ;
-            ms5ShuJuCunZhu.iUserID = gOid.ToString();
+            ms5ShuJuCunZhu.iUserID = gOid;
             ms5ShuJuCunZhu.sBianHao = textBox81.Text;
             ms5ShuJuCunZhu.sCT = "default";
             ms5ShuJuCunZhu.sCiGongZheng = "default";
@@ -1060,7 +1060,7 @@ namespace WindowsFormsAccess
 
                 //更新
                 ms5ShuJuCunZhu.ID = gOid5;
-                ms5ShuJuCunZhu.iUserID = gOid.ToString();
+                ms5ShuJuCunZhu.iUserID = gOid;
                 ms5ShuJuCunZhu.sBianHao = textBox81.Text;
                 ms5ShuJuCunZhu.sCT = "default";
                 ms5ShuJuCunZhu.sCiGongZheng = "default";
@@ -1121,7 +1121,7 @@ namespace WindowsFormsAccess
             }
 
             //ms6QiBingQingKuang.ID                =  textBox.Text Text ;
-            ms6QiBingQingKuang.iUserID = gOid.ToString();
+            ms6QiBingQingKuang.iUserID = gOid;
             ms6QiBingQingKuang.sBianMa = textBox82.Text;
             ms6QiBingQingKuang.sZhongLiuBuWei = comboBox29.Text;
             ms6QiBingQingKuang.sShouFaZhengZhuang = comboBox28.Text;
@@ -1220,7 +1220,7 @@ namespace WindowsFormsAccess
 
                 //更新
                 ms6QiBingQingKuang.ID = gOid6;
-                ms6QiBingQingKuang.iUserID = gOid.ToString();
+                ms6QiBingQingKuang.iUserID = gOid;
                 ms6QiBingQingKuang.sBianMa = textBox82.Text;
                 ms6QiBingQingKuang.sZhongLiuBuWei = comboBox29.Text;
                 ms6QiBingQingKuang.sShouFaZhengZhuang = comboBox28.Text;
@@ -1284,7 +1284,7 @@ namespace WindowsFormsAccess
             }
 
             //ms7ShuQianPingGu.ID                =  textBox.Text Text ;
-            ms7ShuQianPingGu.iUserID = gOid.ToString();
+            ms7ShuQianPingGu.iUserID = gOid;
             ms7ShuQianPingGu.ID = f7.lOid;
             ms7ShuQianPingGu.sBianHao = f7.Text36;
             ms7ShuQianPingGu.bWoYuanBingJian = hanZi2Bool(f7.Text37);
@@ -1599,7 +1599,7 @@ namespace WindowsFormsAccess
 
                 //更新
                 ms7ShuQianPingGu.ID = gOid7;
-                ms7ShuQianPingGu.iUserID = gOid.ToString();
+                ms7ShuQianPingGu.iUserID = gOid;
                 if (f7.Text1 == "") //编号
                 {
                     output("编号不能为空");
@@ -1607,7 +1607,7 @@ namespace WindowsFormsAccess
                 }
 
                 //ms7ShuQianPingGu.ID                =  textBox.Text Text ;
-                ms7ShuQianPingGu.iUserID = gOid.ToString();
+                ms7ShuQianPingGu.iUserID = gOid;
                 ms7ShuQianPingGu.ID = gOid7;
                 ms7ShuQianPingGu.sBianHao = f7.Text36;
                 ms7ShuQianPingGu.bWoYuanBingJian = hanZi2Bool(f7.Text37);

@@ -6,7 +6,7 @@
 *
 * Ver    变更日期             负责人  变更内容
 * ───────────────────────────────────
-* V0.01  2018/5/22 19:46:15   N/A    初版
+* V0.01  2018/6/7 9:41:25   N/A    初版
 *
 * Copyright (c) 2012 Maticsoft Corporation. All rights reserved.
 *┌──────────────────────────────────┐
@@ -96,7 +96,7 @@ namespace Maticsoft.DAL
 					new OleDbParameter("@sjiLiang", OleDbType.VarChar,255),
 					new OleDbParameter("@sLiaoCheng", OleDbType.VarChar,255),
 					new OleDbParameter("@sLiaoXiaoPingFen", OleDbType.VarChar,255),
-					new OleDbParameter("@iUserID", OleDbType.VarChar,255),
+					new OleDbParameter("@iUserID", OleDbType.Integer,4),
 					new OleDbParameter("@sZhuYuanHao", OleDbType.VarChar,255),
 					new OleDbParameter("@bBaXiangYaoWu", OleDbType.Boolean,1),
 					new OleDbParameter("@sYaoWuPinZhong", OleDbType.VarChar,255),
@@ -200,7 +200,7 @@ namespace Maticsoft.DAL
 					new OleDbParameter("@sjiLiang", OleDbType.VarChar,255),
 					new OleDbParameter("@sLiaoCheng", OleDbType.VarChar,255),
 					new OleDbParameter("@sLiaoXiaoPingFen", OleDbType.VarChar,255),
-					new OleDbParameter("@iUserID", OleDbType.VarChar,255),
+					new OleDbParameter("@iUserID", OleDbType.Integer,4),
 					new OleDbParameter("@sZhuYuanHao", OleDbType.VarChar,255),
 					new OleDbParameter("@bBaXiangYaoWu", OleDbType.Boolean,1),
 					new OleDbParameter("@sYaoWuPinZhong", OleDbType.VarChar,255),
@@ -443,9 +443,9 @@ namespace Maticsoft.DAL
 				{
 					model.sLiaoXiaoPingFen=row["sLiaoXiaoPingFen"].ToString();
 				}
-				if(row["iUserID"]!=null)
+				if(row["iUserID"]!=null && row["iUserID"].ToString()!="")
 				{
-					model.iUserID=row["iUserID"].ToString();
+					model.iUserID=int.Parse(row["iUserID"].ToString());
 				}
 				if(row["sZhuYuanHao"]!=null)
 				{

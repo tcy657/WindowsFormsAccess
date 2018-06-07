@@ -6,7 +6,7 @@
 *
 * Ver    变更日期             负责人  变更内容
 * ───────────────────────────────────
-* V0.01  2018/5/27 22:52:10   N/A    初版
+* V0.01  2018/6/7 9:41:26   N/A    初版
 *
 * Copyright (c) 2012 Maticsoft Corporation. All rights reserved.
 *┌──────────────────────────────────┐
@@ -82,7 +82,7 @@ namespace Maticsoft.DAL
 					new OleDbParameter("@sNeiJing", OleDbType.VarChar,255),
 					new OleDbParameter("@sPET", OleDbType.VarChar,255),
 					new OleDbParameter("@bFuFa", OleDbType.Boolean,1),
-					new OleDbParameter("@iUserID", OleDbType.VarChar,255)};
+					new OleDbParameter("@iUserID", OleDbType.Integer,4)};
 			parameters[0].Value = model.sBianHao;
 			parameters[1].Value = model.sSuiZhenCiShu;
 			parameters[2].Value = model.dSuiZhenTime;
@@ -132,7 +132,7 @@ namespace Maticsoft.DAL
 					new OleDbParameter("@sNeiJing", OleDbType.VarChar,255),
 					new OleDbParameter("@sPET", OleDbType.VarChar,255),
 					new OleDbParameter("@bFuFa", OleDbType.Boolean,1),
-					new OleDbParameter("@iUserID", OleDbType.VarChar,255),
+					new OleDbParameter("@iUserID", OleDbType.Integer,4),
 					new OleDbParameter("@ID", OleDbType.Integer,4)};
 			parameters[0].Value = model.sBianHao;
 			parameters[1].Value = model.sSuiZhenCiShu;
@@ -283,9 +283,9 @@ namespace Maticsoft.DAL
 						model.bFuFa=false;
 					}
 				}
-				if(row["iUserID"]!=null)
+				if(row["iUserID"]!=null && row["iUserID"].ToString()!="")
 				{
-					model.iUserID=row["iUserID"].ToString();
+					model.iUserID=int.Parse(row["iUserID"].ToString());
 				}
 			}
 			return model;

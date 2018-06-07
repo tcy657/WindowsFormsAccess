@@ -1,12 +1,12 @@
 ﻿/**  版本信息模板在安装目录下，可自行修改。
-* s5ShuJuCunZhu.cs
+* s0Login.cs
 *
 * 功 能： N/A
-* 类 名： s5ShuJuCunZhu
+* 类 名： s0Login
 *
 * Ver    变更日期             负责人  变更内容
 * ───────────────────────────────────
-* V0.01  2018/6/7 9:41:27   N/A    初版
+* V0.01  2018/6/7 9:41:20   N/A    初版
 *
 * Copyright (c) 2012 Maticsoft Corporation. All rights reserved.
 *┌──────────────────────────────────┐
@@ -18,20 +18,17 @@ using System;
 namespace Maticsoft.Model
 {
 	/// <summary>
-	/// s5ShuJuCunZhu:实体类(属性说明自动提取数据库字段的描述信息)
+	/// s0Login:实体类(属性说明自动提取数据库字段的描述信息)
 	/// </summary>
 	[Serializable]
-	public partial class s5ShuJuCunZhu
+	public partial class s0Login
 	{
-		public s5ShuJuCunZhu()
+		public s0Login()
 		{}
 		#region Model
 		private int _id;
-		private string _sbianhao;
-		private string _sct;
-		private string _scigongzheng;
-		private string _sbingli;
-		private int? _iuserid;
+		private string _sname;
+		private string _spwd;
 		/// <summary>
 		/// 
 		/// </summary>
@@ -43,42 +40,18 @@ namespace Maticsoft.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public string sBianHao
+		public string sName
 		{
-			set{ _sbianhao=value;}
-			get{return _sbianhao;}
+			set{ _sname=value;}
+			get{return _sname;}
 		}
 		/// <summary>
 		/// 
 		/// </summary>
-		public string sCT
+		public string sPwd
 		{
-			set{ _sct=value;}
-			get{return _sct;}
-		}
-		/// <summary>
-		/// 
-		/// </summary>
-		public string sCiGongZheng
-		{
-			set{ _scigongzheng=value;}
-			get{return _scigongzheng;}
-		}
-		/// <summary>
-		/// 
-		/// </summary>
-		public string sBingLi
-		{
-			set{ _sbingli=value;}
-			get{return _sbingli;}
-		}
-		/// <summary>
-		/// 
-		/// </summary>
-		public int? iUserID
-		{
-			set{ _iuserid=value;}
-			get{return _iuserid;}
+			set{ _spwd=value;}
+			get{return _spwd;}
 		}
 		#endregion Model
 

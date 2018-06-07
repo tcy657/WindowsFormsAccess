@@ -6,7 +6,7 @@
 *
 * Ver    变更日期             负责人  变更内容
 * ───────────────────────────────────
-* V0.01  2018/5/22 19:46:14   N/A    初版
+* V0.01  2018/6/7 9:41:24   N/A    初版
 *
 * Copyright (c) 2012 Maticsoft Corporation. All rights reserved.
 *┌──────────────────────────────────┐
@@ -50,7 +50,7 @@ namespace Maticsoft.Model
 		private string _sjiliang;
 		private string _sliaocheng;
 		private string _sliaoxiaopingfen;
-		private string _iuserid;
+		private int? _iuserid;
 		private string _szhuyuanhao;
 		private bool _bbaxiangyaowu= false;
 		private string _syaowupinzhong;
@@ -250,7 +250,7 @@ namespace Maticsoft.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public string iUserID
+		public int? iUserID
 		{
 			set{ _iuserid=value;}
 			get{return _iuserid;}

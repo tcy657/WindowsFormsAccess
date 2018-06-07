@@ -1,12 +1,12 @@
 ﻿/**  版本信息模板在安装目录下，可自行修改。
-* file.cs
+* s0Login.cs
 *
 * 功 能： N/A
-* 类 名： file
+* 类 名： s0Login
 *
 * Ver    变更日期             负责人  变更内容
 * ───────────────────────────────────
-* V0.01  2018/6/7 9:41:17   N/A    初版
+* V0.01  2018/6/7 9:41:21   N/A    初版
 *
 * Copyright (c) 2012 Maticsoft Corporation. All rights reserved.
 *┌──────────────────────────────────┐
@@ -22,16 +22,16 @@ using Maticsoft.DBUtility;//Please add references
 namespace Maticsoft.DAL
 {
 	/// <summary>
-	/// 数据访问类:file
+	/// 数据访问类:s0Login
 	/// </summary>
-	public partial class file
+	public partial class s0Login
 	{
        private AccessHelper DbHelperOleDb;
-       public file(string dbPath)
+       public s0Login(string dbPath)
        {
             DbHelperOleDb = new AccessHelper(dbPath);
        }
-		public file()
+		public s0Login()
        {
             DbHelperOleDb = new AccessHelper();
        }
@@ -42,7 +42,7 @@ namespace Maticsoft.DAL
 		/// </summary>
 		public int GetMaxId()
 		{
-		return DbHelperOleDb.GetMaxID("ID", "file"); 
+		return DbHelperOleDb.GetMaxID("ID", "s0Login"); 
 		}
 
 		/// <summary>
@@ -51,7 +51,7 @@ namespace Maticsoft.DAL
 		public bool Exists(int ID)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select count(1) from file");
+			strSql.Append("select count(1) from s0Login");
 			strSql.Append(" where ID=@ID");
 			OleDbParameter[] parameters = {
 					new OleDbParameter("@ID", OleDbType.Integer,4)
@@ -65,22 +65,18 @@ namespace Maticsoft.DAL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(Maticsoft.Model.file model)
+		public bool Add(Maticsoft.Model.s0Login model)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("insert into file(");
-			strSql.Append("sFileName,iUserID,sType,sFileStream)");
+			strSql.Append("insert into s0Login(");
+			strSql.Append("sName,sPwd)");
 			strSql.Append(" values (");
-			strSql.Append("@sFileName,@iUserID,@sType,@sFileStream)");
+			strSql.Append("@sName,@sPwd)");
 			OleDbParameter[] parameters = {
-					new OleDbParameter("@sFileName", OleDbType.VarChar,255),
-					new OleDbParameter("@iUserID", OleDbType.Integer,4),
-					new OleDbParameter("@sType", OleDbType.VarChar,255),
-					new OleDbParameter("@sFileStream", OleDbType.Binary,0)};
-			parameters[0].Value = model.sFileName;
-			parameters[1].Value = model.iUserID;
-			parameters[2].Value = model.sType;
-			parameters[3].Value = model.sFileStream;
+					new OleDbParameter("@sName", OleDbType.VarChar,255),
+					new OleDbParameter("@sPwd", OleDbType.VarChar,255)};
+			parameters[0].Value = model.sName;
+			parameters[1].Value = model.sPwd;
 
 			int rows=DbHelperOleDb.ExecuteSql(strSql.ToString(),parameters);
 			if (rows > 0)
@@ -95,26 +91,20 @@ namespace Maticsoft.DAL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(Maticsoft.Model.file model)
+		public bool Update(Maticsoft.Model.s0Login model)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("update file set ");
-			strSql.Append("sFileName=@sFileName,");
-			strSql.Append("iUserID=@iUserID,");
-			strSql.Append("sType=@sType,");
-			strSql.Append("sFileStream=@sFileStream");
+			strSql.Append("update s0Login set ");
+			strSql.Append("sName=@sName,");
+			strSql.Append("sPwd=@sPwd");
 			strSql.Append(" where ID=@ID");
 			OleDbParameter[] parameters = {
-					new OleDbParameter("@sFileName", OleDbType.VarChar,255),
-					new OleDbParameter("@iUserID", OleDbType.Integer,4),
-					new OleDbParameter("@sType", OleDbType.VarChar,255),
-					new OleDbParameter("@sFileStream", OleDbType.Binary,0),
+					new OleDbParameter("@sName", OleDbType.VarChar,255),
+					new OleDbParameter("@sPwd", OleDbType.VarChar,255),
 					new OleDbParameter("@ID", OleDbType.Integer,4)};
-			parameters[0].Value = model.sFileName;
-			parameters[1].Value = model.iUserID;
-			parameters[2].Value = model.sType;
-			parameters[3].Value = model.sFileStream;
-			parameters[4].Value = model.ID;
+			parameters[0].Value = model.sName;
+			parameters[1].Value = model.sPwd;
+			parameters[2].Value = model.ID;
 
 			int rows=DbHelperOleDb.ExecuteSql(strSql.ToString(),parameters);
 			if (rows > 0)
@@ -134,7 +124,7 @@ namespace Maticsoft.DAL
 		{
 			
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("delete from file ");
+			strSql.Append("delete from s0Login ");
 			strSql.Append(" where ID=@ID");
 			OleDbParameter[] parameters = {
 					new OleDbParameter("@ID", OleDbType.Integer,4)
@@ -157,7 +147,7 @@ namespace Maticsoft.DAL
 		public bool DeleteList(string IDlist )
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("delete from file ");
+			strSql.Append("delete from s0Login ");
 			strSql.Append(" where ID in ("+IDlist + ")  ");
 			int rows=DbHelperOleDb.ExecuteSql(strSql.ToString());
 			if (rows > 0)
@@ -174,18 +164,18 @@ namespace Maticsoft.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public Maticsoft.Model.file GetModel(int ID)
+		public Maticsoft.Model.s0Login GetModel(int ID)
 		{
 			
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select ID,sFileName,iUserID,sType,sFileStream from file ");
+			strSql.Append("select ID,sName,sPwd from s0Login ");
 			strSql.Append(" where ID=@ID");
 			OleDbParameter[] parameters = {
 					new OleDbParameter("@ID", OleDbType.Integer,4)
 			};
 			parameters[0].Value = ID;
 
-			Maticsoft.Model.file model=new Maticsoft.Model.file();
+			Maticsoft.Model.s0Login model=new Maticsoft.Model.s0Login();
 			DataSet ds=DbHelperOleDb.Query(strSql.ToString(),parameters);
 			if(ds.Tables[0].Rows.Count>0)
 			{
@@ -201,30 +191,22 @@ namespace Maticsoft.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public Maticsoft.Model.file DataRowToModel(DataRow row)
+		public Maticsoft.Model.s0Login DataRowToModel(DataRow row)
 		{
-			Maticsoft.Model.file model=new Maticsoft.Model.file();
+			Maticsoft.Model.s0Login model=new Maticsoft.Model.s0Login();
 			if (row != null)
 			{
 				if(row["ID"]!=null && row["ID"].ToString()!="")
 				{
 					model.ID=int.Parse(row["ID"].ToString());
 				}
-				if(row["sFileName"]!=null)
+				if(row["sName"]!=null)
 				{
-					model.sFileName=row["sFileName"].ToString();
+					model.sName=row["sName"].ToString();
 				}
-				if(row["iUserID"]!=null && row["iUserID"].ToString()!="")
+				if(row["sPwd"]!=null)
 				{
-					model.iUserID=int.Parse(row["iUserID"].ToString());
-				}
-				if(row["sType"]!=null)
-				{
-					model.sType=row["sType"].ToString();
-				}
-				if(row["sFileStream"]!=null && row["sFileStream"].ToString()!="")
-				{
-					model.sFileStream=(byte[])row["sFileStream"];
+					model.sPwd=row["sPwd"].ToString();
 				}
 			}
 			return model;
@@ -236,8 +218,8 @@ namespace Maticsoft.DAL
 		public DataSet GetList(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select ID,sFileName,iUserID,sType,sFileStream ");
-			strSql.Append(" FROM file ");
+			strSql.Append("select ID,sName,sPwd ");
+			strSql.Append(" FROM s0Login ");
 			if(strWhere.Trim()!="")
 			{
 				strSql.Append(" where "+strWhere);
@@ -251,7 +233,7 @@ namespace Maticsoft.DAL
 		public int GetRecordCount(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select count(1) FROM file ");
+			strSql.Append("select count(1) FROM s0Login ");
 			if(strWhere.Trim()!="")
 			{
 				strSql.Append(" where "+strWhere);
@@ -282,7 +264,7 @@ namespace Maticsoft.DAL
 			{
 				strSql.Append("order by T.ID desc");
 			}
-			strSql.Append(")AS Row, T.*  from file T ");
+			strSql.Append(")AS Row, T.*  from s0Login T ");
 			if (!string.IsNullOrEmpty(strWhere.Trim()))
 			{
 				strSql.Append(" WHERE " + strWhere);
@@ -307,7 +289,7 @@ namespace Maticsoft.DAL
 					new OleDbParameter("@OrderType", OleDbType.Boolean),
 					new OleDbParameter("@strWhere", OleDbType.VarChar,1000),
 					};
-			parameters[0].Value = "file";
+			parameters[0].Value = "s0Login";
 			parameters[1].Value = "ID";
 			parameters[2].Value = PageSize;
 			parameters[3].Value = PageIndex;

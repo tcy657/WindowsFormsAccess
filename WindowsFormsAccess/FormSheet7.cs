@@ -89,7 +89,7 @@ namespace WindowsFormsAccess
 
         #region 控件值可读写
         private int iid = 0;
-        private string siUserID = "0";
+        private int iiUserID = 0;
   
         public int lOid  //local id
         {
@@ -97,10 +97,10 @@ namespace WindowsFormsAccess
             set { this.iid = value; }
         }
 
-        public string iUserID  //iUserID
+        public int iUserID  //iUserID
         {
-            get { return this.siUserID; }
-            set { this.siUserID = value; }
+            get { return this.iiUserID; }
+            set { this.iiUserID = value; }
         }
 
         public string Text1
