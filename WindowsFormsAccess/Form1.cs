@@ -1653,6 +1653,47 @@ namespace WindowsFormsAccess
 
         }
 
+        private void 记事本NToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+            System.Diagnostics.Process.Start("notepad.exe");
+            outputLabel("打开记事本");
+            
+        }
+
+        private void 计算器CToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("calc.exe");
+            outputLabel("打开计算器");
+        }
+
+        private void 打开数据库目录ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string currentDir = System.Windows.Forms.Application.StartupPath; //获取启动了应用程序的可执行文件的路径，“D：\fh_bk”形式，末尾不带“\”
+                string fileDir = currentDir + @"\dataBase";  //保存路径
+                if (Directory.Exists(fileDir) == false)//不存在,就创建NE文件夹
+                {
+                    Directory.CreateDirectory(fileDir);
+                }
+
+                outputLabel("打开数据库目录");
+                System.Diagnostics.Process.Start("explorer.exe", fileDir);
+            } //try
+            catch (Exception objException)
+            {
+                outputLabel("打开数据库目录，失败");
+            }
+        }
+
+        //工具栏，首页
+        private void toolStripLabel1_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedIndex = 0;
+        }
+
+
 
         #region sheet4
 
