@@ -1,0 +1,4 @@
+若想不修改任何配置即可以生成此工具安装包，请将代码check out到D:\code_ipran\otnm_clear\otnm_device_gui_py_4th目录。
+如果不是，请修改output目录下的otnm_clear_2016.12.8.sf7安装包生成文件
+
+若不生成安装包，则任意目录都可编译。使用方法：双击build.bat文件。
