@@ -28,6 +28,9 @@ git常用命令
 【待确认】sheet7中“术后病理分期”应为”术后病理分析“？ 11:54 2018/6/2
 
 【注意事项】
+14 清空access时，因没有truncate这样的语句的，你这种必须分2句话
+    delete from 表
+    alter table 表 alter column id counter(1,1)
 13 公共结构体
    struct {
     int status; //
