@@ -52,6 +52,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle118 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle119 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle120 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
@@ -214,7 +215,6 @@
             this.label142 = new System.Windows.Forms.Label();
             this.label93 = new System.Windows.Forms.Label();
             this.label95 = new System.Windows.Forms.Label();
-            this.label92 = new System.Windows.Forms.Label();
             this.button30 = new System.Windows.Forms.Button();
             this.label19 = new System.Windows.Forms.Label();
             this.label89 = new System.Windows.Forms.Label();
@@ -240,8 +240,6 @@
             this.label139 = new System.Windows.Forms.Label();
             this.label140 = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label122 = new System.Windows.Forms.Label();
             this.label120 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.buttonTestFlash = new System.Windows.Forms.Button();
@@ -355,14 +353,24 @@
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.文件FToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.打开ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.管理工具ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.打开数据库目录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.记事本NToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.计算器CToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.帮助HToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.帮忙文档LToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label20 = new System.Windows.Forms.Label();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
+            this.数据库DToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.数据库备份BToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.打开数据库目录OToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.关于信息记录系统ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox8.SuspendLayout();
@@ -378,7 +386,6 @@
             this.tabPage5.SuspendLayout();
             this.groupBox9.SuspendLayout();
             this.tabPage4.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage6.SuspendLayout();
@@ -402,6 +409,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgView7)).BeginInit();
             this.groupBox6.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.groupBox10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -425,9 +437,9 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.button8);
             this.tabPage1.Controls.Add(this.groupBox8);
             this.tabPage1.Controls.Add(this.label91);
-            this.tabPage1.Controls.Add(this.button23);
             this.tabPage1.Controls.Add(this.comboBox19);
             this.tabPage1.Controls.Add(this.label88);
             this.tabPage1.Controls.Add(this.label1);
@@ -495,11 +507,11 @@
             // 
             // button23
             // 
-            this.button23.Location = new System.Drawing.Point(638, 42);
+            this.button23.Location = new System.Drawing.Point(15, 26);
             this.button23.Name = "button23";
             this.button23.Size = new System.Drawing.Size(75, 23);
             this.button23.TabIndex = 73;
-            this.button23.Text = "导出";
+            this.button23.Text = "导出全部";
             this.button23.UseVisualStyleBackColor = true;
             this.button23.Click += new System.EventHandler(this.button23_Click);
             // 
@@ -1775,6 +1787,7 @@
             // 
             // tabPageS4
             // 
+            this.tabPageS4.Controls.Add(this.pictureBox2);
             this.tabPageS4.Controls.Add(this.groupBox7);
             this.tabPageS4.Location = new System.Drawing.Point(4, 22);
             this.tabPageS4.Name = "tabPageS4";
@@ -1965,6 +1978,7 @@
             // 
             // tabPageS5File
             // 
+            this.tabPageS5File.Controls.Add(this.pictureBox3);
             this.tabPageS5File.Controls.Add(this.label145);
             this.tabPageS5File.Controls.Add(this.textBox81);
             this.tabPageS5File.Controls.Add(this.label144);
@@ -1974,7 +1988,6 @@
             this.tabPageS5File.Controls.Add(this.label142);
             this.tabPageS5File.Controls.Add(this.label93);
             this.tabPageS5File.Controls.Add(this.label95);
-            this.tabPageS5File.Controls.Add(this.label92);
             this.tabPageS5File.Controls.Add(this.button30);
             this.tabPageS5File.Controls.Add(this.label19);
             this.tabPageS5File.Controls.Add(this.label89);
@@ -2083,15 +2096,6 @@
             this.label95.Text = "路径3：";
             this.label95.Visible = false;
             // 
-            // label92
-            // 
-            this.label92.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label92.Location = new System.Drawing.Point(0, 246);
-            this.label92.Name = "label92";
-            this.label92.Size = new System.Drawing.Size(942, 2);
-            this.label92.TabIndex = 113;
-            this.label92.Text = "None";
-            // 
             // button30
             // 
             this.button30.Location = new System.Drawing.Point(515, 377);
@@ -2106,11 +2110,13 @@
             // label19
             // 
             this.label19.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label19.Enabled = false;
             this.label19.Location = new System.Drawing.Point(0, 356);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(942, 2);
             this.label19.TabIndex = 111;
             this.label19.Text = "None";
+            this.label19.Visible = false;
             // 
             // label89
             // 
@@ -2194,6 +2200,7 @@
             // 
             // tabPage5
             // 
+            this.tabPage5.Controls.Add(this.pictureBox4);
             this.tabPage5.Controls.Add(this.groupBox9);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
@@ -2359,7 +2366,7 @@
             // 
             // tabPage4
             // 
-            this.tabPage4.Controls.Add(this.panel1);
+            this.tabPage4.Controls.Add(this.pictureBox1);
             this.tabPage4.Controls.Add(this.label120);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
@@ -2368,24 +2375,6 @@
             this.tabPage4.TabIndex = 7;
             this.tabPage4.Text = "7术前评估";
             this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // panel1
-            // 
-            this.panel1.AutoScroll = true;
-            this.panel1.AutoSize = true;
-            this.panel1.Controls.Add(this.label122);
-            this.panel1.Location = new System.Drawing.Point(1, 26);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(940, 420);
-            this.panel1.TabIndex = 46;
-            // 
-            // label122
-            // 
-            this.label122.AutoSize = true;
-            this.label122.Location = new System.Drawing.Point(79, 7);
-            this.label122.Name = "label122";
-            this.label122.Size = new System.Drawing.Size(0, 12);
-            this.label122.TabIndex = 113;
             // 
             // label120
             // 
@@ -3342,10 +3331,10 @@
             this.tabControl2.SelectedIndex = 0;
             this.tabControl2.Size = new System.Drawing.Size(954, 139);
             this.tabControl2.TabIndex = 40;
-            this.tabControl2.SelectedIndexChanged += new System.EventHandler(this.tabControl2_SelectedIndexChanged);
             // 
             // tabPage2s1
             // 
+            this.tabPage2s1.Controls.Add(this.richTextBox1);
             this.tabPage2s1.Controls.Add(this.dgView1);
             this.tabPage2s1.Location = new System.Drawing.Point(4, 22);
             this.tabPage2s1.Name = "tabPage2s1";
@@ -3675,7 +3664,7 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.文件FToolStripMenuItem,
+            this.数据库DToolStripMenuItem,
             this.管理工具ToolStripMenuItem,
             this.帮助HToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -3684,56 +3673,34 @@
             this.menuStrip1.TabIndex = 100;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // 文件FToolStripMenuItem
-            // 
-            this.文件FToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.打开ToolStripMenuItem});
-            this.文件FToolStripMenuItem.Name = "文件FToolStripMenuItem";
-            this.文件FToolStripMenuItem.Size = new System.Drawing.Size(58, 21);
-            this.文件FToolStripMenuItem.Text = "打开(&F)";
-            this.文件FToolStripMenuItem.Click += new System.EventHandler(this.文件FToolStripMenuItem_Click);
-            // 
-            // 打开ToolStripMenuItem
-            // 
-            this.打开ToolStripMenuItem.Name = "打开ToolStripMenuItem";
-            this.打开ToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
-            this.打开ToolStripMenuItem.Text = "文件(&O)";
-            // 
             // 管理工具ToolStripMenuItem
             // 
             this.管理工具ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.打开数据库目录ToolStripMenuItem,
             this.记事本NToolStripMenuItem,
             this.计算器CToolStripMenuItem});
             this.管理工具ToolStripMenuItem.Name = "管理工具ToolStripMenuItem";
             this.管理工具ToolStripMenuItem.Size = new System.Drawing.Size(83, 21);
             this.管理工具ToolStripMenuItem.Text = "管理工具(&T)";
             // 
-            // 打开数据库目录ToolStripMenuItem
-            // 
-            this.打开数据库目录ToolStripMenuItem.Name = "打开数据库目录ToolStripMenuItem";
-            this.打开数据库目录ToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
-            this.打开数据库目录ToolStripMenuItem.Text = "打开数据库目录(&O)";
-            this.打开数据库目录ToolStripMenuItem.Click += new System.EventHandler(this.打开数据库目录ToolStripMenuItem_Click);
-            // 
             // 记事本NToolStripMenuItem
             // 
             this.记事本NToolStripMenuItem.Name = "记事本NToolStripMenuItem";
-            this.记事本NToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.记事本NToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.记事本NToolStripMenuItem.Text = "记事本(&N)";
             this.记事本NToolStripMenuItem.Click += new System.EventHandler(this.记事本NToolStripMenuItem_Click);
             // 
             // 计算器CToolStripMenuItem
             // 
             this.计算器CToolStripMenuItem.Name = "计算器CToolStripMenuItem";
-            this.计算器CToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.计算器CToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.计算器CToolStripMenuItem.Text = "计算器(&C)";
             this.计算器CToolStripMenuItem.Click += new System.EventHandler(this.计算器CToolStripMenuItem_Click);
             // 
             // 帮助HToolStripMenuItem
             // 
             this.帮助HToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.帮忙文档LToolStripMenuItem});
+            this.帮忙文档LToolStripMenuItem,
+            this.关于信息记录系统ToolStripMenuItem});
             this.帮助HToolStripMenuItem.Name = "帮助HToolStripMenuItem";
             this.帮助HToolStripMenuItem.Size = new System.Drawing.Size(61, 21);
             this.帮助HToolStripMenuItem.Text = "帮助(&H)";
@@ -3743,22 +3710,146 @@
             this.帮忙文档LToolStripMenuItem.Name = "帮忙文档LToolStripMenuItem";
             this.帮忙文档LToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.帮忙文档LToolStripMenuItem.Text = "帮助文档(&L)";
+            this.帮忙文档LToolStripMenuItem.Click += new System.EventHandler(this.帮忙文档LToolStripMenuItem_Click);
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(15, 104);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(71, 60);
+            this.label20.TabIndex = 107;
+            this.label20.Text = "作用：\r\n将当前查询\r\n到的界面内\r\n容导出为\r\nexcel保存。\r\n";
+            // 
+            // groupBox10
+            // 
+            this.groupBox10.Controls.Add(this.button2);
+            this.groupBox10.Controls.Add(this.button23);
+            this.groupBox10.Controls.Add(this.label20);
+            this.groupBox10.Location = new System.Drawing.Point(971, 141);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(104, 294);
+            this.groupBox10.TabIndex = 108;
+            this.groupBox10.TabStop = false;
+            this.groupBox10.Text = "导出操作";
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(9, 5);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
+            this.richTextBox1.Size = new System.Drawing.Size(924, 101);
+            this.richTextBox1.TabIndex = 40;
+            this.richTextBox1.Text = "说明:\n用户的信息以ID号联系起来。\n查看用户的明细信息前，请先加载其信息，然后切换标签页。";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(15, 67);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 108;
+            this.button2.Text = "导出当前";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(646, 43);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(99, 23);
+            this.button8.TabIndex = 107;
+            this.button8.Text = "导出查询结果";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // 数据库DToolStripMenuItem
+            // 
+            this.数据库DToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.打开数据库目录OToolStripMenuItem,
+            this.数据库备份BToolStripMenuItem});
+            this.数据库DToolStripMenuItem.Name = "数据库DToolStripMenuItem";
+            this.数据库DToolStripMenuItem.Size = new System.Drawing.Size(73, 21);
+            this.数据库DToolStripMenuItem.Text = "数据库(&D)";
+            // 
+            // 数据库备份BToolStripMenuItem
+            // 
+            this.数据库备份BToolStripMenuItem.Name = "数据库备份BToolStripMenuItem";
+            this.数据库备份BToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.数据库备份BToolStripMenuItem.Text = "数据库备份";
+            this.数据库备份BToolStripMenuItem.Click += new System.EventHandler(this.数据库备份BToolStripMenuItem_Click);
+            // 
+            // 打开数据库目录OToolStripMenuItem
+            // 
+            this.打开数据库目录OToolStripMenuItem.Name = "打开数据库目录OToolStripMenuItem";
+            this.打开数据库目录OToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.打开数据库目录OToolStripMenuItem.Text = "打开数据库目录(&O)";
+            this.打开数据库目录OToolStripMenuItem.Click += new System.EventHandler(this.打开数据库目录OToolStripMenuItem_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(362, 295);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(134, 76);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 46;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(362, 295);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(134, 76);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 123;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
+            this.pictureBox4.Location = new System.Drawing.Point(362, 295);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(134, 76);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.TabIndex = 73;
+            this.pictureBox4.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(350, 156);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(134, 76);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 47;
+            this.pictureBox1.TabStop = false;
+            // 
+            // 关于信息记录系统ToolStripMenuItem
+            // 
+            this.关于信息记录系统ToolStripMenuItem.Name = "关于信息记录系统ToolStripMenuItem";
+            this.关于信息记录系统ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.关于信息记录系统ToolStripMenuItem.Text = "关于信息记录系统";
+            this.关于信息记录系统ToolStripMenuItem.Click += new System.EventHandler(this.关于信息记录系统ToolStripMenuItem_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1084, 667);
+            this.Controls.Add(this.groupBox10);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.tabControl2);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "信息记录系统";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -3783,8 +3874,6 @@
             this.groupBox9.PerformLayout();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
@@ -3815,6 +3904,12 @@
             this.groupBox6.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.groupBox10.ResumeLayout(false);
+            this.groupBox10.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4098,7 +4193,6 @@
         private System.Windows.Forms.Button button29;
         private System.Windows.Forms.Label label93;
         private System.Windows.Forms.Label label95;
-        private System.Windows.Forms.Label label92;
         private System.Windows.Forms.Button button30;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label89;
@@ -4115,8 +4209,6 @@
         private System.Windows.Forms.Label label145;
         private System.Windows.Forms.TextBox textBox82;
         private System.Windows.Forms.ColorDialog colorDialog1;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label122;
         private System.Windows.Forms.Label label88;
         private System.Windows.Forms.ComboBox comboBox19;
         private System.Windows.Forms.Label label91;
@@ -4124,15 +4216,25 @@
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.TextBox txtLog;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem 文件FToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 打开ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 管理工具ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 打开数据库目录ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 记事本NToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 计算器CToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 帮助HToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 帮忙文档LToolStripMenuItem;
         private System.Windows.Forms.DateTimePicker dtp1time9Sheet1;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.GroupBox groupBox10;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.ToolStripMenuItem 数据库DToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 数据库备份BToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 打开数据库目录OToolStripMenuItem;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ToolStripMenuItem 关于信息记录系统ToolStripMenuItem;
     }
 }
 

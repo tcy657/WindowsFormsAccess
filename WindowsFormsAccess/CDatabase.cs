@@ -33,7 +33,7 @@ namespace WindowsFormsAccess
         int tabPage1Index = 100; //tabControl1索引
         int tabPage2Index = 100; //tabControl2索引
 
-        string ftpRootPath = @"d:\ftp\"; //文件存放位置
+        string ftpRootPath = @"d:\rootPath\"; //文件存放位置
         bool bXinJian = false; //新建则为true,控制detail-datagridview的操作控件使能（false）/禁用(true)。
                                //新建则控件禁用，加载后恢复使能
                                //防止在未创建“用户基本信息”时，先创建后面的sheet2-sheet7信息，导致信息不可用
@@ -76,19 +76,46 @@ namespace WindowsFormsAccess
             }
 
             //显示数据表全部内容到dataGridView1；
-            private void databind(string sqlstr,  DataGridView dataGridView1)
+            private void databind1(string sqlstr, DataGridView dataGridViewBin)
             {
                 DataTable dt = new DataTable();
+
                 dt = achelp.GetDataTableFromDB(sqlstr);
-                dataGridView1.DataSource = dt;
+                dataGridViewBin.DataSource = dt;
             }
 
+            //显示数据表全部内容到dataGridView1，传递引用；
+            private void databind(string sqlstr,ref  DataGridView dataGridViewBin)
+            {
+                DataTable dt = new DataTable();
+
+                dt = achelp.GetDataTableFromDB(sqlstr);
+                dataGridViewBin.DataSource = dt;
+            }
+
+
+            //清空dataGridView1；
+            private void clearDataGridView1(ref DataGridView dataGridViewBin)
+            {
+
+                if (dataGridView1.DataSource != null)
+                {
+                    DataTable dt = (DataTable)dataGridViewBin.DataSource;
+                    dt.Rows.Clear();
+                    dataGridViewBin.DataSource = dt;
+                }
+                else
+                {
+                    dataGridViewBin.Rows.Clear();
+                }
+                
+            }
             //初始化
             private void initDo()
             {               
                 //1 当前用户
-                tssLabel1.Text = "当前用户：管理员";
-                tssLabel2.Text = "| 一定成功，加油！";
+                tssLabel1.Text = "||当前用户：管理员 ||";
+                tssLabel2.Text = "欢迎使用信息管理系统";
 
                 //2 隐藏多余tab页
                 tabControl1.TabPages.Remove(tabPage2); //调试用
@@ -97,7 +124,7 @@ namespace WindowsFormsAccess
 
                 //3 显示用户列表
                 string sql1 = "select * from Users"; //重新刷新
-                databind(sql1, dataGridView1);
+                databind(sql1, ref  dataGridView1);
                 //dataGridView1.Columns[0].Visible = false;
                 dataGridView1.Columns[0].HeaderCell.Value = "编号"; //自动递增项
                 dataGridView1.Columns[1].Visible = false; //不显示“编号”，多余的设计字段
@@ -149,8 +176,23 @@ namespace WindowsFormsAccess
                 this.tabControl1.SelectedIndex = 0; //跳到首页 
                 this.tabControl2.SelectedIndex = 0; //跳到首页 
 
-                
-                
+                //7 设置dgview2-7报头。
+                loadSheet2_7();
+
+                //8 初始化file选择控件
+                save.Filter = "excel files(*.xls)|*.xls";
+                save.Title = @"C:\AutoTestTool";
+                                
+                //9 所有datagridview不可编辑
+                dataGridView1.ReadOnly = true;
+                dgView1.ReadOnly = true;
+                dgView2.ReadOnly = true;
+                dgView3.ReadOnly = true;
+                dgView4.ReadOnly = true;
+                dgView5.ReadOnly = true;
+                dgView6.ReadOnly = true;
+                dgView7.ReadOnly = true;
+
             }
 
             //根据“true/false”转换为汉字(hanzi)“是/否”
@@ -185,6 +227,20 @@ namespace WindowsFormsAccess
                 }
                 while (s < delayTime);
                 return true;
+            }
+
+        //隐藏其他tab页
+            private void hideTab2Control2(ref TabPage x)
+            {
+                foreach (TabPage i in tabControl2.TabPages)
+                {
+                        //tabControl2.TabPages.Remove(i);  //隐藏
+                    i.Parent = null;
+                }
+                
+                //tabControl2.TabPages.Add(x);  //显示
+                x.Parent = tabControl2;
+                
             }
 
         #endregion 公用方法
@@ -337,7 +393,7 @@ namespace WindowsFormsAccess
             }
 
             string sql1 = "select * from Users"; //重新刷新
-            databind(sql1, dataGridView1);
+            databind(sql1, ref dataGridView1);
 
             return result;
         }
@@ -382,7 +438,7 @@ namespace WindowsFormsAccess
                bool ret = doS2XinFuZhu.Add(modelS2XinFuZhu);
 
                string sql1 = "select * from s2XinFuZhu where iUserID = " + gOid.ToString(); //重新刷新，只显示本用户的信息
-                databind(sql1, dgView2);
+               databind(sql1, ref dgView2);
 
                 //清空
 
@@ -411,7 +467,7 @@ namespace WindowsFormsAccess
                     bool ret = doS2XinFuZhu.Delete(Convert.ToInt32(oid));
                 }
                 string sql1 = "select * from s2XinFuZhu where iUserID = " + gOid.ToString(); //重新刷新，只显示本用户的信息
-                databind(sql1, dgView2);
+                databind(sql1, ref dgView2);
 
                 //显示
                 output("Sheet2删除成功!");
@@ -455,7 +511,7 @@ namespace WindowsFormsAccess
 
             string sql1 = "select * from s2XinFuZhu where iUserID = " + gOid.ToString(); //重新刷新，只显示本用户的信息
                 //刷新主页面，防止后台改了access数据库后，基本信息页面刷新了，主页面不刷新。
-            databind(sql1, dgView2);
+            databind(sql1, ref  dgView2);
 
             gFlagAdd2 = 0; //设置局部更新标志位
 
@@ -472,7 +528,7 @@ namespace WindowsFormsAccess
             {
                 if (textBox12.Text == "") //住院号不能为空
                 {
-                    output("住院号不能为空");
+                    MessageBox.Show("住院号不能为空", "系统提示");
                     return false;
                 }
 
@@ -532,7 +588,7 @@ namespace WindowsFormsAccess
             }
 
             string sql1 = "select * from s2XinFuZhu where iUserID = " + gOid.ToString(); //重新刷新，只显示本用户的信息
-            databind(sql1, dgView2);
+            databind(sql1, ref  dgView2);
 
             return result;
         }
@@ -589,7 +645,7 @@ namespace WindowsFormsAccess
             bool ret = dos3ShuHouFuZhu.Add(ms3ShuHouFuZhu);
 
             string sql1 = "select * from s3ShuHouFuZhu where iUserID = " + gOid.ToString(); //重新刷新，只显示本用户的信息
-            databind(sql1, dgView3);
+            databind(sql1, ref  dgView3);
 
             //清空
 
@@ -618,7 +674,7 @@ namespace WindowsFormsAccess
                     bool ret = dos3ShuHouFuZhu.Delete(Convert.ToInt32(oid));
                 }
                 string sql1 = "select * from s3ShuHouFuZhu where iUserID = " + gOid.ToString(); //重新刷新，只显示本用户的信息
-                databind(sql1, dgView3);
+                databind(sql1, ref  dgView3);
 
                 //显示
                 output("Sheet3删除成功!");
@@ -679,7 +735,7 @@ namespace WindowsFormsAccess
 
             string sql1 = "select * from s3ShuHouFuZhu where iUserID = " + gOid.ToString(); //重新刷新，只显示本用户的信息
             //刷新主页面，防止后台改了access数据库后，基本信息页面刷新了，主页面不刷新。
-            databind(sql1, dgView3);
+            databind(sql1, ref  dgView3);
 
             gFlagAdd3 = 0; //设置局部更新标志位
 
@@ -769,7 +825,7 @@ namespace WindowsFormsAccess
             }
 
             string sql1 = "select * from s3ShuHouFuZhu where iUserID = " + gOid.ToString(); //重新刷新，只显示本用户的信息
-            databind(sql1, dgView3);
+            databind(sql1, ref dgView3);
 
             return result;
         }
@@ -804,7 +860,7 @@ namespace WindowsFormsAccess
             bool ret = dos4SuiZhen.Add(ms4SuiZhen);
 
             string sql1 = "select * from s4SuiZhen where iUserID = " + gOid.ToString(); //重新刷新，只显示本用户的信息
-            databind(sql1, dgView4);
+            databind(sql1, ref  dgView4);
 
             //清空
 
@@ -833,7 +889,7 @@ namespace WindowsFormsAccess
                     bool ret = dos4SuiZhen.Delete(Convert.ToInt32(oid));
                 }
                 string sql1 = "select * from s4SuiZhen where iUserID = " + gOid.ToString(); //重新刷新，只显示本用户的信息
-                databind(sql1, dgView4);
+                databind(sql1, ref dgView4);
 
                 //显示
                 output("Sheet4删除成功!");
@@ -867,7 +923,7 @@ namespace WindowsFormsAccess
 
             string sql1 = "select * from s4SuiZhen where iUserID = " + gOid.ToString(); //重新刷新，只显示本用户的信息
             //刷新主页面，防止后台改了access数据库后，基本信息页面刷新了，主页面不刷新。
-            databind(sql1, dgView4);
+            databind(sql1, ref  dgView4);
 
             gFlagAdd4 = 0; //设置局部更新标志位
 
@@ -884,7 +940,7 @@ namespace WindowsFormsAccess
             {
                 if (textBox45.Text == "") //住院号不能为空
                 {
-                    MessageBox.Show("住院号不能为空");
+                    MessageBox.Show("住院号不能为空", "系统提示");
                     return false;
                 }
 
@@ -935,7 +991,7 @@ namespace WindowsFormsAccess
             }
 
             string sql1 = "select * from s4SuiZhen where iUserID = " + gOid.ToString(); //重新刷新，只显示本用户的信息
-            databind(sql1, dgView4);
+            databind(sql1, ref dgView4);
 
             return result;
         }
@@ -966,7 +1022,7 @@ namespace WindowsFormsAccess
             bool ret = dos5ShuJuCunZhu.Add(ms5ShuJuCunZhu);
 
             string sql1 = "select * from s5ShuJuCunZhu where iUserID = " + gOid.ToString(); //重新刷新，只显示本用户的信息
-            databind(sql1, dgView5);
+            databind(sql1, ref  dgView5);
 
             //清空
 
@@ -995,7 +1051,7 @@ namespace WindowsFormsAccess
                     bool ret = dos5ShuJuCunZhu.Delete(Convert.ToInt32(oid));
                 }
                 string sql1 = "select * from s5ShuJuCunZhu where iUserID = " + gOid.ToString(); //重新刷新，只显示本用户的信息
-                databind(sql1, dgView5);
+                databind(sql1, ref dgView5);
 
                 //显示
                 output("Sheet5删除成功!");
@@ -1028,7 +1084,7 @@ namespace WindowsFormsAccess
 
             string sql1 = "select * from s5ShuJuCunZhu where iUserID = " + gOid.ToString(); //重新刷新，只显示本用户的信息
             //刷新主页面，防止后台改了access数据库后，基本信息页面刷新了，主页面不刷新。
-            databind(sql1, dgView5);
+            databind(sql1, ref dgView5);
 
             gFlagAdd5 = 0; //设置局部更新标志位
 
@@ -1045,7 +1101,7 @@ namespace WindowsFormsAccess
             {
                 if (textBox81.Text == "") //档案号不能为空
                 {
-                    MessageBox.Show("档案号不能为空");
+                    MessageBox.Show("住院号不能为空", "系统提示");
                     return false;
                 }
                 
@@ -1100,7 +1156,7 @@ namespace WindowsFormsAccess
             }
 
             string sql1 = "select * from s5ShuJuCunZhu where iUserID = " + gOid.ToString(); //重新刷新，只显示本用户的信息
-            databind(sql1, dgView5);
+            databind(sql1, ref  dgView5);
 
             return result;
         }
@@ -1133,7 +1189,7 @@ namespace WindowsFormsAccess
             bool ret = dos6QiBingQingKuang.Add(ms6QiBingQingKuang);
 
             string sql1 = "select * from s6QiBingQingKuang where iUserID = " + gOid.ToString(); //重新刷新，只显示本用户的信息
-            databind(sql1, dgView6);
+            databind(sql1, ref dgView6);
 
             //清空
 
@@ -1162,7 +1218,7 @@ namespace WindowsFormsAccess
                     bool ret = dos6QiBingQingKuang.Delete(Convert.ToInt32(oid));
                 }
                 string sql1 = "select * from s6QiBingQingKuang where iUserID = " + gOid.ToString(); //重新刷新，只显示本用户的信息
-                databind(sql1, dgView6);
+                databind(sql1, ref  dgView6);
 
                 //显示
                 outputLabel("Sheet6删除成功!");
@@ -1197,7 +1253,7 @@ namespace WindowsFormsAccess
 
             string sql1 = "select * from s6QiBingQingKuang where iUserID = " + gOid.ToString(); //重新刷新，只显示本用户的信息
             //刷新主页面，防止后台改了access数据库后，基本信息页面刷新了，主页面不刷新。
-            databind(sql1, dgView6);
+            databind(sql1, ref dgView6);
 
             gFlagAdd6 = 0; //设置局部更新标志位
 
@@ -1214,7 +1270,7 @@ namespace WindowsFormsAccess
             {
                 if (textBox82.Text == "") //编号不能为空
                 {
-                    MessageBox.Show("编号不能为空");
+                    MessageBox.Show("编号不能为空", "系统提示");
                     return false;
                 }
 
@@ -1263,7 +1319,7 @@ namespace WindowsFormsAccess
             }
 
             string sql1 = "select * from s6QiBingQingKuang where iUserID = " + gOid.ToString(); //重新刷新，只显示本用户的信息
-            databind(sql1, dgView6);
+            databind(sql1, ref  dgView6);
 
             return result;
         }
@@ -1404,7 +1460,7 @@ namespace WindowsFormsAccess
             bool ret = dos7ShuQianPingGu.Add(ms7ShuQianPingGu);
 
             string sql1 = "select * from s7ShuQianPingGu where iUserID = " + gOid.ToString(); //重新刷新，只显示本用户的信息
-            databind(sql1, dgView7);
+            databind(sql1, ref  dgView7);
 
             //清空
 
@@ -1433,7 +1489,7 @@ namespace WindowsFormsAccess
                     bool ret = dos7ShuQianPingGu.Delete(Convert.ToInt32(oid));
                 }
                 string sql1 = "select * from s7ShuQianPingGu where iUserID = " + gOid.ToString(); //重新刷新，只显示本用户的信息
-                databind(sql1, dgView7);
+                databind(sql1, ref dgView7);
 
                 //显示
                 outputLabel("Sheet7删除成功!");
@@ -1576,7 +1632,7 @@ namespace WindowsFormsAccess
 
             string sql1 = "select * from s7ShuQianPingGu where iUserID = " + gOid.ToString(); //重新刷新，只显示本用户的信息
             //刷新主页面，防止后台改了access数据库后，基本信息页面刷新了，主页面不刷新。
-            databind(sql1, dgView7);
+            databind(sql1, ref dgView7);
 
             gFlagAdd7 = 0; //设置局部更新标志位
 
@@ -1591,18 +1647,13 @@ namespace WindowsFormsAccess
             bool result = false; //返回值
             try
             {
-                if (textBox82.Text == "") //编号不能为空
-                {
-                    MessageBox.Show("编号不能为空");
-                    return false;
-                }
-
+               
                 //更新
                 ms7ShuQianPingGu.ID = gOid7;
                 ms7ShuQianPingGu.iUserID = gOid;
                 if (f7.Text1 == "") //编号
                 {
-                    output("编号不能为空");
+                    MessageBox.Show("编号不能为空", "系统提示");
                     return false;
                 }
 
@@ -1758,7 +1809,7 @@ namespace WindowsFormsAccess
             }
 
             string sql1 = "select * from s7ShuQianPingGu where iUserID = " + gOid.ToString(); //重新刷新，只显示本用户的信息
-            databind(sql1, dgView7);
+            databind(sql1, ref dgView7);
 
             return result;
         }
@@ -1965,6 +2016,494 @@ namespace WindowsFormsAccess
         }
   
     #endregion test
+
+        #region 加载
+        //读取sheet2内容到页面
+        private void loadSheet2()
+        {
+            string sql1 = "select * from s2XinFuZhu where iUserID=" + gOid; //重新刷新
+            databind(sql1, ref dgView2);
+            dgView2.Columns[0].Visible = false;             //dgView2, sheet2
+            dgView2.Columns[1].HeaderCell.Value = "编码";
+            dgView2.Columns[2].HeaderCell.Value = "新辅助";
+            dgView2.Columns[3].HeaderCell.Value = "住院号";
+            dgView2.Columns[4].HeaderCell.Value = "方案";
+            dgView2.Columns[5].HeaderCell.Value = "剂量";
+            dgView2.Columns[6].HeaderCell.Value = "疗程";
+            dgView2.Columns[7].HeaderCell.Value = "疗效评价";
+            dgView2.Columns[8].HeaderCell.Value = "放疗方案";
+            dgView2.Columns[9].HeaderCell.Value = "放疗疗程";
+            dgView2.Columns[10].HeaderCell.Value = "术前二次病检";
+            dgView2.Columns[11].HeaderCell.Value = "结果";
+            dgView2.Columns[12].HeaderCell.Value = "新辅助放疗";
+            dgView2.Columns[13].HeaderCell.Value = "UserID";
+        }
+
+        private void loadSheet3()
+        {
+            //读取sheet3内容到页面
+            string sql1 = "select * from s3ShuHouFuZhu where iUserID=" + gOid; //重新刷新
+            databind(sql1, ref dgView3);
+            dgView3.Columns[0].Visible = false;
+            dgView3.Columns[1].HeaderCell.Value = "编码";
+            dgView3.Columns[2].HeaderCell.Value = "辅助化疗";
+            dgView3.Columns[3].HeaderCell.Value = "周期";
+            dgView3.Columns[4].HeaderCell.Value = "方案";
+            dgView3.Columns[5].HeaderCell.Value = "体表面积";
+            dgView3.Columns[6].HeaderCell.Value = "实际剂量";
+            dgView3.Columns[7].HeaderCell.Value = "WBC";
+            dgView3.Columns[8].HeaderCell.Value = "Hb";
+            dgView3.Columns[9].HeaderCell.Value = "PLT";
+            dgView3.Columns[10].HeaderCell.Value = "BMI";
+            dgView3.Columns[11].HeaderCell.Value = "NRS2002";
+            dgView3.Columns[12].HeaderCell.Value = "ECOG";
+            dgView3.Columns[13].HeaderCell.Value = "复查";
+            dgView3.Columns[14].HeaderCell.Value = "CT";
+            dgView3.Columns[15].HeaderCell.Value = "MRI";
+            dgView3.Columns[16].HeaderCell.Value = "内镜";
+            dgView3.Columns[17].HeaderCell.Value = "PET";
+            dgView3.Columns[18].HeaderCell.Value = "复发";
+            dgView3.Columns[19].HeaderCell.Value = "位置";
+            dgView3.Columns[20].HeaderCell.Value = "处理方式";
+            dgView3.Columns[21].HeaderCell.Value = "剂量";
+            dgView3.Columns[22].HeaderCell.Value = "疗程";
+            dgView3.Columns[23].HeaderCell.Value = "疗效评价";
+            dgView3.Columns[24].HeaderCell.Value = "用户ID";
+            dgView3.Columns[25].HeaderCell.Value = "住院号";
+            dgView3.Columns[26].HeaderCell.Value = "靶向药物";
+            dgView3.Columns[27].HeaderCell.Value = "药物品种";
+            dgView3.Columns[28].HeaderCell.Value = "检测结果";
+        }
+        private void loadSheet4()
+        {
+            //读取sheet4内容到页面
+            string sql1 = "select * from s4SuiZhen where iUserID=" + gOid; //重新刷新
+            databind(sql1, ref dgView4);
+            dgView4.Columns[0].Visible = false;
+            dgView4.Columns[1].HeaderCell.Value = "编码";
+            dgView4.Columns[2].HeaderCell.Value = "随诊次数";
+            dgView4.Columns[3].HeaderCell.Value = "随诊时间";
+            dgView4.Columns[4].HeaderCell.Value = "住院号";
+            dgView4.Columns[5].HeaderCell.Value = "CT";
+            dgView4.Columns[6].HeaderCell.Value = "MRI";
+            dgView4.Columns[7].HeaderCell.Value = "内镜";
+            dgView4.Columns[8].HeaderCell.Value = "PET";
+            dgView4.Columns[9].HeaderCell.Value = "复发";
+            dgView4.Columns[10].HeaderCell.Value = "用户ID";
+        }
+        private void loadSheet5()
+        {
+            //读取sheet5内容到页面
+            string sql1 = "select * from s5ShuJuCunZhu where iUserID=" + gOid; //重新刷新
+            databind(sql1, ref  dgView5);
+            dgView5.Columns[0].Visible = false;
+            dgView5.Columns[1].HeaderCell.Value = "档案号/编码";
+            dgView5.Columns[2].HeaderCell.Value = "CT";
+            dgView5.Columns[3].HeaderCell.Value = "磁共振";
+            dgView5.Columns[4].HeaderCell.Value = "病理";
+            dgView5.Columns[5].HeaderCell.Value = "用户ID";
+        }
+        private void loadSheet6()
+        {
+            //读取sheet6内容到页面
+            string sql1 = "select * from s6QiBingQingKuang where iUserID=" + gOid; //重新刷新
+            databind(sql1, ref dgView6);
+            dgView6.Columns[0].Visible = false;
+            dgView6.Columns[1].HeaderCell.Value = "编码";
+            dgView6.Columns[2].HeaderCell.Value = "肿瘤位置";
+            dgView6.Columns[3].HeaderCell.Value = "首发症状";
+            dgView6.Columns[4].HeaderCell.Value = "时间";
+            dgView6.Columns[5].HeaderCell.Value = "初步诊断时间";
+            dgView6.Columns[6].Visible = false; //"结果";
+            dgView6.Columns[7].HeaderCell.Value = "诊断依据";
+            dgView6.Columns[8].HeaderCell.Value = "用户ID";
+        }
+        private void loadSheet7()
+        {
+            //读取sheet7内容到页面
+            string sql1 = "select * from s7ShuQianPingGu where iUserID=" + gOid; //重新刷新
+            databind(sql1, ref  dgView7);
+            dgView7.Columns[0].Visible = false;
+            dgView7.Columns[1].HeaderCell.Value = "编码";
+            dgView7.Columns[2].HeaderCell.Value = "我院病检";
+            dgView7.Columns[3].HeaderCell.Value = "结果";
+            dgView7.Columns[4].HeaderCell.Value = "病理号";
+            dgView7.Columns[5].HeaderCell.Value = "我院CT";
+            dgView7.Columns[6].HeaderCell.Value = "肿瘤大小";
+            dgView7.Columns[7].HeaderCell.Value = "局部侵犯";
+            dgView7.Columns[8].HeaderCell.Value = "淋巴结转移";
+            dgView7.Columns[9].HeaderCell.Value = "转移";
+            dgView7.Columns[10].HeaderCell.Value = "部位";
+            dgView7.Columns[11].HeaderCell.Value = "我院MRI";
+            dgView7.Columns[12].HeaderCell.Value = "MRI肿瘤大小";
+            dgView7.Columns[13].HeaderCell.Value = "MRI局部侵犯";
+            dgView7.Columns[14].HeaderCell.Value = "MRI淋巴转移";
+            dgView7.Columns[15].HeaderCell.Value = "MRI转移";
+            dgView7.Columns[16].HeaderCell.Value = "MRI部位";
+            dgView7.Columns[17].HeaderCell.Value = "PET";
+            dgView7.Columns[18].HeaderCell.Value = "PET肿瘤大小";
+            dgView7.Columns[19].HeaderCell.Value = "PET局部侵犯";
+            dgView7.Columns[20].HeaderCell.Value = "PET代谢强度";
+            dgView7.Columns[21].HeaderCell.Value = "PET淋巴转移";
+            dgView7.Columns[22].HeaderCell.Value = "PET转移";
+            dgView7.Columns[23].HeaderCell.Value = "PET部位";
+            dgView7.Columns[24].HeaderCell.Value = "转移部位代谢强度";
+            dgView7.Columns[25].HeaderCell.Value = "CT";
+            dgView7.Columns[26].HeaderCell.Value = "CN";
+            dgView7.Columns[27].HeaderCell.Value = "CM";
+            dgView7.Columns[28].HeaderCell.Value = "WBC";
+            dgView7.Columns[29].HeaderCell.Value = "Hb";
+            dgView7.Columns[30].HeaderCell.Value = "ALB";
+            dgView7.Columns[31].HeaderCell.Value = "CEA";
+            dgView7.Columns[32].HeaderCell.Value = "CA125";
+            dgView7.Columns[33].HeaderCell.Value = "CA199";
+            dgView7.Columns[34].HeaderCell.Value = "CA724";
+            dgView7.Columns[35].HeaderCell.Value = "AFP";
+            dgView7.Columns[36].HeaderCell.Value = "是否梗阻";
+            dgView7.Columns[37].HeaderCell.Value = "是否出血";
+            dgView7.Columns[38].HeaderCell.Value = "是否穿孔";
+            dgView7.Columns[39].HeaderCell.Value = "BMI";
+            dgView7.Columns[40].HeaderCell.Value = "NRS2002";
+            dgView7.Columns[41].HeaderCell.Value = "疼痛评分";
+            dgView7.Columns[42].HeaderCell.Value = "ECOG";
+            dgView7.Columns[43].HeaderCell.Value = "心功能";
+            dgView7.Columns[44].HeaderCell.Value = "肺功能";
+            dgView7.Columns[45].HeaderCell.Value = "肾功能";
+            dgView7.Columns[46].HeaderCell.Value = "肝功能";
+            dgView7.Columns[47].HeaderCell.Value = "凝血功能";
+            dgView7.Columns[48].HeaderCell.Value = "是否急诊手术";
+            dgView7.Columns[49].HeaderCell.Value = "手术日期";
+            dgView7.Columns[50].HeaderCell.Value = "腔镜/开腹";
+            dgView7.Columns[51].HeaderCell.Value = "术式";
+            dgView7.Columns[52].HeaderCell.Value = "手术时间";
+            dgView7.Columns[53].HeaderCell.Value = "开腹吻合时间";
+            dgView7.Columns[54].HeaderCell.Value = "肿瘤具体位置";
+            dgView7.Columns[55].HeaderCell.Value = "联合器脏切除";
+            dgView7.Columns[56].HeaderCell.Value = "出血量";
+            dgView7.Columns[57].HeaderCell.Value = "腹腔污染";
+            dgView7.Columns[58].HeaderCell.Value = "副损伤";
+            dgView7.Columns[59].HeaderCell.Value = "是否营养管";
+            dgView7.Columns[60].HeaderCell.Value = "是否造篓";
+            dgView7.Columns[61].HeaderCell.Value = "是否术中病理";
+            dgView7.Columns[62].HeaderCell.Value = "结果2";
+            dgView7.Columns[63].HeaderCell.Value = "切除情况";
+            dgView7.Columns[64].HeaderCell.Value = "淋巴结清扫";
+            dgView7.Columns[65].HeaderCell.Value = "特殊说明";
+            dgView7.Columns[66].HeaderCell.Value = "ERAS";
+            dgView7.Columns[67].HeaderCell.Value = "ICU监护";
+            dgView7.Columns[68].HeaderCell.Value = "监护时间";
+            dgView7.Columns[69].HeaderCell.Value = "进水时间";
+            dgView7.Columns[70].HeaderCell.Value = "通气时间";
+            dgView7.Columns[71].HeaderCell.Value = "排便时间";
+            dgView7.Columns[72].HeaderCell.Value = "腹痛缓解时间";
+            dgView7.Columns[73].HeaderCell.Value = "尿管拔除时间";
+            dgView7.Columns[74].HeaderCell.Value = "引流管拔除时间";
+            dgView7.Columns[75].HeaderCell.Value = "下床时间";
+            dgView7.Columns[76].HeaderCell.Value = "进食时间";
+            dgView7.Columns[77].HeaderCell.Value = "是否肠内营养管";
+            dgView7.Columns[78].HeaderCell.Value = "肠内营养管时间";
+            dgView7.Columns[79].HeaderCell.Value = "TPN时间";
+            dgView7.Columns[80].HeaderCell.Value = "术后出血";
+            dgView7.Columns[81].HeaderCell.Value = "腹腔感染";
+            dgView7.Columns[82].HeaderCell.Value = "切口感染";
+            dgView7.Columns[83].HeaderCell.Value = "吻合口瘘";
+            dgView7.Columns[84].HeaderCell.Value = "肠梗阻";
+            dgView7.Columns[85].HeaderCell.Value = "胃瘫";
+            dgView7.Columns[86].HeaderCell.Value = "肺部感染";
+            dgView7.Columns[87].HeaderCell.Value = "低蛋白血症";
+            dgView7.Columns[88].HeaderCell.Value = "胃管脱出";
+            dgView7.Columns[89].HeaderCell.Value = "营养管脱出";
+            dgView7.Columns[90].HeaderCell.Value = "造口并发症";
+            dgView7.Columns[91].HeaderCell.Value = "是否二次手术";
+            dgView7.Columns[92].HeaderCell.Value = "手术时间2";
+            dgView7.Columns[93].HeaderCell.Value = "手术方式2";
+            dgView7.Columns[94].HeaderCell.Value = "解决问题";
+            dgView7.Columns[95].HeaderCell.Value = "术后病理诊断";
+            dgView7.Columns[96].HeaderCell.Value = "分化程度";
+            dgView7.Columns[97].HeaderCell.Value = "浸润深度";
+            dgView7.Columns[98].HeaderCell.Value = "脉管癌栓";
+            dgView7.Columns[99].HeaderCell.Value = "神经侵犯";
+            dgView7.Columns[100].HeaderCell.Value = "癌结节";
+            dgView7.Columns[101].HeaderCell.Value = "总淋巴结数";
+            dgView7.Columns[102].HeaderCell.Value = "转移淋巴结数";
+            dgView7.Columns[103].HeaderCell.Value = "MSI";
+            dgView7.Columns[104].HeaderCell.Value = "HER_2";
+            dgView7.Columns[105].HeaderCell.Value = "P53";
+            dgView7.Columns[106].HeaderCell.Value = "Ki_67";
+            dgView7.Columns[107].HeaderCell.Value = "K_RAS";
+            dgView7.Columns[108].HeaderCell.Value = "N_RAS";
+            dgView7.Columns[109].HeaderCell.Value = "术后病理分期";
+            dgView7.Columns[110].HeaderCell.Value = "MSI确证";
+            dgView7.Columns[111].HeaderCell.Value = "基因检测";
+            dgView7.Columns[112].HeaderCell.Value = "出院时间";
+            dgView7.Columns[113].HeaderCell.Value = "出院情况";
+            dgView7.Columns[114].HeaderCell.Value = "医疗费用";
+            dgView7.Columns[115].HeaderCell.Value = "用户ID";
+        }
+        #endregion
+
+        #region 加载，第一次设置报头
+        //读取sheet2-7内容到页面
+        private void loadSheet2_7()
+        {
+            string sql1 = "select * from s2XinFuZhu "; //重新刷新
+            //显示数据表全部内容到dataGridView1；
+            DataTable dt = new DataTable();
+            dt = achelp.GetDataTableFromDB(sql1);
+            //dataGridView1.DataSource = dt;
+            dgView2.DataSource = dt;
+            dgView2.Columns[0].Visible = false;             //dgView2, sheet2
+            dgView2.Columns[1].HeaderCell.Value = "编码";
+            dgView2.Columns[2].HeaderCell.Value = "新辅助";
+            dgView2.Columns[3].HeaderCell.Value = "住院号";
+            dgView2.Columns[4].HeaderCell.Value = "方案";
+            dgView2.Columns[5].HeaderCell.Value = "剂量";
+            dgView2.Columns[6].HeaderCell.Value = "疗程";
+            dgView2.Columns[7].HeaderCell.Value = "疗效评价";
+            dgView2.Columns[8].HeaderCell.Value = "放疗方案";
+            dgView2.Columns[9].HeaderCell.Value = "放疗疗程";
+            dgView2.Columns[10].HeaderCell.Value = "术前二次病检";
+            dgView2.Columns[11].HeaderCell.Value = "结果";
+            dgView2.Columns[12].HeaderCell.Value = "新辅助放疗";
+            dgView2.Columns[13].HeaderCell.Value = "UserID";
+
+            sql1 = "select * from s3ShuHouFuZhu";
+            dt = achelp.GetDataTableFromDB(sql1);
+            dgView3.DataSource = dt;
+            dgView3.Columns[0].Visible = false;
+            dgView3.Columns[1].HeaderCell.Value = "编码";
+            dgView3.Columns[2].HeaderCell.Value = "辅助化疗";
+            dgView3.Columns[3].HeaderCell.Value = "周期";
+            dgView3.Columns[4].HeaderCell.Value = "方案";
+            dgView3.Columns[5].HeaderCell.Value = "体表面积";
+            dgView3.Columns[6].HeaderCell.Value = "实际剂量";
+            dgView3.Columns[7].HeaderCell.Value = "WBC";
+            dgView3.Columns[8].HeaderCell.Value = "Hb";
+            dgView3.Columns[9].HeaderCell.Value = "PLT";
+            dgView3.Columns[10].HeaderCell.Value = "BMI";
+            dgView3.Columns[11].HeaderCell.Value = "NRS2002";
+            dgView3.Columns[12].HeaderCell.Value = "ECOG";
+            dgView3.Columns[13].HeaderCell.Value = "复查";
+            dgView3.Columns[14].HeaderCell.Value = "CT";
+            dgView3.Columns[15].HeaderCell.Value = "MRI";
+            dgView3.Columns[16].HeaderCell.Value = "内镜";
+            dgView3.Columns[17].HeaderCell.Value = "PET";
+            dgView3.Columns[18].HeaderCell.Value = "复发";
+            dgView3.Columns[19].HeaderCell.Value = "位置";
+            dgView3.Columns[20].HeaderCell.Value = "处理方式";
+            dgView3.Columns[21].HeaderCell.Value = "剂量";
+            dgView3.Columns[22].HeaderCell.Value = "疗程";
+            dgView3.Columns[23].HeaderCell.Value = "疗效评价";
+            dgView3.Columns[24].HeaderCell.Value = "用户ID";
+            dgView3.Columns[25].HeaderCell.Value = "住院号";
+            dgView3.Columns[26].HeaderCell.Value = "靶向药物";
+            dgView3.Columns[27].HeaderCell.Value = "药物品种";
+            dgView3.Columns[28].HeaderCell.Value = "检测结果";
+
+            sql1 = "select * from s4SuiZhen";
+            dt = achelp.GetDataTableFromDB(sql1);
+            dgView4.DataSource = dt;
+            dgView4.Columns[0].Visible = false;
+            dgView4.Columns[1].HeaderCell.Value = "编码";
+            dgView4.Columns[2].HeaderCell.Value = "随诊次数";
+            dgView4.Columns[3].HeaderCell.Value = "随诊时间";
+            dgView4.Columns[4].HeaderCell.Value = "住院号";
+            dgView4.Columns[5].HeaderCell.Value = "CT";
+            dgView4.Columns[6].HeaderCell.Value = "MRI";
+            dgView4.Columns[7].HeaderCell.Value = "内镜";
+            dgView4.Columns[8].HeaderCell.Value = "PET";
+            dgView4.Columns[9].HeaderCell.Value = "复发";
+            dgView4.Columns[10].HeaderCell.Value = "用户ID";
+
+            sql1 = "select * from s5ShuJuCunZhu";
+            dt = achelp.GetDataTableFromDB(sql1);
+            dgView5.DataSource = dt;
+            dgView5.Columns[0].Visible = false;
+            dgView5.Columns[1].HeaderCell.Value = "档案号/编码";
+            dgView5.Columns[2].HeaderCell.Value = "CT";
+            dgView5.Columns[3].HeaderCell.Value = "磁共振";
+            dgView5.Columns[4].HeaderCell.Value = "病理";
+            dgView5.Columns[5].HeaderCell.Value = "用户ID";
+
+            sql1 = "select * from s6QiBingQingKuang";
+            dt = achelp.GetDataTableFromDB(sql1);
+            dgView6.DataSource = dt;
+            dgView6.Columns[0].Visible = false;
+            dgView6.Columns[1].HeaderCell.Value = "编码";
+            dgView6.Columns[2].HeaderCell.Value = "肿瘤位置";
+            dgView6.Columns[3].HeaderCell.Value = "首发症状";
+            dgView6.Columns[4].HeaderCell.Value = "时间";
+            dgView6.Columns[5].HeaderCell.Value = "初步诊断时间";
+            dgView6.Columns[6].Visible = false; //"结果";
+            dgView6.Columns[7].HeaderCell.Value = "诊断依据";
+            dgView6.Columns[8].HeaderCell.Value = "用户ID";
+
+            sql1 = "select * from s7ShuQianPingGu";
+            dt = achelp.GetDataTableFromDB(sql1);
+            dgView7.DataSource = dt;
+            dgView7.Columns[0].Visible = false;
+            dgView7.Columns[1].HeaderCell.Value = "编码";
+            dgView7.Columns[2].HeaderCell.Value = "我院病检";
+            dgView7.Columns[3].HeaderCell.Value = "结果";
+            dgView7.Columns[4].HeaderCell.Value = "病理号";
+            dgView7.Columns[5].HeaderCell.Value = "我院CT";
+            dgView7.Columns[6].HeaderCell.Value = "肿瘤大小";
+            dgView7.Columns[7].HeaderCell.Value = "局部侵犯";
+            dgView7.Columns[8].HeaderCell.Value = "淋巴结转移";
+            dgView7.Columns[9].HeaderCell.Value = "转移";
+            dgView7.Columns[10].HeaderCell.Value = "部位";
+            dgView7.Columns[11].HeaderCell.Value = "我院MRI";
+            dgView7.Columns[12].HeaderCell.Value = "MRI肿瘤大小";
+            dgView7.Columns[13].HeaderCell.Value = "MRI局部侵犯";
+            dgView7.Columns[14].HeaderCell.Value = "MRI淋巴转移";
+            dgView7.Columns[15].HeaderCell.Value = "MRI转移";
+            dgView7.Columns[16].HeaderCell.Value = "MRI部位";
+            dgView7.Columns[17].HeaderCell.Value = "PET";
+            dgView7.Columns[18].HeaderCell.Value = "PET肿瘤大小";
+            dgView7.Columns[19].HeaderCell.Value = "PET局部侵犯";
+            dgView7.Columns[20].HeaderCell.Value = "PET代谢强度";
+            dgView7.Columns[21].HeaderCell.Value = "PET淋巴转移";
+            dgView7.Columns[22].HeaderCell.Value = "PET转移";
+            dgView7.Columns[23].HeaderCell.Value = "PET部位";
+            dgView7.Columns[24].HeaderCell.Value = "转移部位代谢强度";
+            dgView7.Columns[25].HeaderCell.Value = "CT";
+            dgView7.Columns[26].HeaderCell.Value = "CN";
+            dgView7.Columns[27].HeaderCell.Value = "CM";
+            dgView7.Columns[28].HeaderCell.Value = "WBC";
+            dgView7.Columns[29].HeaderCell.Value = "Hb";
+            dgView7.Columns[30].HeaderCell.Value = "ALB";
+            dgView7.Columns[31].HeaderCell.Value = "CEA";
+            dgView7.Columns[32].HeaderCell.Value = "CA125";
+            dgView7.Columns[33].HeaderCell.Value = "CA199";
+            dgView7.Columns[34].HeaderCell.Value = "CA724";
+            dgView7.Columns[35].HeaderCell.Value = "AFP";
+            dgView7.Columns[36].HeaderCell.Value = "是否梗阻";
+            dgView7.Columns[37].HeaderCell.Value = "是否出血";
+            dgView7.Columns[38].HeaderCell.Value = "是否穿孔";
+            dgView7.Columns[39].HeaderCell.Value = "BMI";
+            dgView7.Columns[40].HeaderCell.Value = "NRS2002";
+            dgView7.Columns[41].HeaderCell.Value = "疼痛评分";
+            dgView7.Columns[42].HeaderCell.Value = "ECOG";
+            dgView7.Columns[43].HeaderCell.Value = "心功能";
+            dgView7.Columns[44].HeaderCell.Value = "肺功能";
+            dgView7.Columns[45].HeaderCell.Value = "肾功能";
+            dgView7.Columns[46].HeaderCell.Value = "肝功能";
+            dgView7.Columns[47].HeaderCell.Value = "凝血功能";
+            dgView7.Columns[48].HeaderCell.Value = "是否急诊手术";
+            dgView7.Columns[49].HeaderCell.Value = "手术日期";
+            dgView7.Columns[50].HeaderCell.Value = "腔镜/开腹";
+            dgView7.Columns[51].HeaderCell.Value = "术式";
+            dgView7.Columns[52].HeaderCell.Value = "手术时间";
+            dgView7.Columns[53].HeaderCell.Value = "开腹吻合时间";
+            dgView7.Columns[54].HeaderCell.Value = "肿瘤具体位置";
+            dgView7.Columns[55].HeaderCell.Value = "联合器脏切除";
+            dgView7.Columns[56].HeaderCell.Value = "出血量";
+            dgView7.Columns[57].HeaderCell.Value = "腹腔污染";
+            dgView7.Columns[58].HeaderCell.Value = "副损伤";
+            dgView7.Columns[59].HeaderCell.Value = "是否营养管";
+            dgView7.Columns[60].HeaderCell.Value = "是否造篓";
+            dgView7.Columns[61].HeaderCell.Value = "是否术中病理";
+            dgView7.Columns[62].HeaderCell.Value = "结果2";
+            dgView7.Columns[63].HeaderCell.Value = "切除情况";
+            dgView7.Columns[64].HeaderCell.Value = "淋巴结清扫";
+            dgView7.Columns[65].HeaderCell.Value = "特殊说明";
+            dgView7.Columns[66].HeaderCell.Value = "ERAS";
+            dgView7.Columns[67].HeaderCell.Value = "ICU监护";
+            dgView7.Columns[68].HeaderCell.Value = "监护时间";
+            dgView7.Columns[69].HeaderCell.Value = "进水时间";
+            dgView7.Columns[70].HeaderCell.Value = "通气时间";
+            dgView7.Columns[71].HeaderCell.Value = "排便时间";
+            dgView7.Columns[72].HeaderCell.Value = "腹痛缓解时间";
+            dgView7.Columns[73].HeaderCell.Value = "尿管拔除时间";
+            dgView7.Columns[74].HeaderCell.Value = "引流管拔除时间";
+            dgView7.Columns[75].HeaderCell.Value = "下床时间";
+            dgView7.Columns[76].HeaderCell.Value = "进食时间";
+            dgView7.Columns[77].HeaderCell.Value = "是否肠内营养管";
+            dgView7.Columns[78].HeaderCell.Value = "肠内营养管时间";
+            dgView7.Columns[79].HeaderCell.Value = "TPN时间";
+            dgView7.Columns[80].HeaderCell.Value = "术后出血";
+            dgView7.Columns[81].HeaderCell.Value = "腹腔感染";
+            dgView7.Columns[82].HeaderCell.Value = "切口感染";
+            dgView7.Columns[83].HeaderCell.Value = "吻合口瘘";
+            dgView7.Columns[84].HeaderCell.Value = "肠梗阻";
+            dgView7.Columns[85].HeaderCell.Value = "胃瘫";
+            dgView7.Columns[86].HeaderCell.Value = "肺部感染";
+            dgView7.Columns[87].HeaderCell.Value = "低蛋白血症";
+            dgView7.Columns[88].HeaderCell.Value = "胃管脱出";
+            dgView7.Columns[89].HeaderCell.Value = "营养管脱出";
+            dgView7.Columns[90].HeaderCell.Value = "造口并发症";
+            dgView7.Columns[91].HeaderCell.Value = "是否二次手术";
+            dgView7.Columns[92].HeaderCell.Value = "手术时间2";
+            dgView7.Columns[93].HeaderCell.Value = "手术方式2";
+            dgView7.Columns[94].HeaderCell.Value = "解决问题";
+            dgView7.Columns[95].HeaderCell.Value = "术后病理诊断";
+            dgView7.Columns[96].HeaderCell.Value = "分化程度";
+            dgView7.Columns[97].HeaderCell.Value = "浸润深度";
+            dgView7.Columns[98].HeaderCell.Value = "脉管癌栓";
+            dgView7.Columns[99].HeaderCell.Value = "神经侵犯";
+            dgView7.Columns[100].HeaderCell.Value = "癌结节";
+            dgView7.Columns[101].HeaderCell.Value = "总淋巴结数";
+            dgView7.Columns[102].HeaderCell.Value = "转移淋巴结数";
+            dgView7.Columns[103].HeaderCell.Value = "MSI";
+            dgView7.Columns[104].HeaderCell.Value = "HER_2";
+            dgView7.Columns[105].HeaderCell.Value = "P53";
+            dgView7.Columns[106].HeaderCell.Value = "Ki_67";
+            dgView7.Columns[107].HeaderCell.Value = "K_RAS";
+            dgView7.Columns[108].HeaderCell.Value = "N_RAS";
+            dgView7.Columns[109].HeaderCell.Value = "术后病理分期";
+            dgView7.Columns[110].HeaderCell.Value = "MSI确证";
+            dgView7.Columns[111].HeaderCell.Value = "基因检测";
+            dgView7.Columns[112].HeaderCell.Value = "出院时间";
+            dgView7.Columns[113].HeaderCell.Value = "出院情况";
+            dgView7.Columns[114].HeaderCell.Value = "医疗费用";
+            dgView7.Columns[115].HeaderCell.Value = "用户ID";
+        }
+        #endregion
+
+        #region 加载，仅绑定，不设置报头
+        //读取sheet2内容到页面
+        private void loadSheetBindOnly2()
+        {
+            string sql1 = "select * from s2XinFuZhu where iUserID=" + gOid; //重新刷新
+            databind(sql1, ref  dgView2);
+
+        }
+
+        private void loadSheetBindOnly3()
+        {
+            //读取sheet3内容到页面
+            string sql1 = "select * from s3ShuHouFuZhu where iUserID=" + gOid; //重新刷新
+            databind(sql1, ref dgView3);
+
+        }
+        private void loadSheetBindOnly4()
+        {
+            //读取sheet4内容到页面
+            string sql1 = "select * from s4SuiZhen where iUserID=" + gOid; //重新刷新
+            databind(sql1, ref dgView4);
+
+        }
+        private void loadSheetBindOnly5()
+        {
+            //读取sheet5内容到页面
+            string sql1 = "select * from s5ShuJuCunZhu where iUserID=" + gOid; //重新刷新
+            databind(sql1, ref dgView5);
+
+        }
+        private void loadSheetBindOnly6()
+        {
+            //读取sheet6内容到页面
+            string sql1 = "select * from s6QiBingQingKuang where iUserID=" + gOid; //重新刷新
+            databind(sql1, ref  dgView6);
+
+        }
+        private void loadSheetBindOnly7()
+        {
+            //读取sheet7内容到页面
+            string sql1 = "select * from s7ShuQianPingGu where iUserID=" + gOid; //重新刷新
+            databind(sql1, ref  dgView7);
+        }
+        #endregion
 
         #region "others "
         public static class TreeViewItems

@@ -40,8 +40,8 @@ namespace WindowsFormsAccess
         private void initDo()
         {
             //当前用户
-            toolStripStatusLabel1.Text = "当前用户：管理员";
-            toolStripStatusLabel2.Text = "| 一定成功，加油！";          
+            toolStripStatusLabel1.Text = "||当前用户：管理员 ||";
+            toolStripStatusLabel2.Text = "欢迎使用信息管理系统";          
 
         }
 
@@ -799,7 +799,7 @@ namespace WindowsFormsAccess
             {
                 if (textBox53.Text == "") //编号不能为空
                 {
-                    MessageBox.Show("编号不能为空");
+                    MessageBox.Show("编号不能为空", "系统提示");
                     return false;
                 }
 

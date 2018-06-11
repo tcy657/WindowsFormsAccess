@@ -87,11 +87,11 @@
 <Desc/>
 <Recurse>1</Recurse>
 <MatchMode>0</MatchMode>
-<Size>320512</Size>
+<Size>677376</Size>
 <Attrib>32</Attrib>
 <TmCreate>1528421174</TmCreate>
-<TmAccess>1528421174</TmAccess>
-<TmModify>1528388834</TmModify>
+<TmAccess>1528555977</TmAccess>
+<TmModify>1528555697</TmModify>
 <UseTrueVer>1</UseTrueVer>
 <ProdVerMS>65536</ProdVerMS>
 <ProdVerLS>0</ProdVerLS>
@@ -105,14 +105,14 @@
 <Protect>0</Protect>
 <InstallOrder>1000</InstallOrder>
 <SCStartRoot>0</SCStartRoot>
-<SCStartProgs>0</SCStartProgs>
-<SCAppFld>0</SCAppFld>
+<SCStartProgs>1</SCStartProgs>
+<SCAppFld>1</SCAppFld>
 <SCStartup>0</SCStartup>
-<SCDesk>0</SCDesk>
+<SCDesk>1</SCDesk>
 <SCQLaunch>0</SCQLaunch>
 <SCCust>0</SCCust>
 <CustSCPath/>
-<SCDesc>jobs</SCDesc>
+<SCDesc>WindowsFormsAccess</SCDesc>
 <SCComment/>
 <SCArgs/>
 <SCWork/>
@@ -161,11 +161,11 @@
 <Desc>版本记录</Desc>
 <Recurse>1</Recurse>
 <MatchMode>0</MatchMode>
-<Size>0</Size>
+<Size>41</Size>
 <Attrib>32</Attrib>
 <TmCreate>1528421395</TmCreate>
-<TmAccess>1528421395</TmAccess>
-<TmModify>1528421395</TmModify>
+<TmAccess>1528555977</TmAccess>
+<TmModify>1528555977</TmModify>
 <UseTrueVer>0</UseTrueVer>
 <ProdVerMS>0</ProdVerMS>
 <ProdVerLS>0</ProdVerLS>
@@ -225,80 +225,6 @@
 <CRC>0</CRC>
 <StoreOnly>0</StoreOnly>
 </FileData>
-<FileData>
-<FldRef>0</FldRef>
-<FullName>Y:\project\20180508-access\wfsAccessSvn\outputBin\forSetupFactory\ini\config.xml</FullName>
-<FileName>config.xml</FileName>
-<Source>Y:\project\20180508-access\wfsAccessSvn\outputBin\forSetupFactory\ini</Source>
-<Ext>xml</Ext>
-<RTSource>存档</RTSource>
-<Desc/>
-<Recurse>1</Recurse>
-<MatchMode>0</MatchMode>
-<Size>0</Size>
-<Attrib>32</Attrib>
-<TmCreate>1528421496</TmCreate>
-<TmAccess>1528421496</TmAccess>
-<TmModify>1528421496</TmModify>
-<UseTrueVer>0</UseTrueVer>
-<ProdVerMS>0</ProdVerMS>
-<ProdVerLS>0</ProdVerLS>
-<FileVerMS>0</FileVerMS>
-<FileVerLS>0</FileVerLS>
-<FileDateMS>0</FileDateMS>
-<FileDateLS>0</FileDateLS>
-<Dest>%AppFolder%</Dest>
-<Overwrite>3</Overwrite>
-<Backup>0</Backup>
-<Protect>0</Protect>
-<InstallOrder>1000</InstallOrder>
-<SCStartRoot>0</SCStartRoot>
-<SCStartProgs>0</SCStartProgs>
-<SCAppFld>0</SCAppFld>
-<SCStartup>0</SCStartup>
-<SCDesk>0</SCDesk>
-<SCQLaunch>0</SCQLaunch>
-<SCCust>0</SCCust>
-<CustSCPath/>
-<SCDesc>fhaipConf</SCDesc>
-<SCComment/>
-<SCArgs/>
-<SCWork/>
-<UseExtIco>0</UseExtIco>
-<IcoFN/>
-<IcoIdx>0</IcoIdx>
-<IcoShowMd>0</IcoShowMd>
-<IcoHK>0</IcoHK>
-<RegTTF>0</RegTTF>
-<TTFName/>
-<RegOCX>0</RegOCX>
-<RegTLB>0</RegTLB>
-<SupInUse>0</SupInUse>
-<Compress>1</Compress>
-<UseOrigAttr>1</UseOrigAttr>
-<Attr>0</Attr>
-<NoCRC>0</NoCRC>
-<NoRemove>1</NoRemove>
-<Shared>0</Shared>
-<OSCond>
-<OS>32768</OS>
-<OS>65535</OS>
-<OS>65535</OS>
-<OS>65535</OS>
-<OS>65535</OS>
-<OS>65535</OS>
-</OSCond>
-<RTCond/>
-<BuildConfigs>
-<Cfg>All</Cfg>
-</BuildConfigs>
-<Package>无</Package>
-<Packages/>
-<Notes/>
-<CompSize>0</CompSize>
-<CRC>0</CRC>
-<StoreOnly>0</StoreOnly>
-</FileData>
 </ArchiveFiles>
 <ExternalFiles/>
 <BeforeInstallingScreens>
@@ -311,33 +237,43 @@
 <StyleData>
 <CstClrs>0</CstClrs>
 <TBBG format="hex">ffffff</TBBG>
-<BDYBG format="hex">ece9d8</BDYBG>
-<FTBG format="hex">ece9d8</FTBG>
+<BDYBG format="hex">ffffff</BDYBG>
+<FTBG format="hex">ffffff</FTBG>
 <TBTXT format="hex">000000</TBTXT>
-<BDYTXT format="hex">000000</BDYTXT>
+<BDYTXT format="hex">ffffff</BDYTXT>
 <CBG format="hex">ffffff</CBG>
-<C3DFACE format="hex">ece9d8</C3DFACE>
-<C3DHLT format="hex">ece9d8</C3DHLT>
-<C3DLIT format="hex">ffffff</C3DLIT>
-<C3DSH format="hex">aca899</C3DSH>
-<CBTNTXT format="hex">000000</CBTNTXT>
+<C3DFACE format="hex">038df6</C3DFACE>
+<C3DHLT format="hex">038df6</C3DHLT>
+<C3DLIT format="hex">038df6</C3DLIT>
+<C3DSH format="hex">038df6</C3DSH>
+<CBTNTXT format="hex">ffffff</CBTNTXT>
 <CTEXT format="hex">000000</CTEXT>
-<CDISTXT format="hex">aca899</CDISTXT>
+<CDISTXT format="hex">c0c0c0</CDISTXT>
 <CPRGRS format="hex">316ac5</CPRGRS>
-<C3DSHDK format="hex">716f64</C3DSHDK>
-<TBIMG>111_X_63_keyboard.jpg</TBIMG>
-<SBIMG>166_X_312_keyboard.jpg</SBIMG>
-<BDIMG/>
-<BDFILL>0</BDFILL>
-<HDSEP>1</HDSEP>
-<FTSEP>1</FTSEP>
-<CstFnts>0</CstFnts>
+<C3DSHDK format="hex">038df6</C3DSHDK>
+<TBIMG>16_top.jpg</TBIMG>
+<SBIMG>16_side.jpg</SBIMG>
+<BDIMG>16_body.jpg</BDIMG>
+<BDFILL>1</BDFILL>
+<HDSEP>0</HDSEP>
+<FTSEP>0</FTSEP>
+<CstFnts>1</CstFnts>
 <Fonts>
 <FontData>
 <FontName>Arial</FontName>
 <CharacterSet>0</CharacterSet>
 <Height>-13</Height>
 <Weight>700</Weight>
+<Italic>1</Italic>
+<Underline>0</Underline>
+<StrikeOut>0</StrikeOut>
+<AntiAlias>1</AntiAlias>
+</FontData>
+<FontData>
+<FontName>Arial</FontName>
+<CharacterSet>0</CharacterSet>
+<Height>-11</Height>
+<Weight>400</Weight>
 <Italic>0</Italic>
 <Underline>0</Underline>
 <StrikeOut>0</StrikeOut>
@@ -346,7 +282,7 @@
 <FontData>
 <FontName>Arial</FontName>
 <CharacterSet>0</CharacterSet>
-<Height>-13</Height>
+<Height>-27</Height>
 <Weight>700</Weight>
 <Italic>0</Italic>
 <Underline>0</Underline>
@@ -356,17 +292,7 @@
 <FontData>
 <FontName>Arial</FontName>
 <CharacterSet>0</CharacterSet>
-<Height>-24</Height>
-<Weight>700</Weight>
-<Italic>0</Italic>
-<Underline>0</Underline>
-<StrikeOut>0</StrikeOut>
-<AntiAlias>1</AntiAlias>
-</FontData>
-<FontData>
-<FontName>Arial</FontName>
-<CharacterSet>0</CharacterSet>
-<Height>-13</Height>
+<Height>-12</Height>
 <Weight>400</Weight>
 <Italic>0</Italic>
 <Underline>0</Underline>
@@ -386,27 +312,27 @@
 </Fonts>
 <CAOff>
 <TP>0</TP>
-<L>15</L>
-<T>15</T>
-<R>15</R>
+<L>24</L>
+<T>26</T>
+<R>20</R>
 <B>15</B>
 </CAOff>
 <CAOff>
 <TP>1</TP>
-<L>15</L>
-<T>15</T>
-<R>15</R>
-<B>15</B>
+<L>24</L>
+<T>80</T>
+<R>18</R>
+<B>10</B>
 </CAOff>
 <CAOff>
 <TP>2</TP>
-<L>15</L>
-<T>15</T>
-<R>15</R>
-<B>15</B>
+<L>26</L>
+<T>105</T>
+<R>20</R>
+<B>0</B>
 </CAOff>
-<TBTXTX>10</TBTXTX>
-<TBTXTY>10</TBTXTY>
+<TBTXTX>13</TBTXTX>
+<TBTXTY>14</TBTXTY>
 </StyleData>
 <Events>
 <Event>
@@ -591,33 +517,43 @@ Otherwise, click Next to continue.
 <StyleData>
 <CstClrs>0</CstClrs>
 <TBBG format="hex">ffffff</TBBG>
-<BDYBG format="hex">ece9d8</BDYBG>
-<FTBG format="hex">ece9d8</FTBG>
+<BDYBG format="hex">ffffff</BDYBG>
+<FTBG format="hex">ffffff</FTBG>
 <TBTXT format="hex">000000</TBTXT>
-<BDYTXT format="hex">000000</BDYTXT>
+<BDYTXT format="hex">ffffff</BDYTXT>
 <CBG format="hex">ffffff</CBG>
-<C3DFACE format="hex">ece9d8</C3DFACE>
-<C3DHLT format="hex">ece9d8</C3DHLT>
-<C3DLIT format="hex">ffffff</C3DLIT>
-<C3DSH format="hex">aca899</C3DSH>
-<CBTNTXT format="hex">000000</CBTNTXT>
+<C3DFACE format="hex">038df6</C3DFACE>
+<C3DHLT format="hex">038df6</C3DHLT>
+<C3DLIT format="hex">038df6</C3DLIT>
+<C3DSH format="hex">038df6</C3DSH>
+<CBTNTXT format="hex">ffffff</CBTNTXT>
 <CTEXT format="hex">000000</CTEXT>
-<CDISTXT format="hex">aca899</CDISTXT>
+<CDISTXT format="hex">c0c0c0</CDISTXT>
 <CPRGRS format="hex">316ac5</CPRGRS>
-<C3DSHDK format="hex">716f64</C3DSHDK>
-<TBIMG>111_X_63_keyboard.jpg</TBIMG>
-<SBIMG>166_X_312_keyboard.jpg</SBIMG>
-<BDIMG/>
-<BDFILL>0</BDFILL>
-<HDSEP>1</HDSEP>
-<FTSEP>1</FTSEP>
-<CstFnts>0</CstFnts>
+<C3DSHDK format="hex">038df6</C3DSHDK>
+<TBIMG>16_top.jpg</TBIMG>
+<SBIMG>16_side.jpg</SBIMG>
+<BDIMG>16_body.jpg</BDIMG>
+<BDFILL>1</BDFILL>
+<HDSEP>0</HDSEP>
+<FTSEP>0</FTSEP>
+<CstFnts>1</CstFnts>
 <Fonts>
 <FontData>
 <FontName>Arial</FontName>
 <CharacterSet>0</CharacterSet>
 <Height>-13</Height>
 <Weight>700</Weight>
+<Italic>1</Italic>
+<Underline>0</Underline>
+<StrikeOut>0</StrikeOut>
+<AntiAlias>1</AntiAlias>
+</FontData>
+<FontData>
+<FontName>Arial</FontName>
+<CharacterSet>0</CharacterSet>
+<Height>-11</Height>
+<Weight>400</Weight>
 <Italic>0</Italic>
 <Underline>0</Underline>
 <StrikeOut>0</StrikeOut>
@@ -626,7 +562,7 @@ Otherwise, click Next to continue.
 <FontData>
 <FontName>Arial</FontName>
 <CharacterSet>0</CharacterSet>
-<Height>-13</Height>
+<Height>-27</Height>
 <Weight>700</Weight>
 <Italic>0</Italic>
 <Underline>0</Underline>
@@ -636,17 +572,7 @@ Otherwise, click Next to continue.
 <FontData>
 <FontName>Arial</FontName>
 <CharacterSet>0</CharacterSet>
-<Height>-24</Height>
-<Weight>700</Weight>
-<Italic>0</Italic>
-<Underline>0</Underline>
-<StrikeOut>0</StrikeOut>
-<AntiAlias>1</AntiAlias>
-</FontData>
-<FontData>
-<FontName>Arial</FontName>
-<CharacterSet>0</CharacterSet>
-<Height>-13</Height>
+<Height>-12</Height>
 <Weight>400</Weight>
 <Italic>0</Italic>
 <Underline>0</Underline>
@@ -666,27 +592,27 @@ Otherwise, click Next to continue.
 </Fonts>
 <CAOff>
 <TP>0</TP>
-<L>15</L>
-<T>15</T>
-<R>15</R>
+<L>24</L>
+<T>26</T>
+<R>20</R>
 <B>15</B>
 </CAOff>
 <CAOff>
 <TP>1</TP>
-<L>15</L>
-<T>15</T>
-<R>15</R>
-<B>15</B>
+<L>24</L>
+<T>80</T>
+<R>18</R>
+<B>10</B>
 </CAOff>
 <CAOff>
 <TP>2</TP>
-<L>15</L>
-<T>15</T>
-<R>15</R>
-<B>15</B>
+<L>26</L>
+<T>105</T>
+<R>20</R>
+<B>0</B>
 </CAOff>
-<TBTXTX>10</TBTXTX>
-<TBTXTY>10</TBTXTY>
+<TBTXTX>13</TBTXTX>
+<TBTXTY>14</TBTXTY>
 </StyleData>
 <Checked>0</Checked>
 <Events>
@@ -854,14 +780,7 @@ end
 <IDS_CTRL_BUTTON_BACK>&lt; &amp;Back</IDS_CTRL_BUTTON_BACK>
 <IDS_CTRL_BUTTON_CANCEL>&amp;Cancel</IDS_CTRL_BUTTON_CANCEL>
 <IDS_CTRL_BUTTON_HELP>&amp;Help</IDS_CTRL_BUTTON_HELP>
-<IDS_CTRL_SCROLLTEXT_BODY>　　本软件适用于现场工作人员，用于解决烽火IPRAN设备上配置与网管上配置不一致问题，即设备上残留配置清理。
-　　清理的目的是比较网管上配置与设备上ZEBOS.CFG文件之间的差异。
-1、分别获取网管和设备上的配置文件
-2、通过配置对比算法，得到各个配置模块的差异化结果。
-3、通过运行生成的vbs脚本或手动操作，清除设备上残留的网管配置。
-
-注意事项：
-1、有任何问题请联系cytao@fiberhome.com。</IDS_CTRL_SCROLLTEXT_BODY>
+<IDS_CTRL_SCROLLTEXT_BODY>　　本软件适用于数据库记录</IDS_CTRL_SCROLLTEXT_BODY>
 <IDS_CTRL_RADIOBTN_AGREE>I agree to the terms of this license agreement</IDS_CTRL_RADIOBTN_AGREE>
 <IDS_CTRL_RADIOBTN_DISAGREE>I do not agree to the terms of this license agreement</IDS_CTRL_RADIOBTN_DISAGREE>
 </Messages>
@@ -886,14 +805,7 @@ end
 <IDS_CTRL_BUTTON_BACK>&lt; 返回(&amp;B)</IDS_CTRL_BUTTON_BACK>
 <IDS_CTRL_BUTTON_CANCEL>取消(&amp;C)</IDS_CTRL_BUTTON_CANCEL>
 <IDS_CTRL_BUTTON_HELP>帮助(&amp;H)</IDS_CTRL_BUTTON_HELP>
-<IDS_CTRL_SCROLLTEXT_BODY>　　本软件适用于现场工作人员，用于解决烽火IPRAN设备上配置与网管上配置不一致问题，即设备上残留配置清理。
-　　清理的目的是比较网管上配置与设备上ZEBOS.CFG文件之间的差异。
-1、分别获取网管和设备上的配置文件
-2、通过配置对比算法，得到各个配置模块的差异化结果。
-3、通过运行生成的vbs脚本或手动操作，清除设备上残留的网管配置。
-
-注意事项：
-1、有任何问题请联系cytao@fiberhome.com。</IDS_CTRL_SCROLLTEXT_BODY>
+<IDS_CTRL_SCROLLTEXT_BODY>　　本软件适用于数据库记录</IDS_CTRL_SCROLLTEXT_BODY>
 <IDS_CTRL_RADIOBTN_AGREE>我同意该许可协议的条款</IDS_CTRL_RADIOBTN_AGREE>
 <IDS_CTRL_RADIOBTN_DISAGREE>我不同意该许可协议的条款</IDS_CTRL_RADIOBTN_DISAGREE>
 </Messages>
@@ -909,33 +821,43 @@ end
 <StyleData>
 <CstClrs>0</CstClrs>
 <TBBG format="hex">ffffff</TBBG>
-<BDYBG format="hex">ece9d8</BDYBG>
-<FTBG format="hex">ece9d8</FTBG>
+<BDYBG format="hex">ffffff</BDYBG>
+<FTBG format="hex">ffffff</FTBG>
 <TBTXT format="hex">000000</TBTXT>
-<BDYTXT format="hex">000000</BDYTXT>
+<BDYTXT format="hex">ffffff</BDYTXT>
 <CBG format="hex">ffffff</CBG>
-<C3DFACE format="hex">ece9d8</C3DFACE>
-<C3DHLT format="hex">ece9d8</C3DHLT>
-<C3DLIT format="hex">ffffff</C3DLIT>
-<C3DSH format="hex">aca899</C3DSH>
-<CBTNTXT format="hex">000000</CBTNTXT>
+<C3DFACE format="hex">038df6</C3DFACE>
+<C3DHLT format="hex">038df6</C3DHLT>
+<C3DLIT format="hex">038df6</C3DLIT>
+<C3DSH format="hex">038df6</C3DSH>
+<CBTNTXT format="hex">ffffff</CBTNTXT>
 <CTEXT format="hex">000000</CTEXT>
-<CDISTXT format="hex">aca899</CDISTXT>
+<CDISTXT format="hex">c0c0c0</CDISTXT>
 <CPRGRS format="hex">316ac5</CPRGRS>
-<C3DSHDK format="hex">716f64</C3DSHDK>
-<TBIMG>111_X_63_keyboard.jpg</TBIMG>
-<SBIMG>166_X_312_keyboard.jpg</SBIMG>
-<BDIMG/>
-<BDFILL>0</BDFILL>
-<HDSEP>1</HDSEP>
-<FTSEP>1</FTSEP>
-<CstFnts>0</CstFnts>
+<C3DSHDK format="hex">038df6</C3DSHDK>
+<TBIMG>16_top.jpg</TBIMG>
+<SBIMG>16_side.jpg</SBIMG>
+<BDIMG>16_body.jpg</BDIMG>
+<BDFILL>1</BDFILL>
+<HDSEP>0</HDSEP>
+<FTSEP>0</FTSEP>
+<CstFnts>1</CstFnts>
 <Fonts>
 <FontData>
 <FontName>Arial</FontName>
 <CharacterSet>0</CharacterSet>
 <Height>-13</Height>
 <Weight>700</Weight>
+<Italic>1</Italic>
+<Underline>0</Underline>
+<StrikeOut>0</StrikeOut>
+<AntiAlias>1</AntiAlias>
+</FontData>
+<FontData>
+<FontName>Arial</FontName>
+<CharacterSet>0</CharacterSet>
+<Height>-11</Height>
+<Weight>400</Weight>
 <Italic>0</Italic>
 <Underline>0</Underline>
 <StrikeOut>0</StrikeOut>
@@ -944,7 +866,7 @@ end
 <FontData>
 <FontName>Arial</FontName>
 <CharacterSet>0</CharacterSet>
-<Height>-13</Height>
+<Height>-27</Height>
 <Weight>700</Weight>
 <Italic>0</Italic>
 <Underline>0</Underline>
@@ -954,17 +876,7 @@ end
 <FontData>
 <FontName>Arial</FontName>
 <CharacterSet>0</CharacterSet>
-<Height>-24</Height>
-<Weight>700</Weight>
-<Italic>0</Italic>
-<Underline>0</Underline>
-<StrikeOut>0</StrikeOut>
-<AntiAlias>1</AntiAlias>
-</FontData>
-<FontData>
-<FontName>Arial</FontName>
-<CharacterSet>0</CharacterSet>
-<Height>-13</Height>
+<Height>-12</Height>
 <Weight>400</Weight>
 <Italic>0</Italic>
 <Underline>0</Underline>
@@ -984,27 +896,27 @@ end
 </Fonts>
 <CAOff>
 <TP>0</TP>
-<L>15</L>
-<T>15</T>
-<R>15</R>
+<L>24</L>
+<T>26</T>
+<R>20</R>
 <B>15</B>
 </CAOff>
 <CAOff>
 <TP>1</TP>
-<L>15</L>
-<T>15</T>
-<R>15</R>
-<B>15</B>
+<L>24</L>
+<T>80</T>
+<R>18</R>
+<B>10</B>
 </CAOff>
 <CAOff>
 <TP>2</TP>
-<L>15</L>
-<T>15</T>
-<R>15</R>
-<B>15</B>
+<L>26</L>
+<T>105</T>
+<R>20</R>
+<B>0</B>
 </CAOff>
-<TBTXTX>10</TBTXTX>
-<TBTXTY>10</TBTXTY>
+<TBTXTX>13</TBTXTX>
+<TBTXTY>14</TBTXTY>
 </StyleData>
 <NumEditFields>2</NumEditFields>
 <Edit0>0</Edit0>
@@ -2311,33 +2223,43 @@ end
 <StyleData>
 <CstClrs>0</CstClrs>
 <TBBG format="hex">ffffff</TBBG>
-<BDYBG format="hex">ece9d8</BDYBG>
-<FTBG format="hex">ece9d8</FTBG>
+<BDYBG format="hex">ffffff</BDYBG>
+<FTBG format="hex">ffffff</FTBG>
 <TBTXT format="hex">000000</TBTXT>
-<BDYTXT format="hex">000000</BDYTXT>
+<BDYTXT format="hex">ffffff</BDYTXT>
 <CBG format="hex">ffffff</CBG>
-<C3DFACE format="hex">ece9d8</C3DFACE>
-<C3DHLT format="hex">ece9d8</C3DHLT>
-<C3DLIT format="hex">ffffff</C3DLIT>
-<C3DSH format="hex">aca899</C3DSH>
-<CBTNTXT format="hex">000000</CBTNTXT>
+<C3DFACE format="hex">038df6</C3DFACE>
+<C3DHLT format="hex">038df6</C3DHLT>
+<C3DLIT format="hex">038df6</C3DLIT>
+<C3DSH format="hex">038df6</C3DSH>
+<CBTNTXT format="hex">ffffff</CBTNTXT>
 <CTEXT format="hex">000000</CTEXT>
-<CDISTXT format="hex">aca899</CDISTXT>
+<CDISTXT format="hex">c0c0c0</CDISTXT>
 <CPRGRS format="hex">316ac5</CPRGRS>
-<C3DSHDK format="hex">716f64</C3DSHDK>
-<TBIMG>111_X_63_keyboard.jpg</TBIMG>
-<SBIMG>166_X_312_keyboard.jpg</SBIMG>
-<BDIMG/>
-<BDFILL>0</BDFILL>
-<HDSEP>1</HDSEP>
-<FTSEP>1</FTSEP>
-<CstFnts>0</CstFnts>
+<C3DSHDK format="hex">038df6</C3DSHDK>
+<TBIMG>16_top.jpg</TBIMG>
+<SBIMG>16_side.jpg</SBIMG>
+<BDIMG>16_body.jpg</BDIMG>
+<BDFILL>1</BDFILL>
+<HDSEP>0</HDSEP>
+<FTSEP>0</FTSEP>
+<CstFnts>1</CstFnts>
 <Fonts>
 <FontData>
 <FontName>Arial</FontName>
 <CharacterSet>0</CharacterSet>
 <Height>-13</Height>
 <Weight>700</Weight>
+<Italic>1</Italic>
+<Underline>0</Underline>
+<StrikeOut>0</StrikeOut>
+<AntiAlias>1</AntiAlias>
+</FontData>
+<FontData>
+<FontName>Arial</FontName>
+<CharacterSet>0</CharacterSet>
+<Height>-11</Height>
+<Weight>400</Weight>
 <Italic>0</Italic>
 <Underline>0</Underline>
 <StrikeOut>0</StrikeOut>
@@ -2346,7 +2268,7 @@ end
 <FontData>
 <FontName>Arial</FontName>
 <CharacterSet>0</CharacterSet>
-<Height>-13</Height>
+<Height>-27</Height>
 <Weight>700</Weight>
 <Italic>0</Italic>
 <Underline>0</Underline>
@@ -2356,17 +2278,7 @@ end
 <FontData>
 <FontName>Arial</FontName>
 <CharacterSet>0</CharacterSet>
-<Height>-24</Height>
-<Weight>700</Weight>
-<Italic>0</Italic>
-<Underline>0</Underline>
-<StrikeOut>0</StrikeOut>
-<AntiAlias>1</AntiAlias>
-</FontData>
-<FontData>
-<FontName>Arial</FontName>
-<CharacterSet>0</CharacterSet>
-<Height>-13</Height>
+<Height>-12</Height>
 <Weight>400</Weight>
 <Italic>0</Italic>
 <Underline>0</Underline>
@@ -2386,27 +2298,27 @@ end
 </Fonts>
 <CAOff>
 <TP>0</TP>
-<L>15</L>
-<T>15</T>
-<R>15</R>
+<L>24</L>
+<T>26</T>
+<R>20</R>
 <B>15</B>
 </CAOff>
 <CAOff>
 <TP>1</TP>
-<L>15</L>
-<T>15</T>
-<R>15</R>
-<B>15</B>
+<L>24</L>
+<T>80</T>
+<R>18</R>
+<B>10</B>
 </CAOff>
 <CAOff>
 <TP>2</TP>
-<L>15</L>
-<T>15</T>
-<R>15</R>
-<B>15</B>
+<L>26</L>
+<T>105</T>
+<R>20</R>
+<B>0</B>
 </CAOff>
-<TBTXTX>10</TBTXTX>
-<TBTXTY>10</TBTXTY>
+<TBTXTX>13</TBTXTX>
+<TBTXTY>14</TBTXTY>
 </StyleData>
 <Variable>%AppFolder%</Variable>
 <Events>
@@ -2702,7 +2614,7 @@ end
 <IDS_CTRL_BUTTON_CANCEL>取消(&amp;C)</IDS_CTRL_BUTTON_CANCEL>
 <IDS_CTRL_BUTTON_HELP>帮助(&amp;H)</IDS_CTRL_BUTTON_HELP>
 <IDS_CTRL_BUTTON_BROWSE>更改(&amp;H)...</IDS_CTRL_BUTTON_BROWSE>
-<IDS_CTRL_EDIT_FOLDER>D:\otnm_clear</IDS_CTRL_EDIT_FOLDER>
+<IDS_CTRL_EDIT_FOLDER>D:\WindowsFormsAccess</IDS_CTRL_EDIT_FOLDER>
 <IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>软件将被安装到以下列出的文件夹中。要选择不同的位置，键入新的路径，或单击“更改”浏览现有的文件夹。
 
 （注意：请不要安装在带空格的目录下，建议使用默认目录。）</IDS_CTRL_STATICTEXT_TOPINSTRUCTIONS>
@@ -2722,33 +2634,43 @@ end
 <StyleData>
 <CstClrs>0</CstClrs>
 <TBBG format="hex">ffffff</TBBG>
-<BDYBG format="hex">ece9d8</BDYBG>
-<FTBG format="hex">ece9d8</FTBG>
+<BDYBG format="hex">ffffff</BDYBG>
+<FTBG format="hex">ffffff</FTBG>
 <TBTXT format="hex">000000</TBTXT>
-<BDYTXT format="hex">000000</BDYTXT>
+<BDYTXT format="hex">ffffff</BDYTXT>
 <CBG format="hex">ffffff</CBG>
-<C3DFACE format="hex">ece9d8</C3DFACE>
-<C3DHLT format="hex">ece9d8</C3DHLT>
-<C3DLIT format="hex">ffffff</C3DLIT>
-<C3DSH format="hex">aca899</C3DSH>
-<CBTNTXT format="hex">000000</CBTNTXT>
+<C3DFACE format="hex">038df6</C3DFACE>
+<C3DHLT format="hex">038df6</C3DHLT>
+<C3DLIT format="hex">038df6</C3DLIT>
+<C3DSH format="hex">038df6</C3DSH>
+<CBTNTXT format="hex">ffffff</CBTNTXT>
 <CTEXT format="hex">000000</CTEXT>
-<CDISTXT format="hex">aca899</CDISTXT>
+<CDISTXT format="hex">c0c0c0</CDISTXT>
 <CPRGRS format="hex">316ac5</CPRGRS>
-<C3DSHDK format="hex">716f64</C3DSHDK>
-<TBIMG>111_X_63_keyboard.jpg</TBIMG>
-<SBIMG>166_X_312_keyboard.jpg</SBIMG>
-<BDIMG/>
-<BDFILL>0</BDFILL>
-<HDSEP>1</HDSEP>
-<FTSEP>1</FTSEP>
-<CstFnts>0</CstFnts>
+<C3DSHDK format="hex">038df6</C3DSHDK>
+<TBIMG>16_top.jpg</TBIMG>
+<SBIMG>16_side.jpg</SBIMG>
+<BDIMG>16_body.jpg</BDIMG>
+<BDFILL>1</BDFILL>
+<HDSEP>0</HDSEP>
+<FTSEP>0</FTSEP>
+<CstFnts>1</CstFnts>
 <Fonts>
 <FontData>
 <FontName>Arial</FontName>
 <CharacterSet>0</CharacterSet>
 <Height>-13</Height>
 <Weight>700</Weight>
+<Italic>1</Italic>
+<Underline>0</Underline>
+<StrikeOut>0</StrikeOut>
+<AntiAlias>1</AntiAlias>
+</FontData>
+<FontData>
+<FontName>Arial</FontName>
+<CharacterSet>0</CharacterSet>
+<Height>-11</Height>
+<Weight>400</Weight>
 <Italic>0</Italic>
 <Underline>0</Underline>
 <StrikeOut>0</StrikeOut>
@@ -2757,7 +2679,7 @@ end
 <FontData>
 <FontName>Arial</FontName>
 <CharacterSet>0</CharacterSet>
-<Height>-13</Height>
+<Height>-27</Height>
 <Weight>700</Weight>
 <Italic>0</Italic>
 <Underline>0</Underline>
@@ -2767,17 +2689,7 @@ end
 <FontData>
 <FontName>Arial</FontName>
 <CharacterSet>0</CharacterSet>
-<Height>-24</Height>
-<Weight>700</Weight>
-<Italic>0</Italic>
-<Underline>0</Underline>
-<StrikeOut>0</StrikeOut>
-<AntiAlias>1</AntiAlias>
-</FontData>
-<FontData>
-<FontName>Arial</FontName>
-<CharacterSet>0</CharacterSet>
-<Height>-13</Height>
+<Height>-12</Height>
 <Weight>400</Weight>
 <Italic>0</Italic>
 <Underline>0</Underline>
@@ -2797,27 +2709,27 @@ end
 </Fonts>
 <CAOff>
 <TP>0</TP>
-<L>15</L>
-<T>15</T>
-<R>15</R>
+<L>24</L>
+<T>26</T>
+<R>20</R>
 <B>15</B>
 </CAOff>
 <CAOff>
 <TP>1</TP>
-<L>15</L>
-<T>15</T>
-<R>15</R>
-<B>15</B>
+<L>24</L>
+<T>80</T>
+<R>18</R>
+<B>10</B>
 </CAOff>
 <CAOff>
 <TP>2</TP>
-<L>15</L>
-<T>15</T>
-<R>15</R>
-<B>15</B>
+<L>26</L>
+<T>105</T>
+<R>20</R>
+<B>0</B>
 </CAOff>
-<TBTXTX>10</TBTXTX>
-<TBTXTY>10</TBTXTY>
+<TBTXTX>13</TBTXTX>
+<TBTXTY>14</TBTXTY>
 </StyleData>
 <NameVariable>%AppShortcutFolderName%</NameVariable>
 <Events>
@@ -3106,33 +3018,43 @@ end
 <StyleData>
 <CstClrs>0</CstClrs>
 <TBBG format="hex">ffffff</TBBG>
-<BDYBG format="hex">ece9d8</BDYBG>
-<FTBG format="hex">ece9d8</FTBG>
+<BDYBG format="hex">ffffff</BDYBG>
+<FTBG format="hex">ffffff</FTBG>
 <TBTXT format="hex">000000</TBTXT>
-<BDYTXT format="hex">000000</BDYTXT>
+<BDYTXT format="hex">ffffff</BDYTXT>
 <CBG format="hex">ffffff</CBG>
-<C3DFACE format="hex">ece9d8</C3DFACE>
-<C3DHLT format="hex">ece9d8</C3DHLT>
-<C3DLIT format="hex">ffffff</C3DLIT>
-<C3DSH format="hex">aca899</C3DSH>
-<CBTNTXT format="hex">000000</CBTNTXT>
+<C3DFACE format="hex">038df6</C3DFACE>
+<C3DHLT format="hex">038df6</C3DHLT>
+<C3DLIT format="hex">038df6</C3DLIT>
+<C3DSH format="hex">038df6</C3DSH>
+<CBTNTXT format="hex">ffffff</CBTNTXT>
 <CTEXT format="hex">000000</CTEXT>
-<CDISTXT format="hex">aca899</CDISTXT>
+<CDISTXT format="hex">c0c0c0</CDISTXT>
 <CPRGRS format="hex">316ac5</CPRGRS>
-<C3DSHDK format="hex">716f64</C3DSHDK>
-<TBIMG>111_X_63_keyboard.jpg</TBIMG>
-<SBIMG>166_X_312_keyboard.jpg</SBIMG>
-<BDIMG/>
-<BDFILL>0</BDFILL>
-<HDSEP>1</HDSEP>
-<FTSEP>1</FTSEP>
-<CstFnts>0</CstFnts>
+<C3DSHDK format="hex">038df6</C3DSHDK>
+<TBIMG>16_top.jpg</TBIMG>
+<SBIMG>16_side.jpg</SBIMG>
+<BDIMG>16_body.jpg</BDIMG>
+<BDFILL>1</BDFILL>
+<HDSEP>0</HDSEP>
+<FTSEP>0</FTSEP>
+<CstFnts>1</CstFnts>
 <Fonts>
 <FontData>
 <FontName>Arial</FontName>
 <CharacterSet>0</CharacterSet>
 <Height>-13</Height>
 <Weight>700</Weight>
+<Italic>1</Italic>
+<Underline>0</Underline>
+<StrikeOut>0</StrikeOut>
+<AntiAlias>1</AntiAlias>
+</FontData>
+<FontData>
+<FontName>Arial</FontName>
+<CharacterSet>0</CharacterSet>
+<Height>-11</Height>
+<Weight>400</Weight>
 <Italic>0</Italic>
 <Underline>0</Underline>
 <StrikeOut>0</StrikeOut>
@@ -3141,7 +3063,7 @@ end
 <FontData>
 <FontName>Arial</FontName>
 <CharacterSet>0</CharacterSet>
-<Height>-13</Height>
+<Height>-27</Height>
 <Weight>700</Weight>
 <Italic>0</Italic>
 <Underline>0</Underline>
@@ -3151,17 +3073,7 @@ end
 <FontData>
 <FontName>Arial</FontName>
 <CharacterSet>0</CharacterSet>
-<Height>-24</Height>
-<Weight>700</Weight>
-<Italic>0</Italic>
-<Underline>0</Underline>
-<StrikeOut>0</StrikeOut>
-<AntiAlias>1</AntiAlias>
-</FontData>
-<FontData>
-<FontName>Arial</FontName>
-<CharacterSet>0</CharacterSet>
-<Height>-13</Height>
+<Height>-12</Height>
 <Weight>400</Weight>
 <Italic>0</Italic>
 <Underline>0</Underline>
@@ -3181,27 +3093,27 @@ end
 </Fonts>
 <CAOff>
 <TP>0</TP>
-<L>15</L>
-<T>15</T>
-<R>15</R>
+<L>24</L>
+<T>26</T>
+<R>20</R>
 <B>15</B>
 </CAOff>
 <CAOff>
 <TP>1</TP>
-<L>15</L>
-<T>15</T>
-<R>15</R>
-<B>15</B>
+<L>24</L>
+<T>80</T>
+<R>18</R>
+<B>10</B>
 </CAOff>
 <CAOff>
 <TP>2</TP>
-<L>15</L>
-<T>15</T>
-<R>15</R>
-<B>15</B>
+<L>26</L>
+<T>105</T>
+<R>20</R>
+<B>0</B>
 </CAOff>
-<TBTXTX>10</TBTXTX>
-<TBTXTY>10</TBTXTY>
+<TBTXTX>13</TBTXTX>
+<TBTXTY>14</TBTXTY>
 </StyleData>
 <Events>
 <Event>
@@ -3396,33 +3308,43 @@ Please click Next to proceed with the installation.</IDS_CTRL_STATICTEXT_BODY>
 <StyleData>
 <CstClrs>0</CstClrs>
 <TBBG format="hex">ffffff</TBBG>
-<BDYBG format="hex">ece9d8</BDYBG>
-<FTBG format="hex">ece9d8</FTBG>
+<BDYBG format="hex">ffffff</BDYBG>
+<FTBG format="hex">ffffff</FTBG>
 <TBTXT format="hex">000000</TBTXT>
-<BDYTXT format="hex">000000</BDYTXT>
+<BDYTXT format="hex">ffffff</BDYTXT>
 <CBG format="hex">ffffff</CBG>
-<C3DFACE format="hex">ece9d8</C3DFACE>
-<C3DHLT format="hex">ece9d8</C3DHLT>
-<C3DLIT format="hex">ffffff</C3DLIT>
-<C3DSH format="hex">aca899</C3DSH>
-<CBTNTXT format="hex">000000</CBTNTXT>
+<C3DFACE format="hex">038df6</C3DFACE>
+<C3DHLT format="hex">038df6</C3DHLT>
+<C3DLIT format="hex">038df6</C3DLIT>
+<C3DSH format="hex">038df6</C3DSH>
+<CBTNTXT format="hex">ffffff</CBTNTXT>
 <CTEXT format="hex">000000</CTEXT>
-<CDISTXT format="hex">aca899</CDISTXT>
+<CDISTXT format="hex">c0c0c0</CDISTXT>
 <CPRGRS format="hex">316ac5</CPRGRS>
-<C3DSHDK format="hex">716f64</C3DSHDK>
-<TBIMG>111_X_63_keyboard.jpg</TBIMG>
-<SBIMG>166_X_312_keyboard.jpg</SBIMG>
-<BDIMG/>
-<BDFILL>0</BDFILL>
-<HDSEP>1</HDSEP>
-<FTSEP>1</FTSEP>
-<CstFnts>0</CstFnts>
+<C3DSHDK format="hex">038df6</C3DSHDK>
+<TBIMG>16_top.jpg</TBIMG>
+<SBIMG>16_side.jpg</SBIMG>
+<BDIMG>16_body.jpg</BDIMG>
+<BDFILL>1</BDFILL>
+<HDSEP>0</HDSEP>
+<FTSEP>0</FTSEP>
+<CstFnts>1</CstFnts>
 <Fonts>
 <FontData>
 <FontName>Arial</FontName>
 <CharacterSet>0</CharacterSet>
 <Height>-13</Height>
 <Weight>700</Weight>
+<Italic>1</Italic>
+<Underline>0</Underline>
+<StrikeOut>0</StrikeOut>
+<AntiAlias>1</AntiAlias>
+</FontData>
+<FontData>
+<FontName>Arial</FontName>
+<CharacterSet>0</CharacterSet>
+<Height>-11</Height>
+<Weight>400</Weight>
 <Italic>0</Italic>
 <Underline>0</Underline>
 <StrikeOut>0</StrikeOut>
@@ -3431,7 +3353,7 @@ Please click Next to proceed with the installation.</IDS_CTRL_STATICTEXT_BODY>
 <FontData>
 <FontName>Arial</FontName>
 <CharacterSet>0</CharacterSet>
-<Height>-13</Height>
+<Height>-27</Height>
 <Weight>700</Weight>
 <Italic>0</Italic>
 <Underline>0</Underline>
@@ -3441,17 +3363,7 @@ Please click Next to proceed with the installation.</IDS_CTRL_STATICTEXT_BODY>
 <FontData>
 <FontName>Arial</FontName>
 <CharacterSet>0</CharacterSet>
-<Height>-24</Height>
-<Weight>700</Weight>
-<Italic>0</Italic>
-<Underline>0</Underline>
-<StrikeOut>0</StrikeOut>
-<AntiAlias>1</AntiAlias>
-</FontData>
-<FontData>
-<FontName>Arial</FontName>
-<CharacterSet>0</CharacterSet>
-<Height>-13</Height>
+<Height>-12</Height>
 <Weight>400</Weight>
 <Italic>0</Italic>
 <Underline>0</Underline>
@@ -3471,27 +3383,27 @@ Please click Next to proceed with the installation.</IDS_CTRL_STATICTEXT_BODY>
 </Fonts>
 <CAOff>
 <TP>0</TP>
-<L>15</L>
-<T>15</T>
-<R>15</R>
+<L>24</L>
+<T>26</T>
+<R>20</R>
 <B>15</B>
 </CAOff>
 <CAOff>
 <TP>1</TP>
-<L>15</L>
-<T>15</T>
-<R>15</R>
-<B>15</B>
+<L>24</L>
+<T>80</T>
+<R>18</R>
+<B>10</B>
 </CAOff>
 <CAOff>
 <TP>2</TP>
-<L>15</L>
-<T>15</T>
-<R>15</R>
-<B>15</B>
+<L>26</L>
+<T>105</T>
+<R>20</R>
+<B>0</B>
 </CAOff>
-<TBTXTX>10</TBTXTX>
-<TBTXTY>10</TBTXTY>
+<TBTXTX>13</TBTXTX>
+<TBTXTY>14</TBTXTY>
 </StyleData>
 <IsWhileInstallingMode>1</IsWhileInstallingMode>
 <Events>
@@ -3710,33 +3622,43 @@ end
 <StyleData>
 <CstClrs>0</CstClrs>
 <TBBG format="hex">ffffff</TBBG>
-<BDYBG format="hex">ece9d8</BDYBG>
-<FTBG format="hex">ece9d8</FTBG>
+<BDYBG format="hex">ffffff</BDYBG>
+<FTBG format="hex">ffffff</FTBG>
 <TBTXT format="hex">000000</TBTXT>
-<BDYTXT format="hex">000000</BDYTXT>
+<BDYTXT format="hex">ffffff</BDYTXT>
 <CBG format="hex">ffffff</CBG>
-<C3DFACE format="hex">ece9d8</C3DFACE>
-<C3DHLT format="hex">ece9d8</C3DHLT>
-<C3DLIT format="hex">ffffff</C3DLIT>
-<C3DSH format="hex">aca899</C3DSH>
-<CBTNTXT format="hex">000000</CBTNTXT>
+<C3DFACE format="hex">038df6</C3DFACE>
+<C3DHLT format="hex">038df6</C3DHLT>
+<C3DLIT format="hex">038df6</C3DLIT>
+<C3DSH format="hex">038df6</C3DSH>
+<CBTNTXT format="hex">ffffff</CBTNTXT>
 <CTEXT format="hex">000000</CTEXT>
-<CDISTXT format="hex">aca899</CDISTXT>
+<CDISTXT format="hex">c0c0c0</CDISTXT>
 <CPRGRS format="hex">316ac5</CPRGRS>
-<C3DSHDK format="hex">716f64</C3DSHDK>
-<TBIMG>111_X_63_keyboard.jpg</TBIMG>
-<SBIMG>166_X_312_keyboard.jpg</SBIMG>
-<BDIMG/>
-<BDFILL>0</BDFILL>
-<HDSEP>1</HDSEP>
-<FTSEP>1</FTSEP>
-<CstFnts>0</CstFnts>
+<C3DSHDK format="hex">038df6</C3DSHDK>
+<TBIMG>16_top.jpg</TBIMG>
+<SBIMG>16_side.jpg</SBIMG>
+<BDIMG>16_body.jpg</BDIMG>
+<BDFILL>1</BDFILL>
+<HDSEP>0</HDSEP>
+<FTSEP>0</FTSEP>
+<CstFnts>1</CstFnts>
 <Fonts>
 <FontData>
 <FontName>Arial</FontName>
 <CharacterSet>0</CharacterSet>
 <Height>-13</Height>
 <Weight>700</Weight>
+<Italic>1</Italic>
+<Underline>0</Underline>
+<StrikeOut>0</StrikeOut>
+<AntiAlias>1</AntiAlias>
+</FontData>
+<FontData>
+<FontName>Arial</FontName>
+<CharacterSet>0</CharacterSet>
+<Height>-11</Height>
+<Weight>400</Weight>
 <Italic>0</Italic>
 <Underline>0</Underline>
 <StrikeOut>0</StrikeOut>
@@ -3745,7 +3667,7 @@ end
 <FontData>
 <FontName>Arial</FontName>
 <CharacterSet>0</CharacterSet>
-<Height>-13</Height>
+<Height>-27</Height>
 <Weight>700</Weight>
 <Italic>0</Italic>
 <Underline>0</Underline>
@@ -3755,17 +3677,7 @@ end
 <FontData>
 <FontName>Arial</FontName>
 <CharacterSet>0</CharacterSet>
-<Height>-24</Height>
-<Weight>700</Weight>
-<Italic>0</Italic>
-<Underline>0</Underline>
-<StrikeOut>0</StrikeOut>
-<AntiAlias>1</AntiAlias>
-</FontData>
-<FontData>
-<FontName>Arial</FontName>
-<CharacterSet>0</CharacterSet>
-<Height>-13</Height>
+<Height>-12</Height>
 <Weight>400</Weight>
 <Italic>0</Italic>
 <Underline>0</Underline>
@@ -3785,27 +3697,27 @@ end
 </Fonts>
 <CAOff>
 <TP>0</TP>
-<L>15</L>
-<T>15</T>
-<R>15</R>
+<L>24</L>
+<T>26</T>
+<R>20</R>
 <B>15</B>
 </CAOff>
 <CAOff>
 <TP>1</TP>
-<L>15</L>
-<T>15</T>
-<R>15</R>
-<B>15</B>
+<L>24</L>
+<T>80</T>
+<R>18</R>
+<B>10</B>
 </CAOff>
 <CAOff>
 <TP>2</TP>
-<L>15</L>
-<T>15</T>
-<R>15</R>
-<B>15</B>
+<L>26</L>
+<T>105</T>
+<R>20</R>
+<B>0</B>
 </CAOff>
-<TBTXTX>10</TBTXTX>
-<TBTXTY>10</TBTXTY>
+<TBTXTX>13</TBTXTX>
+<TBTXTY>14</TBTXTY>
 </StyleData>
 <Events>
 <Event>
@@ -3991,7 +3903,7 @@ Please click Finish to exit this installer.
 <UninstallData>
 <CreateUninstall>1</CreateUninstall>
 <CfgFile>uninstall.xml</CfgFile>
-<UninstallFilesFolder>%AppFolder%\Uninstall_otnm_clear</UninstallFilesFolder>
+<UninstallFilesFolder>%AppFolder%\Uninstall</UninstallFilesFolder>
 <UninstallEXELocation>%WindowsFolder%\%ProductName%\uninstall.exe</UninstallEXELocation>
 <AllowSilent>0</AllowSilent>
 <StartSilent>0</StartSilent>
@@ -4066,8 +3978,8 @@ Please click Finish to exit this installer.
 <CreateCPEntry>1</CreateCPEntry>
 <RegKeyName>%ProductName%%ProductVer%</RegKeyName>
 <CPDesc>%ProductName%</CPDesc>
-<UseCustomCPIcon>0</UseCustomCPIcon>
-<CustCPIconFN/>
+<UseCustomCPIcon>1</UseCustomCPIcon>
+<CustCPIconFN>%TempLaunchFolder%\ico-1.ico</CustCPIconFN>
 <CustCPIconIndex>0</CustCPIconIndex>
 <CPSIPublisher>%CompanyName%</CPSIPublisher>
 <CPSIPublisherURL>%CompanyURL%</CPSIPublisherURL>
@@ -4083,7 +3995,7 @@ Please click Finish to exit this installer.
 <AppFldSCDesc>卸载 %ProductName%</AppFldSCDesc>
 <SCComment>从您的计算机中移除 %ProductName%。</SCComment>
 <UseCustomAppFldSCIcon>1</UseCustomAppFldSCIcon>
-<AppFldCustomIconFN>%TempLaunchFolder%\otnm_clear.ico</AppFldCustomIconFN>
+<AppFldCustomIconFN>%TempLaunchFolder%\ico-1.ico</AppFldCustomIconFN>
 <AppFolderSCIconIndex>0</AppFolderSCIconIndex>
 <LFCreate>1</LFCreate>
 <LFFilename>%WindowsFolder%\%ProductName% Uninstall Log.txt</LFFilename>
@@ -4100,33 +4012,43 @@ Please click Finish to exit this installer.
 <StyleData>
 <CstClrs>0</CstClrs>
 <TBBG format="hex">ffffff</TBBG>
-<BDYBG format="hex">ece9d8</BDYBG>
-<FTBG format="hex">ece9d8</FTBG>
+<BDYBG format="hex">ffffff</BDYBG>
+<FTBG format="hex">ffffff</FTBG>
 <TBTXT format="hex">000000</TBTXT>
-<BDYTXT format="hex">000000</BDYTXT>
+<BDYTXT format="hex">ffffff</BDYTXT>
 <CBG format="hex">ffffff</CBG>
-<C3DFACE format="hex">ece9d8</C3DFACE>
-<C3DHLT format="hex">ece9d8</C3DHLT>
-<C3DLIT format="hex">ffffff</C3DLIT>
-<C3DSH format="hex">aca899</C3DSH>
-<CBTNTXT format="hex">000000</CBTNTXT>
+<C3DFACE format="hex">038df6</C3DFACE>
+<C3DHLT format="hex">038df6</C3DHLT>
+<C3DLIT format="hex">038df6</C3DLIT>
+<C3DSH format="hex">038df6</C3DSH>
+<CBTNTXT format="hex">ffffff</CBTNTXT>
 <CTEXT format="hex">000000</CTEXT>
-<CDISTXT format="hex">aca899</CDISTXT>
+<CDISTXT format="hex">c0c0c0</CDISTXT>
 <CPRGRS format="hex">316ac5</CPRGRS>
-<C3DSHDK format="hex">716f64</C3DSHDK>
-<TBIMG>111_X_63_keyboard.jpg</TBIMG>
-<SBIMG>166_X_312_keyboard.jpg</SBIMG>
-<BDIMG/>
-<BDFILL>0</BDFILL>
-<HDSEP>1</HDSEP>
-<FTSEP>1</FTSEP>
-<CstFnts>0</CstFnts>
+<C3DSHDK format="hex">038df6</C3DSHDK>
+<TBIMG>16_top.jpg</TBIMG>
+<SBIMG>16_side.jpg</SBIMG>
+<BDIMG>16_body.jpg</BDIMG>
+<BDFILL>1</BDFILL>
+<HDSEP>0</HDSEP>
+<FTSEP>0</FTSEP>
+<CstFnts>1</CstFnts>
 <Fonts>
 <FontData>
 <FontName>Arial</FontName>
 <CharacterSet>0</CharacterSet>
 <Height>-13</Height>
 <Weight>700</Weight>
+<Italic>1</Italic>
+<Underline>0</Underline>
+<StrikeOut>0</StrikeOut>
+<AntiAlias>1</AntiAlias>
+</FontData>
+<FontData>
+<FontName>Arial</FontName>
+<CharacterSet>0</CharacterSet>
+<Height>-11</Height>
+<Weight>400</Weight>
 <Italic>0</Italic>
 <Underline>0</Underline>
 <StrikeOut>0</StrikeOut>
@@ -4135,7 +4057,7 @@ Please click Finish to exit this installer.
 <FontData>
 <FontName>Arial</FontName>
 <CharacterSet>0</CharacterSet>
-<Height>-13</Height>
+<Height>-27</Height>
 <Weight>700</Weight>
 <Italic>0</Italic>
 <Underline>0</Underline>
@@ -4145,17 +4067,7 @@ Please click Finish to exit this installer.
 <FontData>
 <FontName>Arial</FontName>
 <CharacterSet>0</CharacterSet>
-<Height>-24</Height>
-<Weight>700</Weight>
-<Italic>0</Italic>
-<Underline>0</Underline>
-<StrikeOut>0</StrikeOut>
-<AntiAlias>1</AntiAlias>
-</FontData>
-<FontData>
-<FontName>Arial</FontName>
-<CharacterSet>0</CharacterSet>
-<Height>-13</Height>
+<Height>-12</Height>
 <Weight>400</Weight>
 <Italic>0</Italic>
 <Underline>0</Underline>
@@ -4175,27 +4087,27 @@ Please click Finish to exit this installer.
 </Fonts>
 <CAOff>
 <TP>0</TP>
-<L>15</L>
-<T>15</T>
-<R>15</R>
+<L>24</L>
+<T>26</T>
+<R>20</R>
 <B>15</B>
 </CAOff>
 <CAOff>
 <TP>1</TP>
-<L>15</L>
-<T>15</T>
-<R>15</R>
-<B>15</B>
+<L>24</L>
+<T>80</T>
+<R>18</R>
+<B>10</B>
 </CAOff>
 <CAOff>
 <TP>2</TP>
-<L>15</L>
-<T>15</T>
-<R>15</R>
-<B>15</B>
+<L>26</L>
+<T>105</T>
+<R>20</R>
+<B>0</B>
 </CAOff>
-<TBTXTX>10</TBTXTX>
-<TBTXTY>10</TBTXTY>
+<TBTXTX>13</TBTXTX>
+<TBTXTY>14</TBTXTY>
 </StyleData>
 <Events>
 <Event>
@@ -4380,33 +4292,43 @@ Otherwise, click Next to continue.
 <StyleData>
 <CstClrs>0</CstClrs>
 <TBBG format="hex">ffffff</TBBG>
-<BDYBG format="hex">ece9d8</BDYBG>
-<FTBG format="hex">ece9d8</FTBG>
+<BDYBG format="hex">ffffff</BDYBG>
+<FTBG format="hex">ffffff</FTBG>
 <TBTXT format="hex">000000</TBTXT>
-<BDYTXT format="hex">000000</BDYTXT>
+<BDYTXT format="hex">ffffff</BDYTXT>
 <CBG format="hex">ffffff</CBG>
-<C3DFACE format="hex">ece9d8</C3DFACE>
-<C3DHLT format="hex">ece9d8</C3DHLT>
-<C3DLIT format="hex">ffffff</C3DLIT>
-<C3DSH format="hex">aca899</C3DSH>
-<CBTNTXT format="hex">000000</CBTNTXT>
+<C3DFACE format="hex">038df6</C3DFACE>
+<C3DHLT format="hex">038df6</C3DHLT>
+<C3DLIT format="hex">038df6</C3DLIT>
+<C3DSH format="hex">038df6</C3DSH>
+<CBTNTXT format="hex">ffffff</CBTNTXT>
 <CTEXT format="hex">000000</CTEXT>
-<CDISTXT format="hex">aca899</CDISTXT>
+<CDISTXT format="hex">c0c0c0</CDISTXT>
 <CPRGRS format="hex">316ac5</CPRGRS>
-<C3DSHDK format="hex">716f64</C3DSHDK>
-<TBIMG>111_X_63_keyboard.jpg</TBIMG>
-<SBIMG>166_X_312_keyboard.jpg</SBIMG>
-<BDIMG/>
-<BDFILL>0</BDFILL>
-<HDSEP>1</HDSEP>
-<FTSEP>1</FTSEP>
-<CstFnts>0</CstFnts>
+<C3DSHDK format="hex">038df6</C3DSHDK>
+<TBIMG>16_top.jpg</TBIMG>
+<SBIMG>16_side.jpg</SBIMG>
+<BDIMG>16_body.jpg</BDIMG>
+<BDFILL>1</BDFILL>
+<HDSEP>0</HDSEP>
+<FTSEP>0</FTSEP>
+<CstFnts>1</CstFnts>
 <Fonts>
 <FontData>
 <FontName>Arial</FontName>
 <CharacterSet>0</CharacterSet>
 <Height>-13</Height>
 <Weight>700</Weight>
+<Italic>1</Italic>
+<Underline>0</Underline>
+<StrikeOut>0</StrikeOut>
+<AntiAlias>1</AntiAlias>
+</FontData>
+<FontData>
+<FontName>Arial</FontName>
+<CharacterSet>0</CharacterSet>
+<Height>-11</Height>
+<Weight>400</Weight>
 <Italic>0</Italic>
 <Underline>0</Underline>
 <StrikeOut>0</StrikeOut>
@@ -4415,7 +4337,7 @@ Otherwise, click Next to continue.
 <FontData>
 <FontName>Arial</FontName>
 <CharacterSet>0</CharacterSet>
-<Height>-13</Height>
+<Height>-27</Height>
 <Weight>700</Weight>
 <Italic>0</Italic>
 <Underline>0</Underline>
@@ -4425,17 +4347,7 @@ Otherwise, click Next to continue.
 <FontData>
 <FontName>Arial</FontName>
 <CharacterSet>0</CharacterSet>
-<Height>-24</Height>
-<Weight>700</Weight>
-<Italic>0</Italic>
-<Underline>0</Underline>
-<StrikeOut>0</StrikeOut>
-<AntiAlias>1</AntiAlias>
-</FontData>
-<FontData>
-<FontName>Arial</FontName>
-<CharacterSet>0</CharacterSet>
-<Height>-13</Height>
+<Height>-12</Height>
 <Weight>400</Weight>
 <Italic>0</Italic>
 <Underline>0</Underline>
@@ -4455,27 +4367,27 @@ Otherwise, click Next to continue.
 </Fonts>
 <CAOff>
 <TP>0</TP>
-<L>15</L>
-<T>15</T>
-<R>15</R>
+<L>24</L>
+<T>26</T>
+<R>20</R>
 <B>15</B>
 </CAOff>
 <CAOff>
 <TP>1</TP>
-<L>15</L>
-<T>15</T>
-<R>15</R>
-<B>15</B>
+<L>24</L>
+<T>80</T>
+<R>18</R>
+<B>10</B>
 </CAOff>
 <CAOff>
 <TP>2</TP>
-<L>15</L>
-<T>15</T>
-<R>15</R>
-<B>15</B>
+<L>26</L>
+<T>105</T>
+<R>20</R>
+<B>0</B>
 </CAOff>
-<TBTXTX>10</TBTXTX>
-<TBTXTY>10</TBTXTY>
+<TBTXTX>13</TBTXTX>
+<TBTXTY>14</TBTXTY>
 </StyleData>
 <IsWhileInstallingMode>1</IsWhileInstallingMode>
 <Events>
@@ -4688,33 +4600,43 @@ end
 <StyleData>
 <CstClrs>0</CstClrs>
 <TBBG format="hex">ffffff</TBBG>
-<BDYBG format="hex">ece9d8</BDYBG>
-<FTBG format="hex">ece9d8</FTBG>
+<BDYBG format="hex">ffffff</BDYBG>
+<FTBG format="hex">ffffff</FTBG>
 <TBTXT format="hex">000000</TBTXT>
-<BDYTXT format="hex">000000</BDYTXT>
+<BDYTXT format="hex">ffffff</BDYTXT>
 <CBG format="hex">ffffff</CBG>
-<C3DFACE format="hex">ece9d8</C3DFACE>
-<C3DHLT format="hex">ece9d8</C3DHLT>
-<C3DLIT format="hex">ffffff</C3DLIT>
-<C3DSH format="hex">aca899</C3DSH>
-<CBTNTXT format="hex">000000</CBTNTXT>
+<C3DFACE format="hex">038df6</C3DFACE>
+<C3DHLT format="hex">038df6</C3DHLT>
+<C3DLIT format="hex">038df6</C3DLIT>
+<C3DSH format="hex">038df6</C3DSH>
+<CBTNTXT format="hex">ffffff</CBTNTXT>
 <CTEXT format="hex">000000</CTEXT>
-<CDISTXT format="hex">aca899</CDISTXT>
+<CDISTXT format="hex">c0c0c0</CDISTXT>
 <CPRGRS format="hex">316ac5</CPRGRS>
-<C3DSHDK format="hex">716f64</C3DSHDK>
-<TBIMG>111_X_63_keyboard.jpg</TBIMG>
-<SBIMG>166_X_312_keyboard.jpg</SBIMG>
-<BDIMG/>
-<BDFILL>0</BDFILL>
-<HDSEP>1</HDSEP>
-<FTSEP>1</FTSEP>
-<CstFnts>0</CstFnts>
+<C3DSHDK format="hex">038df6</C3DSHDK>
+<TBIMG>16_top.jpg</TBIMG>
+<SBIMG>16_side.jpg</SBIMG>
+<BDIMG>16_body.jpg</BDIMG>
+<BDFILL>1</BDFILL>
+<HDSEP>0</HDSEP>
+<FTSEP>0</FTSEP>
+<CstFnts>1</CstFnts>
 <Fonts>
 <FontData>
 <FontName>Arial</FontName>
 <CharacterSet>0</CharacterSet>
 <Height>-13</Height>
 <Weight>700</Weight>
+<Italic>1</Italic>
+<Underline>0</Underline>
+<StrikeOut>0</StrikeOut>
+<AntiAlias>1</AntiAlias>
+</FontData>
+<FontData>
+<FontName>Arial</FontName>
+<CharacterSet>0</CharacterSet>
+<Height>-11</Height>
+<Weight>400</Weight>
 <Italic>0</Italic>
 <Underline>0</Underline>
 <StrikeOut>0</StrikeOut>
@@ -4723,7 +4645,7 @@ end
 <FontData>
 <FontName>Arial</FontName>
 <CharacterSet>0</CharacterSet>
-<Height>-13</Height>
+<Height>-27</Height>
 <Weight>700</Weight>
 <Italic>0</Italic>
 <Underline>0</Underline>
@@ -4733,17 +4655,7 @@ end
 <FontData>
 <FontName>Arial</FontName>
 <CharacterSet>0</CharacterSet>
-<Height>-24</Height>
-<Weight>700</Weight>
-<Italic>0</Italic>
-<Underline>0</Underline>
-<StrikeOut>0</StrikeOut>
-<AntiAlias>1</AntiAlias>
-</FontData>
-<FontData>
-<FontName>Arial</FontName>
-<CharacterSet>0</CharacterSet>
-<Height>-13</Height>
+<Height>-12</Height>
 <Weight>400</Weight>
 <Italic>0</Italic>
 <Underline>0</Underline>
@@ -4763,27 +4675,27 @@ end
 </Fonts>
 <CAOff>
 <TP>0</TP>
-<L>15</L>
-<T>15</T>
-<R>15</R>
+<L>24</L>
+<T>26</T>
+<R>20</R>
 <B>15</B>
 </CAOff>
 <CAOff>
 <TP>1</TP>
-<L>15</L>
-<T>15</T>
-<R>15</R>
-<B>15</B>
+<L>24</L>
+<T>80</T>
+<R>18</R>
+<B>10</B>
 </CAOff>
 <CAOff>
 <TP>2</TP>
-<L>15</L>
-<T>15</T>
-<R>15</R>
-<B>15</B>
+<L>26</L>
+<T>105</T>
+<R>20</R>
+<B>0</B>
 </CAOff>
-<TBTXTX>10</TBTXTX>
-<TBTXTY>10</TBTXTY>
+<TBTXTX>13</TBTXTX>
+<TBTXTY>14</TBTXTY>
 </StyleData>
 <Events>
 <Event>
@@ -5001,7 +4913,7 @@ g_HandleSystemReboot();
 <GradientForeColor format="hex">5971b6</GradientForeColor>
 <ImageFile>D:\code_ipran\otnm_clear\otnm_device_gui_py_4th\build\ping_timer.png</ImageFile>
 <UseCustomIcon>1</UseCustomIcon>
-<CustomIcon>%TempLaunchFolder%\otnm_clear.ico</CustomIcon>
+<CustomIcon>%TempLaunchFolder%\ico-1.ico</CustomIcon>
 <HideTaskbarIcon>0</HideTaskbarIcon>
 <AlwaysOnTop>0</AlwaysOnTop>
 <Headline>%ProductName%</Headline>
@@ -5094,7 +5006,7 @@ g_HandleSystemReboot();
 <Action>0</Action>
 </SetupRequirements>
 <Launcher/>
-<ProjectTheme>Computer</ProjectTheme>
+<ProjectTheme>Soft Blue</ProjectTheme>
 <ProjFileDesc>新建工程</ProjFileDesc>
 <ProjFileAuthor/>
 <ProjFileCompany/>
@@ -5285,6 +5197,14 @@ end
 <Cfg>All</Cfg>
 </BuildConfigs>
 </PrimerFile>
+<PrimerFile>
+<SourcePath>Y:\project\20180508-access\wfsAccessSvn\outputBin\forSetupFactory\images\ico-1.ico</SourcePath>
+<DeleteOnExit>1</DeleteOnExit>
+<NeededByUninstall>0</NeededByUninstall>
+<BuildConfigs>
+<Cfg>All</Cfg>
+</BuildConfigs>
+</PrimerFile>
 </PrimerFiles>
 <Events>
 <Event>
@@ -5356,7 +5276,7 @@ g_HandleSystemReboot();
 <SUF7SessionVars>
 <SessionVar>
 <Name>%ProductName%</Name>
-<Value>信息记录工具</Value>
+<Value>信息记录系统</Value>
 <Type>1</Type>
 </SessionVar>
 <SessionVar>

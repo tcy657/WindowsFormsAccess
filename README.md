@@ -9,12 +9,20 @@ git常用命令
 【待完成】所有的下拉框禁止输入，只能选择
 *容错try,增加try-catch捕获错误
 *使用文档
+导excel的sheet页带上字母
 
-【优化】状态栏显示更为友好
+
+【优化】说明文档
+	数据库备份和恢复
+	提供初始数据库
+【优化，急】限制只打开一个窗口
+【优化，急】非功能问题不改，不增加
+	
+【优化】Tab页增加颜色
+【优化】tab1使用按键代替标签页，区别tab2	
 【优化】增加日志打印，记录操作步骤和出错信息
 【优化】删除用户基本信息时，不支持多条删除。只能删除第一条
 【优化，界面】分组/分块，增默认值
-【优化】登录验证
 *菜单栏/工具栏
 【优化】sheet的时间使用控件，代替文本框
 【问题】点击导出时，检索 COM 类工厂中 CLSID 为 {00024500-0000-0000-C000-000000000046} 的组件时失败，原因是出现以下错误: 80040154。
@@ -28,7 +36,13 @@ git常用命令
 【待确认】sheet7中“术后病理分期”应为”术后病理分析“？ 11:54 2018/6/2
 
 【注意事项】
-14 清空access时，因没有truncate这样的语句的，你这种必须分2句话
+15 //步骤5，自动更新编译时间，指示版本号
+            string ver = "ver" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString(); //获取程序集的版本号, V1.0
+            string timeComp = System.IO.File.GetLastWriteTime(this.GetType().Assembly.Location).ToString();    //获取程序集的最后编译时间，日期+时间
+            //string timeComp = System.IO.File.GetLastWriteTime(this.GetType().Assembly.Location).ToShortDateString();  //编译日期, 
+            toolTip1.SetToolTip(lblVersion, ver + ", SVNxx, by cytao@fiberhome.com" + ", " + timeComp);              //ver 1.0.2, SVN41, by cytao@fiberhome.com, 2016.4
+            
+14 【不成功】清空access时，因没有truncate这样的语句的，你这种必须分2句话
     delete from 表
     alter table 表 alter column id counter(1,1)
 13 公共结构体

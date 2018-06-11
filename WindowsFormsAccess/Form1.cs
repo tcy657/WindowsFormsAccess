@@ -18,6 +18,7 @@ namespace WindowsFormsAccess
         //变量定义
         private AccessHelper achelp;
         static string workPath = System.Windows.Forms.Application.StartupPath; //获取启动了应用程序的可执行文件的路径，“D：\fh_bk”形式，末尾不带“\”
+        SaveFileDialog save = new SaveFileDialog();
         
         public Form1()
         {
@@ -26,9 +27,20 @@ namespace WindowsFormsAccess
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            achelp = new AccessHelper();        //定义变量，设置列标题；       
-            initDo(); //所有初始化          
+            
+            //登录
+            F_Login FrmLogin = new F_Login();   //声明登录窗体，进行调用            
+            FrmLogin.ShowDialog();
+            if (0 == FrmLogin.iResult) 
+            {
+                FrmLogin.Dispose();
+                this.Close();                
+            }
 
+            achelp = new AccessHelper();        //定义变量，设置列标题；       
+            initDo(); //所有初始化
+
+            //hideTab2Control2(ref this.tabPage2s1); //显示tabControl2的”首页“
         }
 
         //显示数据表全部内容；
@@ -45,7 +57,7 @@ namespace WindowsFormsAccess
             outputLabel("加载开始");
             bXinJian = false; //解除新建状态
 
-            string sql1 = "None"; //保存sql语句
+            //string sql1 = "None"; //保存sql语句
 
             //step1，判断是否选中
             if (dataGridView1.SelectedRows.Count < 1 || dataGridView1.SelectedRows[0].Cells[1].Value == null)
@@ -142,221 +154,14 @@ namespace WindowsFormsAccess
             gOid = Convert.ToInt32(oid);  //更新全局oid
 
             readSheet1(gOid);   //读取sheet1内容到页面1
+            loadSheetBindOnly2();
+            loadSheetBindOnly3();
+            loadSheetBindOnly4();
+            loadSheetBindOnly5();
+            loadSheetBindOnly6();
+            loadSheetBindOnly7();
 
-            //读取sheet2内容到页面
-            sql1 = "select * from s2XinFuZhu where iUserID=" +gOid ; //重新刷新
-            databind(sql1, dgView2);
-            dgView2.Columns[0].Visible = false;             //dgView2, sheet2
-            dgView2.Columns[1].HeaderCell.Value = "编码";
-            dgView2.Columns[2].HeaderCell.Value = "新辅助";
-            dgView2.Columns[3].HeaderCell.Value = "住院号";
-            dgView2.Columns[4].HeaderCell.Value = "方案";
-            dgView2.Columns[5].HeaderCell.Value = "剂量";
-            dgView2.Columns[6].HeaderCell.Value = "疗程";
-            dgView2.Columns[7].HeaderCell.Value = "疗效评价";
-            dgView2.Columns[8].HeaderCell.Value = "放疗方案";
-            dgView2.Columns[9].HeaderCell.Value = "放疗疗程";
-            dgView2.Columns[10].HeaderCell.Value = "术前二次病检";
-            dgView2.Columns[11].HeaderCell.Value = "结果";
-            dgView2.Columns[12].HeaderCell.Value = "新辅助放疗";
-            dgView2.Columns[13].HeaderCell.Value = "UserID";
-
-            //读取sheet3内容到页面
-            sql1 = "select * from s3ShuHouFuZhu where iUserID=" + gOid.ToString() ; //重新刷新
-            databind(sql1, dgView3);
-            dgView3.Columns[0].Visible = false;
-            dgView3.Columns[1].HeaderCell.Value = "编码";
-            dgView3.Columns[2].HeaderCell.Value = "辅助化疗";
-            dgView3.Columns[3].HeaderCell.Value = "周期";
-            dgView3.Columns[4].HeaderCell.Value = "方案";
-            dgView3.Columns[5].HeaderCell.Value = "体表面积";
-            dgView3.Columns[6].HeaderCell.Value = "实际剂量";
-            dgView3.Columns[7].HeaderCell.Value = "WBC";
-            dgView3.Columns[8].HeaderCell.Value = "Hb";
-            dgView3.Columns[9].HeaderCell.Value = "PLT";
-            dgView3.Columns[10].HeaderCell.Value = "BMI";
-            dgView3.Columns[11].HeaderCell.Value = "NRS2002";
-            dgView3.Columns[12].HeaderCell.Value = "ECOG";
-            dgView3.Columns[13].HeaderCell.Value = "复查";
-            dgView3.Columns[14].HeaderCell.Value = "CT";
-            dgView3.Columns[15].HeaderCell.Value = "MRI";
-            dgView3.Columns[16].HeaderCell.Value = "内镜";
-            dgView3.Columns[17].HeaderCell.Value = "PET";
-            dgView3.Columns[18].HeaderCell.Value = "复发";
-            dgView3.Columns[19].HeaderCell.Value = "位置";
-            dgView3.Columns[20].HeaderCell.Value = "处理方式";
-            dgView3.Columns[21].HeaderCell.Value = "剂量";
-            dgView3.Columns[22].HeaderCell.Value = "疗程";
-            dgView3.Columns[23].HeaderCell.Value = "疗效评价";
-            dgView3.Columns[24].HeaderCell.Value = "用户ID";
-            dgView3.Columns[25].HeaderCell.Value = "住院号";
-            dgView3.Columns[26].HeaderCell.Value = "靶向药物";
-            dgView3.Columns[27].HeaderCell.Value = "药物品种";
-            dgView3.Columns[27].HeaderCell.Value = "检测结果";
-
-            //读取sheet4内容到页面
-            sql1 = "select * from s4SuiZhen where iUserID=" + gOid.ToString(); //重新刷新
-            databind(sql1, dgView4);
-            dgView4.Columns[0].Visible = false;
-            dgView4.Columns[1].HeaderCell.Value = "编码";
-            dgView4.Columns[2].HeaderCell.Value = "随诊次数";
-            dgView4.Columns[3].HeaderCell.Value = "随诊时间";
-            dgView4.Columns[4].HeaderCell.Value = "住院号";
-            dgView4.Columns[5].HeaderCell.Value = "CT";
-            dgView4.Columns[6].HeaderCell.Value = "MRI";
-            dgView4.Columns[7].HeaderCell.Value = "内镜";
-            dgView4.Columns[8].HeaderCell.Value = "PET";
-            dgView4.Columns[9].HeaderCell.Value = "复发";
-            dgView4.Columns[10].HeaderCell.Value = "用户ID";
-
-            //读取sheet5内容到页面
-            sql1 = "select * from s5ShuJuCunZhu where iUserID=" + gOid.ToString(); //重新刷新
-            databind(sql1, dgView5);
-            dgView5.Columns[0].Visible = false;
-            dgView5.Columns[1].HeaderCell.Value = "档案号/编码";
-            dgView5.Columns[2].HeaderCell.Value = "CT";
-            dgView5.Columns[3].HeaderCell.Value = "磁共振";
-            dgView5.Columns[4].HeaderCell.Value = "病理";
-            dgView5.Columns[5].HeaderCell.Value = "用户ID";
-
-            //读取sheet6内容到页面
-            sql1 = "select * from s6QiBingQingKuang where iUserID=" + gOid.ToString(); //重新刷新
-            databind(sql1, dgView6);
-            dgView6.Columns[0].Visible = false;
-            dgView6.Columns[1].HeaderCell.Value = "编码";
-            dgView6.Columns[2].HeaderCell.Value = "肿瘤位置";
-            dgView6.Columns[3].HeaderCell.Value = "首发症状";
-            dgView6.Columns[4].HeaderCell.Value = "时间";
-            dgView6.Columns[5].HeaderCell.Value = "初步诊断时间";
-            dgView6.Columns[6].HeaderCell.Value = "诊断依据";
-            dgView6.Columns[7].HeaderCell.Value = "用户ID";
-            
-            //读取sheet7内容到页面
-            sql1 = "select * from s7ShuQianPingGu where iUserID=" + gOid.ToString(); //重新刷新
-            databind(sql1, dgView7);
-            dgView7.Columns[0].Visible = false;
-            dgView7.Columns[1].HeaderCell.Value = "编码";
-            dgView7.Columns[2].HeaderCell.Value = "我院病检";
-            dgView7.Columns[3].HeaderCell.Value = "结果";
-            dgView7.Columns[4].HeaderCell.Value = "病理号";
-            dgView7.Columns[5].HeaderCell.Value = "我院CT";
-            dgView7.Columns[6].HeaderCell.Value = "肿瘤大小";
-            dgView7.Columns[7].HeaderCell.Value = "局部侵犯";
-			dgView7.Columns[8].HeaderCell.Value = "淋巴结转移";
-			dgView7.Columns[9].HeaderCell.Value = "转移";
-			dgView7.Columns[10].HeaderCell.Value = "部位";
-			dgView7.Columns[11].HeaderCell.Value = "我院MRI";
-			dgView7.Columns[12].HeaderCell.Value = "MRI肿瘤大小";
-			dgView7.Columns[13].HeaderCell.Value = "MRI局部侵犯";
-			dgView7.Columns[14].HeaderCell.Value = "MRI淋巴转移";
-			dgView7.Columns[15].HeaderCell.Value = "MRI转移";
-			dgView7.Columns[16].HeaderCell.Value = "MRI部位";
-			dgView7.Columns[17].HeaderCell.Value = "PET";
-			dgView7.Columns[18].HeaderCell.Value = "PET肿瘤大小";
-			dgView7.Columns[19].HeaderCell.Value = "PET局部侵犯";
-			dgView7.Columns[20].HeaderCell.Value = "PET代谢强度";
-			dgView7.Columns[21].HeaderCell.Value = "PET淋巴转移";
-			dgView7.Columns[22].HeaderCell.Value = "PET转移";
-			dgView7.Columns[23].HeaderCell.Value = "PET部位";
-			dgView7.Columns[24].HeaderCell.Value = "转移部位代谢强度";
-			dgView7.Columns[25].HeaderCell.Value = "CT";   
-			dgView7.Columns[26].HeaderCell.Value = "CN";   
-			dgView7.Columns[27].HeaderCell.Value = "CM";   
-			dgView7.Columns[28].HeaderCell.Value = "WBC";  
-			dgView7.Columns[29].HeaderCell.Value = "Hb";   
-			dgView7.Columns[30].HeaderCell.Value = "ALB";  
-			dgView7.Columns[31].HeaderCell.Value = "CEA";  
-			dgView7.Columns[32].HeaderCell.Value = "CA125";
-			dgView7.Columns[33].HeaderCell.Value = "CA199";
-			dgView7.Columns[34].HeaderCell.Value = "CA724";
-			dgView7.Columns[35].HeaderCell.Value = "AFP";  
-			dgView7.Columns[36].HeaderCell.Value = "是否梗阻";
-			dgView7.Columns[37].HeaderCell.Value = "是否出血";
-			dgView7.Columns[38].HeaderCell.Value = "是否穿孔";
-			dgView7.Columns[39].HeaderCell.Value = "BMI";
-			dgView7.Columns[40].HeaderCell.Value = "NRS2002";
-			dgView7.Columns[41].HeaderCell.Value = "疼痛评分";
-			dgView7.Columns[42].HeaderCell.Value = "ECOG";
-			dgView7.Columns[43].HeaderCell.Value = "心功能";
-			dgView7.Columns[44].HeaderCell.Value = "肺功能";
-			dgView7.Columns[45].HeaderCell.Value = "肾功能";
-			dgView7.Columns[46].HeaderCell.Value = "肝功能";
-			dgView7.Columns[47].HeaderCell.Value = "凝血功能";
-			dgView7.Columns[48].HeaderCell.Value = "是否急诊手术";
-			dgView7.Columns[49].HeaderCell.Value = "手术日期";
-			dgView7.Columns[50].HeaderCell.Value = "腔镜/开腹";
-			dgView7.Columns[51].HeaderCell.Value = "术式";
-			dgView7.Columns[52].HeaderCell.Value = "手术时间";
-			dgView7.Columns[53].HeaderCell.Value = "开腹吻合时间";
-			dgView7.Columns[54].HeaderCell.Value = "肿瘤具体位置";
-			dgView7.Columns[55].HeaderCell.Value = "联合器脏切除";
-			dgView7.Columns[56].HeaderCell.Value = "出血量";
-			dgView7.Columns[57].HeaderCell.Value = "腹腔污染";
-			dgView7.Columns[58].HeaderCell.Value = "副损伤";
-			dgView7.Columns[59].HeaderCell.Value = "是否营养管";
-			dgView7.Columns[60].HeaderCell.Value = "是否造篓";
-			dgView7.Columns[61].HeaderCell.Value = "是否术中病理";
-			dgView7.Columns[62].HeaderCell.Value = "结果2";
-			dgView7.Columns[63].HeaderCell.Value = "切除情况";
-			dgView7.Columns[64].HeaderCell.Value = "淋巴结清扫";
-			dgView7.Columns[65].HeaderCell.Value = "特殊说明";
-			dgView7.Columns[66].HeaderCell.Value = "ERAS";
-			dgView7.Columns[67].HeaderCell.Value = "ICU监护";
-			dgView7.Columns[68].HeaderCell.Value = "监护时间";
-			dgView7.Columns[69].HeaderCell.Value = "进水时间";
-			dgView7.Columns[70].HeaderCell.Value = "通气时间";
-			dgView7.Columns[71].HeaderCell.Value = "排便时间";
-			dgView7.Columns[72].HeaderCell.Value = "腹痛缓解时间";
-			dgView7.Columns[73].HeaderCell.Value = "尿管拔除时间";
-			dgView7.Columns[74].HeaderCell.Value = "引流管拔除时间";
-			dgView7.Columns[75].HeaderCell.Value = "下床时间";
-			dgView7.Columns[76].HeaderCell.Value = "进食时间";
-			dgView7.Columns[77].HeaderCell.Value = "是否肠内营养管";
-			dgView7.Columns[78].HeaderCell.Value = "肠内营养管时间";
-			dgView7.Columns[79].HeaderCell.Value = "TPN时间";
-			dgView7.Columns[80].HeaderCell.Value = "术后出血";
-			dgView7.Columns[81].HeaderCell.Value = "腹腔感染";
-			dgView7.Columns[82].HeaderCell.Value = "切口感染";
-			dgView7.Columns[83].HeaderCell.Value = "吻合口瘘";
-			dgView7.Columns[84].HeaderCell.Value = "肠梗阻";
-			dgView7.Columns[85].HeaderCell.Value = "胃瘫";
-			dgView7.Columns[86].HeaderCell.Value = "肺部感染";
-			dgView7.Columns[87].HeaderCell.Value = "低蛋白血症";
-			dgView7.Columns[88].HeaderCell.Value = "胃管脱出";
-			dgView7.Columns[89].HeaderCell.Value = "营养管脱出";
-			dgView7.Columns[90].HeaderCell.Value = "造口并发症";
-			dgView7.Columns[91].HeaderCell.Value = "是否二次手术";
-			dgView7.Columns[92].HeaderCell.Value = "手术时间2";
-			dgView7.Columns[93].HeaderCell.Value = "手术方式2";
-			dgView7.Columns[94].HeaderCell.Value = "解决问题";
-			dgView7.Columns[95].HeaderCell.Value = "术后病理诊断";
-			dgView7.Columns[96].HeaderCell.Value = "分化程度";
-			dgView7.Columns[97].HeaderCell.Value = "浸润深度";
-			dgView7.Columns[98].HeaderCell.Value = "脉管癌栓";
-			dgView7.Columns[99].HeaderCell.Value = "神经侵犯";
-			dgView7.Columns[100].HeaderCell.Value = "癌结节";
-			dgView7.Columns[101].HeaderCell.Value = "总淋巴结数";
-			dgView7.Columns[102].HeaderCell.Value = "转移淋巴结数";
-			dgView7.Columns[103].HeaderCell.Value = "MSI";  
-			dgView7.Columns[104].HeaderCell.Value = "HER_2";
-			dgView7.Columns[105].HeaderCell.Value = "P53";
-			dgView7.Columns[106].HeaderCell.Value = "Ki_67";
-			dgView7.Columns[107].HeaderCell.Value = "K_RAS";
-			dgView7.Columns[108].HeaderCell.Value = "N_RAS";
-			dgView7.Columns[109].HeaderCell.Value = "术后病理分期";
-			dgView7.Columns[110].HeaderCell.Value = "MSI确证";
-			dgView7.Columns[111].HeaderCell.Value = "基因检测";
-			dgView7.Columns[112].HeaderCell.Value = "出院时间";
-			dgView7.Columns[113].HeaderCell.Value = "出院情况";
-			dgView7.Columns[114].HeaderCell.Value = "医疗费用";
-			dgView7.Columns[115].HeaderCell.Value = "用户ID";
-
-		
-
-            //readSheetX(gOid);   //读取内容到页面
-
-            //测试同一sheet存在多个ID和单ID
-            //ycyxDo.GetListID("iUserID = 5");
+            label20.Text = "当前加载用户： \n"+ textBox1Sheet1.Text + "\n用户编号： \n"+ gOid.ToString(); //在首页显示“当前用户：”
 
             //置位为查看状态
             gFlagAdd = 0;
@@ -456,6 +261,8 @@ namespace WindowsFormsAccess
 
             bXinJian = true;   //新建状态，detail-datagridview的操作控件禁用
             groupBox6.Enabled = false; //detail-datagridview的操作控件禁用
+
+            label20.Text = "当前用户：无";
         }
 
         // 删除记录
@@ -485,7 +292,7 @@ namespace WindowsFormsAccess
                     int iRet7 = achelp.ExcuteSql("delete from s7ShuQianPingGu where iUserID = '" + oid.ToString() + "'"); //s7
                 }
                 string sql1 = "select * from Users";
-                databind(sql1,dataGridView1);
+                databind(sql1, ref  dataGridView1);
                 gOid = 0; //不让切换到其他sheet，只能从"首页"开始
 
                 //显示
@@ -523,7 +330,7 @@ namespace WindowsFormsAccess
                 }                
             }
 
-            databind(sql1, dataGridView1); //更新DataGridView
+            databind(sql1, ref  dataGridView1); //更新DataGridView
 
             outputLabel("查询结束");
             return;
@@ -790,41 +597,49 @@ namespace WindowsFormsAccess
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
             tabPage1Index = this.tabControl1.SelectedIndex; //读取当前操作tab页
-
+            TabPage i = this.tabPage2s1;
             //未加载，则不允许从“首页”切换到其他页。
             if (0 == gOid &&  0 != tabPage1Index) //未加载，且当前页为首页不显示
             {
                 MessageBox.Show("请加载用户信息！", "系统提示");
-                this.tabControl1.SelectedIndex = 0; //跳到首页                 
-                this.tabControl2.SelectedIndex = 0; //跳到首页                 
+                this.tabControl1.SelectedIndex = 0; //跳到首页  
+                //hideTab2Control2(ref this.tabPage2s1);
                 return;
             }
 
+            
             switch (tabPage1Index)
             {
                 case 0:
                     tabPage2Index = 0;
+                    i = this.tabPage2s1;
+                    
                     button25.Enabled = true; //detail-保存使能
                     break;
-                case 1:     
+                case 1:     //sheet2
                     tabPage2Index = 1;
+                    i = this.tabPage2s2;
                     button25.Enabled = true; //detail-保存使能
                     break;
-                case 2:
+                case 2: //sheet3
 
                     tabPage2Index = 2;
+                    i = this.tabPage2s3;
                     button25.Enabled = true; //detail-保存使能
                     break;
                 case 3:    
                     tabPage2Index = 3;
+                    i = this.tabPage2s4;
                     button25.Enabled = true; //detail-保存使能
                     break;
                 case 4:             
                     tabPage2Index = 4;
+                    i = this.tabPage2s5;
                     button25.Enabled = true; //detail-保存使能
                     break;
                 case 5:           
                     tabPage2Index = 5;
+                    i = this.tabPage2s6;
                     button25.Enabled = true; //detail-保存使能
 
                     textBox81.Text = ""; //清空
@@ -835,20 +650,50 @@ namespace WindowsFormsAccess
                     break;
                 case 6: //sheet
                     tabPage2Index = 6;
+                    i = this.tabPage2s7;
                     button25.Enabled = false; //detail-保存, 不使能
                     break;
                 case 7:
                     tabPage2Index = 0;
+                    i = this.tabPage2s1;
                     break;
                 
                 default:
                     tabPage1Index = 100;
                     break;
             }
-            outputLabel("tabpage: " + tabPage1Index.ToString());
+            outputLabel("内容查看跳转: " + tabPage1Index.ToString());
             if (100 != tabPage2Index)
             {
                 this.tabControl2.SelectedIndex = tabPage2Index;
+                //hideTab2Control2(ref  i ); //只显示一个tab页
+                //switch (tabPage1Index)  //在显示的Tab页上绑定dgview
+                //{
+                //    case 0:
+                //        //不动作
+                //        break;
+                //    case 1:     //sheet2
+                //        loadSheetBindOnly2();
+                //        break;
+                //    case 2: //sheet3
+                //        loadSheetBindOnly3();
+                //        break;
+                //    case 3:
+                //        loadSheetBindOnly4();
+                //        break;
+                //    case 4:
+                //        loadSheetBindOnly5();
+                //        break;
+                //    case 5:
+                //        loadSheetBindOnly6();
+                //        break;
+                //    case 6: //sheet
+                //        loadSheetBindOnly7();
+                //        break;
+                //    default:
+                //        //不动作
+                //        break;
+                //}
             }
 
             //首页则只显示首页按键，分页显示分页按键
@@ -881,59 +726,98 @@ namespace WindowsFormsAccess
         //保存，全局，区别于每个sheet页面上按键
         private void button25_Click(object sender, EventArgs e)
         {
+            bool bResult = false; //记录保存的结果
             switch (this.tabControl1.SelectedIndex)
             {
                 case 0:
 
                     break;
                 case 1: //sheet2
-                    updateSheet2();
+                    bResult = updateSheet2();
+                    if (true == bResult)
+                    {
+                        foreach (Control i in groupBox1.Controls)  //清空和禁用
+                        {
+                            if (i is TextBox)
+                            {
+                                i.Text = "";
+                                i.Enabled = false;
+                            }
+                            else if (i is ComboBox)
+                            {
+                                i.Text = "";
+                                i.Enabled = false;
+                            }
+                        }
+                    }
                     break;
                 case 2: //sheet3
-                    updateSheet3();
+                    bResult = updateSheet3();
+                    if (true == bResult)
+                    {
+                        foreach (Control i in groupBox5.Controls)  //清空和禁用
+                        {
+                            if (i is TextBox)
+                            {
+                                i.Text = "";
+                                i.Enabled = false;
+                            }
+                            else if (i is ComboBox)
+                            {
+                                i.Text = "";
+                                i.Enabled = false;
+                            }
+                        }
+                    }
                     break;
                 case 3: //sheet4
-                    updateSheet4(); //保存
-                    //sheet 4; //清空
-                    foreach (Control i in groupBox7.Controls)
+                    bResult = updateSheet4();
+                    if (true == bResult)
                     {
-                        if (i is TextBox)
-                            i.Text = "";
-                        else if (i is ComboBox)
-                            i.Text = "";
-                    }
-                    foreach (Control i in groupBox7.Controls) //禁用
-                    {
-                        if (i is TextBox)
-                            i.Enabled = false;
-                        else if (i is ComboBox)
-                            i.Enabled = false;
+                        //sheet 4; //清空
+                        foreach (Control i in groupBox7.Controls)
+                        {
+                            if (i is TextBox)
+                            {
+                                i.Text = "";
+                                i.Enabled = false;
+                            }
+                            else if (i is ComboBox)
+                            {
+                                i.Text = "";
+                                i.Enabled = false;
+                            }
+                        }
                     }
                     break;                
                 case 4:  //sheet5
-                    updateSheet5(); //保存
+                    bResult = updateSheet5();
+                    if (true == bResult)
+                    {
+                        textBox81.Text = "";
+                        textBox81.Enabled = false;
+                    }
                     break;
                 case 5:  //sheet6 起病情况
-                    updateSheet6();
-                    foreach (Control i in groupBox9.Controls)  //清空和禁用
+                    bResult = updateSheet6();
+                    if (true == bResult)
                     {
-                        if (i is TextBox)
+                        foreach (Control i in groupBox9.Controls)  //清空和禁用
                         {
-                            i.Text = "";
-                            i.Enabled = false;
-                        }
-                        else if (i is ComboBox)
-                        {
-                            i.Text = "";
-                            i.Enabled = false;
+                            if (i is TextBox)
+                            {
+                                i.Text = "";
+                                i.Enabled = false;
+                            }
+                            else if (i is ComboBox)
+                            {
+                                i.Text = "";
+                                i.Enabled = false;
+                            }
                         }
                     }
-      
                     break;
                 case 6: //sheet7
-
-                    break;
-                case 7:
 
                     break;
                 default:
@@ -959,6 +843,9 @@ namespace WindowsFormsAccess
                         {
                             i.Text = "";
                             i.Enabled = true;
+
+                            if ("textBox77" == i.Name) //编码保持一致
+                            {  i.Text = comboBox7Sheet1.Text + "-";}
                         }
                         else if (i is ComboBox)
                         {
@@ -976,6 +863,8 @@ namespace WindowsFormsAccess
                         {
                             i.Text = "";
                             i.Enabled = true;
+                            if ("textBox80" == i.Name) //编码保持一致
+                            { i.Text = comboBox7Sheet1.Text + "-"; }
                         }
                         else if (i is ComboBox)
                         {
@@ -992,6 +881,8 @@ namespace WindowsFormsAccess
                         {
                             i.Text = "";
                             i.Enabled = true;
+                            if ("textBox30" == i.Name) //编码保持一致
+                            { i.Text = comboBox7Sheet1.Text + "-"; }
                         }
                         else if (i is ComboBox)
                         {
@@ -1019,6 +910,8 @@ namespace WindowsFormsAccess
                        {
                            i.Text = "";
                            i.Enabled = true;
+                           if ("textBox82" == i.Name) //编码保持一致
+                           { i.Text = comboBox7Sheet1.Text + "-"; }
                        }
                        else if (i is ComboBox)
                        {
@@ -1030,10 +923,12 @@ namespace WindowsFormsAccess
                 case 6: //sheet7
                     FormSheet7 f7 = new FormSheet7(); //创建一个新窗口7
                     f7.iUserID = gOid; //iUserID必须带过去
-                    
+                    //f7.lOid = dos7ShuQianPingGu.GetMaxId(); //下一个编号
+                    f7.Text36 = comboBox7Sheet1.Text + "-"; //编码保持一致
+
                     f7.ShowDialog();
                     string sql1 = "select * from s7ShuQianPingGu where iUserID = " + gOid.ToString(); //重新刷新，只显示本用户的信息
-                    databind(sql1, dgView7);
+                    databind(sql1, ref dgView7);
   
                     break;
                 case 7:
@@ -1211,7 +1106,7 @@ namespace WindowsFormsAccess
                     {
                         f7.ShowDialog();
                         string sql1 = "select * from s7ShuQianPingGu where iUserID = " + gOid.ToString(); //重新刷新，只显示本用户的信息
-                        databind(sql1, dgView7);
+                        databind(sql1,ref dgView7);
                     }
                     break;
                 case 7:
@@ -1544,7 +1439,7 @@ namespace WindowsFormsAccess
         // tabControl2_SelectedIndexChanged标签页切换
         private void tabControl2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
             outputLabel("切换标签页");
             tabPage2Index = this.tabControl2.SelectedIndex;
 
@@ -1591,46 +1486,12 @@ namespace WindowsFormsAccess
         private void button23_Click(object sender, EventArgs e)
         {
             //Step1， 获取用户ID
-            string sql1 = "select ID from Users ";
-            if (textBox23.Text.Trim() != "")  //内容为空，取所有值
-            {
-                string checkType = comboBox19.Text; //查询条件
-                switch (checkType)
-                {
-                    case "编码":
-                        sql1 = sql1 + "where sBianMa='" + textBox23.Text.Trim() + "'";
-                        break;
-                    case "姓名":
-                        sql1 = sql1 + "where sName='" + textBox23.Text.Trim() + "'";
-                        break;
-                    default:
-                        break;
-                }
-            }
-
-            if ((dataGridView1.DataSource as DataTable).Rows.Count == 0) //绑定的数据源，但数据为空
-            {
-                MessageBox.Show("数据为空，退出!");
-                return; 
-            }
-            dataGridView1.Rows[0].Selected = true; //取第一行
-            buttonUpdate.PerformClick(); //加载，产生DataGridView报头。
-            tabControl1.SelectedIndex = 0; //跳到首页
+            DataTable dt = new DataTable();
+            dt = (DataTable)(dataGridView1.DataSource); //保留现场
 
             outputLabel("2/5，收集数据");
             //Step2-7
-            string sql2 = "select * from s2XinFuZhu where iUserID in (" + sql1 + ")";            
-            databind(sql2, dgView2); //更新DataGridView2
-            sql2 = "select * from s3ShuHouFuZhu where iUserID in (" + sql1 + ")"; //dos3ShuHouFuZhu
-            databind(sql2, dgView3);
-            sql2 = "select * from s4SuiZhen where iUserID in (" + sql1 + ")"; //dos4SuiZhen
-            databind(sql2, dgView4);
-            sql2 = "select * from s5ShuJuCunZhu where iUserID in (" + sql1 + ")"; //dos5ShuJuCunZhu
-            databind(sql2, dgView5);
-            sql2 = "select * from s6QiBingQingKuang where iUserID in (" + sql1 + ")"; //dos6QiBingQingKuang
-            databind(sql2, dgView6);
-            sql2 = "select * from s7ShuQianPingGu where iUserID in (" + sql1 + ")"; //dos7ShuQianPingGu
-            databind(sql2, dgView7);
+            loadSheet2_7();
 
             Dictionary<string, DataGridView> Dic2Excel = new Dictionary<string, DataGridView> {
                   {"基本信息",dataGridView1} ,
@@ -1645,6 +1506,11 @@ namespace WindowsFormsAccess
             //      {"新辅助",dgView2} };
             outputLabel("3/5，导出数据");
             CExcelSheet.setMoreExcelSheet2(Dic2Excel);
+
+            outputLabel("4/5，还原现场");
+            dataGridView1.DataSource = dt;
+            gOid = 0;
+
             outputLabel("5/5，导出结束");
         }
 
@@ -1687,10 +1553,230 @@ namespace WindowsFormsAccess
             }
         }
 
-        //工具栏，首页
-        private void toolStripLabel1_Click(object sender, EventArgs e)
+
+        private void 帮忙文档LToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            tabControl1.SelectedIndex = 0;
+            outputLabel("打开帮助文档");
+            try
+            {
+                string currentDir = System.Windows.Forms.Application.StartupPath; //获取当前路径，末尾不带“\”
+                string fileDir = currentDir + @"\doc\readme.doc";  //保存路径
+                if (File.Exists(fileDir) == false)//不存在,就退出
+                {
+                    outputLabel("帮助文件不存在");
+                    return;
+                }
+
+               
+                System.Diagnostics.Process.Start(fileDir);
+            } //try
+            catch (Exception objException)
+            {
+                outputLabel("打开帮助文档，失败");
+            }
+        }
+
+        //导出当前加载的用户
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (0 == gOid)
+            {
+                MessageBox.Show("当前用户未加载，退出!");
+                return;
+            }
+            
+            //Step1， 获取用户ID
+            DataTable dt = new DataTable();
+            dt = (DataTable)(dataGridView1.DataSource); //保留现场
+
+            outputLabel("1/5，选择文件");
+            string fileName = @"c:\all_.xls";
+            save.FileName = "all_" + DateTime.Now.ToString("yyyyMMddHHmmss");
+            if (save.ShowDialog() == DialogResult.OK)
+            {
+                fileName = save.FileName;
+            }
+            else
+            {
+                return;
+            }
+
+            outputLabel("2/5，收集数据");
+            string sql2 = "select * from Users where ID = " + gOid.ToString();
+            databind(sql2, ref dataGridView1); //更新DataGridView1
+            loadSheetBindOnly2();
+            loadSheetBindOnly3();
+            loadSheetBindOnly4();
+            loadSheetBindOnly5();
+            loadSheetBindOnly6();
+            loadSheetBindOnly7();
+                        
+            outputLabel("3/5，处理数据");
+            Dictionary<string, DataGridView> Dic2Excel = new Dictionary<string, DataGridView> {
+                  {"基本信息",dataGridView1} ,
+                  {"新辅助",dgView2},
+                  {"术后辅助化疗",dgView3},
+                  {"随诊情况",dgView4},
+                  {"文件档案",dgView5},
+                  {"起病情况",dgView6},
+                  {"术前评估",dgView7} };
+            outputLabel("3/5，导出数据");
+            CExcelSheet.setMoreExcelSheet2(Dic2Excel, fileName);
+
+            outputLabel("4/5，还原现场");
+            //databind(sql1, dataGridView1); //还原DataGridView1
+            dataGridView1.DataSource = dt;
+            
+            outputLabel("5/5，导出结束");
+        }
+
+        //导出查询结果
+        private void button8_Click(object sender, EventArgs e)
+        {
+            //Step1， 获取用户ID
+            string sql1 = "select ID from Users ";
+            if (textBox23.Text.Trim() != "")  //内容为空，取所有值
+            {
+                string checkType = comboBox19.Text; //查询条件
+                switch (checkType)
+                {
+                    case "编码":
+                        sql1 = sql1 + "where sBianMa='" + textBox23.Text.Trim() + "'";
+                        break;
+                    case "姓名":
+                        sql1 = sql1 + "where sName='" + textBox23.Text.Trim() + "'";
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            if ((dataGridView1.DataSource as DataTable).Rows.Count == 0) //绑定的数据源，但数据为空
+            {
+                MessageBox.Show("数据为空，退出!");
+                return;
+            }
+            //dataGridView1.Rows[0].Selected = true; //取第一行
+            //buttonUpdate.PerformClick(); //加载，产生DataGridView报头。
+            //tabControl1.SelectedIndex = 0; //跳到首页
+            
+            outputLabel("1/5，选择文件");
+            string fileName = @"c:\all_.xls";            
+            save.FileName = "all_" + DateTime.Now.ToString("yyyyMMddHHmmss");
+            if (save.ShowDialog() == DialogResult.OK)
+            {
+                fileName = save.FileName;
+            }
+            else
+            {
+                return;
+            }
+
+            outputLabel("2/5，收集数据");
+            //Step2-7
+            string sql2 = "select * from s2XinFuZhu where iUserID in (" + sql1 + ")";
+            databind(sql2, ref  dgView2); //更新DataGridView2
+            sql2 = "select * from s3ShuHouFuZhu where iUserID in (" + sql1 + ")"; //dos3ShuHouFuZhu
+            databind(sql2, ref  dgView3);
+            sql2 = "select * from s4SuiZhen where iUserID in (" + sql1 + ")"; //dos4SuiZhen
+            databind(sql2, ref  dgView4);
+            sql2 = "select * from s5ShuJuCunZhu where iUserID in (" + sql1 + ")"; //dos5ShuJuCunZhu
+            databind(sql2, ref  dgView5);
+            sql2 = "select * from s6QiBingQingKuang where iUserID in (" + sql1 + ")"; //dos6QiBingQingKuang
+            databind(sql2, ref  dgView6);
+            sql2 = "select * from s7ShuQianPingGu where iUserID in (" + sql1 + ")"; //dos7ShuQianPingGu
+            databind(sql2, ref  dgView7);
+
+            outputLabel("4/5，处理数据");
+            Dictionary<string, DataGridView> Dic2Excel = new Dictionary<string, DataGridView> {
+                  {"基本信息",dataGridView1} ,
+                  {"新辅助",dgView2},
+                  {"术后辅助化疗",dgView3},
+                  {"随诊情况",dgView4},
+                  {"文件档案",dgView5},
+                  {"起病情况",dgView6},
+                  {"术前评估",dgView7} };
+            //Dictionary<string, DataGridView> Dic2Excel = new Dictionary<string, DataGridView> {
+            //      {"基本信息",dataGridView1} ,
+            //      {"新辅助",dgView2} };
+            outputLabel("3/5，导出数据");
+            CExcelSheet.setMoreExcelSheet2(Dic2Excel, fileName);
+            outputLabel("5/5，导出结束");
+        }
+
+        private void 数据库备份BToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //显示folderBrowserDialog1控件
+                FolderBrowserDialog fbdPath = new FolderBrowserDialog();
+                fbdPath.Description = "目录选择...";
+                if (fbdPath.ShowDialog() == DialogResult.OK)
+                {
+
+                    if (fbdPath.SelectedPath.IndexOf(" ") < 0) //路径非空
+                    {
+                        string PC_Path = fbdPath.SelectedPath + @"\"; //路径最后默认不加\
+                        outputLabel("选择目录");
+                        string currentDir = System.Windows.Forms.Application.StartupPath; //获取启动了应用程序的可执行文件的路径，“D：\fh_bk”形式，末尾不带“\”
+                        string fileDb = currentDir + @"\dataBase\linChuang.accdb";  //保存路径
+
+                        if (true == File.Exists(PC_Path + Path.GetFileName(fileDb)))
+                        {
+                            MessageBox.Show("错误！您选择的目录中已存在同名数据库文件，退出!", "系统提示");
+                            return;
+                        }
+
+                        //拷贝到路径 
+                        File.Copy(fileDb, PC_Path + Path.GetFileName(fileDb));
+                        outputLabel("备份数据库，结束");
+                        return;
+                    }
+                    else
+                    {
+                        MessageBox.Show("错误！您选择的文件目录中带有空格，请重新选择: " + fbdPath.SelectedPath, "系统提示");
+                        return;
+                    }
+
+                }
+            }//try
+            catch (Exception objException)
+            {
+                outputLabel("备份数据库，失败");
+                MessageBox.Show("备份数据库,错误！\n" + objException.ToString(), "提示");
+                return;
+            }
+
+        }
+
+        private void 打开数据库目录OToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string currentDir = System.Windows.Forms.Application.StartupPath; //获取启动了应用程序的可执行文件的路径，“D：\fh_bk”形式，末尾不带“\”
+                string fileDir = currentDir + @"\dataBase";  //保存路径
+                if (Directory.Exists(fileDir) == false)//不存在,就创建NE文件夹
+                {
+                    Directory.CreateDirectory(fileDir);
+                }
+
+                outputLabel("打开数据库目录");
+                System.Diagnostics.Process.Start("explorer.exe", fileDir);
+            } //try
+            catch (Exception objException)
+            {
+                outputLabel("打开数据库目录，失败");
+            }
+        }
+
+        private void 关于信息记录系统ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //步骤5，自动更新编译时间，指示版本号
+            string ver = "ver" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString(); //获取程序集的版本号, V1.0
+            string timeComp = System.IO.File.GetLastWriteTime(this.GetType().Assembly.Location).ToString();    //获取程序集的最后编译时间，日期+时间
+            //string timeComp = System.IO.File.GetLastWriteTime(this.GetType().Assembly.Location).ToShortDateString();  //编译日期, 
+            MessageBox.Show("程序版本：\n" + ver + ", " + timeComp, "信息记录系统");              //ver 1.0.2, 2016.4
+            
         }
 
 

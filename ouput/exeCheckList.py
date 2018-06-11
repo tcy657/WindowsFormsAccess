@@ -54,7 +54,8 @@ if __name__ == "__main__":
   "forSetupFactory\\images\\3.gif",
   "forSetupFactory\\images\\4.gif",
   "forSetupFactory\\images\\5.gif",
-  "forSetupFactory\\images\\6.gif",
+  "forSetupFactory\\images\\ico-1.ico",
+  "forSetupFactory\\images\\ico.png",
   "forSetupFactory\\ini\\config.xml",
   "forSetupFactory\\log" ]  
 

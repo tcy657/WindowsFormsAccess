@@ -24,9 +24,9 @@ namespace Maticsoft.DBUtility
         {
             //conn_str = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source='" + Environment.CurrentDirectory + "\\yxdain.accdb'";  
             //无密码
-            conn_str = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source='" + Environment.CurrentDirectory + "\\linChuang.accdb'"; 
+            //conn_str = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source='" + Environment.CurrentDirectory + "\\dataBase\\linChuang.accdb'"; 
             //有密码
-            //conn_str = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source='" + Environment.CurrentDirectory + "\\linChuang.accdb';Jet OLEDB:Database Password=admin";
+            conn_str = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source='" + Environment.CurrentDirectory + "\\dataBase\\linChuang.accdb';Jet OLEDB:Database Password=admin";
             InitDB();
         }
 

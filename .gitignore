@@ -4,3 +4,13 @@ outputBin/forSetupFactory/dataBase
 outputBin/WindowsFormsAccess.exe
 ouput/WindowsFormsAccess.exe
 ouput/Autosave
+outputBin/forSetupFactory/tools
+
+WindowsFormsAccess/bin/Debug/WindowsFormsAccess.exe
+WindowsFormsAccess/bin/Debug/WindowsFormsAccess.pdb
+WindowsFormsAccess/bin/Debug/linChuang.accdb
+WindowsFormsAccess/bin/Debug/linChuang.laccdb
+WindowsFormsAccess/obj/Debug/WindowsFormsAccess.exe
+WindowsFormsAccess/obj/Debug/WindowsFormsAccess.pdb
+
+WindowsFormsAccess/bin/Release/dataBase/linChuang.accdb

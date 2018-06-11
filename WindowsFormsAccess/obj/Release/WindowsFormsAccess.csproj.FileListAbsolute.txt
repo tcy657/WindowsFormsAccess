@@ -1,0 +1,12 @@
+Y:\project\20180508-access\wfsAccessSvn\WindowsFormsAccess\bin\Release\WindowsFormsAccess.exe
+Y:\project\20180508-access\wfsAccessSvn\WindowsFormsAccess\bin\Release\WindowsFormsAccess.pdb
+Y:\project\20180508-access\wfsAccessSvn\WindowsFormsAccess\obj\Release\ResolveAssemblyReference.cache
+Y:\project\20180508-access\wfsAccessSvn\WindowsFormsAccess\obj\Release\WindowsFormsAccess.csproj.ResolveComReference.cache
+Y:\project\20180508-access\wfsAccessSvn\WindowsFormsAccess\obj\Release\WindowsFormsAccess.Form1.resources
+Y:\project\20180508-access\wfsAccessSvn\WindowsFormsAccess\obj\Release\WindowsFormsAccess.Form3.resources
+Y:\project\20180508-access\wfsAccessSvn\WindowsFormsAccess\obj\Release\WindowsFormsAccess.FormSheet7.resources
+Y:\project\20180508-access\wfsAccessSvn\WindowsFormsAccess\obj\Release\WindowsFormsAccess.F_Login.resources
+Y:\project\20180508-access\wfsAccessSvn\WindowsFormsAccess\obj\Release\WindowsFormsAccess.Properties.Resources.resources
+Y:\project\20180508-access\wfsAccessSvn\WindowsFormsAccess\obj\Release\WindowsFormsAccess.csproj.GenerateResource.Cache
+Y:\project\20180508-access\wfsAccessSvn\WindowsFormsAccess\obj\Release\WindowsFormsAccess.exe
+Y:\project\20180508-access\wfsAccessSvn\WindowsFormsAccess\obj\Release\WindowsFormsAccess.pdb
