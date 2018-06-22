@@ -58,6 +58,7 @@
     </Compile>
     <Compile Include="CExcel.cs" />
     <Compile Include="CExcelSheet.cs" />
+    <Compile Include="Class\ClogFile.cs" />
     <Compile Include="DAL\file.cs">
       <SubType>Code</SubType>
     </Compile>

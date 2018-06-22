@@ -13,4 +13,4 @@ WindowsFormsAccess/bin/Debug/linChuang.laccdb
 WindowsFormsAccess/obj/Debug/WindowsFormsAccess.exe
 WindowsFormsAccess/obj/Debug/WindowsFormsAccess.pdb
 
-WindowsFormsAccess/bin/Release/dataBase/linChuang.accdb
+#WindowsFormsAccess/bin/Release/dataBase/linChuang.accdb

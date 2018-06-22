@@ -56,7 +56,8 @@ if __name__ == "__main__":
   "forSetupFactory\\images\\5.gif",
   "forSetupFactory\\images\\ico-1.ico",
   "forSetupFactory\\images\\ico.png",
-  "forSetupFactory\\ini\\config.xml",
+  "forSetupFactory\\ini\\config.ini",
+  "forSetupFactory\\ini\\configTab.ini",
   "forSetupFactory\\log" ]  
 
   #获取根目录工作路径
@@ -75,7 +76,8 @@ if __name__ == "__main__":
   if False == sameFlag: #文件缺失，程序退出！
        print("关键文件缺失，程序退出！\n--" +fileComp) 
        #tkMessageBox.showinfo(title=u'配置对比提示!', message=u"关键文件缺失，程序退出！--" +fileCompPath)
-       logging.shutdown()
+       #logging.shutdown()
+       a=input("输入任意内容退出！")
        sys.exit(1)  #退出
   print("根目录下工具的完整性检查通过，可以打包!")
   

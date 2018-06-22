@@ -357,6 +357,8 @@ namespace Maticsoft.DBUtility
         /// <returns>查询结果（object）</returns>
         public  object GetSingle(string SQLString)
         {
+            if (ole_connection.State != ConnectionState.Open)
+                ole_connection.Open();
             ole_command.Connection = ole_connection;
             ole_command.CommandText = SQLString;       
                     try
@@ -416,7 +418,7 @@ namespace Maticsoft.DBUtility
 
 
         /// <summary>  
-        /// 执行sql, 二进制语句  
+        /// 执行sql, 以二进制方式存取文件  
         /// </summary>  
         /// <param name="strSql">sql语句</param>  
         /// <returns>返回结果</returns>  
@@ -461,7 +463,7 @@ namespace Maticsoft.DBUtility
 
 
         /// <summary>  
-        /// 从数据库里面获取数据，二进制获取文件  
+        /// 从数据库里面获取数据，以二进制方式获取文件  
         /// </summary>  
         /// <param name="strSql">查询语句</param>  
         /// <returns>文件的下进制流</returns>  

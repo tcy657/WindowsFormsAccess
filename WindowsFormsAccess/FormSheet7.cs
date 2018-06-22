@@ -6,7 +6,9 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using Maticsoft.DBUtility; //引入命名空间
+using Maticsoft.DBUtility;
+using System.IO;
+using System.Runtime.InteropServices; //引入命名空间
 
 namespace WindowsFormsAccess
 {
@@ -18,6 +20,15 @@ namespace WindowsFormsAccess
         #region 公用方法/变量
         int gOid = 0; //全局oid，记录Users的ID号, s1
         int gFlagAdd7 = 0; //默认为查看，其他值则为新增
+
+        static string workPath = System.Windows.Forms.Application.StartupPath; //获取启动了应用程序的可执行文件的路径，“D：\fh_bk”形式，末尾不带“\”
+        string iniFileTabPath = workPath + @"\ini\configTab.ini";  //记录各sheet2-7的下一个编号
+        string Section = "BROWSER";
+        string NoText = "None";
+        string Key = "DATABASE_SERVER";
+        string resultIni = "None";
+        string next = "None"; //下一个编码
+        string now = "None";  //当前编码
 
         //日志输出函数
 
@@ -81,6 +92,84 @@ namespace WindowsFormsAccess
 
         #endregion 公用方法
 
+
+        #region 读写ini文件
+        //读写ini文件, 2017.1.22
+        /*传统的配置文件ini已有被xml文件逐步代替的趋势，但对于简单的配置，ini文件还是有用武之地的。
+        ini文件其实就是一个文本文件，它有固定的格式，节Section的名字用[]括起来，然后换行说明key的值：
+        [section]
+        key=value
+         示例：
+         string Section ="BROWSER";
+         string NoText ="None";
+         string iniFilePath =@"D:\OTNM\ui\ini\otnm.ini";  //默认路径，后面再加上文件选择操作。                    
+        string Key = "DATABASE_SERVER";
+        DATABASE_SERVER = ReadIniData(Section, Key, NoText, iniFilePath);  //1，获取数据库IP
+         */
+        //API函数声明
+
+        [System.Runtime.InteropServices.DllImport("kernel32")]//返回0表示失败，非0为成功
+        private static extern long WritePrivateProfileString(string section, string key,
+            string val, string filePath);
+
+        [DllImport("kernel32")]//返回取得字符串缓冲区的长度
+        private static extern long GetPrivateProfileString(string section, string key,
+            string def, StringBuilder retVal, int size, string filePath);
+
+
+        //读Ini文件
+        public static string ReadIniData(string Section, string Key, string NoText, string iniFilePath)
+        {
+            if (File.Exists(iniFilePath))
+            {
+                StringBuilder temp = new StringBuilder(1024);
+                GetPrivateProfileString(Section, Key, NoText, temp, 1024, iniFilePath);
+                return temp.ToString();
+            }
+            else
+            {
+                return String.Empty;
+            }
+        }
+
+
+        // 写Ini文件
+        public static bool WriteIniData(string Section, string Key, string Value, string iniFilePath)
+        {
+            if (File.Exists(iniFilePath))
+            {
+                long OpStation = WritePrivateProfileString(Section, Key, Value, iniFilePath);
+                if (OpStation == 0)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        //清除某个Section
+        public static bool EraseSection(string Section, string iniFilePath)
+        {
+            bool result = false;
+            long OpStation = WritePrivateProfileString(Section, null, null, iniFilePath);
+            if (0 != OpStation)
+            {
+                //throw (new ApplicationException("无法清除Ini文件中的Section"));
+                result = true;
+            }
+            return result;
+        }
+        #endregion 读写ini文件
+
+
+
         
         public FormSheet7()
         {
@@ -90,6 +179,7 @@ namespace WindowsFormsAccess
         #region 控件值可读写
         private int iid = 0;
         private int iiUserID = 0;
+        private string sgsBianMa = "None";
   
         public int lOid  //local id
         {
@@ -101,6 +191,12 @@ namespace WindowsFormsAccess
         {
             get { return this.iiUserID; }
             set { this.iiUserID = value; }
+        }
+
+        public string gsBianMa
+        {
+            get { return this.sgsBianMa; }
+            set { this.sgsBianMa = value; }
         }
 
         public string Text1
@@ -315,8 +411,8 @@ namespace WindowsFormsAccess
 
         public string Text36
         {
-            get { return this.textBox53.Text; }
-            set { this.textBox53.Text = value; }
+            get { return this.label15.Text; }
+            set { this.label15.Text = value; }
         }
 
         public string Text37
@@ -797,7 +893,7 @@ namespace WindowsFormsAccess
             bool result = false; //返回值
             try
             {
-                if (textBox53.Text == "") //编号不能为空
+                if (label15.Text == "") //编号不能为空
                 {
                     MessageBox.Show("编号不能为空", "系统提示");
                     return false;
@@ -964,22 +1060,25 @@ namespace WindowsFormsAccess
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
             updateSheet7();
+            string stringBin = gsBianMa; //即Form1.cs中label83.text
+            string number = ReadIniData("ID" + iUserID.ToString(), "sheet7", NoText, iniFileTabPath);
+            if ("None" == number) //编号不存在，则写入
+            {
+                WriteIniData("ID" + iUserID.ToString(), "sheet7", "002", iniFileTabPath);    //保存002 
+            }
+            else //编号存在，则加1
+            {
+                stringBin = stringBin.Replace("-B", "-S"); //G0001-B -> G0001-N
+                string stringsB2 = label15.Text.Trim();
+                stringsB2 = stringsB2.Replace(stringBin, "");  //G0001-N01 -> 01
+                string next = (int.Parse(stringsB2) + 1).ToString("000"); //下一位值
+                if (int.Parse(number) < int.Parse(next))
+                {
+                    WriteIniData("ID" + iUserID.ToString(), "sheet7", next, iniFileTabPath);    //保存002    
+                }
+            }  
 
-            //foreach (Control i in groupBox1.Controls)  //清空和禁用
-            //{
-            //    if (i is TextBox)
-            //    {
-            //        i.Text = "";
-            //        i.Enabled = false;
-            //    }
-            //    else if (i is ComboBox)
-            //    {
-            //        i.Text = "";
-            //        i.Enabled = false;
-            //    }
-            //}
-
-            outputLabel("保存成功");
+            outputLabel("保存sheet7成功");
             
 
         }
@@ -1003,6 +1102,21 @@ namespace WindowsFormsAccess
                            i.Text = "";
                            i.Enabled = true;
                        }
+                       else if (i is Label)
+                       {
+                           if ("label15" == i.Name) //编码保持一致
+                           {
+                               string number = ReadIniData("ID" + iUserID.ToString(), "sheet7", NoText, iniFileTabPath);
+                               if ("None" == number) //编号不存在，则自1始
+                               {
+                                   i.Text = gsBianMa.Replace("-B", "-S001");
+                               }
+                               else //编号存在，则读取
+                               {
+                                   i.Text = gsBianMa.Replace("-B", "-S" + number);
+                               }
+                           }
+                       }
                    }
             lOid = 0; //恢复默认值, iUserID不变
 
@@ -1014,6 +1128,7 @@ namespace WindowsFormsAccess
         {
             initDo();
         }
+
 
     }
 }

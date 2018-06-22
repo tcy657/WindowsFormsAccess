@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSheet7));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label145 = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -258,7 +259,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox53 = new System.Windows.Forms.TextBox();
             this.label122 = new System.Windows.Forms.Label();
             this.label123 = new System.Windows.Forms.Label();
             this.comboBox24 = new System.Windows.Forms.ComboBox();
@@ -266,12 +266,15 @@
             this.textBox76 = new System.Windows.Forms.TextBox();
             this.label146 = new System.Windows.Forms.Label();
             this.textBox65 = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label15);
+            this.groupBox1.Controls.Add(this.label145);
             this.groupBox1.Controls.Add(this.statusStrip1);
             this.groupBox1.Controls.Add(this.comboBox41);
             this.groupBox1.Controls.Add(this.comboBox42);
@@ -498,7 +501,6 @@
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.textBox53);
             this.groupBox1.Controls.Add(this.label122);
             this.groupBox1.Controls.Add(this.label123);
             this.groupBox1.Controls.Add(this.comboBox24);
@@ -512,6 +514,15 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "7术后情况";
+            // 
+            // label145
+            // 
+            this.label145.AutoSize = true;
+            this.label145.Location = new System.Drawing.Point(456, 304);
+            this.label145.Name = "label145";
+            this.label145.Size = new System.Drawing.Size(29, 12);
+            this.label145.TabIndex = 523;
+            this.label145.Text = "None";
             // 
             // statusStrip1
             // 
@@ -885,13 +896,13 @@
             // 
             this.comboBox5.FormattingEnabled = true;
             this.comboBox5.Items.AddRange(new object[] {
-            "是",
-            "否"});
+            "腔镜",
+            "开腹"});
             this.comboBox5.Location = new System.Drawing.Point(84, 279);
             this.comboBox5.Name = "comboBox5";
             this.comboBox5.Size = new System.Drawing.Size(60, 20);
             this.comboBox5.TabIndex = 485;
-            this.comboBox5.Text = "是";
+            this.comboBox5.Text = "腔镜";
             // 
             // comboBox19
             // 
@@ -2563,13 +2574,6 @@
             this.label1.TabIndex = 275;
             this.label1.Text = "病理号";
             // 
-            // textBox53
-            // 
-            this.textBox53.Location = new System.Drawing.Point(83, 18);
-            this.textBox53.Name = "textBox53";
-            this.textBox53.Size = new System.Drawing.Size(100, 21);
-            this.textBox53.TabIndex = 270;
-            // 
             // label122
             // 
             this.label122.AutoSize = true;
@@ -2631,6 +2635,15 @@
             this.textBox65.Size = new System.Drawing.Size(64, 21);
             this.textBox65.TabIndex = 480;
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(81, 22);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(29, 12);
+            this.label15.TabIndex = 524;
+            this.label15.Text = "None";
+            // 
             // FormSheet7
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -2655,7 +2668,6 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox53;
         private System.Windows.Forms.Label label122;
         private System.Windows.Forms.Label label123;
         private System.Windows.Forms.ComboBox comboBox24;
@@ -2891,5 +2903,7 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        private System.Windows.Forms.Label label145;
+        private System.Windows.Forms.Label label15;
     }
 }

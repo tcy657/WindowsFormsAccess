@@ -8,6 +8,8 @@ using System.Data;
 using System.IO;
 using System.Collections;
 using System.Drawing;
+using Microsoft.Win32;
+using System.Runtime.InteropServices;  //操作注册表
 
 namespace WindowsFormsAccess
 {
@@ -33,12 +35,24 @@ namespace WindowsFormsAccess
         int tabPage1Index = 100; //tabControl1索引
         int tabPage2Index = 100; //tabControl2索引
 
-        string ftpRootPath = @"d:\rootPath\"; //文件存放位置
+        string ftpRootPath = @"c:\rootPath\"; //文件存放位置
         bool bXinJian = false; //新建则为true,控制detail-datagridview的操作控件使能（false）/禁用(true)。
                                //新建则控件禁用，加载后恢复使能
                                //防止在未创建“用户基本信息”时，先创建后面的sheet2-sheet7信息，导致信息不可用
 
-            //日志输出函数
+       //读写ini文件，自动编码
+        string Section = "BROWSER";
+        string NoText = "None";
+        string iniFilePath = workPath + @"\ini\config.ini";  //记录userID的下一个编号
+        string iniFileTabPath = workPath + @"\ini\configTab.ini";  //记录各sheet2-7的下一个编号
+        string Key = "DATABASE_SERVER";
+        string resultIni = "None";
+        string next = "None"; //下一个编码
+
+        ClogFile cLogFile = new ClogFile(); //log记录
+        
+        
+        //日志输出函数
         private void output(string log)
         {
             try
@@ -67,7 +81,7 @@ namespace WindowsFormsAccess
                 {
                     //添加日志
                     this.tssLabel2.Text = log ;
-                    //save2FileTime(autoBackupLogPath, log);  //日志记录到文件
+                    cLogFile.writeLog(log );  //日志记录到文件
                 }//try
                 catch
                 {
@@ -126,8 +140,8 @@ namespace WindowsFormsAccess
                 string sql1 = "select * from Users"; //重新刷新
                 databind(sql1, ref  dataGridView1);
                 //dataGridView1.Columns[0].Visible = false;
-                dataGridView1.Columns[0].HeaderCell.Value = "编号"; //自动递增项
-                dataGridView1.Columns[1].Visible = false; //不显示“编号”，多余的设计字段
+                dataGridView1.Columns[0].HeaderCell.Value = "序号"; //自动递增项
+                dataGridView1.Columns[1].HeaderCell.Value = "编号"; //不显示“编号”，多余的设计字段
                 dataGridView1.Columns[2].HeaderCell.Value = "编码";
                 dataGridView1.Columns[3].HeaderCell.Value = "住院号";
                 dataGridView1.Columns[4].HeaderCell.Value = "姓名";
@@ -262,8 +276,9 @@ namespace WindowsFormsAccess
             }
             else
             {
-                model.sBianHao = label83.Text;
-                model.sBianMa = comboBox7Sheet1.Text;
+                label83.Text = comboBox7Sheet1.Text + "-B";  //编码G0001-B, 默认为G0001-B
+                model.sBianHao = comboBox7Sheet1.Text;
+                model.sBianMa = label83.Text;
                 model.sZhuYuanHao = textBox8Sheet1.Text;
                 model.sName = textBox1Sheet1.Text;
                 model.sSex = comboBox2Sheet1.Text;
@@ -319,8 +334,8 @@ namespace WindowsFormsAccess
             model = UsersDo.GetModel(Convert.ToInt32(oid)); //读取数据库数据到model，中转
 
             //model赋值给窗体
-            label83.Text = model.sBianHao;
-            comboBox7Sheet1.Text = model.sBianMa;
+            comboBox7Sheet1.Text = model.sBianHao;
+            label83.Text = model.sBianMa;
             textBox8Sheet1.Text = model.sZhuYuanHao;
             textBox1Sheet1.Text = model.sName;
             comboBox2Sheet1.Text = model.sSex;
@@ -345,12 +360,18 @@ namespace WindowsFormsAccess
             {
                 if (textBox1Sheet1.Text == "") //住院号不能为空
                 {
-                    MessageBox.Show("住院号不能为空","系统提示");
+                    MessageBox.Show("姓名不能为空","系统提示");
+                    return false;
+                }
+
+                if (label83.Text.Contains("None")) //编号未选择，
+                {
+                    MessageBox.Show("编号未选择", "系统提示");
                     return false;
                 }
                 
-                model.sBianHao = label83.Text;
-                model.sBianMa = comboBox7Sheet1.Text;
+                model.sBianHao = comboBox7Sheet1.Text;
+                model.sBianMa = label83.Text;
                 model.sZhuYuanHao = textBox8Sheet1.Text;
                 model.sName = textBox1Sheet1.Text;
                 model.sSex = comboBox2Sheet1.Text;
@@ -414,7 +435,7 @@ namespace WindowsFormsAccess
                 return;
             }
     
-            modelS2XinFuZhu.sBianMa = textBox77.Text;  //编码
+            modelS2XinFuZhu.sBianMa = label148.Text;  //编码
             modelS2XinFuZhu.bXinFuZhu = true; //新辅助治疗
 			if ("否" == comboBox2.Text) { modelS2XinFuZhu.bXinFuZhu = false;}
 
@@ -489,7 +510,7 @@ namespace WindowsFormsAccess
             modelS2XinFuZhu = doS2XinFuZhu.GetModel(Convert.ToInt32(oid)); //读取数据库数据到model，中转
 
             //model赋值给窗体
-            textBox77.Text = modelS2XinFuZhu.sBianMa;  //编码
+            label148.Text = modelS2XinFuZhu.sBianMa;  //编码
             comboBox2.Text = "是";  //新辅助治疗
             if (false == modelS2XinFuZhu.bXinFuZhu) { comboBox2.Text = "否";}
 
@@ -532,7 +553,7 @@ namespace WindowsFormsAccess
                     return false;
                 }
 
-                modelS2XinFuZhu.sBianMa = textBox77.Text;  //编码
+                modelS2XinFuZhu.sBianMa = label148.Text;  //编码
                 modelS2XinFuZhu.bXinFuZhu = true; //新辅助治疗
                 if ("否" == comboBox2.Text) { modelS2XinFuZhu.bXinFuZhu = false; }
 
@@ -609,7 +630,7 @@ namespace WindowsFormsAccess
             }
 
             //ms3ShuHouFuZhu.ID                =  textBox.Text Text ;
-            ms3ShuHouFuZhu.sBianMa                = textBox80.Text;
+            ms3ShuHouFuZhu.sBianMa = label147.Text;
             ms3ShuHouFuZhu.bFuZhuHuaLiao                = true; //
              if ("否" == comboBox14.Text) { ms3ShuHouFuZhu.bFuZhuHuaLiao = false; }
             ms3ShuHouFuZhu.sZhouQi                = textBox33.Text;
@@ -697,7 +718,7 @@ namespace WindowsFormsAccess
 
             //model赋值给窗体
             //ms3ShuHouFuZhu.ID                textBox.Text Text 
-            textBox80.Text = ms3ShuHouFuZhu.sBianMa;
+            label147.Text = ms3ShuHouFuZhu.sBianMa;
             comboBox14.Text = "是"; //
             if (false == ms3ShuHouFuZhu.bFuZhuHuaLiao) { comboBox14.Text = "否"; }
             textBox33.Text = ms3ShuHouFuZhu.sZhouQi;
@@ -757,7 +778,7 @@ namespace WindowsFormsAccess
                 }
 
                 ms3ShuHouFuZhu.ID                =  gOid3 ;
-                ms3ShuHouFuZhu.sBianMa = textBox80.Text;
+                ms3ShuHouFuZhu.sBianMa = label147.Text;
                 ms3ShuHouFuZhu.bFuZhuHuaLiao = true; //
                 if ("否" == comboBox14.Text) { ms3ShuHouFuZhu.bFuZhuHuaLiao = false; }
                 ms3ShuHouFuZhu.sZhouQi = textBox33.Text;
@@ -847,7 +868,7 @@ namespace WindowsFormsAccess
 
             //ms4SuiZhen.ID                =  textBox.Text Text ;
             ms4SuiZhen.iUserID = gOid;
-            ms4SuiZhen.sBianHao = textBox30.Text;
+            ms4SuiZhen.sBianHao = label149.Text;
             ms4SuiZhen.sSuiZhenCiShu = textBox38.Text;
             ms4SuiZhen.dSuiZhenTime = dateTimePicker2.Value;
             ms4SuiZhen.sZhuYuanHao = textBox45.Text;
@@ -911,7 +932,7 @@ namespace WindowsFormsAccess
             ms4SuiZhen = dos4SuiZhen.GetModel(Convert.ToInt32(oid)); //读取数据库数据到model，中转
 
             //model赋值给窗体
-            textBox30.Text = ms4SuiZhen.sBianHao;
+            label149.Text = ms4SuiZhen.sBianHao;
             textBox38.Text = ms4SuiZhen.sSuiZhenCiShu;
             dateTimePicker2.Value = Convert.ToDateTime(ms4SuiZhen.dSuiZhenTime);
             textBox45.Text = ms4SuiZhen.sZhuYuanHao;
@@ -946,7 +967,7 @@ namespace WindowsFormsAccess
 
                 ms4SuiZhen.ID = gOid4;
                 ms4SuiZhen.iUserID = gOid;
-                ms4SuiZhen.sBianHao = textBox30.Text;
+                ms4SuiZhen.sBianHao = label149.Text;
                 ms4SuiZhen.sSuiZhenCiShu = textBox38.Text;
                 ms4SuiZhen.dSuiZhenTime = dateTimePicker2.Value;
                 ms4SuiZhen.sZhuYuanHao = textBox45.Text;
@@ -1006,7 +1027,7 @@ namespace WindowsFormsAccess
         //添加记录1-基本信息；
         private void addSheet5()
         {
-            if (textBox81.Text == "") //档案号
+            if (label116.Text == "") //档案号
             {
                 output("档案号不能为空");
                 return;
@@ -1014,7 +1035,7 @@ namespace WindowsFormsAccess
 
             //ms5ShuJuCunZhu.ID                =  textBox.Text Text ;
             ms5ShuJuCunZhu.iUserID = gOid;
-            ms5ShuJuCunZhu.sBianHao = textBox81.Text;
+            ms5ShuJuCunZhu.sBianHao = label116.Text;
             ms5ShuJuCunZhu.sCT = "default";
             ms5ShuJuCunZhu.sCiGongZheng = "default";
             ms5ShuJuCunZhu.sBingLi = "default";
@@ -1073,10 +1094,10 @@ namespace WindowsFormsAccess
             ms5ShuJuCunZhu = dos5ShuJuCunZhu.GetModel(Convert.ToInt32(oid)); //读取数据库数据到model，中转
 
             //model赋值给窗体
-            textBox81.Text = ms5ShuJuCunZhu.sBianHao;
+            label116.Text = ms5ShuJuCunZhu.sBianHao;
 
             //若档案号主目录不存在，则创建。
-            string fileDir = ftpRootPath + textBox81.Text;
+            string fileDir = ftpRootPath + label116.Text;
             if (false == Directory.Exists(fileDir))
             {
                 Directory.CreateDirectory(fileDir);
@@ -1099,14 +1120,14 @@ namespace WindowsFormsAccess
             bool result = false; //返回值
             try
             {
-                if (textBox81.Text == "") //档案号不能为空
+                if (label116.Text == "") //档案号不能为空
                 {
                     MessageBox.Show("住院号不能为空", "系统提示");
                     return false;
                 }
                 
                 //更新前，重命名
-                string fileDir = ftpRootPath + textBox81.Text.Trim(); //获取新路径
+                string fileDir = ftpRootPath + label116.Text.Trim(); //获取新路径
 
                 string fileDirOld = ftpRootPath + ms5ShuJuCunZhu.sBianHao; //旧目录
                 if (true == (Directory.Exists(fileDirOld)) && fileDirOld != ftpRootPath && fileDirOld != fileDir) //同名则不改名
@@ -1117,7 +1138,7 @@ namespace WindowsFormsAccess
                 //更新
                 ms5ShuJuCunZhu.ID = gOid5;
                 ms5ShuJuCunZhu.iUserID = gOid;
-                ms5ShuJuCunZhu.sBianHao = textBox81.Text;
+                ms5ShuJuCunZhu.sBianHao = label116.Text;
                 ms5ShuJuCunZhu.sCT = "default";
                 ms5ShuJuCunZhu.sCiGongZheng = "default";
                 ms5ShuJuCunZhu.sBingLi = "default";
@@ -1170,7 +1191,7 @@ namespace WindowsFormsAccess
         //添加记录1-基本信息；
         private void addSheet6()
         {
-            if (textBox82.Text == "") //编号
+            if (label145.Text == "") //编号
             {
                 output("编号不能为空");
                 return;
@@ -1178,7 +1199,7 @@ namespace WindowsFormsAccess
 
             //ms6QiBingQingKuang.ID                =  textBox.Text Text ;
             ms6QiBingQingKuang.iUserID = gOid;
-            ms6QiBingQingKuang.sBianMa = textBox82.Text;
+            ms6QiBingQingKuang.sBianMa = label145.Text;
             ms6QiBingQingKuang.sZhongLiuBuWei = comboBox29.Text;
             ms6QiBingQingKuang.sShouFaZhengZhuang = comboBox28.Text;
             ms6QiBingQingKuang.dTime = dateTimePicker6.Value;
@@ -1240,10 +1261,10 @@ namespace WindowsFormsAccess
             ms6QiBingQingKuang = dos6QiBingQingKuang.GetModel(Convert.ToInt32(oid)); //读取数据库数据到model，中转
 
             //model赋值给窗体
-            textBox81.Text = ms6QiBingQingKuang.sBianMa;
+            label116.Text = ms6QiBingQingKuang.sBianMa;
 
             //ms6QiBingQingKuang.iUserID = gOid.ToString();
-            textBox82.Text = ms6QiBingQingKuang.sBianMa;
+            label145.Text = ms6QiBingQingKuang.sBianMa;
             comboBox29.Text = ms6QiBingQingKuang.sZhongLiuBuWei;
             comboBox28.Text = ms6QiBingQingKuang.sShouFaZhengZhuang;
             dateTimePicker6.Value = Convert.ToDateTime(ms6QiBingQingKuang.dTime);
@@ -1268,7 +1289,7 @@ namespace WindowsFormsAccess
             bool result = false; //返回值
             try
             {
-                if (textBox82.Text == "") //编号不能为空
+                if (label145.Text == "") //编号不能为空
                 {
                     MessageBox.Show("编号不能为空", "系统提示");
                     return false;
@@ -1277,7 +1298,7 @@ namespace WindowsFormsAccess
                 //更新
                 ms6QiBingQingKuang.ID = gOid6;
                 ms6QiBingQingKuang.iUserID = gOid;
-                ms6QiBingQingKuang.sBianMa = textBox82.Text;
+                ms6QiBingQingKuang.sBianMa = label145.Text;
                 ms6QiBingQingKuang.sZhongLiuBuWei = comboBox29.Text;
                 ms6QiBingQingKuang.sShouFaZhengZhuang = comboBox28.Text;
                 ms6QiBingQingKuang.dTime = dateTimePicker6.Value;
@@ -2504,6 +2525,85 @@ namespace WindowsFormsAccess
             databind(sql1, ref  dgView7);
         }
         #endregion
+
+
+
+        #region 读写ini文件
+        //读写ini文件, 2017.1.22
+        /*传统的配置文件ini已有被xml文件逐步代替的趋势，但对于简单的配置，ini文件还是有用武之地的。
+        ini文件其实就是一个文本文件，它有固定的格式，节Section的名字用[]括起来，然后换行说明key的值：
+        [section]
+        key=value
+         示例：
+         string Section ="BROWSER";
+         string NoText ="None";
+         string iniFilePath =@"D:\OTNM\ui\ini\otnm.ini";  //默认路径，后面再加上文件选择操作。                    
+        string Key = "DATABASE_SERVER";
+        DATABASE_SERVER = ReadIniData(Section, Key, NoText, iniFilePath);  //1，获取数据库IP
+         */
+        //API函数声明
+
+        [DllImport("kernel32")]//返回0表示失败，非0为成功
+        private static extern long WritePrivateProfileString(string section, string key,
+            string val, string filePath);
+
+        [DllImport("kernel32")]//返回取得字符串缓冲区的长度
+        private static extern long GetPrivateProfileString(string section, string key,
+            string def, StringBuilder retVal, int size, string filePath);
+
+           
+        //读Ini文件
+        public static string ReadIniData(string Section, string Key, string NoText, string iniFilePath)
+        {
+            if (File.Exists(iniFilePath))
+            {
+                StringBuilder temp = new StringBuilder(1024);
+                GetPrivateProfileString(Section, Key, NoText, temp, 1024, iniFilePath);
+                return temp.ToString();
+            }
+            else
+            {
+                return String.Empty;
+            }
+        }
+
+
+        // 写Ini文件
+        public static bool WriteIniData(string Section, string Key, string Value, string iniFilePath)
+        {
+            if (File.Exists(iniFilePath))
+            {
+                long OpStation = WritePrivateProfileString(Section, Key, Value, iniFilePath);
+                if (OpStation == 0)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+        
+        //清除某个Section
+        public static bool EraseSection(string Section, string iniFilePath)
+        {
+            bool result = false;
+            long OpStation = WritePrivateProfileString(Section, null, null, iniFilePath);
+            if ( 0 != OpStation )
+            {
+                //throw (new ApplicationException("无法清除Ini文件中的Section"));
+                result = true;
+            }
+            return result;
+        }
+
+        #endregion 读写ini文件
+
 
         #region "others "
         public static class TreeViewItems

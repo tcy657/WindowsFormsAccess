@@ -26,16 +26,16 @@ namespace WindowsFormsAccess
         }
 
         private void Form1_Load(object sender, EventArgs e)
-        {
-            
-            //登录
-            F_Login FrmLogin = new F_Login();   //声明登录窗体，进行调用            
-            FrmLogin.ShowDialog();
-            if (0 == FrmLogin.iResult) 
-            {
-                FrmLogin.Dispose();
-                this.Close();                
-            }
+        {            
+            //登录            
+            outputLabel("开始登录"); //记录操作 
+            //F_Login FrmLogin = new F_Login();   //声明登录窗体，进行调用            
+            //FrmLogin.ShowDialog();
+            //if (0 == FrmLogin.iResult) 
+            //{
+            //    FrmLogin.Dispose();
+            //    this.Close();                
+            //}
 
             achelp = new AccessHelper();        //定义变量，设置列标题；       
             initDo(); //所有初始化
@@ -80,6 +80,7 @@ namespace WindowsFormsAccess
                     i.Enabled = false;
                 }
             }
+            
 
             foreach (Control i in groupBox2.Controls) //用户基本信息页，被加载后直接可编辑
             {
@@ -127,11 +128,18 @@ namespace WindowsFormsAccess
             }
 
             //sheet5
-            textBox81.Text = ""; //清空
-            textBox81.Enabled = false; 
-            button12.Enabled = false; //禁用treeview
-            button31.Enabled = false; //禁用按键
-            button33.Enabled = false; //禁用按键
+            label116.Text = ""; //清空
+            foreach (Control i in groupBox12.Controls)  //清空和使能
+            {
+                if (i is Button)
+                {
+                    i.Enabled = false;
+                }
+                else if (i is ComboBox)
+                {
+                    i.Enabled = false;
+                }
+            }
             treeViewS5.Nodes.Clear(); //清空树型结构
 
             //sheet6
@@ -154,6 +162,8 @@ namespace WindowsFormsAccess
             gOid = Convert.ToInt32(oid);  //更新全局oid
 
             readSheet1(gOid);   //读取sheet1内容到页面1
+            comboBox7Sheet1.Enabled = false; //编码不再改变，除非删除
+
             loadSheetBindOnly2();
             loadSheetBindOnly3();
             loadSheetBindOnly4();
@@ -228,11 +238,19 @@ namespace WindowsFormsAccess
             }
 
             //sheet5
-            textBox81.Text = ""; //清空
-            button12.Enabled = false; //禁用treeview
-            button31.Enabled = false; //禁用按键
-            button33.Enabled = false; //禁用按键
-            textBox81.Enabled = false;
+            label116.Text = ""; //清空
+
+            foreach (Control i in groupBox12.Controls)  //清空和使能
+            {
+                if (i is Button)
+                {
+                    i.Enabled = false;
+                }
+                else if (i is ComboBox)
+                {
+                    i.Enabled = false;
+                }
+            }
 
             foreach (Control i in groupBox9.Controls) //sheet6
             {
@@ -249,9 +267,9 @@ namespace WindowsFormsAccess
             }
 
             //跳到“基本信息页面”
-
             gOid = UsersDo.GetMaxId(); //gOid为0，无法跳到其他Tab页。另一种方法（实为同一种）gOid = achelp.GetMaxID("ID","Users"); 
             tabControl1.SelectedIndex = 1;
+            comboBox7Sheet1.Enabled = true; //编码可以改变
 
             //清空查询条件，加载时默认使用查询条件过滤
             textBox23.Text = ""; 
@@ -284,12 +302,30 @@ namespace WindowsFormsAccess
                 {
                     //删除sheet1-sheet7
                     bool bRet1 = UsersDo.Delete(Convert.ToInt32(oid));
-                    int iRet2 = achelp.ExcuteSql("delete from s2XinFuZhu where iUserID = '" + oid.ToString() + "'"); //s2
-                    int iRet3 = achelp.ExcuteSql("delete from s3ShuHouFuZhu where iUserID = '" + oid.ToString() + "'"); //s3
-                    int iRet4 = achelp.ExcuteSql("delete from s4SuiZhen where iUserID = '" + oid.ToString() + "'"); //s4
-                    int iRet5 = achelp.ExcuteSql("delete from s5ShuJuCunZhu where iUserID = '" + oid.ToString() + "'"); //s5
-                    int iRet6 = achelp.ExcuteSql("delete from s6QiBingQingKuang where iUserID = '" + oid.ToString() + "'"); //s6
-                    int iRet7 = achelp.ExcuteSql("delete from s7ShuQianPingGu where iUserID = '" + oid.ToString() + "'"); //s7
+                    if (true == achelp.Exists("select * from s2XinFuZhu where iUserID = " + oid.ToString()  ))
+                    { 
+                        achelp.ExcuteSql("delete from s2XinFuZhu where iUserID = '" + oid.ToString() + "'"); 
+                    }//s2
+                    if (true == achelp.Exists("select * from s3ShuHouFuZhu where iUserID = " + oid.ToString()))
+                    {
+                        achelp.ExcuteSql("delete from s3ShuHouFuZhu where iUserID = '" + oid.ToString() + "'");
+                    }//s3
+                    if (true == achelp.Exists("select * from s4SuiZhen where iUserID = " + oid.ToString()))
+                    {
+                        achelp.ExcuteSql("delete from s4SuiZhen where iUserID = '" + oid.ToString() + "'");
+                    }//s4
+                    if (true == achelp.Exists("select * from s5ShuJuCunZhu where iUserID = " + oid.ToString()))
+                    {
+                        achelp.ExcuteSql("delete from s5ShuJuCunZhu where iUserID = '" + oid.ToString() + "'");
+                    } //s5
+                    if (true == achelp.Exists("select * from s6QiBingQingKuang where iUserID = " + oid.ToString()))
+                     {
+                        achelp.ExcuteSql("delete from s6QiBingQingKuang where iUserID = '" + oid.ToString() + "'");
+                    } //s6
+                    if (true == achelp.Exists("select * from s7ShuQianPingGu where iUserID = " + oid.ToString()))
+                    {
+                        achelp.ExcuteSql("select * from s7ShuQianPingGu where iUserID = '" + oid.ToString() + "'"); 
+                    }//s7
                 }
                 string sql1 = "select * from Users";
                 databind(sql1, ref  dataGridView1);
@@ -498,6 +534,31 @@ namespace WindowsFormsAccess
             {
                 tabControl1.SelectedIndex = 0; //跳到首页
                 gOid = 0; //回到初始流程
+                //自动编码，写ini
+                Section = comboBox7Sheet1.Text.Trim(); //获取生病部位
+                Key = "now";                   
+                WriteIniData(Section, Key, next, iniFilePath);  //当前值
+                Key = "next";
+                next = (int.Parse(next) +1).ToString("0000"); //下一位值
+                WriteIniData(Section, Key, next, iniFilePath);
+                
+                foreach (Control i in groupBox2.Controls)  //清空和使能
+                {
+                    if (i is Button)
+                    {
+                        i.Enabled = false;
+                        i.Text = "";
+                    }
+                    else if (i is ComboBox)
+                    {
+                        i.Enabled = false;
+                        i.Text = "";
+                    }
+                    else if (i is TextBox)
+                    {
+                        i.Text = "None";
+                    }
+                }
             }
             else
             {
@@ -578,6 +639,7 @@ namespace WindowsFormsAccess
                      i.Text = "";
                  else if (i is ComboBox)
                      i.Text = "";
+                 
              }
          } 
         
@@ -616,44 +678,50 @@ namespace WindowsFormsAccess
                     
                     button25.Enabled = true; //detail-保存使能
                     break;
-                case 1:     //sheet2
+                case 1:
+                    tabPage2Index = 0;
+                    i = this.tabPage2s1;
+
+                    button25.Enabled = true; //detail-保存使能
+                    break;
+                case 2:     //sheet2，加1
                     tabPage2Index = 1;
                     i = this.tabPage2s2;
                     button25.Enabled = true; //detail-保存使能
                     break;
-                case 2: //sheet3
+                case 3: //sheet3
 
                     tabPage2Index = 2;
                     i = this.tabPage2s3;
                     button25.Enabled = true; //detail-保存使能
                     break;
-                case 3:    
+                case 4:    
                     tabPage2Index = 3;
                     i = this.tabPage2s4;
                     button25.Enabled = true; //detail-保存使能
                     break;
-                case 4:             
+                case 5:             
                     tabPage2Index = 4;
                     i = this.tabPage2s5;
                     button25.Enabled = true; //detail-保存使能
                     break;
-                case 5:           
+                case 6:           
                     tabPage2Index = 5;
                     i = this.tabPage2s6;
                     button25.Enabled = true; //detail-保存使能
 
-                    textBox81.Text = ""; //清空
+                    label116.Text = ""; //清空
                     button12.Enabled = false; //禁用treeview
                     button31.Enabled = false; //禁用按键
                     button33.Enabled = false; //禁用按键
-                    textBox81.Enabled = false;
+       
                     break;
-                case 6: //sheet
+                case 7: //sheet7
                     tabPage2Index = 6;
                     i = this.tabPage2s7;
                     button25.Enabled = false; //detail-保存, 不使能
                     break;
-                case 7:
+                case 8:
                     tabPage2Index = 0;
                     i = this.tabPage2s1;
                     break;
@@ -666,38 +734,10 @@ namespace WindowsFormsAccess
             if (100 != tabPage2Index)
             {
                 this.tabControl2.SelectedIndex = tabPage2Index;
-                //hideTab2Control2(ref  i ); //只显示一个tab页
-                //switch (tabPage1Index)  //在显示的Tab页上绑定dgview
-                //{
-                //    case 0:
-                //        //不动作
-                //        break;
-                //    case 1:     //sheet2
-                //        loadSheetBindOnly2();
-                //        break;
-                //    case 2: //sheet3
-                //        loadSheetBindOnly3();
-                //        break;
-                //    case 3:
-                //        loadSheetBindOnly4();
-                //        break;
-                //    case 4:
-                //        loadSheetBindOnly5();
-                //        break;
-                //    case 5:
-                //        loadSheetBindOnly6();
-                //        break;
-                //    case 6: //sheet
-                //        loadSheetBindOnly7();
-                //        break;
-                //    default:
-                //        //不动作
-                //        break;
-                //}
             }
 
             //首页则只显示首页按键，分页显示分页按键
-            if(0 == tabPage1Index) 
+            if (0 == tabPage1Index || 1  == tabPage1Index) //首页和信息页sheet2，则禁用
             {
                 groupBox8.Visible = true;  //使能-总操作
                 groupBox8.Enabled = true;
@@ -726,13 +766,18 @@ namespace WindowsFormsAccess
         //保存，全局，区别于每个sheet页面上按键
         private void button25_Click(object sender, EventArgs e)
         {
+            outputLabel("s5保存");
+            try
+            {
             bool bResult = false; //记录保存的结果
+            string stringBin = label83.Text.Trim(); //获取当前编号
             switch (this.tabControl1.SelectedIndex)
             {
                 case 0:
-
                     break;
-                case 1: //sheet2
+                case 1:
+                    break;
+                case 2: //sheet2
                     bResult = updateSheet2();
                     if (true == bResult)
                     {
@@ -749,9 +794,25 @@ namespace WindowsFormsAccess
                                 i.Enabled = false;
                             }
                         }
+                               string number =  ReadIniData("ID" + gOid.ToString(), "sheet2", NoText, iniFileTabPath);
+                               if ( "None" == number) //编号不存在，则写入
+                               {
+                                   WriteIniData("ID" + gOid.ToString(), "sheet2", "002", iniFileTabPath);    //保存002 
+                               }
+                               else //编号存在，则加1
+                               {                                    
+                                   stringBin = stringBin.Replace("-B","-N"); //G0001-B -> G0001-N
+                                   string  stringsB2 = label148.Text.Trim();
+                                   stringsB2 =stringsB2.Replace(stringBin,"");  //G0001-N01 -> 01
+                                   string next = (int.Parse(stringsB2) +1).ToString("000"); //下一位值
+                                   if (int.Parse(number) < int.Parse(next))
+                                   {
+                                       WriteIniData("ID" + gOid.ToString(), "sheet2", next, iniFileTabPath);    //保存002    
+                                   }
+                               }  
                     }
                     break;
-                case 2: //sheet3
+                case 3: //sheet3
                     bResult = updateSheet3();
                     if (true == bResult)
                     {
@@ -768,9 +829,25 @@ namespace WindowsFormsAccess
                                 i.Enabled = false;
                             }
                         }
+                        string number = ReadIniData("ID" + gOid.ToString(), "sheet3", NoText, iniFileTabPath);
+                        if ("None" == number) //编号不存在，则写入
+                        {
+                            WriteIniData("ID" + gOid.ToString(), "sheet3", "002", iniFileTabPath);    //保存002 
+                        }
+                        else //编号存在，则加1
+                        {
+                            stringBin = stringBin.Replace("-B", "-A"); //G0001-B -> G0001-N
+                            string stringsB2 = label147.Text.Trim();
+                            stringsB2 = stringsB2.Replace(stringBin, "");  //G0001-N01 -> 01
+                            string next = (int.Parse(stringsB2) + 1).ToString("000"); //下一位值
+                            if (int.Parse(number) < int.Parse(next))
+                            {
+                                WriteIniData("ID" + gOid.ToString(), "sheet3", next, iniFileTabPath);    //保存002       
+                            }
+                        }  
                     }
                     break;
-                case 3: //sheet4
+                case 4: //sheet4
                     bResult = updateSheet4();
                     if (true == bResult)
                     {
@@ -788,17 +865,64 @@ namespace WindowsFormsAccess
                                 i.Enabled = false;
                             }
                         }
+                        string number = ReadIniData("ID" + gOid.ToString(), "sheet4", NoText, iniFileTabPath);
+                        if ("None" == number) //编号不存在，则写入
+                        {
+                            WriteIniData("ID" + gOid.ToString(), "sheet4", "002", iniFileTabPath);    //保存002 
+                        }
+                        else //编号存在，则加1
+                        {
+                            stringBin = stringBin.Replace("-B", "-F"); //G0001-B -> G0001-N
+                            string stringsB2 = label149.Text.Trim();
+                            stringsB2 = stringsB2.Replace(stringBin, "");  //G0001-N01 -> 01
+                            string next = (int.Parse(stringsB2) + 1).ToString("000"); //下一位值
+                            if (int.Parse(number) < int.Parse(next))
+                            {
+                                WriteIniData("ID" + gOid.ToString(), "sheet4", next, iniFileTabPath);    //保存002      
+                            }
+                        }  
                     }
                     break;                
-                case 4:  //sheet5
+                case 5:  //sheet5
                     bResult = updateSheet5();
                     if (true == bResult)
                     {
-                        textBox81.Text = "";
-                        textBox81.Enabled = false;
+                        label116.Text = "";
+            
+                        foreach (Control i in groupBox12.Controls)  //清空和使能
+                        {
+                            if (i is Button)
+                            {
+                                //i.Text = "";
+                                i.Enabled = false;
+                            }
+                            else if (i is ComboBox)
+                            {
+                                //i.Text = "";
+                                i.Enabled = false;
+                            }
+                        }
+                        string number = ReadIniData("ID" + gOid.ToString(), "sheet5", NoText, iniFileTabPath);
+                        if ("None" == number) //编号不存在，则写入
+                        {
+                            WriteIniData("ID" + gOid.ToString(), "sheet5", "002", iniFileTabPath);    //保存002 
+                        }
+                        else //编号存在，则加1
+                        {
+                            stringBin = stringBin.Replace("-B", "-S"); //G0001-B -> G0001-N
+                            string stringsB2 = label116.Text.Trim();
+                            stringsB2 = stringsB2.Replace(stringBin, "");  //G0001-N01 -> 01
+                            string next = (int.Parse(stringsB2) + 1).ToString("000"); //下一位值
+                            if (int.Parse(number) < int.Parse(next))
+                            {
+                                WriteIniData("ID" + gOid.ToString(), "sheet5", next, iniFileTabPath);    //保存002  
+                            }
+                        } 
+
                     }
+
                     break;
-                case 5:  //sheet6 起病情况
+                case 6:  //sheet6 起病情况
                     bResult = updateSheet6();
                     if (true == bResult)
                     {
@@ -815,15 +939,36 @@ namespace WindowsFormsAccess
                                 i.Enabled = false;
                             }
                         }
+                        string number = ReadIniData("ID" + gOid.ToString(), "sheet6", NoText, iniFileTabPath);
+                        if ("None" == number) //编号不存在，则写入
+                        {
+                            WriteIniData("ID" + gOid.ToString(), "sheet6", "002", iniFileTabPath);    //保存002 
+                        }
+                        else //编号存在，则加1
+                        {
+                            stringBin = stringBin.Replace("-B", "-M"); //G0001-B -> G0001-N
+                            string stringsB2 = label145.Text.Trim();
+                            stringsB2 = stringsB2.Replace(stringBin, "");  //G0001-N01 -> 01
+                            string next = (int.Parse(stringsB2) + 1).ToString("000"); //下一位值
+                            if (int.Parse(number) < int.Parse(next))
+                            {
+                                WriteIniData("ID" + gOid.ToString(), "sheet6", next, iniFileTabPath);    //保存002    
+                            }
+                        } 
                     }
                     break;
-                case 6: //sheet7
+                case 7: //sheet7
 
                     break;
                 default:
 
                     break;
             }
+            }//try 
+            catch (Exception objException)
+            {
+                outputLabel("s5保存，失败！" + objException);
+            }  
 
         }
         //新建，全局
@@ -832,9 +977,10 @@ namespace WindowsFormsAccess
             switch (this.tabControl1.SelectedIndex)
             {
                 case 0:
-
                     break;
-                case 1://sheet2
+                case 1:
+                    break;
+                case 2://sheet2
                     gFlagAdd2 = 1; //新建，局部新增
                     //清空
                     foreach (Control i in groupBox1.Controls)
@@ -844,17 +990,44 @@ namespace WindowsFormsAccess
                             i.Text = "";
                             i.Enabled = true;
 
-                            if ("textBox77" == i.Name) //编码保持一致
-                            {  i.Text = comboBox7Sheet1.Text + "-";}
+                            if ("label148" == i.Name) //编码保持一致
+                            {  
+                               string number =  ReadIniData("ID" + gOid.ToString(), "sheet2", NoText, iniFileTabPath);
+                               if ( "None" == number) //编号不存在，则自1始
+                               {
+                                   i.Text = label83.Text.Replace("-B", "-N001");
+                                   //WriteIniData("ID1000", "sheet2", "002", iniFileTabPath);    //保存 
+                               }
+                               else //编号存在，则读取
+                               {
+                                   i.Text = label83.Text.Replace("-B", "-N" + number);                           
+                               }          
+                            }
                         }
                         else if (i is ComboBox)
                         {
                             i.Text = "";
                             i.Enabled = true;
                         }
+                        else if (i is Label)
+                        {
+                            if ("label148" == i.Name) //编码保持一致
+                            {
+                                string number = ReadIniData("ID" + gOid.ToString(), "sheet2", NoText, iniFileTabPath);
+                                if ("None" == number) //编号不存在，则自1始
+                                {
+                                    i.Text = label83.Text.Replace("-B", "-N001");
+                                    //WriteIniData("ID1000", "sheet2", "002", iniFileTabPath);    //保存 
+                                }
+                                else //编号存在，则读取
+                                {
+                                    i.Text = label83.Text.Replace("-B", "-N" + number);
+                                }
+                            }
+                        }
                     }
                     break;
-                case 2: //sheet3
+                case 3: //sheet3
                     gFlagAdd3 = 1; //新建，局部新增
                     //清空
                     foreach (Control i in groupBox5.Controls)
@@ -863,17 +1036,32 @@ namespace WindowsFormsAccess
                         {
                             i.Text = "";
                             i.Enabled = true;
-                            if ("textBox80" == i.Name) //编码保持一致
-                            { i.Text = comboBox7Sheet1.Text + "-"; }
+                           
                         }
                         else if (i is ComboBox)
                         {
                             i.Text = "";
                             i.Enabled = true;
                         }
+                        else if (i is Label)
+                        {
+                            if ("label147" == i.Name) //编码保持一致
+                            {
+                                string number = ReadIniData("ID" + gOid.ToString(), "sheet3", NoText, iniFileTabPath);
+                                if ("None" == number) //编号不存在，则自1始
+                                {
+                                    i.Text = label83.Text.Replace("-B", "-A001");
+                                    //WriteIniData("ID1000", "sheet2", "002", iniFileTabPath);    //保存 
+                                }
+                                else //编号存在，则读取
+                                {
+                                    i.Text = label83.Text.Replace("-B", "-A" + number);
+                                }
+                            }
+                        }
                     }
                     break;
-                case 3: //sheet4
+                case 4: //sheet4
                     gFlagAdd4 = 1; //新建，局部新增
                     foreach (Control i in groupBox7.Controls)
                     {
@@ -881,28 +1069,64 @@ namespace WindowsFormsAccess
                         {
                             i.Text = "";
                             i.Enabled = true;
-                            if ("textBox30" == i.Name) //编码保持一致
-                            { i.Text = comboBox7Sheet1.Text + "-"; }
                         }
                         else if (i is ComboBox)
                         {
                             i.Text = "";
                             i.Enabled = true;
                         }
+                        else if (i is Label)
+                        {
+                            if ("label149" == i.Name) //编码保持一致
+                            {
+                                string number = ReadIniData("ID" + gOid.ToString(), "sheet4", NoText, iniFileTabPath);
+                                if ("None" == number) //编号不存在，则自1始
+                                {
+                                    i.Text = label83.Text.Replace("-B", "-F001");
+                                    //WriteIniData("ID1000", "sheet2", "002", iniFileTabPath);    //保存 
+                                }
+                                else //编号存在，则读取
+                                {
+                                    i.Text = label83.Text.Replace("-B", "-F" + number);
+                                }
+                            }
+                        }
                     }                   
                     break;
-                case 4: //sheet5
-
+                case 5: //sheet5
                     gFlagAdd5 = 1; //新建，局部新增
                     //清空
-                   textBox81.Text = "";
+                   label116.Text = "None";
                    treeViewS5.Nodes.Clear(); //清空treeview                 
-                   button12.Enabled = false; //禁用刷新按键
-                   button31.Enabled = false; //禁用按键
-                   button33.Enabled = false; //禁用按键
-                   textBox81.Enabled = true;  //使能
-                   break;
-                case 5:  //sheet6 起病情况
+                   foreach (Control i in groupBox12.Controls)  //清空和使能
+                   {
+                       if (i is Button)
+                       {
+                           i.Enabled = true;
+                       }
+                       else if (i is ComboBox)
+                       {
+                           i.Enabled = true;
+                       }
+                       else if (i is Label)
+                       {
+                           if ("label116" == i.Name) //编码保持一致
+                           {
+                               string number = ReadIniData("ID" + gOid.ToString(), "sheet5", NoText, iniFileTabPath);
+                               if ("None" == number) //编号不存在，则自1始
+                               {
+                                   i.Text = label83.Text.Replace("-B", "-S001");                                   
+                               }
+                               else //编号存在，则读取
+                               {
+                                   i.Text = label83.Text.Replace("-B", "-S" + number);
+                               }
+                           }
+                       }
+                   }
+                   button12.PerformClick(); //刷新，显示treeview
+                    break;
+                case 6:  //sheet6 起病情况
                    gFlagAdd6 = 1; //新建，局部新增
                    foreach (Control i in groupBox9.Controls)  //清空和使能
                    {
@@ -910,29 +1134,50 @@ namespace WindowsFormsAccess
                        {
                            i.Text = "";
                            i.Enabled = true;
-                           if ("textBox82" == i.Name) //编码保持一致
-                           { i.Text = comboBox7Sheet1.Text + "-"; }
                        }
                        else if (i is ComboBox)
                        {
                            i.Text = "";
                            i.Enabled = true;
                        }
+                       else if (i is Label)
+                       {
+                           if ("label145" == i.Name) //编码保持一致
+                           {
+                               string number = ReadIniData("ID" + gOid.ToString(), "sheet6", NoText, iniFileTabPath);
+                               if ("None" == number) //编号不存在，则自1始
+                               {
+                                   i.Text = label83.Text.Replace("-B", "-M001");
+                               }
+                               else //编号存在，则读取
+                               {
+                                   i.Text = label83.Text.Replace("-B", "-M" + number);
+                               }
+                           }
+                       }
                    }
                     break;
-                case 6: //sheet7
+                case 7: //sheet7
                     FormSheet7 f7 = new FormSheet7(); //创建一个新窗口7
                     f7.iUserID = gOid; //iUserID必须带过去
                     //f7.lOid = dos7ShuQianPingGu.GetMaxId(); //下一个编号
-                    f7.Text36 = comboBox7Sheet1.Text + "-"; //编码保持一致
+
+                    string number1 = ReadIniData("ID" + gOid.ToString(), "sheet7", NoText, iniFileTabPath);
+                    if ("None" == number1) //编号不存在，则自1始
+                    {
+                        f7.Text36 = label83.Text.Replace("-B", "-S001");
+                        f7.gsBianMa = label83.Text; //自动编码用
+                    }
+                    else //编号存在，则读取
+                    {
+                        f7.Text36 = label83.Text.Replace("-B", "-S" + number1);
+                        f7.gsBianMa = label83.Text; //自动编码用
+                    } 
 
                     f7.ShowDialog();
                     string sql1 = "select * from s7ShuQianPingGu where iUserID = " + gOid.ToString(); //重新刷新，只显示本用户的信息
                     databind(sql1, ref dgView7);
   
-                    break;
-                case 7:
-
                     break;
                 default:
 
@@ -948,7 +1193,10 @@ namespace WindowsFormsAccess
                 case 0:
 
                     break;
-                case 1: //sheet2
+                case 1:
+
+                    break;
+                case 2: //sheet2
                     deleteSheet2();
                     foreach (Control i in groupBox1.Controls) //清空
                     {
@@ -964,7 +1212,7 @@ namespace WindowsFormsAccess
                         }
                     }
                     break;
-                case 2: //sheet3
+                case 3: //sheet3
                     deleteSheet3();
                     foreach (Control i in groupBox5.Controls) //清空
                     {
@@ -978,9 +1226,10 @@ namespace WindowsFormsAccess
                             i.Text = "";
                             i.Enabled = false;
                         }
+                        
                     }
                     break;
-                case 3: //sheet4
+                case 4: //sheet4
                     deleteSheet4();
                     foreach (Control i in groupBox7.Controls) //清空
                     {
@@ -997,17 +1246,26 @@ namespace WindowsFormsAccess
                             i.Enabled = false;
                     }
                     break;
-                case 4: //sheet5
+                case 5: //sheet5
                     deleteSheet5();
                     //清空
-                    textBox81.Text = "";
+                    label116.Text = "";
                     treeViewS5.Nodes.Clear(); //清空treeview                 
-                    button12.Enabled = false; //禁用刷新按键
-                    button31.Enabled = false; //禁用按键
-                    button33.Enabled = false; //禁用按键
-                    textBox81.Enabled = false;
+                    foreach (Control i in groupBox12.Controls)  //清空和使能
+                    {
+                        if (i is Button)
+                        {
+                            //i.Text = "";
+                            i.Enabled = false;
+                        }
+                        else if (i is ComboBox)
+                        {
+                            //i.Text = "";
+                            i.Enabled = false;
+                        }
+                    }                   
                     break;
-                case 5:  //sheet6 起病情况
+                case 6:  //sheet6 起病情况
                     deleteSheet6();
                     foreach (Control i in groupBox9.Controls)  //清空和使能
                     {
@@ -1023,11 +1281,8 @@ namespace WindowsFormsAccess
                         }
                     }
                     break;
-                case 6: //sheet 7，不需要清空窗体
+                case 7: //sheet 7，不需要清空窗体
                     deleteSheet7();
-                    break;
-                case 7:
-
                     break;
                 default:
 
@@ -1043,7 +1298,10 @@ namespace WindowsFormsAccess
                 case 0:
 
                     break;
-                case 1: //sheet
+                case 1:
+
+                    break;
+                case 2: //sheet
                     readSheet2();
                     foreach (Control i in groupBox1.Controls) //使能
                     {
@@ -1053,7 +1311,7 @@ namespace WindowsFormsAccess
                             i.Enabled = true;
                     }
                     break;
-                case 2: //sheet3
+                case 3: //sheet3
                     readSheet3();
                     foreach (Control i in groupBox5.Controls) //使能
                     {
@@ -1063,7 +1321,7 @@ namespace WindowsFormsAccess
                             i.Enabled = true;
                     }
                     break;
-                case 3:  //sheet4
+                case 4:  //sheet4
                     readSheet4();
                     foreach (Control i in groupBox7.Controls) //禁用
                     {
@@ -1073,17 +1331,26 @@ namespace WindowsFormsAccess
                             i.Enabled = true;
                     }
                     break;
-                case 4: //sheet5， 加载
+                case 5: //sheet5， 加载
                     readSheet5(); 
                     //使能                 
-                    button12.Enabled = true; //使能刷新按键
-                    button31.Enabled = true; //
-                    button33.Enabled = true; //
-                    textBox81.Enabled = true;
+                    foreach (Control i in groupBox12.Controls)  //清空和使能
+                    {
+                        if (i is Button)
+                        {
+                            //i.Text = "";
+                            i.Enabled = true;
+                        }
+                        else if (i is ComboBox)
+                        {
+                            //i.Text = "";
+                            i.Enabled = true;
+                        }
+                    }
                     //Delay(1000); //延时
                     button12.PerformClick(); //显示treeview
                     break;
-                case 5:  //sheet6
+                case 6:  //sheet6
                     readSheet6();
                     foreach (Control i in groupBox9.Controls)  //清空和使能
                     {
@@ -1099,18 +1366,16 @@ namespace WindowsFormsAccess
                         }
                     }
                     break;
-                case 6:  //sheet7
+                case 7:  //sheet7
                     FormSheet7 f7 = new FormSheet7();
                     bool ret = readSheet7(ref f7);
                     if (true == ret)
                     {
+                        f7.gsBianMa = label83.Text; //自动编码用
                         f7.ShowDialog();
                         string sql1 = "select * from s7ShuQianPingGu where iUserID = " + gOid.ToString(); //重新刷新，只显示本用户的信息
                         databind(sql1,ref dgView7);
                     }
-                    break;
-                case 7:
-
                     break;
                 default:
 
@@ -1236,13 +1501,13 @@ namespace WindowsFormsAccess
         {
             try
             {
-                if (textBox81.Text == "") //档案号不能为空
+                if (label116.Text == "") //档案号不能为空
                 {
                     MessageBox.Show("档案号不能为空");
                     return;
                 }
 
-                string fileDir = ftpRootPath + textBox81.Text.Trim();
+                string fileDir = ftpRootPath + label116.Text.Trim();
                 if (Directory.Exists(fileDir) == false)//不存在,就创建NE文件夹
                 {
                     Directory.CreateDirectory(fileDir); //以档案号创建主文件夹                    
@@ -1363,13 +1628,13 @@ namespace WindowsFormsAccess
             try
             {
                 outputLabel("打开文件");
-                if (textBox81.Text == "") //档案号不能为空
+                if (label116.Text == "") //档案号不能为空
                 {
                     MessageBox.Show("档案号不能为空");
                     return;
                 }
 
-                string fileDir = ftpRootPath + textBox81.Text.Trim();
+                string fileDir = ftpRootPath + label116.Text.Trim();
                 
                 
                  //globalWorkPath + @"\result";  保存路径
@@ -1399,14 +1664,31 @@ namespace WindowsFormsAccess
 
         //刷新treeview，显示新的目录结构
         private void button12_Click(object sender, EventArgs e)
-        {              
-            
-            #region 递归加载所有的目录，按照层次结构显示到TreeView 上            
-            string path = ftpRootPath + textBox81.Text.Trim();  //获取用户输入的一个路径
-            treeViewS5.Nodes.Clear();  //清除所有结构，避免二次刷新时重复显示            
-            LoadFilesAndDirectoriesToTree(path, treeViewS5.Nodes);  //调用该方法实现将指定路径下的子文件与子目录按照层次结构加载到TreeView
-            #endregion
-                        
+        {
+            outputLabel("刷新sheet5 ");
+            try
+            {
+                #region 递归加载所有的目录，按照层次结构显示到TreeView 上            
+                string path = ftpRootPath + label116.Text.Trim();  //获取用户输入的一个路径
+
+                if (false == Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                    Directory.CreateDirectory(path + @"\CT");
+                    Directory.CreateDirectory(path + @"\磁共振");
+                    Directory.CreateDirectory(path + @"\PET");
+                    Directory.CreateDirectory(path + @"\病理");
+                }
+
+                treeViewS5.Nodes.Clear();  //清除所有结构，避免二次刷新时重复显示            
+                LoadFilesAndDirectoriesToTree(path, treeViewS5.Nodes);  //调用该方法实现将指定路径下的子文件与子目录按照层次结构加载到TreeView
+                treeViewS5.ExpandAll(); //展开所有节点
+                #endregion  
+            } //try
+            catch (Exception objException)
+            {
+                outputLabel("刷新sheet5 treeview，失败");
+            }
         }
        
         //将目录与文件加载到TreeView上
@@ -1453,10 +1735,43 @@ namespace WindowsFormsAccess
             }
 
 
-            if ((0 <= tabPage2Index) && (7 >= tabPage2Index))
+            if ((0 <= tabPage2Index) && (8 >= tabPage2Index))
             {
                 tabPage1Index = tabPage2Index;  //保存值
-                this.tabControl1.SelectedIndex = tabPage1Index;
+                
+                switch (tabPage2Index)
+                {
+                    case 0:
+                        this.tabControl1.SelectedIndex = 0;
+                        break;
+                    case 1:
+                        this.tabControl1.SelectedIndex = 2;
+                        break;
+                    case 2:     //sheet2，加1
+                        this.tabControl1.SelectedIndex = 3;
+                        break;
+                    case 3: //sheet3
+
+                        this.tabControl1.SelectedIndex = 4;
+                        break;
+                    case 4:
+                        this.tabControl1.SelectedIndex = 5;
+                        break;
+                    case 5:
+                        this.tabControl1.SelectedIndex = 6;
+                        break;
+                    case 6:
+                        this.tabControl1.SelectedIndex = 7;
+                        break;
+                    case 7: //sheet7
+                        this.tabControl1.SelectedIndex = 8;
+                        break;
+                    default:
+                        tabPage1Index = 100;
+                        break;
+                }
+
+                
             }
             else
             {
@@ -1720,16 +2035,34 @@ namespace WindowsFormsAccess
                         outputLabel("选择目录");
                         string currentDir = System.Windows.Forms.Application.StartupPath; //获取启动了应用程序的可执行文件的路径，“D：\fh_bk”形式，末尾不带“\”
                         string fileDb = currentDir + @"\dataBase\linChuang.accdb";  //保存路径
+						string fileUserIni = currentDir + @"\ini\config.ini";  //保存User的自动编号信息
+						string fileSheetIni = currentDir + @"\ini\configTab.ini";  //保存sheet2-sheet7的自动编号信息
 
-                        if (true == File.Exists(PC_Path + Path.GetFileName(fileDb)))
+                        //备份前验证
+						if (true == File.Exists(PC_Path + Path.GetFileName(fileDb)))
                         {
                             MessageBox.Show("错误！您选择的目录中已存在同名数据库文件，退出!", "系统提示");
+                            return;
+                        }
+						
+						if (true == File.Exists(PC_Path + Path.GetFileName(fileUserIni)))
+                        {
+                            MessageBox.Show("错误！您选择的目录中已存在同名config.ini文件，退出!", "系统提示");
+                            return;
+                        }
+						
+						if (true == File.Exists(PC_Path + Path.GetFileName(fileSheetIni)))
+                        {
+                            MessageBox.Show("错误！您选择的目录中已存在同名configTab.ini文件，退出!", "系统提示");
                             return;
                         }
 
                         //拷贝到路径 
                         File.Copy(fileDb, PC_Path + Path.GetFileName(fileDb));
-                        outputLabel("备份数据库，结束");
+						File.Copy(fileUserIni, PC_Path + Path.GetFileName(fileUserIni));
+						File.Copy(fileSheetIni, PC_Path + Path.GetFileName(fileSheetIni));
+                        
+						outputLabel("备份数据库，结束");
                         return;
                     }
                     else
@@ -1775,8 +2108,127 @@ namespace WindowsFormsAccess
             string ver = "ver" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString(); //获取程序集的版本号, V1.0
             string timeComp = System.IO.File.GetLastWriteTime(this.GetType().Assembly.Location).ToString();    //获取程序集的最后编译时间，日期+时间
             //string timeComp = System.IO.File.GetLastWriteTime(this.GetType().Assembly.Location).ToShortDateString();  //编译日期, 
-            MessageBox.Show("程序版本：\n" + ver + ", " + timeComp, "信息记录系统");              //ver 1.0.2, 2016.4
+            MessageBox.Show("程序版本：\n" + ver + ", " + timeComp +"\n技术支持邮箱: nawenyi@126.com", "信息记录系统");              //ver 1.0.2, 2016.4
             
+        }
+
+        //上传路径1
+        private void button34_Click(object sender, EventArgs e)
+        {             
+            try
+            {
+                outputLabel("s5上传文件");
+                string s5BianMa = label116.Text.Trim(); //保存文件名，以命名编码为文件夹名
+                string stringBin = comboBox26.Text.Trim(); //获取文件目录位置
+                string fileDir = ftpRootPath + s5BianMa + @"\" + stringBin + @"\"; //保存到路径
+                
+                OpenFileDialog filePath = new OpenFileDialog();
+				filePath.InitialDirectory = fileDir; //初始路径
+                filePath.Title = "选择上传文件";
+                filePath.Filter = "All files(*.*)|*.*"; //设备控件保存的文件类型
+                filePath.FilterIndex = 1; //默认打开*.ini            
+                filePath.RestoreDirectory = true; //记忆之前打开的目录
+                filePath.FileName = "";
+                
+                if (filePath.ShowDialog() == DialogResult.OK)
+                {
+                    string fileNe = filePath.FileName; //保存文件名
+                    outputLabel("选择文件");
+
+                    //拷贝到路径，路径不存在则创建 
+                    if (false == Directory.Exists(fileDir))
+                    {
+                        Directory.CreateDirectory(fileDir);
+                    }
+
+                    //获取新文件名
+                    string newFileName = fileNe;
+                    switch (comboBox26.Text.Trim())
+                    {
+                        case "CT":
+                            newFileName = s5BianMa + "_C01";
+                            break;
+                        case "磁共振":
+                            newFileName = s5BianMa + "_M01";
+                            break;
+                        case "PET":
+                            newFileName = s5BianMa + "_E01";
+                            break;
+                        case "病理":
+                            newFileName = s5BianMa + "_P01";
+                            break;
+
+                        default:
+                            newFileName = s5BianMa + "_error";
+                            break;
+                    }
+                    //文件存在则报错
+                    if (true == File.Exists(fileDir + Path.GetFileName(newFileName)))
+                    {
+                        MessageBox.Show("当前目录已存在同名文件，退出！","系统提示");
+                        return;
+                    }
+                    string fileType = Path.GetExtension(fileNe); //获取文件后辍
+                    File.Copy(fileNe, fileDir + Path.GetFileName(newFileName + fileType));
+
+                    button12.PerformClick(); //刷新，显示treeview
+                }
+            } //try
+            catch (Exception objException)
+            {
+                outputLabel("s5上传文件，失败\n" + objException);
+            }
+        }
+
+        //编码跟随编号动作
+        private void comboBox7Sheet1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Key = "next";
+            resultIni = ""; //清空
+            switch (comboBox7Sheet1.Text.Trim())
+            {
+                
+                case "胃":  //胃G0001
+                    Section = "胃";                    
+                    next = ReadIniData(Section, Key, NoText, iniFilePath);  //1，获取编码
+                    resultIni += "G" + next.PadLeft(4, '0'); //字符串不足4位补0
+                    break;
+                case "十二指肠"://十二指肠D0001
+                    Section = "十二指肠";
+                    next = ReadIniData(Section, Key, NoText, iniFilePath);  //1，获取编码
+                    resultIni += "D" + next.PadLeft(4, '0'); //字符串不足4位补0
+                    break;
+                case "小肠"://小肠S0001
+                    Section = "小肠";
+                    next = ReadIniData(Section, Key, NoText, iniFilePath);  //1，获取编码
+                    resultIni += "S" + next.PadLeft(4, '0'); //字符串不足4位补0
+                    break;
+                case "结肠"://结肠C0001
+                    Section = "结肠";
+                    next = ReadIniData(Section, Key, NoText, iniFilePath);  //1，获取编码
+                    resultIni += "C" + next.PadLeft(4, '0'); //字符串不足4位补0
+                    break;
+                case "直肠"://直肠R0001
+                    Section = "直肠";
+                    next = ReadIniData(Section, Key, NoText, iniFilePath);  //1，获取编码
+                    resultIni += "R" + next.PadLeft(4, '0'); //字符串不足4位补0
+                    break;
+                case "胃食管结合部"://胃食管结合部E0001
+                    Section = "胃食管结合部";
+                    next = ReadIniData(Section, Key, NoText, iniFilePath);  //1，获取编码
+                    resultIni += "E" + next.PadLeft(4, '0'); //字符串不足4位补0
+                    break;
+                case "肛管"://肛管A0001
+                    Section = "肛管";
+                    next = ReadIniData(Section, Key, NoText, iniFilePath);  //1，获取编码
+                    resultIni += "A" + next.PadLeft(4, '0'); //字符串不足4位补0
+                    break;
+                default:
+                    resultIni = "None";
+                    break;
+            }
+
+            label83.Text = resultIni + "-B";  //编码G0001-B
         }
 
 
