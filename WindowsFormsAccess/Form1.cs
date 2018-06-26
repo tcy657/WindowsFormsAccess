@@ -29,13 +29,13 @@ namespace WindowsFormsAccess
         {            
             //登录            
             outputLabel("开始登录"); //记录操作 
-            //F_Login FrmLogin = new F_Login();   //声明登录窗体，进行调用            
-            //FrmLogin.ShowDialog();
-            //if (0 == FrmLogin.iResult) 
-            //{
-            //    FrmLogin.Dispose();
-            //    this.Close();                
-            //}
+            F_Login FrmLogin = new F_Login();   //声明登录窗体，进行调用            
+            FrmLogin.ShowDialog();
+            if (0 == FrmLogin.iResult)
+            {
+                FrmLogin.Dispose();
+                this.Close();
+            }
 
             achelp = new AccessHelper();        //定义变量，设置列标题；       
             initDo(); //所有初始化
@@ -92,6 +92,10 @@ namespace WindowsFormsAccess
                 else if (i is ComboBox)
                 {
                     i.Text = "";
+                    i.Enabled = true;
+                }
+                else if (i is Button)
+                {
                     i.Enabled = true;
                 }
             }
@@ -180,10 +184,31 @@ namespace WindowsFormsAccess
             outputLabel("加载结束");
         }
 
-        //添加记录；
+        //新建，user基本信息；
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            //清空所有sheet并跳到“基本信息页面”
+            clearAllSheet(); //清空所有sheet
+
+            //跳到“基本信息页面”
+            gOid = UsersDo.GetMaxId(); //gOid为0，无法跳到其他Tab页。另一种方法（实为同一种）gOid = achelp.GetMaxID("ID","Users"); 
+            tabControl1.SelectedIndex = 1;
+            comboBox7Sheet1.Enabled = true; //编码可以改变
+
+            //清空查询条件，加载时默认使用查询条件过滤
+            textBox23.Text = ""; 
+
+            //置位为新增状态
+            gFlagAdd = 1;
+
+            bXinJian = true;   //新建状态，detail-datagridview的操作控件禁用
+            groupBox6.Enabled = false; //detail-datagridview的操作控件禁用
+
+            label20.Text = "当前用户：无";
+        }
+        
+        //清空所有sheet
+        private void clearAllSheet()
+        {            
             foreach (Control i in groupBox1.Controls) //sheet2
             {
                 if (i is TextBox)
@@ -204,6 +229,8 @@ namespace WindowsFormsAccess
                     i.Text = "";
                 else if (i is ComboBox)
                     i.Text = "";
+                else if (i is Button)
+                    i.Enabled = true;
             }
 
             foreach (Control i in groupBox5.Controls) //sheet3
@@ -221,7 +248,7 @@ namespace WindowsFormsAccess
 
                 //所有下拉框，取默认值，待补
             }
-           
+
 
             foreach (Control i in groupBox7.Controls) //清空sheet4
             {
@@ -265,22 +292,6 @@ namespace WindowsFormsAccess
                     i.Enabled = false;
                 }
             }
-
-            //跳到“基本信息页面”
-            gOid = UsersDo.GetMaxId(); //gOid为0，无法跳到其他Tab页。另一种方法（实为同一种）gOid = achelp.GetMaxID("ID","Users"); 
-            tabControl1.SelectedIndex = 1;
-            comboBox7Sheet1.Enabled = true; //编码可以改变
-
-            //清空查询条件，加载时默认使用查询条件过滤
-            textBox23.Text = ""; 
-
-            //置位为新增状态
-            gFlagAdd = 1;
-
-            bXinJian = true;   //新建状态，detail-datagridview的操作控件禁用
-            groupBox6.Enabled = false; //detail-datagridview的操作控件禁用
-
-            label20.Text = "当前用户：无";
         }
 
         // 删除记录
@@ -302,34 +313,40 @@ namespace WindowsFormsAccess
                 {
                     //删除sheet1-sheet7
                     bool bRet1 = UsersDo.Delete(Convert.ToInt32(oid));
+                    if (true == bRet1)
+                    {
+                        EraseSection("ID" + gOid.ToString(),  iniFileTabPath);    //删除selection
+                        
+                    }
                     if (true == achelp.Exists("select * from s2XinFuZhu where iUserID = " + oid.ToString()  ))
-                    { 
-                        achelp.ExcuteSql("delete from s2XinFuZhu where iUserID = '" + oid.ToString() + "'"); 
+                    {
+                        achelp.ExcuteSql("delete from s2XinFuZhu where iUserID = " + oid.ToString()); 
                     }//s2
                     if (true == achelp.Exists("select * from s3ShuHouFuZhu where iUserID = " + oid.ToString()))
                     {
-                        achelp.ExcuteSql("delete from s3ShuHouFuZhu where iUserID = '" + oid.ToString() + "'");
+                        achelp.ExcuteSql("delete from s3ShuHouFuZhu where iUserID = " + oid.ToString());
                     }//s3
                     if (true == achelp.Exists("select * from s4SuiZhen where iUserID = " + oid.ToString()))
                     {
-                        achelp.ExcuteSql("delete from s4SuiZhen where iUserID = '" + oid.ToString() + "'");
+                        achelp.ExcuteSql("delete from s4SuiZhen where iUserID = " + oid.ToString());
                     }//s4
                     if (true == achelp.Exists("select * from s5ShuJuCunZhu where iUserID = " + oid.ToString()))
                     {
-                        achelp.ExcuteSql("delete from s5ShuJuCunZhu where iUserID = '" + oid.ToString() + "'");
+                        achelp.ExcuteSql("delete from s5ShuJuCunZhu where iUserID = " + oid.ToString());
                     } //s5
                     if (true == achelp.Exists("select * from s6QiBingQingKuang where iUserID = " + oid.ToString()))
                      {
-                        achelp.ExcuteSql("delete from s6QiBingQingKuang where iUserID = '" + oid.ToString() + "'");
+                         achelp.ExcuteSql("delete from s6QiBingQingKuang where iUserID = " + oid.ToString());
                     } //s6
                     if (true == achelp.Exists("select * from s7ShuQianPingGu where iUserID = " + oid.ToString()))
                     {
-                        achelp.ExcuteSql("select * from s7ShuQianPingGu where iUserID = '" + oid.ToString() + "'"); 
+                        achelp.ExcuteSql("select * from s7ShuQianPingGu where iUserID = " + oid.ToString()); 
                     }//s7
                 }
                 string sql1 = "select * from Users";
                 databind(sql1, ref  dataGridView1);
                 gOid = 0; //不让切换到其他sheet，只能从"首页"开始
+                clearAllSheet(); //清空sheet页
 
                 //显示
                 outputLabel("sheet1删除成功!");
@@ -541,24 +558,8 @@ namespace WindowsFormsAccess
                 Key = "next";
                 next = (int.Parse(next) +1).ToString("0000"); //下一位值
                 WriteIniData(Section, Key, next, iniFilePath);
-                
-                foreach (Control i in groupBox2.Controls)  //清空和使能
-                {
-                    if (i is Button)
-                    {
-                        i.Enabled = false;
-                        i.Text = "";
-                    }
-                    else if (i is ComboBox)
-                    {
-                        i.Enabled = false;
-                        i.Text = "";
-                    }
-                    else if (i is TextBox)
-                    {
-                        i.Text = "None";
-                    }
-                }
+
+                clearAllSheet(); //清空所有sheet1-sheet7
             }
             else
             {
@@ -886,9 +887,7 @@ namespace WindowsFormsAccess
                 case 5:  //sheet5
                     bResult = updateSheet5();
                     if (true == bResult)
-                    {
-                        label116.Text = "";
-            
+                    {          
                         foreach (Control i in groupBox12.Controls)  //清空和使能
                         {
                             if (i is Button)
@@ -917,8 +916,10 @@ namespace WindowsFormsAccess
                             {
                                 WriteIniData("ID" + gOid.ToString(), "sheet5", next, iniFileTabPath);    //保存002  
                             }
-                        } 
+                        }
 
+                        label116.Text = "";
+                        treeViewS5.Nodes.Clear(); //清空
                     }
 
                     break;

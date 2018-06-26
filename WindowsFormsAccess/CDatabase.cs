@@ -35,7 +35,7 @@ namespace WindowsFormsAccess
         int tabPage1Index = 100; //tabControl1索引
         int tabPage2Index = 100; //tabControl2索引
 
-        string ftpRootPath = @"c:\rootPath\"; //文件存放位置
+        string ftpRootPath = @"d:\rootPath\"; //文件存放位置
         bool bXinJian = false; //新建则为true,控制detail-datagridview的操作控件使能（false）/禁用(true)。
                                //新建则控件禁用，加载后恢复使能
                                //防止在未创建“用户基本信息”时，先创建后面的sheet2-sheet7信息，导致信息不可用
