@@ -1,10 +1,10 @@
 .svn/
 
-outputBin/forSetupFactory/dataBase
+#outputBin/forSetupFactory/dataBase
 outputBin/WindowsFormsAccess.exe
 ouput/WindowsFormsAccess.exe
 ouput/Autosave
-outputBin/forSetupFactory/tools
+#outputBin/forSetupFactory/tools
 
 WindowsFormsAccess/bin/Debug/WindowsFormsAccess.exe
 WindowsFormsAccess/bin/Debug/WindowsFormsAccess.pdb
